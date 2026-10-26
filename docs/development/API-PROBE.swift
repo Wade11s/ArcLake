@@ -1,5 +1,5 @@
 // Documentation-only compile probe. Not an application implementation.
-// Never executed; checks Swift import names and macOS 14 availability.
+// Never executed; checks Swift import names at the macOS 27 deployment target.
 import AppKit
 import SwiftUI
 import WebKit

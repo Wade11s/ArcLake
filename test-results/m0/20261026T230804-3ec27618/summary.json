@@ -1,0 +1,400 @@
+{
+  "automatedSubsetPassed": true,
+  "m0GatePassed": true,
+  "m0Gate": "passed",
+  "pendingChecks": [],
+  "gateReason": "All M0 capability checks passed on the declared minimum macOS runtime.",
+  "phases": {
+    "seed": {
+      "bundleID": "dev.arclake.M0Probe",
+      "checks": [
+        {
+          "detail": "A1/A2 share a named persistent store; B1 uses a different named store",
+          "id": "store-identity",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": nil, \"local\": nil, \"indexedDB\": nil, \"httpOnly\": nil]",
+          "id": "fresh-A",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": nil, \"local\": nil, \"indexedDB\": nil, \"httpOnly\": nil]",
+          "id": "fresh-B",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-A-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T230804-3ec27618-A-one\"), \"local\": Optional(\"20261026T230804-3ec27618-A-one\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-A-one\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-A-one\")]",
+          "id": "T01-shared-A1-A2",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": nil, \"local\": nil, \"indexedDB\": nil, \"httpOnly\": nil]",
+          "id": "T01-no-leak-A-to-B",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-B-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T230804-3ec27618-B-one\"), \"local\": Optional(\"20261026T230804-3ec27618-B-one\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-B-one\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-B-one\")]",
+          "id": "T01-write-B",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-A-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T230804-3ec27618-A-one\"), \"local\": Optional(\"20261026T230804-3ec27618-A-one\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-A-one\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-A-one\")]",
+          "id": "T01-no-leak-B-to-A",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": nil, \"local\": nil, \"indexedDB\": nil, \"httpOnly\": nil]",
+          "id": "origin2-fresh-A",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": nil, \"local\": nil, \"indexedDB\": nil, \"httpOnly\": nil]",
+          "id": "origin2-fresh-B",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-A-two in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T230804-3ec27618-A-two\"), \"local\": Optional(\"20261026T230804-3ec27618-A-two\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-A-two\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-A-two\")]",
+          "id": "origin2-A",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-B-two in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T230804-3ec27618-B-two\"), \"local\": Optional(\"20261026T230804-3ec27618-B-two\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-B-two\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-B-two\")]",
+          "id": "origin2-B",
+          "status": "pass"
+        },
+        {
+          "detail": "50 sidebar + 50 theme toggles preserve WebView identity, document instance, load count, draft and JS memory",
+          "id": "T03-100-UI-updates",
+          "status": "pass"
+        },
+        {
+          "detail": "NSWindow accepted the WKWebView as first responder for the keyboard path",
+          "id": "T04-appkit-focus",
+          "status": "pass"
+        },
+        {
+          "detail": "AppKit keyDown/keyUp events reached WebKit; keydown=5, beforeinput=5, value=m0key",
+          "id": "T04-real-key-path",
+          "status": "pass"
+        },
+        {
+          "detail": "Visible window established a nonzero scroll before handoff; probe={\"y\":420,\"height\":689,\"documentHeight\":2814}",
+          "id": "T04-visible-nonzero-scroll",
+          "status": "pass"
+        },
+        {
+          "detail": "ownerIsLittle=true; oldReleased=true; windowIsLittle=true; identityStable=true; superview=Optional(<ArcLakeM0.BrowserHostView: 0x773eda1b80>)",
+          "id": "T04-single-owner",
+          "status": "pass"
+        },
+        {
+          "detail": "Little Window restored the WKWebView first responder; responder=Optional(<WKWebView: 0x773d1c8500>)",
+          "id": "T04-first-responder-little",
+          "status": "pass"
+        },
+        {
+          "detail": "Handoff preserves document instance, memory=42, form value, DOM focus and nonzero scroll=420.0; before=PageSnapshot(documentInstance: \"e9700509-6ae9-426a-aedf-00bab9924c13\", loads: 1, memoryCounter: 42, draft: \"m0key\", scrollY: 420.0, focused: \"draft\", keyboardEvents: 5, inputEvents: 5), after=PageSnapshot(documentInstance: \"e9700509-6ae9-426a-aedf-00bab9924c13\", loads: 1, memoryCounter: 42, draft: \"m0key\", scrollY: 420.0, focused: \"draft\", keyboardEvents: 5, inputEvents: 5)",
+          "id": "T04-page-state",
+          "status": "pass"
+        },
+        {
+          "detail": "Main Window restored the WKWebView first responder; responder=Optional(<WKWebView: 0x773d1c8500>)",
+          "id": "T04-first-responder-main",
+          "status": "pass"
+        },
+        {
+          "detail": "Return to main preserves page state, nonzero scroll and keyboard focus/input, then closes Little Window; after=PageSnapshot(documentInstance: \"e9700509-6ae9-426a-aedf-00bab9924c13\", loads: 1, memoryCounter: 42, draft: \"m0keyl\", scrollY: 420.0, focused: \"draft\", keyboardEvents: 6, inputEvents: 6)",
+          "id": "T04-roundtrip",
+          "status": "pass"
+        },
+        {
+          "detail": "Main-window keyboard input works after the roundtrip; value=m0keylm",
+          "id": "T04-key-after-return",
+          "status": "pass"
+        },
+        {
+          "detail": "Ownership guard rejects cross-profile move before creating a window",
+          "id": "T05-reject-cross-profile-move",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-B-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T230804-3ec27618-B-one\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-B-one\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-B-one\"), \"local\": Optional(\"20261026T230804-3ec27618-B-one\")]",
+          "id": "T05-copy-uses-target-store",
+          "status": "pass"
+        },
+        {
+          "detail": "Explicit URL copy uses new Tab identity and cannot copy the source form/JS state",
+          "id": "T05-copy-link-only",
+          "status": "pass"
+        },
+        {
+          "detail": "Real WKWebView follows local HTTP 302",
+          "id": "fixture-redirect",
+          "status": "pass"
+        },
+        {
+          "detail": "Native HTML form POST navigated through WKWebView and reached the local echo endpoint",
+          "id": "fixture-form-post",
+          "status": "pass"
+        },
+        {
+          "detail": "WKUIDelegate created and loaded a target=_blank WebView; type=WKNavigationType(rawValue: 0), url=Optional(http://127.0.0.1:57745/page?new=1)",
+          "id": "fixture-target-blank",
+          "status": "pass"
+        },
+        {
+          "detail": "WKDownload used a probe destination and completed the local attachment; path=Optional(\"/Users/hwj/Library/Containers/dev.arclake.M0Probe/Data/tmp/ArcLakeM0Downloads/5E80B9DD-D2FA-4B58-8221-AE85F3BEFF1D-fixture.txt\")",
+          "id": "fixture-native-download",
+          "status": "pass"
+        },
+        {
+          "detail": "Weak WKWebView reference is nil before public store removal completes",
+          "id": "store-delete-after-release",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"httpOnly\": nil, \"cookie\": nil, \"local\": nil, \"indexedDB\": nil]",
+          "id": "store-delete-content-empty",
+          "status": "pass"
+        },
+        {
+          "detail": "Synthetic stale event cannot mutate the live session",
+          "id": "T29-stale-generation",
+          "status": "pass"
+        },
+        {
+          "detail": "Synthetic current-generation termination enters recoverable state (not a real WebKit crash)",
+          "id": "T29-handler-injection",
+          "status": "pass"
+        },
+        {
+          "detail": "Explicit URL load recovers session after injected termination state",
+          "id": "T29-reload",
+          "status": "pass"
+        },
+        {
+          "detail": "M0 gates executed on macOS 27.0.1",
+          "id": "minimum-macOS27-runtime",
+          "status": "pass"
+        }
+      ],
+      "facts": {
+        "deleteAttempts-67A45AC8-2CF5-4B0B-BDFC-E02A31ECD2DE": "1",
+        "downloadPath": "/Users/hwj/Library/Containers/dev.arclake.M0Probe/Data/tmp/ArcLakeM0Downloads/5E80B9DD-D2FA-4B58-8221-AE85F3BEFF1D-fixture.txt",
+        "forceQuitTest": "Executed by separate force-quit-seed / verify-force-quit processes in the Python harness",
+        "littleFirstResponder": "Optional(<WKWebView: 0x773d1c8500>)",
+        "originA": "http://127.0.0.1:57745",
+        "originB": "http://127.0.0.1:57746",
+        "profileAStore": "662E341D-EEBB-45ED-A1AE-78410DF0E239",
+        "profileBStore": "55DB1D7D-8529-4325-9E58-612E847C5978",
+        "representableUpdates": "100",
+        "scrollProbe": "{\"y\":420,\"height\":689,\"documentHeight\":2814}",
+        "scrollYAfterRoundtrip": "420.0",
+        "webViewIdentity": "ObjectIdentifier(0x000000773d1c8500)",
+        "windowMode": "visible, non-activating seed window plus real AppKit key events"
+      },
+      "os": "Version 27.0.1 (Build 26A434)",
+      "phase": "seed",
+      "exitCode": 0
+    },
+    "verify": {
+      "bundleID": "dev.arclake.M0Probe",
+      "checks": [
+        {
+          "detail": "Expected 20261026T230804-3ec27618-A-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"httpOnly\": Optional(\"20261026T230804-3ec27618-A-one\"), \"local\": Optional(\"20261026T230804-3ec27618-A-one\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-A-one\"), \"cookie\": Optional(\"20261026T230804-3ec27618-A-one\")]",
+          "id": "T02-restart-A1",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-A-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"indexedDB\": Optional(\"20261026T230804-3ec27618-A-one\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-A-one\"), \"local\": Optional(\"20261026T230804-3ec27618-A-one\"), \"cookie\": Optional(\"20261026T230804-3ec27618-A-one\")]",
+          "id": "T02-restart-A2",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-B-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T230804-3ec27618-B-one\"), \"local\": Optional(\"20261026T230804-3ec27618-B-one\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-B-one\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-B-one\")]",
+          "id": "T02-restart-B1",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-A-two in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"httpOnly\": Optional(\"20261026T230804-3ec27618-A-two\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-A-two\"), \"cookie\": Optional(\"20261026T230804-3ec27618-A-two\"), \"local\": Optional(\"20261026T230804-3ec27618-A-two\")]",
+          "id": "T02-restart-origin2-A",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-B-two in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"httpOnly\": Optional(\"20261026T230804-3ec27618-B-two\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-B-two\"), \"cookie\": Optional(\"20261026T230804-3ec27618-B-two\"), \"local\": Optional(\"20261026T230804-3ec27618-B-two\")]",
+          "id": "T02-restart-origin2-B",
+          "status": "pass"
+        }
+      ],
+      "facts": {
+        "originA": "http://127.0.0.1:57745",
+        "originB": "http://127.0.0.1:57746",
+        "profileAStore": "662E341D-EEBB-45ED-A1AE-78410DF0E239",
+        "profileBStore": "55DB1D7D-8529-4325-9E58-612E847C5978",
+        "windowMode": "hidden verification window"
+      },
+      "os": "Version 27.0.1 (Build 26A434)",
+      "phase": "verify",
+      "exitCode": 0
+    },
+    "negative": {
+      "bundleID": "dev.arclake.M0Probe",
+      "checks": [
+        {
+          "detail": "Expected 20261026T230804-3ec27618-B-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"httpOnly\": Optional(\"20261026T230804-3ec27618-A-one\"), \"local\": Optional(\"20261026T230804-3ec27618-A-one\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-A-one\"), \"cookie\": Optional(\"20261026T230804-3ec27618-A-one\")]",
+          "id": "negative-control-isolation",
+          "status": "fail"
+        },
+        {
+          "detail": "negative-control-isolation: Expected 20261026T230804-3ec27618-B-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"httpOnly\": Optional(\"20261026T230804-3ec27618-A-one\"), \"local\": Optional(\"20261026T230804-3ec27618-A-one\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-A-one\"), \"cookie\": Optional(\"20261026T230804-3ec27618-A-one\")]",
+          "id": "phase-error",
+          "status": "fail"
+        }
+      ],
+      "facts": {
+        "originA": "http://127.0.0.1:57745",
+        "originB": "http://127.0.0.1:57746",
+        "profileAStore": "662E341D-EEBB-45ED-A1AE-78410DF0E239",
+        "profileBStore": "55DB1D7D-8529-4325-9E58-612E847C5978",
+        "windowMode": "hidden verification window"
+      },
+      "os": "Version 27.0.1 (Build 26A434)",
+      "phase": "negative",
+      "exitCode": 1
+    },
+    "force-quit-seed": {
+      "phase": "force-quit-seed",
+      "exitCode": -9,
+      "checks": [
+        {
+          "id": "owned-app-SIGKILL-after-acknowledged-write",
+          "status": "pass",
+          "detail": "Harness killed only its child app after all four storage markers were read back."
+        }
+      ]
+    },
+    "verify-force-quit": {
+      "bundleID": "dev.arclake.M0Probe",
+      "checks": [
+        {
+          "detail": "Expected 20261026T230804-3ec27618-A-force in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"local\": Optional(\"20261026T230804-3ec27618-A-force\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-A-force\"), \"cookie\": Optional(\"20261026T230804-3ec27618-A-force\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-A-force\")]",
+          "id": "T02-force-quit-A1",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-A-force in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"indexedDB\": Optional(\"20261026T230804-3ec27618-A-force\"), \"local\": Optional(\"20261026T230804-3ec27618-A-force\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-A-force\"), \"cookie\": Optional(\"20261026T230804-3ec27618-A-force\")]",
+          "id": "T02-force-quit-A2",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-B-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T230804-3ec27618-B-one\"), \"local\": Optional(\"20261026T230804-3ec27618-B-one\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-B-one\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-B-one\")]",
+          "id": "T02-force-quit-B1",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-A-two in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T230804-3ec27618-A-two\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-A-two\"), \"local\": Optional(\"20261026T230804-3ec27618-A-two\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-A-two\")]",
+          "id": "T02-restart-origin2-A",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T230804-3ec27618-B-two in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T230804-3ec27618-B-two\"), \"httpOnly\": Optional(\"20261026T230804-3ec27618-B-two\"), \"local\": Optional(\"20261026T230804-3ec27618-B-two\"), \"indexedDB\": Optional(\"20261026T230804-3ec27618-B-two\")]",
+          "id": "T02-restart-origin2-B",
+          "status": "pass"
+        }
+      ],
+      "facts": {
+        "originA": "http://127.0.0.1:57745",
+        "originB": "http://127.0.0.1:57746",
+        "profileAStore": "662E341D-EEBB-45ED-A1AE-78410DF0E239",
+        "profileBStore": "55DB1D7D-8529-4325-9E58-612E847C5978",
+        "windowMode": "hidden verification window"
+      },
+      "os": "Version 27.0.1 (Build 26A434)",
+      "phase": "verify-force-quit",
+      "exitCode": 0
+    },
+    "process-kill": {
+      "bundleID": "dev.arclake.M0Probe",
+      "checks": [
+        {
+          "detail": "Harness SIGKILL of the owned WebKit content process invoked the real termination delegate; PID=49133",
+          "id": "T29-real-process-termination",
+          "status": "pass"
+        },
+        {
+          "detail": "Reload created a usable content process; beforePID=49133, afterPID=Optional(49144)",
+          "id": "T29-real-process-reload",
+          "status": "pass"
+        }
+      ],
+      "facts": {
+        "originA": "http://127.0.0.1:57745",
+        "originB": "http://127.0.0.1:57746",
+        "profileAStore": "662E341D-EEBB-45ED-A1AE-78410DF0E239",
+        "profileBStore": "55DB1D7D-8529-4325-9E58-612E847C5978",
+        "realTerminationAfterPID": "Optional(49144)",
+        "realTerminationBeforePID": "49133",
+        "realTerminationSignal": "SIGKILL sent by the Python harness after process-name validation",
+        "windowMode": "visible, non-activating seed window plus real AppKit key events"
+      },
+      "os": "Version 27.0.1 (Build 26A434)",
+      "phase": "process-kill",
+      "exitCode": 0,
+      "killedPID": 49133
+    },
+    "cleanup": {
+      "bundleID": "dev.arclake.M0Probe",
+      "checks": [
+        {
+          "detail": "Public store removal succeeded with no live probe WebViews",
+          "id": "delete-662E341D-EEBB-45ED-A1AE-78410DF0E239",
+          "status": "pass"
+        },
+        {
+          "detail": "Public store removal succeeded with no live probe WebViews",
+          "id": "delete-55DB1D7D-8529-4325-9E58-612E847C5978",
+          "status": "pass"
+        },
+        {
+          "detail": "Public store removal succeeded with no live probe WebViews",
+          "id": "delete-67A45AC8-2CF5-4B0B-BDFC-E02A31ECD2DE",
+          "status": "pass"
+        }
+      ],
+      "facts": {
+        "deleteAttempts-55DB1D7D-8529-4325-9E58-612E847C5978": "1",
+        "deleteAttempts-662E341D-EEBB-45ED-A1AE-78410DF0E239": "1",
+        "deleteAttempts-67A45AC8-2CF5-4B0B-BDFC-E02A31ECD2DE": "1",
+        "originA": "http://127.0.0.1:57745",
+        "originB": "http://127.0.0.1:57746",
+        "profileAStore": "662E341D-EEBB-45ED-A1AE-78410DF0E239",
+        "profileBStore": "55DB1D7D-8529-4325-9E58-612E847C5978",
+        "windowMode": "hidden verification window"
+      },
+      "os": "Version 27.0.1 (Build 26A434)",
+      "phase": "cleanup",
+      "exitCode": 0
+    }
+  },
+  "environment": {
+    "macOS": "27.0.1",
+    "architecture": "arm64",
+    "bundleID": "dev.arclake.M0Probe",
+    "binarySHA256": "80f475001dd678245d5681c5d1636249faed893774649a9f39a66bf972eaa5e1",
+    "adHocSigned": true,
+    "sandboxEntitlements": [
+      "app-sandbox",
+      "network.client"
+    ],
+    "minimumDeploymentTarget": "27.0",
+    "packageToolsVersion": "6.4",
+    "swiftVersion": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)",
+    "xcodeVersion": "Xcode 27.0",
+    "mode": "test"
+  },
+  "unitTestExitCodes": {
+    "swift": 0,
+    "fixture": 0
+  }
+}

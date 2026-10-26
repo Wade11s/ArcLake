@@ -20,6 +20,22 @@ def minimum_deployment_target():
     except Exception:
         return 'unknown'
 
+def package_tools_version():
+    try:
+        first = (ROOT / 'Package.swift').read_text().splitlines()[0]
+        match = re.search(r'swift-tools-version:\s*(\S+)', first)
+        return match.group(1) if match else 'unknown'
+    except Exception:
+        return 'unknown'
+
+def command_version(command):
+    try:
+        result = subprocess.run(command, capture_output=True, text=True, timeout=30)
+        parts = [line.strip() for line in (result.stdout + result.stderr).splitlines() if line.strip()]
+        return parts[0] if parts else 'unknown'
+    except Exception:
+        return 'unknown'
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
@@ -38,6 +54,10 @@ def main():
         if build.returncode:
             print(f'Build failed; see {output}/build.log'); return 1
     if not APP.exists(): parser.error('Build missing; omit --skip-build')
+    min_target = minimum_deployment_target()
+    if min_target != '27.0':
+        print(f'Invalid deployment target: expected macOS 27.0, got {min_target}')
+        return 1
     unit_results = {}
     if not args.demo:
         for name, command in [('swift', ['swift', 'test']), ('fixture', [sys.executable, '-m', 'unittest', 'discover', '-s', 'scripts', '-p', 'test_m0_fixture.py'])]:
@@ -48,10 +68,13 @@ def main():
                 print(f'{name} tests failed; see {output}/unit-{name}.log'); return 1
     config = {'store-a': str(uuid.uuid4()), 'store-b': str(uuid.uuid4()),
               'disposable-store': str(uuid.uuid4()), 'run-token': stamp}
+    tools_version = package_tools_version()
     environment = {'macOS': platform.mac_ver()[0], 'architecture': platform.machine(),
                    'bundleID': 'dev.arclake.M0Probe', 'binarySHA256': hashlib.sha256(APP.read_bytes()).hexdigest(),
                    'adHocSigned': True, 'sandboxEntitlements': ['app-sandbox', 'network.client'],
-                   'minimumDeploymentTarget': minimum_deployment_target(),
+                   'minimumDeploymentTarget': min_target, 'packageToolsVersion': tools_version,
+                   'swiftVersion': command_version(['swift', '--version']),
+                   'xcodeVersion': command_version(['xcodebuild', '-version']),
                    'mode': 'demo' if args.demo else 'test'}
     reports = {}
     def run_phase(phase):

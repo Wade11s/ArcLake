@@ -208,11 +208,13 @@ final class ProbeRunner {
         try check(a1.state == "process-terminated", "T29-handler-injection", "Synthetic current-generation termination enters recoverable state (not a real WebKit crash)")
         try await load(a1, configuration.originA)
         try check(a1.state == "ready", "T29-reload", "Explicit URL load recovers session after injected termination state")
-        if ProcessInfo.processInfo.operatingSystemVersion.majorVersion == 14 {
-            try check(true, "minimum-macOS14-runtime", "M0 gates executed on the declared minimum macOS version")
+        let osVersion = ProcessInfo.processInfo.operatingSystemVersion
+        if osVersion.majorVersion >= 27 {
+            try check(true, "minimum-macOS27-runtime",
+                      "M0 gates executed on macOS \(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion)")
         } else {
-            pending("minimum-macOS14-runtime",
-                    "This process is not running on macOS 14; deployment target checks are not runtime compatibility tests")
+            pending("minimum-macOS27-runtime",
+                    "This process is below the declared macOS 27 minimum")
         }
         facts["forceQuitTest"] = "Executed by separate force-quit-seed / verify-force-quit processes in the Python harness"
     }

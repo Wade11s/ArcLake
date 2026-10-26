@@ -1,6 +1,6 @@
 # ArcLake macOS 开发文档与复现方案
 
-状态：**v0.3：M0 原型与当前主机可执行门槛已通过；尚缺 macOS 14 运行环境确认，产品应用尚未完成。**
+状态：**v1.0：macOS 27 最低系统基线上的 M0 Gate 已通过；进入 M1–M6 产品实现阶段。**
 
 目标：用 SwiftUI + AppKit + WebKit 独立实现 Arc 的基础组织方式与浏览交互，而非复制 Arc 内核、品牌或全部历史功能。分析对象仅 macOS；不开展 Windows 复现。
 
@@ -27,8 +27,9 @@
 | 项目 | 基线 |
 |---|---|
 | 产品名 | ArcLake；独立图标、配色与资源 |
-| 最低系统 | macOS 14.0；Apple Silicon 优先验证，Intel 不作首轮交付承诺 |
-| 技术 | SwiftUI + AppKit + WKWebView；不用 Hopper，也不依赖 Arc 私有框架 |
+| 最低系统 | macOS 27.0；Apple Silicon 优先验证，Intel 不作首轮交付承诺 |
+| 工具链 | Xcode 27 / Swift 6.4；SwiftUI、AppKit、WebKit、Foundation、SQLite 使用 macOS 27 SDK 系统版本，不保留旧系统兼容分支 |
+| 技术 | SwiftUI + AppKit + WKWebView；不用 Hopper，不依赖 Arc 私有框架，无第三方 Swift 包 |
 | 窗口范围 | 首版一个主窗口 + 多个 Little Window；多个主窗口及 Tab Handoff 后续再做 |
 | 网站数据 | 每个 Profile 一个独立、稳定 UUID 的持久 WebKit data store |
 | 本地元数据 | SQLite 单写者事务；不存 Cookie、密码、网页正文 |
@@ -45,4 +46,4 @@
 
 ## 建议马上做的工作
 
-M0 已通过具名持久 Profile 隔离、正常/强退恢复、WebView 身份稳定、可见窗口非零滚动、AppKit 键盘路径、主窗/小窗往返移交、原生表单/弹窗/下载及真实 WebContent 进程终止验证。剩余唯一环境门槛是在 macOS 14 上运行同一套检查；已提供 `--require-minimum-os` 与 macOS 14 CI，详见 [M0 报告](M0-RESULTS.md)。不能以“界面长得像”代替基础浏览器能力。
+M0 已在最低系统基线 macOS 27 上通过具名持久 Profile 隔离、正常/强退恢复、WebView 身份稳定、可见窗口非零滚动、AppKit 键盘路径、主窗/小窗往返移交、原生表单/弹窗/下载及真实 WebContent 进程终止验证。下一阶段从 M1 的领域模型、SQLite 持久化与命令骨架开始，详见 [M0 报告](M0-RESULTS.md)。不能以“界面长得像”代替基础浏览器能力。

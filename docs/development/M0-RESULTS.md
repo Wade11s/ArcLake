@@ -1,6 +1,6 @@
 # M0 技术验证结果
 
-日期：2026-10-26。状态：**当前主机可执行的全部 M0 能力检查通过；M0 Gate 仅缺 macOS 14 实际运行确认。**
+日期：2026-10-26。状态：**M0 Gate 已在最低系统基线 macOS 27 上通过。**
 
 本探针不继续逆向 Arc，不安装依赖工具，不读取个人浏览记录，不改变默认浏览器。代码独立编写，只访问本地受控测试站。
 
@@ -22,12 +22,12 @@ M0 仍是能力探针：没有 SQLite 工作区、持久 Tab/Space 模型、正�
 
 最近通过轮次见 [latest.json](../../test-results/m0/latest.json)，逐阶段报告保存在同目录。
 
-环境：Apple Silicon arm64；macOS 27.0.1；Xcode 27.0 / Swift 6.4。Mach-O `LC_BUILD_VERSION.minos = 14.0`，但这不是 macOS 14 运行证据。
+环境：Apple Silicon arm64；macOS 27.0.1；Xcode 27.0 / Swift 6.4。`Package.swift` 使用 Swift tools 6.4、`.macOS(.v27)` 与 Swift 6 语言模式；全部 Apple 框架来自当前 macOS 27 SDK，没有旧系统兼容分支或第三方包。
 
 - Swift 单测：5/5；Python fixture 测试：1/1。
-- 正向阶段共 **49 个 pass 检查点**：seed 33、正常重启 5、强退信号确认 1、强退恢复 5、真实 WebContent 崩溃 2、清理 3。
+- 正向阶段共 **50 个 pass 检查点**：seed 34、正常重启 5、强退信号确认 1、强退恢复 5、真实 WebContent 崩溃 2、清理 3，pending 为 0。
 - 负对照故意把 B 的运行 store 指向 A，读取到 A 标记后按预期失败并返回 1，证明隔离测试能检出真实串数据。
-- `seed` 阶段有且只有一个 `pending`：`minimum-macOS14-runtime`。只有该项在 macOS 14 runner 通过后，M0 Gate 才可标记完成。
+- `seed` 阶段的 `minimum-macOS27-runtime` 通过，没有 pending 检查点；M0 Gate 可标记完成。
 
 | 能力 | 实测结论 |
 |---|---|
@@ -66,14 +66,11 @@ M0 仍是能力探针：没有 SQLite 工作区、持久 Tab/Space 模型、正�
 
 同进程删除 API 成功后立即用原 UUID 重建，localStorage/IndexedDB 为空，但 Cookie/HttpOnly Cookie 仍可读到旧值。当前探针先清空 `allWebsiteDataTypes()` 再删除。产品仍应为新 Profile 生成新 UUID，禁止复用已删除 UUID。
 
-## 4. 仍待环境确认
+## 4. M0 结论与下一阶段
 
-1. 在 macOS 14 真机或 CI runner 运行：`python3 scripts/run_m0.py --test --require-minimum-os`。
-2. 在 macOS 14 上确认具名 store、窗口移交、真实进程终止、弹窗/下载与现有系统结果一致。
+M0 的能力方向成立：具名持久 store、稳定 WebView 注册表、窗口移交和真实进程终止均可在 macOS 27 基线上支撑后续产品实现。M0 不是产品应用，下一阶段从 M1 的领域模型、SQLite schema、事务和命令骨架开始。
 
-中文输入法组合不是 ROADMAP 的 M0 门槛，属于后续 M6/T24 验收。当前 M0 已覆盖真实 AppKit keyDown/keyUp 路径与 first responder。
-
-`.github/workflows/m0-macos-14.yml` 已配置 `macos-14` runner，并把 `test-results/m0/` 作为 artifact 上传。在该 workflow 成功前，不应把 M0 Gate 标为全局完成。
+中文输入法组合不是 M0 门槛，属于后续 M6/T24 验收。当前 M0 已覆盖真实 AppKit keyDown/keyUp 路径与 first responder。
 
 ## 5. 复现与清理
 

@@ -1,1 +1,1 @@
-PASS: Swift 6, arm64-apple-macos14.0, documentation API probe; typecheck only, no execution
+PASS: Swift 6.4, arm64-apple-macos27.0, documentation API probe; typecheck only, no execution

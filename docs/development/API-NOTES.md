@@ -1,6 +1,6 @@
 # 技术依据、API 核实与限制
 
-核实方式：Context7 查询 Apple 官方 WebKit/SwiftUI 文档 + 本机 Xcode SDK 头文件 + 最低部署目标的类型检查。**API 存在/可编译不等于运行行为已验收。**
+核实方式：Context7 查询 Apple 官方 WebKit/SwiftUI 文档 + 本机最新 macOS 27 SDK 头文件 + macOS 27 部署目标的类型检查。项目不维护旧 SDK 兼容分支。**API 存在/可编译不等于运行行为已验收。**
 
 ## 1. 多 Profile 的可行基础
 
@@ -10,7 +10,7 @@ Apple 文档：
 - [remove(forIdentifier:completionHandler:)](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/remove%28foridentifier%3Acompletionhandler%3A%29)
 
 核实结论：
-1. `WKWebsiteDataStore(forIdentifier: UUID)` 从 **macOS 14.0** 可用，返回该标识的持久 store，不存在时创建。零 UUID 不合法。
+1. `WKWebsiteDataStore(forIdentifier: UUID)` 从 **macOS 14.0** 可用，返回该标识的持久 store，不存在时创建。ArcLake 当前最低系统为 macOS 27.0，因此直接使用该 API。零 UUID 不合法。
 2. 创建 WKWebView **之前**把 store 赋给 `WKWebViewConfiguration.websiteDataStore`。
 3. `.default()` 是默认持久 store，不用它承载所有 Profile。
 4. `.nonPersistent()` 是非持久存储，不满足“重启仍保持 Profile 登录”的需求。
@@ -49,18 +49,18 @@ makeNSView 创建该次 representable 实例的 AppKit 视图，后续更新走 
 执行命令：
 ```bash
 xcrun swiftc -typecheck -swift-version 6 \
-  -target arm64-apple-macos14.0 docs/development/API-PROBE.swift
+  -target arm64-apple-macos27.0 docs/development/API-PROBE.swift
 ```
 
 结果：成功，未执行任何网页加载、store 创建/删除或 UI 操作。仅证明这些 Swift 导入名、actor 标注和最低部署目标能通过当前工具链检查。
 
-本次工具链：Xcode 27.0（27A266a），Apple Swift 6.4。并不因此承诺使用任何 macOS 27 专属 API；发布仍以 macOS 14 最低运行环境测试为门槛。
+本次工具链：Xcode 27.0（27A266a），Apple Swift 6.4。`Package.swift` 使用 Swift tools 6.4、`.macOS(.v27)` 与 Swift 6 语言模式；ArcLake 最低系统为 macOS 27.0，当前验证环境是 macOS 27.0.1。
 
 ## 5. M0 运行验证与剩余项
 
 已有独立 Sandbox/ad-hoc 应用的真实运行记录，见 [M0 实测报告](M0-RESULTS.md)。上文 API-PROBE 仍只是编译探针，不能与新建的运行应用混为一谈。
 
-- 当前系统上，具名 store 的 Cookie/HttpOnly Cookie/localStorage/IndexedDB 隔离、正常退出、强退保持、删除与负对照已通过；macOS 14 和发行签名环境仍待测。
+- 在最低系统基线 macOS 27 上，具名 store 的 Cookie/HttpOnly Cookie/localStorage/IndexedDB 隔离、正常退出、强退保持、删除与负对照已通过；发行签名环境仍待测。
 - WKWebView reparent 的实例、表单、JS 内存、可见窗口非零滚动、DOM 焦点和 AppKit 键盘路径已通过。Reparent 本身会重置滚动与 DOM 焦点，因此应用必须在目标 host 完成布局后显式恢复；中文输入法属于后续 T24，不是 M0 的明确门槛。
 - 删除测试发现冷调用崩溃、网络进程短暂占用和即时同UUID复用的Cookie残留；当前探针初始化WebKit、显式清空网站数据、有界重试后通过，不能省略失败恢复设计。
 - 清空数据 API：[removeData(ofTypes:modifiedSince:)](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/removedata%28oftypes%3Amodifiedsince%3Acompletionhandler%3A%29)，使用 `WKWebsiteDataStore.allWebsiteDataTypes()` 和 `.distantPast`。

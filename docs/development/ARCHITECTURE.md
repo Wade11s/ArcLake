@@ -4,12 +4,12 @@
 
 ## 1. 技术基线
 
-- 最低 macOS 14.0；Swift 6 语言模式、严格并发检查；现有机器工具链不等同于最低运行系统，CI 必须另跑最低系统。
+- 最低 macOS 27.0；Xcode 27 / Swift 6.4 工具链、Swift 6 语言模式、严格并发检查；当前开发机 macOS 27.0.1 即最低系统基线。
 - SwiftUI：Sidebar、设置、命令栏、Library、状态展示。
 - AppKit：主窗口/小窗所有权、焦点、键盘响应、文件选择与 NSView 挂载；窗口控制器承载 NSHostingController。
-- WebKit：WKWebView + WKNavigationDelegate + WKUIDelegate。通过 NSViewRepresentable 嵌入稳定的宿主 NSView，不在 SwiftUI body 中创建浏览实例。
-- Foundation + 系统 SQLite：值模型、URL 解析、元数据事务、迁移、查询。首版不引入通用 Redux 框架、第三方 ORM 或 Chromium。
-- SwiftUI 新版 WebView/WebPage 不作为最低系统基础；API 出现于新版 SDK 不代表 macOS 14 可用。参见 [API 核实](API-NOTES.md)。
+- WebKit：使用 macOS 27 SDK 的 WKWebView + WKNavigationDelegate + WKUIDelegate + WKDownloadDelegate。通过 NSViewRepresentable 嵌入稳定的宿主 NSView，不在 SwiftUI body 中创建浏览实例。
+- Foundation + 系统 SQLite：使用 macOS 27 SDK 的值模型、URL 解析、元数据事务、迁移、查询。首版不引入通用 Redux 框架、第三方 ORM 或 Chromium。
+- SwiftUI、AppKit 与 WebKit 全部跟随当前 macOS 27 SDK，不保留旧系统 fallback。SwiftUI 更新型 WebView/WebPage 只有在能覆盖当前 delegate、store 与生命周期 Interface 时才替代现有 WKWebView 宿主。参见 [API 核实](API-NOTES.md)。
 
 ## 2. 模块与依赖方向
 
@@ -110,7 +110,7 @@ command + immutable state + current clock/protection snapshot
 
 ### 5.1 配置创建
 
-`Profile.websiteStoreID -> WKWebsiteDataStore(forIdentifier:)`，并在初始化 WKWebView 前设置到 WKWebViewConfiguration.websiteDataStore。[V API 已核实；当前系统的 M0 隔离、重启、强退、删除和负对照均已实测，macOS 14 运行仍待 CI 确认，见 M0-RESULTS.md]
+`Profile.websiteStoreID -> WKWebsiteDataStore(forIdentifier:)`，并在初始化 WKWebView 前设置到 WKWebViewConfiguration.websiteDataStore。[V API 已核实；macOS 27 基线上的 M0 隔离、重启、强退、删除和负对照均已实测，见 M0-RESULTS.md]
 
 - Default Profile 也使用具名 store，不用 `.default()` 与其他 Profile 混杂。
 - store UUID 非零、只生成一次，并在首次创建任何网页前写库。store 初始化不接受来自网页或导入文件的 UUID。

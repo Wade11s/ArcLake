@@ -10,7 +10,7 @@
 - App UI：XCTest/XCUITest 或具备用户授权的 GUI 工具；fixture 参数启动应用，事件从真实菜单/键盘/拖拽进入。
 - 测试服务器是独立开发进程；两个不同 origin、持久 Cookie、localStorage、IndexedDB、重定向、POST、下载、弹窗、beforeunload、进程失效页面。
 - 日志使用随机测试 token；避免真实网站登录。录屏/截图仅对测试窗口，导出前检查隐私。
-- 每次记录系统版本、硬件、构建号、数据库 schema 与 WebKit store UUID。覆盖最低 macOS 14 和当前系统；只有当前系统通过不能替代最低系统承诺。
+- 每次记录系统版本、硬件、构建号、数据库 schema 与 WebKit store UUID。最低系统基线为 macOS 27，后续还需覆盖当前支持的新版本。
 
 ## 2. 场景清单
 

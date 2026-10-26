@@ -8,13 +8,15 @@
 
 ## 运行 M0
 
-需要 macOS、Xcode 命令行工具、Swift 6 工具链和 Python 3；没有第三方包依赖。最低部署目标为 macOS 14，但目前只在本机 arm64 macOS 27.0.1 上运行验证。
+需要 macOS 27.0 或更高、Xcode 27 / Swift 6.4 工具链和 Python 3；没有第三方包依赖。最低系统基线为 macOS 27.0，开发和 M0 验证环境为 arm64 macOS 27.0.1。
+
+SwiftUI、AppKit、WebKit、Foundation 和 SQLite 均使用当前 macOS 27 SDK 的系统版本。项目不保留旧系统兼容分支，也不引入替代 Apple 框架的第三方包。
 
 ```bash
 # 构建、单元测试、真实 WebKit 集成测试与清理
 python3 scripts/run_m0.py --test
 
-# 最低系统 CI 使用：若没有在 macOS 14 运行则返回失败
+# 最低系统模式：当前系统必须满足 macOS 27
 python3 scripts/run_m0.py --test --require-minimum-os
 
 # 可见的本地演示窗口（退出 App 后结束服务器并清理此次测试数据）
@@ -35,7 +37,6 @@ python3 scripts/run_m0.py --demo
 - `Fixtures/M0/`、`scripts/m0_fixture.py`：两个仅 loopback 的测试 origin。
 - `Packaging/`：独立 bundle ID、App Sandbox 与 network.client 权限；临时 ad-hoc 签名，未公证。
 - `test-results/m0/`：逐轮环境、稳定 UUID 清单、JSON 结果和日志。`latest.json` 指向最近一轮。
-- `.github/workflows/m0-macos-14.yml`：在 GitHub 的 macOS 14 runner 上执行必须的最低系统门槛并归档结果。
 
 可以单独运行：
 ```bash
@@ -49,4 +50,4 @@ bash scripts/build_m0.sh
 python3 scripts/cleanup_m0.py test-results/m0/<run>/run-config.json
 ```
 
-当前主机可执行的全部 M0 能力检查已通过。M0 Gate 只有在 macOS 14 上以 `--require-minimum-os` 通过后才标记完成；该运行不能由部署目标检查替代。M0 也不等于 11 项浏览器功能完成，结果边界见 M0 报告。
+当前主机就是 macOS 27 最低系统基线，M0 Gate 已通过。M0 完成不等于 11 项浏览器功能完成；下一阶段进入 M1–M6，结果边界见 M0 报告。
