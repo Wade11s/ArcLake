@@ -1,0 +1,23 @@
+{
+  "hopper": {
+    "initial_operation": "search_strings",
+    "result": "MCP request timed out after 60000ms; no retained search_strings Evidence",
+    "followup": "cleanup_incomplete",
+    "resources": [
+      "hopper-document",
+      "/tmp/rea-mKZZnp"
+    ],
+    "cleanup_attempt": "close_binary failed: authenticated shutdown acknowledgement was not observed",
+    "required_action": "Finish pending Hopper dialog/analysis and close the retained document; restart MCP if bridge remains unavailable. Do not open another native target before cleanup."
+  },
+  "gui": {
+    "tool": "cua-driver 0.31.0",
+    "result": "permissions_pending: macOS Accessibility or Screen Recording permission is still pending; no action started"
+  },
+  "coverage": {
+    "runtime": false,
+    "decompilation": false,
+    "windows": false,
+    "personal_profile_data_read": false
+  }
+}

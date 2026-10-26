@@ -1,0 +1,82 @@
+{
+  "feature": {
+    "id": "01-sidebar",
+    "title": "垂直侧边栏",
+    "menus": [
+      "33",
+      "752",
+      "61",
+      "946",
+      "1095"
+    ],
+    "offsets": [
+      "0x3cdc880"
+    ],
+    "finding": "REA 主菜单确认 Show/Hide Sidebar → toggleArcSidebar:，归档快捷键为 ⌘S；另有 Reveal Tab in Sidebar。",
+    "limits": "左侧垂直几何布局、地址栏和导航按钮实际所在位置未截图验证。存在 Show/Hide Toolbar 菜单归档，不能把“永远没有顶部栏”作为结论。"
+  },
+  "rea_evidence_id": "ev_79b3e880589785e95be53245ee4309dc10599f4c85a1b751c10a79e857ef261e",
+  "rea_document": "Contents/Resources/Base.lproj/MainMenu.nib",
+  "menu_items": [
+    {
+      "id": "33",
+      "title": "Show/Hide Sidebar",
+      "key": "s",
+      "mask": 1048576,
+      "actions": [
+        "toggleArcSidebar:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "752",
+      "title": "Reveal Tab in Sidebar",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "revealCurrentTabInSidebar:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "61",
+      "title": "Go Forward",
+      "key": "]",
+      "mask": 1048576,
+      "actions": [
+        "navigateTabForward:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "946",
+      "title": "Go Back",
+      "key": "[",
+      "mask": 1048576,
+      "actions": [
+        "navigateTabBack:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1095",
+      "title": "Show/Hide Toolbar",
+      "key": "D",
+      "mask": 1048576,
+      "actions": [
+        "toggleArcToolbar:"
+      ],
+      "hidden": true
+    }
+  ],
+  "supplementary_static_text": [
+    {
+      "file_offset": 63817856,
+      "file_offset_hex": "0x3cdc880",
+      "byte_length": 17,
+      "text": "Sidebar Container"
+    }
+  ],
+  "binary_sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688",
+  "runtime_verified": false
+}

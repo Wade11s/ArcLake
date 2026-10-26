@@ -1,0 +1,407 @@
+{
+  "id": "09-split-view",
+  "types": [
+    "BaseModels.SidebarSplitViewData",
+    "BaseModels.SidebarSplitViewData.LayoutOrientation",
+    "BaseModels.SidebarItemData",
+    "BaseModels.SplitViewPaneMenuOperation",
+    "WindowContents.SplitViewState",
+    "WindowContents.SplitViewState.InteractionState"
+  ],
+  "docPatterns": [
+    "more than four tabs",
+    "Favorited Split Tabs",
+    "duplicate a split",
+    "Spaces, Folders, Split Views",
+    "Split View orientation"
+  ],
+  "conclusion": "分屏不是几个无关联窗口：SidebarItemData 包含 splitView；SidebarSplitViewData 持久化 itemWidthFactors/layoutOrientation/focusItemID/timeLastActiveAt，运行态声明 windowContentIDs/focusedContentID/isResizingPanes。真实 add/close/separate/maximize 入口存在。官方“patched ... more than four tabs”支持设计上限四个；Favored Split Tabs 与共享 Split 发布记录支持分屏作为侧栏复合项保存。",
+  "unknown": "没有找到并验证“>=4 拒绝”的机器码分支；分屏整体 Pin 操作与调整尺寸未运行。复合项模型支持固定的推论，不冒充已成功固定操作。",
+  "static_types": [
+    {
+      "name": "BaseModels.SidebarSplitViewData",
+      "kind": "struct",
+      "descriptor": "0x103bca050",
+      "field_descriptor": "0x103cf2cf4",
+      "fields": [
+        {
+          "name": "itemWidthFactors",
+          "flags": 2,
+          "record_address": "0x103cf2d04",
+          "type_reference_address": "0x1039fc70e"
+        },
+        {
+          "name": "layoutOrientation",
+          "flags": 2,
+          "record_address": "0x103cf2d10",
+          "type_reference_address": "0x1039fc742"
+        },
+        {
+          "name": "timeLastActiveAt",
+          "flags": 2,
+          "record_address": "0x103cf2d1c",
+          "type_reference_address": "0x1039fa66c"
+        },
+        {
+          "name": "customInfo",
+          "flags": 2,
+          "record_address": "0x103cf2d28",
+          "type_reference_address": "0x1039fc724"
+        },
+        {
+          "name": "focusItemID",
+          "flags": 2,
+          "record_address": "0x103cf2d34",
+          "type_reference_address": "0x1039fbebe"
+        }
+      ]
+    },
+    {
+      "name": "BaseModels.SidebarSplitViewData.LayoutOrientation",
+      "kind": "enum",
+      "descriptor": "0x103bca094",
+      "field_descriptor": "0x103cf2d5c",
+      "fields": [
+        {
+          "name": "horizontal",
+          "flags": 0,
+          "record_address": "0x103cf2d6c",
+          "type_reference_address": null
+        },
+        {
+          "name": "vertical",
+          "flags": 0,
+          "record_address": "0x103cf2d78",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "BaseModels.SidebarItemData",
+      "kind": "enum",
+      "descriptor": "0x103bc9c00",
+      "field_descriptor": "0x103cf276c",
+      "fields": [
+        {
+          "name": "tab",
+          "flags": 0,
+          "record_address": "0x103cf277c",
+          "type_reference_address": "0x1039fc2aa"
+        },
+        {
+          "name": "list",
+          "flags": 0,
+          "record_address": "0x103cf2788",
+          "type_reference_address": "0x1039fc2b0"
+        },
+        {
+          "name": "arcDocument",
+          "flags": 0,
+          "record_address": "0x103cf2794",
+          "type_reference_address": "0x1039fbf7a"
+        },
+        {
+          "name": "easel",
+          "flags": 0,
+          "record_address": "0x103cf27a0",
+          "type_reference_address": "0x1039fc010"
+        },
+        {
+          "name": "itemContainer",
+          "flags": 0,
+          "record_address": "0x103cf27ac",
+          "type_reference_address": "0x1039fc0d0"
+        },
+        {
+          "name": "welcomeToArc",
+          "flags": 0,
+          "record_address": "0x103cf27b8",
+          "type_reference_address": "0x1039fc2b6"
+        },
+        {
+          "name": "splitView",
+          "flags": 0,
+          "record_address": "0x103cf27c4",
+          "type_reference_address": "0x1039fc2bc"
+        },
+        {
+          "name": "sharedObject",
+          "flags": 0,
+          "record_address": "0x103cf27d0",
+          "type_reference_address": "0x1039fc2c2"
+        },
+        {
+          "name": "instantLinks",
+          "flags": 0,
+          "record_address": "0x103cf27dc",
+          "type_reference_address": "0x1039fc058"
+        },
+        {
+          "name": "tabGroup",
+          "flags": 0,
+          "record_address": "0x103cf27e8",
+          "type_reference_address": "0x1039fc2c8"
+        }
+      ]
+    },
+    {
+      "name": "BaseModels.SplitViewPaneMenuOperation",
+      "kind": "enum",
+      "descriptor": "0x103bcae38",
+      "field_descriptor": "0x103cf42b0",
+      "fields": [
+        {
+          "name": "moveLeft",
+          "flags": 0,
+          "record_address": "0x103cf42c0",
+          "type_reference_address": null
+        },
+        {
+          "name": "moveRight",
+          "flags": 0,
+          "record_address": "0x103cf42cc",
+          "type_reference_address": null
+        },
+        {
+          "name": "addPaneLeft",
+          "flags": 0,
+          "record_address": "0x103cf42d8",
+          "type_reference_address": null
+        },
+        {
+          "name": "addPaneRight",
+          "flags": 0,
+          "record_address": "0x103cf42e4",
+          "type_reference_address": null
+        },
+        {
+          "name": "addPaneTop",
+          "flags": 0,
+          "record_address": "0x103cf42f0",
+          "type_reference_address": null
+        },
+        {
+          "name": "addPaneBottom",
+          "flags": 0,
+          "record_address": "0x103cf42fc",
+          "type_reference_address": null
+        },
+        {
+          "name": "separate",
+          "flags": 0,
+          "record_address": "0x103cf4308",
+          "type_reference_address": null
+        },
+        {
+          "name": "copyLink",
+          "flags": 0,
+          "record_address": "0x103cf4314",
+          "type_reference_address": null
+        },
+        {
+          "name": "flipLayoutOrientation",
+          "flags": 0,
+          "record_address": "0x103cf4320",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "WindowContents.SplitViewState",
+      "kind": "struct",
+      "descriptor": "0x103c104f8",
+      "field_descriptor": "0x103d385ec",
+      "fields": [
+        {
+          "name": "windowContentIDs",
+          "flags": 2,
+          "record_address": "0x103d385fc",
+          "type_reference_address": "0x103afc376"
+        },
+        {
+          "name": "layoutOrientation",
+          "flags": 2,
+          "record_address": "0x103d38608",
+          "type_reference_address": "0x103afc38c"
+        },
+        {
+          "name": "interactionState",
+          "flags": 2,
+          "record_address": "0x103d38614",
+          "type_reference_address": "0x103afc3a0"
+        },
+        {
+          "name": "focusedContentID",
+          "flags": 2,
+          "record_address": "0x103d38620",
+          "type_reference_address": "0x103afc0c0"
+        }
+      ]
+    },
+    {
+      "name": "WindowContents.SplitViewState.InteractionState",
+      "kind": "struct",
+      "descriptor": "0x103c10530",
+      "field_descriptor": "0x103d38654",
+      "fields": [
+        {
+          "name": "activePaneEditStyles",
+          "flags": 2,
+          "record_address": "0x103d38664",
+          "type_reference_address": "0x103afc3a6"
+        },
+        {
+          "name": "proposedWindowContentDropTarget",
+          "flags": 2,
+          "record_address": "0x103d38670",
+          "type_reference_address": "0x103afc3b0"
+        },
+        {
+          "name": "isResizingPanes",
+          "flags": 2,
+          "record_address": "0x103d3867c",
+          "type_reference_address": "0x103afc0d4"
+        }
+      ]
+    }
+  ],
+  "method_bodies": [
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "addSplitPanel:",
+      "implementation": "0x10031d3c0",
+      "implementation_file_offset": 3265472,
+      "method_record_address": "0x1034ae034",
+      "selector_pointer": "0x10397ff96",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031d3c8",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--addSplitPanel.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031d3c0",
+        "--stop-address=0x10031d3c8",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "closeFocusedSplitViewPanel:",
+      "implementation": "0x10031d6fc",
+      "implementation_file_offset": 3266300,
+      "method_record_address": "0x1034ae0ac",
+      "selector_pointer": "0x1039847ce",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031d704",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--closeFocusedSplitViewPanel.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031d6fc",
+        "--stop-address=0x10031d704",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "separateTabFromSplitView:",
+      "implementation": "0x10031d70c",
+      "implementation_file_offset": 3266316,
+      "method_record_address": "0x1034ae0b8",
+      "selector_pointer": "0x10399e4c7",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031d714",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--separateTabFromSplitView.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031d70c",
+        "--stop-address=0x10031d714",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "maximizeCurrentSplitViewPane:",
+      "implementation": "0x10031b6cc",
+      "implementation_file_offset": 3258060,
+      "method_record_address": "0x1034ae454",
+      "selector_pointer": "0x103994fd0",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031b75c",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--maximizeCurrentSplitViewPane.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031b6cc",
+        "--stop-address=0x10031b75c",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    }
+  ],
+  "official_excerpts": [
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## Mar 7, 2024 —",
+      "source_text_line": 954,
+      "text": "* We've patched some edge-cases in trying to open more than four tabs in Split Views.",
+      "saved_file": "official-docs/20498293324823.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## November 2, 2023 —",
+      "source_text_line": 102,
+      "text": "* We've fixed a bug where Favorited Split Tabs were not focused correctly after Space switching.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## November 30, 2023 —",
+      "source_text_line": 56,
+      "text": "* It's now possible to mute a tab in Split View by right-clicking on the split and selecting \"Mute\" under the tab's name. It's also now possible to duplicate a split in the tab's right-click menu.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## October 26, 2023 —",
+      "source_text_line": 113,
+      "text": "* Introducing Shared Collections! You can now share perma-links to Spaces, Folders, Split Views, and selected tabs to anyone, on any browser. Right click on any Folder, Split View, or selected tab group in your sidebar and click the \"Share\" option. To share Spaces, hover over your Space title and click \"Share\". Anyone, with any browser, can view the link. Arc members can add the Shared Collection to their sidebar.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## December 14, 2023 —",
+      "source_text_line": 7,
+      "text": "* You can now flip Split View orientation (top to bottom vs left to right) through the Split Controls button at the top of your split panel.",
+      "saved_file": "official-docs/20498377604887.md"
+    }
+  ],
+  "runtime_verified": false,
+  "rea_macho_evidence": "ev_780f75cfcf14debdafbfe9e1804e72b246ee98aec3b9d598bd724a307a89fd1f",
+  "note": "Reflection/method parsing and LLVM assembly are supplementary local evidence, not REA observations. Official excerpts describe product contracts/history, not local execution."
+}

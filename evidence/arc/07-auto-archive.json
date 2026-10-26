@@ -1,0 +1,134 @@
+{
+  "feature": {
+    "id": "07-auto-archive",
+    "title": "自动归档 / Today",
+    "menus": [
+      "498",
+      "935",
+      "451",
+      "717"
+    ],
+    "offsets": [
+      "0x3d297e0",
+      "0x3cdaa10",
+      "0x3cda9e0",
+      "0x3cdaa40",
+      "0x3cdaa60",
+      "0x3cda9c0",
+      "0x3cda9a0",
+      "0x3cda980",
+      "0x3d12a10",
+      "0x3c717a0"
+    ],
+    "finding": "应用内教育文案明确：归档过去 12 小时未使用的标签，且可在 Settings 调整。阈值文案包括 1/6/12/24 小时、7/30 天和 never；内部标识提示阈值可按 Profile 保存。REA 确认 Clear Unpinned Tabs、View Archive、View Library 和 Restore Last Closed Tab 的菜单连接。",
+    "limits": "12 小时是未使用时长，不应改述为创建满 12 小时。文案支持默认教育口径，但未验证当前安装实际设置、计时器执行、固定标签豁免和 Library 内恢复路径。20 秒另明确标为 debugging only，不列作普通用户设置。"
+  },
+  "rea_evidence_id": "ev_79b3e880589785e95be53245ee4309dc10599f4c85a1b751c10a79e857ef261e",
+  "rea_document": "Contents/Resources/Base.lproj/MainMenu.nib",
+  "menu_items": [
+    {
+      "id": "498",
+      "title": "Clear Unpinned Tabs",
+      "key": "K",
+      "mask": 1048576,
+      "actions": [
+        "clearExplore:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "935",
+      "title": "View Archive",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "showArchive:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "451",
+      "title": "View Library",
+      "key": "L",
+      "mask": 1048576,
+      "actions": [
+        "toggleLibrary:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "717",
+      "title": "Restore Last Closed Tab",
+      "key": "T",
+      "mask": 1048576,
+      "actions": [
+        "reopenLastTab:"
+      ],
+      "hidden": false
+    }
+  ],
+  "supplementary_static_text": [
+    {
+      "file_offset": 64133088,
+      "file_offset_hex": "0x3d297e0",
+      "byte_length": 100,
+      "text": "Arc archives tabs that you haven’t used in the past 12 hours. You can adjust this in %@Settings%@."
+    },
+    {
+      "file_offset": 63810064,
+      "file_offset_hex": "0x3cdaa10",
+      "byte_length": 32,
+      "text": "Auto archive threshold; 12 hours"
+    },
+    {
+      "file_offset": 63810016,
+      "file_offset_hex": "0x3cda9e0",
+      "byte_length": 32,
+      "text": "Auto archive threshold; 24 hours"
+    },
+    {
+      "file_offset": 63810112,
+      "file_offset_hex": "0x3cdaa40",
+      "byte_length": 31,
+      "text": "Auto archive threshold; 6 hours"
+    },
+    {
+      "file_offset": 63810144,
+      "file_offset_hex": "0x3cdaa60",
+      "byte_length": 30,
+      "text": "Auto archive threshold; 1 hour"
+    },
+    {
+      "file_offset": 63809984,
+      "file_offset_hex": "0x3cda9c0",
+      "byte_length": 30,
+      "text": "Auto archive threshold; 7 days"
+    },
+    {
+      "file_offset": 63809952,
+      "file_offset_hex": "0x3cda9a0",
+      "byte_length": 31,
+      "text": "Auto archive threshold; 30 days"
+    },
+    {
+      "file_offset": 63809920,
+      "file_offset_hex": "0x3cda980",
+      "byte_length": 29,
+      "text": "Auto archive threshold; never"
+    },
+    {
+      "file_offset": 64039440,
+      "file_offset_hex": "0x3d12a10",
+      "byte_length": 83,
+      "text": "Manage your default search engine, Auto-Archive, and downloads in Profile Settings."
+    },
+    {
+      "file_offset": 63379360,
+      "file_offset_hex": "0x3c717a0",
+      "byte_length": 35,
+      "text": "autoArchiveTimeThresholdsPerProfile"
+    }
+  ],
+  "binary_sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688",
+  "runtime_verified": false
+}

@@ -1,0 +1,231 @@
+{
+  "id": "03-profiles",
+  "types": [
+    "ADKModels.Profile",
+    "BaseModels.SpaceModel",
+    "SearchClientManager.SearchClientManager",
+    "SearchClientManager.SearchClientManager.ProfileSpecificState"
+  ],
+  "docPatterns": [
+    "per-Profile",
+    "Profiles menu",
+    "no Favorites"
+  ],
+  "conclusion": "SpaceModel.profile 将工作区与浏览配置关联；主窗口 changeProfileForCurrentSpace: 已定位到可执行代码。命令栏搜索管理器另有 profileSpecificStates，profile 内有 mostVisitedSites/siteEngagementScores。结合已保存的应用说明，Cookie/登录/历史/扩展隔离属于明确产品契约。",
+  "unknown": "没有审计 ArcCore 内部存储实现，也没有跨 Profile 的 Cookie/登录实验；不能把静态字段当成完整隔离安全证明。",
+  "static_types": [
+    {
+      "name": "ADKModels.Profile",
+      "kind": "enum",
+      "descriptor": "0x103bb874c",
+      "field_descriptor": "0x103ce55d8",
+      "fields": [
+        {
+          "name": "custom",
+          "flags": 0,
+          "record_address": "0x103ce55e8",
+          "type_reference_address": "0x1039e7a1a"
+        },
+        {
+          "name": "initial",
+          "flags": 0,
+          "record_address": "0x103ce55f4",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "BaseModels.SpaceModel",
+      "kind": "struct",
+      "descriptor": "0x103bcab30",
+      "field_descriptor": "0x103cf3ed8",
+      "fields": [
+        {
+          "name": "id",
+          "flags": 2,
+          "record_address": "0x103cf3ee8",
+          "type_reference_address": "0x1039f9450"
+        },
+        {
+          "name": "title",
+          "flags": 2,
+          "record_address": "0x103cf3ef4",
+          "type_reference_address": "0x1039f9950"
+        },
+        {
+          "name": "containerIDs",
+          "flags": 2,
+          "record_address": "0x103cf3f00",
+          "type_reference_address": "0x1039fd674"
+        },
+        {
+          "name": "customInfo",
+          "flags": 2,
+          "record_address": "0x103cf3f0c",
+          "type_reference_address": "0x1039fd6ec"
+        },
+        {
+          "name": "profile",
+          "flags": 2,
+          "record_address": "0x103cf3f18",
+          "type_reference_address": "0x1039fa8d4"
+        }
+      ]
+    },
+    {
+      "name": "SearchClientManager.SearchClientManager",
+      "kind": "class",
+      "descriptor": "0x103c273f4",
+      "field_descriptor": "0x103d54010",
+      "fields": [
+        {
+          "name": "dependencies",
+          "flags": 2,
+          "record_address": "0x103d54020",
+          "type_reference_address": "0x103b65072"
+        },
+        {
+          "name": "$__lazy_storage_$_backgroundQueue",
+          "flags": 2,
+          "record_address": "0x103d5402c",
+          "type_reference_address": "0x103b651a8"
+        },
+        {
+          "name": "$__lazy_storage_$_providers",
+          "flags": 2,
+          "record_address": "0x103d54038",
+          "type_reference_address": "0x103b651c2"
+        },
+        {
+          "name": "profileSpecificStates",
+          "flags": 2,
+          "record_address": "0x103d54044",
+          "type_reference_address": "0x103b651d6"
+        },
+        {
+          "name": "cacheMaxCount",
+          "flags": 0,
+          "record_address": "0x103d54050",
+          "type_reference_address": "0x103b651e6"
+        },
+        {
+          "name": "$__lazy_storage_$_fuzzyMatchScoreCache",
+          "flags": 2,
+          "record_address": "0x103d5405c",
+          "type_reference_address": "0x103b651ea"
+        },
+        {
+          "name": "$__lazy_storage_$_tokenizedTextMatchInfoCache",
+          "flags": 2,
+          "record_address": "0x103d54068",
+          "type_reference_address": "0x103b651fc"
+        }
+      ]
+    },
+    {
+      "name": "SearchClientManager.SearchClientManager.ProfileSpecificState",
+      "kind": "struct",
+      "descriptor": "0x103c2756c",
+      "field_descriptor": "0x103d54174",
+      "fields": [
+        {
+          "name": "mostVisitedSites",
+          "flags": 2,
+          "record_address": "0x103d54184",
+          "type_reference_address": "0x103b65118"
+        },
+        {
+          "name": "siteEngagementScores",
+          "flags": 2,
+          "record_address": "0x103d54190",
+          "type_reference_address": "0x103b65264"
+        }
+      ]
+    }
+  ],
+  "method_bodies": [
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "changeProfileForCurrentSpace:",
+      "implementation": "0x10031d3ac",
+      "implementation_file_offset": 3265452,
+      "method_record_address": "0x1034ae028",
+      "selector_pointer": "0x103984081",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031d3b8",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--changeProfileForCurrentSpace.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031d3ac",
+        "--stop-address=0x10031d3b8",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "newProfile:",
+      "implementation": "0x10031b7a4",
+      "implementation_file_offset": 3258276,
+      "method_record_address": "0x1034ae49c",
+      "selector_pointer": "0x1039965e6",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031b7ac",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--newProfile.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031b7a4",
+        "--stop-address=0x10031b7ac",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    }
+  ],
+  "official_excerpts": [
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## November 30, 2023 —",
+      "source_text_line": 68,
+      "text": "* Performance improvement: each Little Arc window will perform fewer per-profile actions when first opening.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## January 18, 2024 —",
+      "source_text_line": 1046,
+      "text": "* Introducing per-Profile Archive settings! You can edit your Archive timing per Profile (and adjust all other per-Profile settings) in the new Arc > Settings > Profile menu.",
+      "saved_file": "official-docs/20498293324823.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## January 25, 2024 —",
+      "source_text_line": 1036,
+      "text": "* We've polished the UX in the new Arc > Settings > Profiles menu.",
+      "saved_file": "official-docs/20498293324823.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## January 25, 2024 —",
+      "source_text_line": 1035,
+      "text": "* We've improved the look and feel of the UX when you have no Favorites.",
+      "saved_file": "official-docs/20498293324823.md"
+    }
+  ],
+  "runtime_verified": false,
+  "rea_macho_evidence": "ev_780f75cfcf14debdafbfe9e1804e72b246ee98aec3b9d598bd724a307a89fd1f",
+  "note": "Reflection/method parsing and LLVM assembly are supplementary local evidence, not REA observations. Official excerpts describe product contracts/history, not local execution."
+}

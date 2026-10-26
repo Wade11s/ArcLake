@@ -1,0 +1,103 @@
+{
+  "feature": {
+    "id": "05-pinned-tabs",
+    "title": "Pinned Tabs（固定标签）",
+    "menus": [
+      "181",
+      "142",
+      "617",
+      "840",
+      "334"
+    ],
+    "offsets": [
+      "0x3d18580",
+      "0x3d15d20",
+      "0x3d05ab0",
+      "0x3d05cd0"
+    ],
+    "finding": "REA 确认 Pin/Unpin Tab → toggleSelectedItemsPinned:（⌘D）、固定区域展开/折叠和 Rename Current Item。补充文本存在固定到 Space、固定到 Folder 的动作。",
+    "limits": "Rename 是通用项命令，尚未实测固定标签重命名。清理未固定标签不等于证明自动归档调度器永远排除固定标签；该规则仍待代码路径或运行测试。"
+  },
+  "rea_evidence_id": "ev_79b3e880589785e95be53245ee4309dc10599f4c85a1b751c10a79e857ef261e",
+  "rea_document": "Contents/Resources/Base.lproj/MainMenu.nib",
+  "menu_items": [
+    {
+      "id": "181",
+      "title": "Pin/Unpin Tab",
+      "key": "d",
+      "mask": 1048576,
+      "actions": [
+        "toggleSelectedItemsPinned:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "142",
+      "title": "Rename Current Item",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "rename:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "617",
+      "title": "Expand Pinned Section",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "expandPinnedSection:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "840",
+      "title": "Collapse Pinned Section",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "collapsePinnedSection:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "334",
+      "title": "Reset all tabs in this Space",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "resetVisiblePinnedTabs:"
+      ],
+      "hidden": false
+    }
+  ],
+  "supplementary_static_text": [
+    {
+      "file_offset": 64062848,
+      "file_offset_hex": "0x3d18580",
+      "byte_length": 26,
+      "text": "Pin tabs to save for later"
+    },
+    {
+      "file_offset": 64052512,
+      "file_offset_hex": "0x3d15d20",
+      "byte_length": 44,
+      "text": "Moves all your unpinned tabs to the Archive."
+    },
+    {
+      "file_offset": 63986352,
+      "file_offset_hex": "0x3d05ab0",
+      "byte_length": 55,
+      "text": "Action to move this tab to a pinned section of a space."
+    },
+    {
+      "file_offset": 63986896,
+      "file_offset_hex": "0x3d05cd0",
+      "byte_length": 34,
+      "text": "Action to pin this tab to a folder"
+    }
+  ],
+  "binary_sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688",
+  "runtime_verified": false
+}

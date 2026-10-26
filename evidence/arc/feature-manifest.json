@@ -1,0 +1,200 @@
+[
+  {
+    "id": "01-sidebar",
+    "title": "垂直侧边栏",
+    "menus": [
+      "33",
+      "752",
+      "61",
+      "946",
+      "1095"
+    ],
+    "offsets": [
+      "0x3cdc880"
+    ],
+    "finding": "REA 主菜单确认 Show/Hide Sidebar → toggleArcSidebar:，归档快捷键为 ⌘S；另有 Reveal Tab in Sidebar。",
+    "limits": "左侧垂直几何布局、地址栏和导航按钮实际所在位置未截图验证。存在 Show/Hide Toolbar 菜单归档，不能把“永远没有顶部栏”作为结论。"
+  },
+  {
+    "id": "02-spaces",
+    "title": "Spaces（空间）",
+    "menus": [
+      "1195",
+      "554",
+      "442",
+      "1424",
+      "808",
+      "1108",
+      "334"
+    ],
+    "offsets": [
+      "0x3c653a0",
+      "0x3cd8790",
+      "0x3d16e40",
+      "0x3d169b0",
+      "0x3d15660"
+    ],
+    "finding": "REA 确认新建、管理、重命名空间与 editSpaceTheme:、前后切换入口；补充文本将文件夹和固定标签操作限定在当前 Space。主菜单下一/上一空间绑定 ⌘⌥右/左方向键。",
+    "limits": "底部切换控件、Ctrl+数字的实际默认映射和各 Space 的持久化独立性未运行验证。数字空间快捷键只发现描述文本。"
+  },
+  {
+    "id": "03-profiles",
+    "title": "Profiles（配置文件）",
+    "menus": [
+      "84",
+      "393"
+    ],
+    "offsets": [
+      "0x3d13ec0",
+      "0x3cd84f0",
+      "0x3cd8660",
+      "0x3cd8790"
+    ],
+    "finding": "REA 的 Change Profile 明确连到 changeProfileForCurrentSpace:。应用内说明明确列出 history、logins、cookies、extensions，并说一个 Profile 可供一个或多个 Spaces 使用。",
+    "limits": "这是发行包中明确的产品语义，不是 Cookie/历史数据库隔离的实测；未创建账号或读取个人 Profile 数据。不同 Space 若使用同一 Profile，不能据此声称隔离。"
+  },
+  {
+    "id": "04-favorites",
+    "title": "Favorites（收藏）",
+    "menus": [],
+    "offsets": [
+      "0x3d02e30",
+      "0x3d02dc0",
+      "0x3d15730",
+      "0x3cd8830",
+      "0x3d57340"
+    ],
+    "finding": "补充文本明确 Favorites 位于顶部，且更换 Profile 会看到不同 Favorites；存在移动 Favorite(s) 到其他 Profile 的菜单描述。",
+    "limits": "Profile 关联有明确文本支持；“同 Profile 的所有 Spaces 都共享相同 Favorites”尚缺直接共享状态证据。图标尺寸、区域位置没有截图。该项没有独立 REA 行为证据。"
+  },
+  {
+    "id": "05-pinned-tabs",
+    "title": "Pinned Tabs（固定标签）",
+    "menus": [
+      "181",
+      "142",
+      "617",
+      "840",
+      "334"
+    ],
+    "offsets": [
+      "0x3d18580",
+      "0x3d15d20",
+      "0x3d05ab0",
+      "0x3d05cd0"
+    ],
+    "finding": "REA 确认 Pin/Unpin Tab → toggleSelectedItemsPinned:（⌘D）、固定区域展开/折叠和 Rename Current Item。补充文本存在固定到 Space、固定到 Folder 的动作。",
+    "limits": "Rename 是通用项命令，尚未实测固定标签重命名。清理未固定标签不等于证明自动归档调度器永远排除固定标签；该规则仍待代码路径或运行测试。"
+  },
+  {
+    "id": "06-folders",
+    "title": "Folders（文件夹）",
+    "menus": [
+      "959",
+      "134",
+      "164"
+    ],
+    "offsets": [
+      "0x3d05cd0",
+      "0x3d57160",
+      "0x3d139d0",
+      "0x3d31790"
+    ],
+    "finding": "REA 确认 New Folder… → newList:，及全部展开/折叠；补充文本明确“Share a folder via context menu”和固定区插入文件夹。",
+    "limits": "拖拽行为没有实测；分享文本不证明当前服务端仍可用，也没有生成或公开分享链接。"
+  },
+  {
+    "id": "07-auto-archive",
+    "title": "自动归档 / Today",
+    "menus": [
+      "498",
+      "935",
+      "451",
+      "717"
+    ],
+    "offsets": [
+      "0x3d297e0",
+      "0x3cdaa10",
+      "0x3cda9e0",
+      "0x3cdaa40",
+      "0x3cdaa60",
+      "0x3cda9c0",
+      "0x3cda9a0",
+      "0x3cda980",
+      "0x3d12a10",
+      "0x3c717a0"
+    ],
+    "finding": "应用内教育文案明确：归档过去 12 小时未使用的标签，且可在 Settings 调整。阈值文案包括 1/6/12/24 小时、7/30 天和 never；内部标识提示阈值可按 Profile 保存。REA 确认 Clear Unpinned Tabs、View Archive、View Library 和 Restore Last Closed Tab 的菜单连接。",
+    "limits": "12 小时是未使用时长，不应改述为创建满 12 小时。文案支持默认教育口径，但未验证当前安装实际设置、计时器执行、固定标签豁免和 Library 内恢复路径。20 秒另明确标为 debugging only，不列作普通用户设置。"
+  },
+  {
+    "id": "08-air-traffic-control",
+    "title": "Air Traffic Control（链接路由）",
+    "menus": [],
+    "offsets": [
+      "0x3d04fa0",
+      "0x3d04fc0",
+      "0x3d12e70",
+      "0x3d0c850"
+    ],
+    "finding": "应用内说明直接写明：Routes 决定特定网站在 Arc 中哪里打开，并以 Spotify 链接总是在 Personal space 打开为例；有打开 routes 的动作描述与持久化失败诊断文本。",
+    "limits": "这不是已执行的路由测试。URL 匹配算法、规则优先级、现有标签复用、外部/内部链接覆盖范围未确定。该项没有独立 REA 路由实现证据。"
+  },
+  {
+    "id": "09-split-view",
+    "title": "Split View（分屏）",
+    "menus": [
+      "194",
+      "228",
+      "629",
+      "1300"
+    ],
+    "offsets": [
+      "0x3d05170",
+      "0x3d051e0",
+      "0x3d05230",
+      "0x3d16c80",
+      "0x41283f0",
+      "0x413d200"
+    ],
+    "finding": "REA 确认新增、关闭当前分屏、最大化当前分屏、从分屏分离页面的动作连接。补充文本明确水平/垂直转换；“跳到第四个 Split View 页面”支持第四面板设计，另有超过最大面板数和调整大小事件标识。",
+    "limits": "第四面板说明不等于证明最多恰好四个；最大数值、拖动调整尺寸和把整个分屏固定成一个标签均未实测或追踪实现。"
+  },
+  {
+    "id": "10-little-arc",
+    "title": "Little Arc（小窗口）",
+    "menus": [
+      "463",
+      "1495"
+    ],
+    "offsets": [
+      "0x3d13170",
+      "0x3c558f0",
+      "0x3c55910",
+      "0x3d167e0",
+      "0x3d232b0"
+    ],
+    "finding": "REA 确认 New Little Arc Window → newLittleBrowserWindow:（⌘⌥N）；Open Little Arc or Peek in… → openInCurrentSpace:（⌘O）。补充设置文本明确其他应用链接在 Little Arc 打开，并有关闭全部 Little Arc 窗口操作描述。",
+    "limits": "浮动层级、轻量性能和不打扰主窗口没有运行证据。没有将 Peek 和 Little Arc 混为同一实现。"
+  },
+  {
+    "id": "11-command-bar",
+    "title": "Command Bar（命令栏）",
+    "menus": [
+      "240",
+      "830",
+      "181",
+      "890",
+      "1009"
+    ],
+    "offsets": [
+      "0x3c45f90",
+      "0x3d15bb0",
+      "0x3d04fc0",
+      "0x3d05ab0",
+      "0x3d20830"
+    ],
+    "finding": "REA 归档将 Open Command Bar → toggleOpenOmnibox: 绑定 ⌘L，将 New Tab… → newWindowForTab: 绑定 ⌘T。补充引导文案明确“press ⌘T to open the Command Bar”，所以这不是否定 ⌘T，而是两个不同入口。文案还列出搜索网页、访问最近标签、启动扩展，及创建文件夹/固定/路由动作候选。",
+    "limits": "搜索历史的实际数据源、动作分发、Space 切换候选与排序没有反编译或运行证据。不能仅凭主菜单含某动作，就断言该动作必然可由命令栏执行。"
+  }
+]

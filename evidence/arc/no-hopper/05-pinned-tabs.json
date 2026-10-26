@@ -1,0 +1,319 @@
+{
+  "id": "05-pinned-tabs",
+  "types": [
+    "BaseModels.SidebarItem",
+    "BaseModels.SidebarItemContextType",
+    "BaseModels.SpaceModel.ContainerType",
+    "SidebarItemUI.TabTitleSourceInfo"
+  ],
+  "docPatterns": [
+    "Pinned Tabs never Auto Archive",
+    "Pinned Tabs can be grouped",
+    "Double-click or right-click",
+    "Pinned Tabs are only accessible"
+  ],
+  "conclusion": "真实固定/取消固定入口存在；模型明确 pinned/unpinned 与 customTitle，文档确认固定标签永不 Auto Archive、仅属于一个 Space、可分组，官方发布说明确认双击或右键重命名。",
+  "unknown": "尚未追踪归档筛选函数如何实现 pinned 豁免；文档声明和本地机器码入口不能替代计时测试。",
+  "static_types": [
+    {
+      "name": "BaseModels.SidebarItem",
+      "kind": "struct",
+      "descriptor": "0x103bca8f0",
+      "field_descriptor": "0x103cf3b48",
+      "fields": [
+        {
+          "name": "id",
+          "flags": 2,
+          "record_address": "0x103cf3b58",
+          "type_reference_address": "0x1039fbe4c"
+        },
+        {
+          "name": "title",
+          "flags": 2,
+          "record_address": "0x103cf3b64",
+          "type_reference_address": "0x1039f9950"
+        },
+        {
+          "name": "childrenIds",
+          "flags": 2,
+          "record_address": "0x103cf3b70",
+          "type_reference_address": "0x1039f9640"
+        },
+        {
+          "name": "parentID",
+          "flags": 2,
+          "record_address": "0x103cf3b7c",
+          "type_reference_address": "0x1039fbebe"
+        },
+        {
+          "name": "data",
+          "flags": 2,
+          "record_address": "0x103cf3b88",
+          "type_reference_address": "0x1039fc2a4"
+        },
+        {
+          "name": "createdAt",
+          "flags": 2,
+          "record_address": "0x103cf3b94",
+          "type_reference_address": "0x1039fa824"
+        },
+        {
+          "name": "isUnread",
+          "flags": 2,
+          "record_address": "0x103cf3ba0",
+          "type_reference_address": "0x1039fa820"
+        },
+        {
+          "name": "originatingDevice",
+          "flags": 2,
+          "record_address": "0x103cf3bac",
+          "type_reference_address": "0x1039f9950"
+        }
+      ]
+    },
+    {
+      "name": "BaseModels.SidebarItemContextType",
+      "kind": "enum",
+      "descriptor": "0x103bca93c",
+      "field_descriptor": "0x103cf3c28",
+      "fields": [
+        {
+          "name": "topApp",
+          "flags": 0,
+          "record_address": "0x103cf3c38",
+          "type_reference_address": null
+        },
+        {
+          "name": "pinned",
+          "flags": 0,
+          "record_address": "0x103cf3c44",
+          "type_reference_address": null
+        },
+        {
+          "name": "unpinned",
+          "flags": 0,
+          "record_address": "0x103cf3c50",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "BaseModels.SpaceModel.ContainerType",
+      "kind": "enum",
+      "descriptor": "0x103bcab4c",
+      "field_descriptor": "0x103cf3f24",
+      "fields": [
+        {
+          "name": "unpinned",
+          "flags": 0,
+          "record_address": "0x103cf3f34",
+          "type_reference_address": "0x1039fd6f8"
+        },
+        {
+          "name": "pinned",
+          "flags": 0,
+          "record_address": "0x103cf3f40",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "SidebarItemUI.TabTitleSourceInfo",
+      "kind": "class",
+      "descriptor": "0x103c117a0",
+      "field_descriptor": "0x103d39eec",
+      "fields": [
+        {
+          "name": "customTitle",
+          "flags": 0,
+          "record_address": "0x103d39efc",
+          "type_reference_address": "0x103b02ad4"
+        },
+        {
+          "name": "webContentTitle",
+          "flags": 0,
+          "record_address": "0x103d39f08",
+          "type_reference_address": "0x103b02ad4"
+        },
+        {
+          "name": "webContentURL",
+          "flags": 0,
+          "record_address": "0x103d39f14",
+          "type_reference_address": "0x103b02a88"
+        },
+        {
+          "name": "savedTitle",
+          "flags": 0,
+          "record_address": "0x103d39f20",
+          "type_reference_address": "0x103b02ad4"
+        },
+        {
+          "name": "savedURL",
+          "flags": 0,
+          "record_address": "0x103d39f2c",
+          "type_reference_address": "0x103b02a88"
+        },
+        {
+          "name": "tidyTabTitles",
+          "flags": 0,
+          "record_address": "0x103d39f38",
+          "type_reference_address": "0x103b02ada"
+        }
+      ]
+    }
+  ],
+  "method_bodies": [
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "toggleSelectedItemsPinned:",
+      "implementation": "0x10031d71c",
+      "implementation_file_offset": 3266332,
+      "method_record_address": "0x1034ae0c4",
+      "selector_pointer": "0x1039aa16e",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031d724",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--toggleSelectedItemsPinned.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031d71c",
+        "--stop-address=0x10031d724",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "expandPinnedSection:",
+      "implementation": "0x10031defc",
+      "implementation_file_offset": 3268348,
+      "method_record_address": "0x1034ae148",
+      "selector_pointer": "0x10398a670",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031df04",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--expandPinnedSection.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031defc",
+        "--stop-address=0x10031df04",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "collapsePinnedSection:",
+      "implementation": "0x10031df0c",
+      "implementation_file_offset": 3268364,
+      "method_record_address": "0x1034ae154",
+      "selector_pointer": "0x103984898",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031df14",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--collapsePinnedSection.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031df0c",
+        "--stop-address=0x10031df14",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "resetVisiblePinnedTabs:",
+      "implementation": "0x1003207a8",
+      "implementation_file_offset": 3278760,
+      "method_record_address": "0x1034ae31c",
+      "selector_pointer": "0x10399c223",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x1003207b0",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--resetVisiblePinnedTabs.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x1003207a8",
+        "--stop-address=0x1003207b0",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "rename:",
+      "implementation": "0x1003208dc",
+      "implementation_file_offset": 3279068,
+      "method_record_address": "0x1034ae364",
+      "selector_pointer": "0x103977316",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x1003208e4",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--rename.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x1003208dc",
+        "--stop-address=0x1003208e4",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    }
+  ],
+  "official_excerpts": [
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19231060187159-Pinned-Tabs-Tabs-you-want-to-stick-around",
+      "title": "Pinned Tabs: Tabs you want to stick around",
+      "section": "## What are Pinned Tabs?",
+      "source_text_line": 13,
+      "text": "One major difference between Pinned and Unpinned Tabs is that Pinned Tabs never Auto Archive. You can read about Auto Archive here.",
+      "saved_file": "official-docs/19231060187159.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19231060187159-Pinned-Tabs-Tabs-you-want-to-stick-around",
+      "title": "Pinned Tabs: Tabs you want to stick around",
+      "section": "## What are Pinned Tabs?",
+      "source_text_line": 11,
+      "text": "**Pinned Tabs** are tabs saved to particular Space. Pinned Tabs live in the top half of your sidebar, above the horizontal line. Pinned Tabs can be grouped into folders or exist on their own.",
+      "saved_file": "official-docs/19231060187159.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## Mar 7, 2024 —",
+      "source_text_line": 952,
+      "text": "* We are unshipping the rename prompt that opens immediately when pinning a tab! Double-click or right-click on any tab to rename it.",
+      "saved_file": "official-docs/20498293324823.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19231060187159-Pinned-Tabs-Tabs-you-want-to-stick-around",
+      "title": "Pinned Tabs: Tabs you want to stick around",
+      "section": "## What are Pinned Tabs?",
+      "source_text_line": 24,
+      "text": "Pinned Tabs are only accessible in one Space. Favorites are accessible in every Space. Learn more about Favorites here!",
+      "saved_file": "official-docs/19231060187159.md"
+    }
+  ],
+  "runtime_verified": false,
+  "rea_macho_evidence": "ev_780f75cfcf14debdafbfe9e1804e72b246ee98aec3b9d598bd724a307a89fd1f",
+  "note": "Reflection/method parsing and LLVM assembly are supplementary local evidence, not REA observations. Official excerpts describe product contracts/history, not local execution."
+}

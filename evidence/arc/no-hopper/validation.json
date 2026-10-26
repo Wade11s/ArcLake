@@ -1,0 +1,13 @@
+{
+  "universal_sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688",
+  "arm64_sha256": "5be4e80da2d462b719dd1865122f1e34fabc529c0a2f528a4aba4b969042bada",
+  "arm64_slice_offset": 83509248,
+  "arm64_slice_size": 77908992,
+  "slice_matches_original": true,
+  "rea_identity_matches": true,
+  "assembly_instructions_verified": 372,
+  "method_count": 10414,
+  "method_decode_error_count": 0,
+  "swift_type_count": 10814,
+  "note": "Byte identity/decoding checks, not runtime behavior or a formal proof of parser completeness."
+}

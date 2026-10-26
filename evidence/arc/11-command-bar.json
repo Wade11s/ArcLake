@@ -1,0 +1,110 @@
+{
+  "feature": {
+    "id": "11-command-bar",
+    "title": "Command Bar（命令栏）",
+    "menus": [
+      "240",
+      "830",
+      "181",
+      "890",
+      "1009"
+    ],
+    "offsets": [
+      "0x3c45f90",
+      "0x3d15bb0",
+      "0x3d04fc0",
+      "0x3d05ab0",
+      "0x3d20830"
+    ],
+    "finding": "REA 归档将 Open Command Bar → toggleOpenOmnibox: 绑定 ⌘L，将 New Tab… → newWindowForTab: 绑定 ⌘T。补充引导文案明确“press ⌘T to open the Command Bar”，所以这不是否定 ⌘T，而是两个不同入口。文案还列出搜索网页、访问最近标签、启动扩展，及创建文件夹/固定/路由动作候选。",
+    "limits": "搜索历史的实际数据源、动作分发、Space 切换候选与排序没有反编译或运行证据。不能仅凭主菜单含某动作，就断言该动作必然可由命令栏执行。"
+  },
+  "rea_evidence_id": "ev_79b3e880589785e95be53245ee4309dc10599f4c85a1b751c10a79e857ef261e",
+  "rea_document": "Contents/Resources/Base.lproj/MainMenu.nib",
+  "menu_items": [
+    {
+      "id": "240",
+      "title": "Open Command Bar",
+      "key": "l",
+      "mask": 1048576,
+      "actions": [
+        "toggleOpenOmnibox:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "830",
+      "title": "New Tab…",
+      "key": "t",
+      "mask": 1048576,
+      "actions": [
+        "newWindowForTab:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "181",
+      "title": "Pin/Unpin Tab",
+      "key": "d",
+      "mask": 1048576,
+      "actions": [
+        "toggleSelectedItemsPinned:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "890",
+      "title": "Copy URL",
+      "key": "C",
+      "mask": 1048576,
+      "actions": [
+        "copyCurrentURL:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1009",
+      "title": "Preferences…",
+      "key": ",",
+      "mask": 1048576,
+      "actions": [
+        "showPreferences:"
+      ],
+      "hidden": false
+    }
+  ],
+  "supplementary_static_text": [
+    {
+      "file_offset": 63201168,
+      "file_offset_hex": "0x3c45f90",
+      "byte_length": 90,
+      "text": "Click New Tab or press ⌘T to open the Command Bar and create your very first tab in Arc."
+    },
+    {
+      "file_offset": 64052144,
+      "file_offset_hex": "0x3d15bb0",
+      "byte_length": 96,
+      "text": "Opens the Command Bar to search the web, navigate to recent tabs, launch an extension, and more."
+    },
+    {
+      "file_offset": 63983552,
+      "file_offset_hex": "0x3d04fc0",
+      "byte_length": 42,
+      "text": "Action to open Air Traffic Control routes."
+    },
+    {
+      "file_offset": 63986352,
+      "file_offset_hex": "0x3d05ab0",
+      "byte_length": 55,
+      "text": "Action to move this tab to a pinned section of a space."
+    },
+    {
+      "file_offset": 64096304,
+      "file_offset_hex": "0x3d20830",
+      "byte_length": 66,
+      "text": "Command Bar suggestion title for creating a new folder with items."
+    }
+  ],
+  "binary_sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688",
+  "runtime_verified": false
+}

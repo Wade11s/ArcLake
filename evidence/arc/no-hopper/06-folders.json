@@ -1,0 +1,297 @@
+{
+  "id": "06-folders",
+  "types": [
+    "BaseModels.SidebarItem",
+    "BaseModels.SidebarItemData",
+    "SidebarItemUI.DragReceivedEvent",
+    "SidebarItemUI.TablistItemDragReceivedEvent"
+  ],
+  "docPatterns": [
+    "Folders, Split Views",
+    "Shared Folders",
+    "nested Folders",
+    "renaming Folders"
+  ],
+  "conclusion": "Folder 在模型中使用 list 项；SidebarItem 的 parentID/childrenIds 提供树关系，另有 dragEnter/dragOver/dragExit 事件。REA 的 New Folder → newList: 已连接到真实方法地址。官方发布说明确认共享文件夹、嵌套文件夹和共享内容插入固定区域。",
+  "unknown": "拖拽落点和树重排算法未完整追踪；分享服务没有现场调用，不能保证旧分享服务当前仍可用。",
+  "static_types": [
+    {
+      "name": "BaseModels.SidebarItem",
+      "kind": "struct",
+      "descriptor": "0x103bca8f0",
+      "field_descriptor": "0x103cf3b48",
+      "fields": [
+        {
+          "name": "id",
+          "flags": 2,
+          "record_address": "0x103cf3b58",
+          "type_reference_address": "0x1039fbe4c"
+        },
+        {
+          "name": "title",
+          "flags": 2,
+          "record_address": "0x103cf3b64",
+          "type_reference_address": "0x1039f9950"
+        },
+        {
+          "name": "childrenIds",
+          "flags": 2,
+          "record_address": "0x103cf3b70",
+          "type_reference_address": "0x1039f9640"
+        },
+        {
+          "name": "parentID",
+          "flags": 2,
+          "record_address": "0x103cf3b7c",
+          "type_reference_address": "0x1039fbebe"
+        },
+        {
+          "name": "data",
+          "flags": 2,
+          "record_address": "0x103cf3b88",
+          "type_reference_address": "0x1039fc2a4"
+        },
+        {
+          "name": "createdAt",
+          "flags": 2,
+          "record_address": "0x103cf3b94",
+          "type_reference_address": "0x1039fa824"
+        },
+        {
+          "name": "isUnread",
+          "flags": 2,
+          "record_address": "0x103cf3ba0",
+          "type_reference_address": "0x1039fa820"
+        },
+        {
+          "name": "originatingDevice",
+          "flags": 2,
+          "record_address": "0x103cf3bac",
+          "type_reference_address": "0x1039f9950"
+        }
+      ]
+    },
+    {
+      "name": "BaseModels.SidebarItemData",
+      "kind": "enum",
+      "descriptor": "0x103bc9c00",
+      "field_descriptor": "0x103cf276c",
+      "fields": [
+        {
+          "name": "tab",
+          "flags": 0,
+          "record_address": "0x103cf277c",
+          "type_reference_address": "0x1039fc2aa"
+        },
+        {
+          "name": "list",
+          "flags": 0,
+          "record_address": "0x103cf2788",
+          "type_reference_address": "0x1039fc2b0"
+        },
+        {
+          "name": "arcDocument",
+          "flags": 0,
+          "record_address": "0x103cf2794",
+          "type_reference_address": "0x1039fbf7a"
+        },
+        {
+          "name": "easel",
+          "flags": 0,
+          "record_address": "0x103cf27a0",
+          "type_reference_address": "0x1039fc010"
+        },
+        {
+          "name": "itemContainer",
+          "flags": 0,
+          "record_address": "0x103cf27ac",
+          "type_reference_address": "0x1039fc0d0"
+        },
+        {
+          "name": "welcomeToArc",
+          "flags": 0,
+          "record_address": "0x103cf27b8",
+          "type_reference_address": "0x1039fc2b6"
+        },
+        {
+          "name": "splitView",
+          "flags": 0,
+          "record_address": "0x103cf27c4",
+          "type_reference_address": "0x1039fc2bc"
+        },
+        {
+          "name": "sharedObject",
+          "flags": 0,
+          "record_address": "0x103cf27d0",
+          "type_reference_address": "0x1039fc2c2"
+        },
+        {
+          "name": "instantLinks",
+          "flags": 0,
+          "record_address": "0x103cf27dc",
+          "type_reference_address": "0x1039fc058"
+        },
+        {
+          "name": "tabGroup",
+          "flags": 0,
+          "record_address": "0x103cf27e8",
+          "type_reference_address": "0x1039fc2c8"
+        }
+      ]
+    },
+    {
+      "name": "SidebarItemUI.DragReceivedEvent",
+      "kind": "enum",
+      "descriptor": "0x103c117e8",
+      "field_descriptor": "0x103d39f44",
+      "fields": [
+        {
+          "name": "dragEnter",
+          "flags": 0,
+          "record_address": "0x103d39f54",
+          "type_reference_address": "0x103b02b02"
+        },
+        {
+          "name": "dragOver",
+          "flags": 0,
+          "record_address": "0x103d39f60",
+          "type_reference_address": "0x103b02b02"
+        },
+        {
+          "name": "dragExit",
+          "flags": 0,
+          "record_address": "0x103d39f6c",
+          "type_reference_address": "0x103b02b02"
+        }
+      ]
+    },
+    {
+      "name": "SidebarItemUI.TablistItemDragReceivedEvent",
+      "kind": "struct",
+      "descriptor": "0x103c11820",
+      "field_descriptor": "0x103d39fa0",
+      "fields": [
+        {
+          "name": "item",
+          "flags": 0,
+          "record_address": "0x103d39fb0",
+          "type_reference_address": "0x103b02b16"
+        },
+        {
+          "name": "event",
+          "flags": 0,
+          "record_address": "0x103d39fbc",
+          "type_reference_address": "0x103b02afc"
+        }
+      ]
+    }
+  ],
+  "method_bodies": [
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "newList:",
+      "implementation": "0x10031f8a0",
+      "implementation_file_offset": 3274912,
+      "method_record_address": "0x1034ae268",
+      "selector_pointer": "0x103996513",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031f8a8",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--newList.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031f8a0",
+        "--stop-address=0x10031f8a8",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "collapseAllFolders:",
+      "implementation": "0x10031f8a8",
+      "implementation_file_offset": 3274920,
+      "method_record_address": "0x1034ae274",
+      "selector_pointer": "0x103984876",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031f8b0",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--collapseAllFolders.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031f8a8",
+        "--stop-address=0x10031f8b0",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "expandAllFolders:",
+      "implementation": "0x10031f9c4",
+      "implementation_file_offset": 3275204,
+      "method_record_address": "0x1034ae280",
+      "selector_pointer": "0x10398a652",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031f9cc",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--expandAllFolders.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031f9c4",
+        "--stop-address=0x10031f9cc",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    }
+  ],
+  "official_excerpts": [
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## October 26, 2023 —",
+      "source_text_line": 113,
+      "text": "* Introducing Shared Collections! You can now share perma-links to Spaces, Folders, Split Views, and selected tabs to anyone, on any browser. Right click on any Folder, Split View, or selected tab group in your sidebar and click the \"Share\" option. To share Spaces, hover over your Space title and click \"Share\". Anyone, with any browser, can view the link. Arc members can add the Shared Collection to their sidebar.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## November 30, 2023 —",
+      "source_text_line": 57,
+      "text": "* Adding Shared Folders to your sidebar will now always insert at the bottom of your Pinned Tabs section.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## Jan 19, 2023 —",
+      "source_text_line": 692,
+      "text": "* Right clicking on a Folder and selecting Copy All Links will now include URLs in nested Folders.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## January 25, 2024 —",
+      "source_text_line": 1031,
+      "text": "* Clicking outside of the text input field while renaming Folders will now save your new name.",
+      "saved_file": "official-docs/20498293324823.md"
+    }
+  ],
+  "runtime_verified": false,
+  "rea_macho_evidence": "ev_780f75cfcf14debdafbfe9e1804e72b246ee98aec3b9d598bd724a307a89fd1f",
+  "note": "Reflection/method parsing and LLVM assembly are supplementary local evidence, not REA observations. Official excerpts describe product contracts/history, not local execution."
+}

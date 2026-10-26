@@ -1,0 +1,46 @@
+{
+  "feature": {
+    "id": "08-air-traffic-control",
+    "title": "Air Traffic Control（链接路由）",
+    "menus": [],
+    "offsets": [
+      "0x3d04fa0",
+      "0x3d04fc0",
+      "0x3d12e70",
+      "0x3d0c850"
+    ],
+    "finding": "应用内说明直接写明：Routes 决定特定网站在 Arc 中哪里打开，并以 Spotify 链接总是在 Personal space 打开为例；有打开 routes 的动作描述与持久化失败诊断文本。",
+    "limits": "这不是已执行的路由测试。URL 匹配算法、规则优先级、现有标签复用、外部/内部链接覆盖范围未确定。该项没有独立 REA 路由实现证据。"
+  },
+  "rea_evidence_id": null,
+  "rea_document": "Contents/Resources/Base.lproj/MainMenu.nib",
+  "menu_items": [],
+  "supplementary_static_text": [
+    {
+      "file_offset": 63983520,
+      "file_offset_hex": "0x3d04fa0",
+      "byte_length": 19,
+      "text": "Air Traffic Control"
+    },
+    {
+      "file_offset": 63983552,
+      "file_offset_hex": "0x3d04fc0",
+      "byte_length": 42,
+      "text": "Action to open Air Traffic Control routes."
+    },
+    {
+      "file_offset": 64040560,
+      "file_offset_hex": "0x3d12e70",
+      "byte_length": 143,
+      "text": "Routes let you choose where specific sites open inside Arc. For example, you can route Spotify links to always open inside your Personal space."
+    },
+    {
+      "file_offset": 64014416,
+      "file_offset_hex": "0x3d0c850",
+      "byte_length": 56,
+      "text": "Assertion failure: Failed to persist Link Routing state."
+    }
+  ],
+  "binary_sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688",
+  "runtime_verified": false
+}

@@ -1,0 +1,5 @@
+_TtC3Arc20MainWindowController ---> Arc.MainWindowController
+_TtC3Arc19LittleBrowserWindow ---> Arc.LittleBrowserWindow
+_TtC3Arc13BrowserWindow ---> Arc.BrowserWindow
+_TtC3Arc11AppDelegate ---> Arc.AppDelegate
+_TtC10CommandBar24CommandBarInputContainer ---> CommandBar.CommandBarInputContainer

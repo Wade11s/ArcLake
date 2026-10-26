@@ -1,0 +1,455 @@
+{
+  "id": "10-little-arc",
+  "types": [
+    "LittleBrowser.LittleBrowser.State",
+    "LittleBrowser.LittleBrowser.Action",
+    "LittleBrowser.LittleBrowserEntryPoint",
+    "LittleBrowser.LittleBrowserMoveToStandardWindowDestination",
+    "LittleBrowser.LittleBrowserMoveToStandardWindowDestination.DestinationType",
+    "LittleBrowser.LittleBrowserSession"
+  ],
+  "docPatterns": [
+    "Little Arc Windows now auto-archive",
+    "same link within an external app",
+    "remember the profile",
+    "multiple Little Arc windows",
+    "above your full screen"
+  ],
+  "conclusion": "独立 LittleBrowserWindow 有真实 openInCurrentSpace: 实现；LittleBrowser.Action 明确 moveContentToStandardGlobalWindow；目标携带 spaceID 和 absolute/pinned/unpinned。入口枚举包含 externalLink/internalLink/globalHotkey，状态单独持有 profile/session。官方历史记录还说明多小窗、外部重复链接复用与按域名记忆 Profile。",
+  "unknown": "Little Arc 6 小时归档来自 2023 历史发布说明，不是本机当前默认值实测；性能“轻量”、层级和主工作区无干扰没有测量。",
+  "static_types": [
+    {
+      "name": "LittleBrowser.LittleBrowser.State",
+      "kind": "struct",
+      "descriptor": "0x103c14a28",
+      "field_descriptor": "0x103d3e05c",
+      "fields": [
+        {
+          "name": "id",
+          "flags": 0,
+          "record_address": "0x103d3e06c",
+          "type_reference_address": "0x103b0e58a"
+        },
+        {
+          "name": "downloads",
+          "flags": 2,
+          "record_address": "0x103d3e078",
+          "type_reference_address": "0x103b0e590"
+        },
+        {
+          "name": "session",
+          "flags": 2,
+          "record_address": "0x103d3e084",
+          "type_reference_address": "0x103b0e596"
+        },
+        {
+          "name": "moveToDestinationInfo",
+          "flags": 2,
+          "record_address": "0x103d3e090",
+          "type_reference_address": "0x103b0e480"
+        },
+        {
+          "name": "profile",
+          "flags": 2,
+          "record_address": "0x103d3e09c",
+          "type_reference_address": "0x103b0e59c"
+        },
+        {
+          "name": "shouldShowProfileIndicators",
+          "flags": 2,
+          "record_address": "0x103d3e0a8",
+          "type_reference_address": "0x103b0e5a2"
+        },
+        {
+          "name": "activeMenuType",
+          "flags": 2,
+          "record_address": "0x103d3e0b4",
+          "type_reference_address": "0x103b0e5a6"
+        },
+        {
+          "name": "moveMenuState",
+          "flags": 2,
+          "record_address": "0x103d3e0c0",
+          "type_reference_address": "0x103b0e488"
+        },
+        {
+          "name": "modalState",
+          "flags": 2,
+          "record_address": "0x103d3e0cc",
+          "type_reference_address": "0x103b0e4ee"
+        },
+        {
+          "name": "nuxState",
+          "flags": 2,
+          "record_address": "0x103d3e0d8",
+          "type_reference_address": "0x103b0e5ae"
+        }
+      ]
+    },
+    {
+      "name": "LittleBrowser.LittleBrowser.Action",
+      "kind": "enum",
+      "descriptor": "0x103c14a50",
+      "field_descriptor": "0x103d3e0e4",
+      "fields": [
+        {
+          "name": "downloadsManager",
+          "flags": 0,
+          "record_address": "0x103d3e0f4",
+          "type_reference_address": "0x103b0e5f8"
+        },
+        {
+          "name": "downloadsTray",
+          "flags": 0,
+          "record_address": "0x103d3e100",
+          "type_reference_address": "0x103b0e5fe"
+        },
+        {
+          "name": "moveContentToStandardGlobalWindow",
+          "flags": 0,
+          "record_address": "0x103d3e10c",
+          "type_reference_address": "0x103b0e604"
+        },
+        {
+          "name": "toolbar",
+          "flags": 0,
+          "record_address": "0x103d3e118",
+          "type_reference_address": "0x103b0e62c"
+        },
+        {
+          "name": "permissionRequest",
+          "flags": 0,
+          "record_address": "0x103d3e124",
+          "type_reference_address": "0x103b0e632"
+        },
+        {
+          "name": "extensions",
+          "flags": 0,
+          "record_address": "0x103d3e130",
+          "type_reference_address": "0x103b0e638"
+        },
+        {
+          "name": "modalStateChanged",
+          "flags": 0,
+          "record_address": "0x103d3e13c",
+          "type_reference_address": "0x103b0e63e"
+        },
+        {
+          "name": "moveMenu",
+          "flags": 0,
+          "record_address": "0x103d3e148",
+          "type_reference_address": "0x103b0e644"
+        },
+        {
+          "name": "setProfile",
+          "flags": 0,
+          "record_address": "0x103d3e154",
+          "type_reference_address": "0x103b0e59c"
+        },
+        {
+          "name": "setupSubscriptions",
+          "flags": 0,
+          "record_address": "0x103d3e160",
+          "type_reference_address": null
+        },
+        {
+          "name": "presentNUXView",
+          "flags": 0,
+          "record_address": "0x103d3e16c",
+          "type_reference_address": null
+        },
+        {
+          "name": "onCloseNUXViewClicked",
+          "flags": 0,
+          "record_address": "0x103d3e178",
+          "type_reference_address": null
+        },
+        {
+          "name": "toggleMoveMenu",
+          "flags": 0,
+          "record_address": "0x103d3e184",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "LittleBrowser.LittleBrowserEntryPoint",
+      "kind": "enum",
+      "descriptor": "0x103c14bc8",
+      "field_descriptor": "0x103d3e364",
+      "fields": [
+        {
+          "name": "internalLink",
+          "flags": 0,
+          "record_address": "0x103d3e374",
+          "type_reference_address": "0x103b0e87a"
+        },
+        {
+          "name": "externalLink",
+          "flags": 0,
+          "record_address": "0x103d3e380",
+          "type_reference_address": "0x103b0e87a"
+        },
+        {
+          "name": "floatingWindow",
+          "flags": 0,
+          "record_address": "0x103d3e38c",
+          "type_reference_address": "0x103b0e87a"
+        },
+        {
+          "name": "mainMenu",
+          "flags": 0,
+          "record_address": "0x103d3e398",
+          "type_reference_address": null
+        },
+        {
+          "name": "statusItem",
+          "flags": 0,
+          "record_address": "0x103d3e3a4",
+          "type_reference_address": null
+        },
+        {
+          "name": "globalHotkey",
+          "flags": 0,
+          "record_address": "0x103d3e3b0",
+          "type_reference_address": null
+        },
+        {
+          "name": "sidebarPlusButton",
+          "flags": 0,
+          "record_address": "0x103d3e3bc",
+          "type_reference_address": null
+        },
+        {
+          "name": "browserPopup",
+          "flags": 0,
+          "record_address": "0x103d3e3c8",
+          "type_reference_address": null
+        },
+        {
+          "name": "draggedTab",
+          "flags": 0,
+          "record_address": "0x103d3e3d4",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "LittleBrowser.LittleBrowserMoveToStandardWindowDestination",
+      "kind": "struct",
+      "descriptor": "0x103c14ce0",
+      "field_descriptor": "0x103d3e59c",
+      "fields": [
+        {
+          "name": "spaceID",
+          "flags": 0,
+          "record_address": "0x103d3e5ac",
+          "type_reference_address": "0x103b0e394"
+        },
+        {
+          "name": "type",
+          "flags": 0,
+          "record_address": "0x103d3e5b8",
+          "type_reference_address": "0x103b0e98c"
+        }
+      ]
+    },
+    {
+      "name": "LittleBrowser.LittleBrowserMoveToStandardWindowDestination.DestinationType",
+      "kind": "enum",
+      "descriptor": "0x103c14cfc",
+      "field_descriptor": "0x103d3e5c4",
+      "fields": [
+        {
+          "name": "absolute",
+          "flags": 0,
+          "record_address": "0x103d3e5d4",
+          "type_reference_address": "0x103b0e992"
+        },
+        {
+          "name": "pinned",
+          "flags": 0,
+          "record_address": "0x103d3e5e0",
+          "type_reference_address": null
+        },
+        {
+          "name": "unpinned",
+          "flags": 0,
+          "record_address": "0x103d3e5ec",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "LittleBrowser.LittleBrowserSession",
+      "kind": "struct",
+      "descriptor": "0x103c14d50",
+      "field_descriptor": "0x103d3e66c",
+      "fields": [
+        {
+          "name": "id",
+          "flags": 0,
+          "record_address": "0x103d3e67c",
+          "type_reference_address": "0x103b0ea2a"
+        },
+        {
+          "name": "entryPoint",
+          "flags": 0,
+          "record_address": "0x103d3e688",
+          "type_reference_address": "0x103b0e874"
+        },
+        {
+          "name": "preferredFrame",
+          "flags": 0,
+          "record_address": "0x103d3e694",
+          "type_reference_address": "0x103b0ea4e"
+        },
+        {
+          "name": "startTime",
+          "flags": 0,
+          "record_address": "0x103d3e6a0",
+          "type_reference_address": "0x103b0ea56"
+        }
+      ]
+    }
+  ],
+  "method_bodies": [
+    {
+      "class": "_TtC3Arc13BrowserWindow",
+      "selector": "openInCurrentSpace:",
+      "implementation": "0x10014c4f0",
+      "implementation_file_offset": 1361136,
+      "method_record_address": "0x1034adca8",
+      "selector_pointer": "0x1039977d4",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 6414,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10014c580",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc13BrowserWindow--openInCurrentSpace.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10014c4f0",
+        "--stop-address=0x10014c580",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc11AppDelegate",
+      "selector": "newLittleBrowserWindow:",
+      "implementation": "0x1002358d0",
+      "implementation_file_offset": 2316496,
+      "method_record_address": "0x1034ad9ac",
+      "selector_pointer": "0x10399651c",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 13763,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x1002358dc",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc11AppDelegate--newLittleBrowserWindow.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x1002358d0",
+        "--stop-address=0x1002358dc",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc19LittleBrowserWindow",
+      "selector": "openInCurrentSpace:",
+      "implementation": "0x1002c51d4",
+      "implementation_file_offset": 2904532,
+      "method_record_address": "0x1034adeb8",
+      "selector_pointer": "0x1039977d4",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 19352,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x1002c5238",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc19LittleBrowserWindow--openInCurrentSpace.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x1002c51d4",
+        "--stop-address=0x1002c5238",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "openInCurrentSpace:",
+      "implementation": "0x1003207b0",
+      "implementation_file_offset": 3278768,
+      "method_record_address": "0x1034ae328",
+      "selector_pointer": "0x1039977d4",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x100320814",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--openInCurrentSpace.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x1003207b0",
+        "--stop-address=0x100320814",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    }
+  ],
+  "official_excerpts": [
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## November 30, 2023 —",
+      "source_text_line": 48,
+      "text": "* Little Arc Windows now auto-archive every 6 hours by default. You can edit this setting in Arc > Settings > General. You can view all archived tabs by hitting CMD T and typing \"View Archive\". Filter for Little Arc.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## November 2, 2023 —",
+      "source_text_line": 96,
+      "text": "* If you click the same link within an external app, we'll simply resurface the existing Little Arc window instead of creating a duplicate one.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## November 2, 2023 —",
+      "source_text_line": 97,
+      "text": "* Little Arc will now remember the profile you select for a given domain. New links within that domain will have the profile automatically selected.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## October 12, 2023 —",
+      "source_text_line": 144,
+      "text": "* You can now have multiple Little Arc windows open at once! You'll also notice improvements to design and Little Arc opening animations.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## Jan 19, 2023 —",
+      "source_text_line": 690,
+      "text": "* Little Arc will now always appear above your full screen window, that way it won't get lost.",
+      "saved_file": "official-docs/20498377604887.md"
+    }
+  ],
+  "runtime_verified": false,
+  "rea_macho_evidence": "ev_780f75cfcf14debdafbfe9e1804e72b246ee98aec3b9d598bd724a307a89fd1f",
+  "note": "Reflection/method parsing and LLVM assembly are supplementary local evidence, not REA observations. Official excerpts describe product contracts/history, not local execution."
+}

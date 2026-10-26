@@ -1,0 +1,204 @@
+[
+  {
+    "id": "01-sidebar",
+    "types": [
+      "Arc.WindowState",
+      "BaseModels.SidebarContainer",
+      "SharedWindowFeature.SidebarSpaceState"
+    ],
+    "docPatterns": [
+      "Full URL in Toolbar",
+      "Show Toolbar",
+      "Sidebar now responds"
+    ],
+    "conclusion": "侧边栏隐藏入口已有实际代码，不再仅是菜单文本。WindowState 同时声明 sidebarMode/sidebarWidth 和 topBarDisplayedPreference/toolbarShowFullURLsEnabledPreference，说明侧边栏与可选顶部工具栏并存；“全部控件只能在左侧”需要修正。",
+    "unknown": "没有当前 UI 截图，不能报告控件的像素位置或用户当前隐藏状态。"
+  },
+  {
+    "id": "02-spaces",
+    "types": [
+      "BaseModels.SpaceModel",
+      "BaseModels.SpaceModel.ContainerType",
+      "BaseModels.SpaceModel.CustomInfo",
+      "Arc.WindowState"
+    ],
+    "docPatterns": [
+      "Each Space has its own",
+      "Control-Space number",
+      "Click on the Space",
+      "applies to all of your Spaces"
+    ],
+    "conclusion": "SpaceModel 直接包含 id/title/containerIDs/customInfo/profile；容器枚举分 pinned/unpinned，customInfo 包含 iconType/windowTheme。官方说明确认底部图标、滑动和数字快捷键；macOS 为 Control+数字。深浅色模式是全局的，不等于每个 Space 独立的颜色主题。",
+    "unknown": "主题与快捷键属于静态结构/官方规范；未操作用户的现有 Spaces。"
+  },
+  {
+    "id": "03-profiles",
+    "types": [
+      "ADKModels.Profile",
+      "BaseModels.SpaceModel",
+      "SearchClientManager.SearchClientManager",
+      "SearchClientManager.SearchClientManager.ProfileSpecificState"
+    ],
+    "docPatterns": [
+      "per-Profile",
+      "Profiles menu",
+      "no Favorites"
+    ],
+    "conclusion": "SpaceModel.profile 将工作区与浏览配置关联；主窗口 changeProfileForCurrentSpace: 已定位到可执行代码。命令栏搜索管理器另有 profileSpecificStates，profile 内有 mostVisitedSites/siteEngagementScores。结合已保存的应用说明，Cookie/登录/历史/扩展隔离属于明确产品契约。",
+    "unknown": "没有审计 ArcCore 内部存储实现，也没有跨 Profile 的 Cookie/登录实验；不能把静态字段当成完整隔离安全证明。"
+  },
+  {
+    "id": "04-favorites",
+    "types": [
+      "BaseModels.SidebarContainer",
+      "BaseModels.SidebarItemContainer.ContainerType",
+      "BaseModels.SidebarItemContextType",
+      "SharedWindowFeature.SidebarSpaceState",
+      "SidebarSyncCloudKit.SyncedContainer"
+    ],
+    "docPatterns": [
+      "Favorites are accessible in every Space",
+      "Favorites in any Profile"
+    ],
+    "conclusion": "SidebarContainer 把 topAppsContainerIDs 与 spaces 分开保存，容器类别区分 topApps/spaceItems，项目上下文区分 topApp/pinned/unpinned。结合官方“Favorites accessible in every Space”和本地“Each Profile ... different Favorites”文案，支持同 Profile 跨 Space 共享、不同 Profile 各自收藏的产品模型。",
+    "unknown": "尚未解出 topAppsContainerIDs 的完整泛型键类型，Profile → Favorites 的共享机制仍是多源综合推论，不是读取了实际用户状态；图标样式未截图。"
+  },
+  {
+    "id": "05-pinned-tabs",
+    "types": [
+      "BaseModels.SidebarItem",
+      "BaseModels.SidebarItemContextType",
+      "BaseModels.SpaceModel.ContainerType",
+      "SidebarItemUI.TabTitleSourceInfo"
+    ],
+    "docPatterns": [
+      "Pinned Tabs never Auto Archive",
+      "Pinned Tabs can be grouped",
+      "Double-click or right-click",
+      "Pinned Tabs are only accessible"
+    ],
+    "conclusion": "真实固定/取消固定入口存在；模型明确 pinned/unpinned 与 customTitle，文档确认固定标签永不 Auto Archive、仅属于一个 Space、可分组，官方发布说明确认双击或右键重命名。",
+    "unknown": "尚未追踪归档筛选函数如何实现 pinned 豁免；文档声明和本地机器码入口不能替代计时测试。"
+  },
+  {
+    "id": "06-folders",
+    "types": [
+      "BaseModels.SidebarItem",
+      "BaseModels.SidebarItemData",
+      "SidebarItemUI.DragReceivedEvent",
+      "SidebarItemUI.TablistItemDragReceivedEvent"
+    ],
+    "docPatterns": [
+      "Folders, Split Views",
+      "Shared Folders",
+      "nested Folders",
+      "renaming Folders"
+    ],
+    "conclusion": "Folder 在模型中使用 list 项；SidebarItem 的 parentID/childrenIds 提供树关系，另有 dragEnter/dragOver/dragExit 事件。REA 的 New Folder → newList: 已连接到真实方法地址。官方发布说明确认共享文件夹、嵌套文件夹和共享内容插入固定区域。",
+    "unknown": "拖拽落点和树重排算法未完整追踪；分享服务没有现场调用，不能保证旧分享服务当前仍可用。"
+  },
+  {
+    "id": "07-auto-archive",
+    "types": [
+      "Archive.ArchiveFeatureAction",
+      "Archive.ArchiveFeature.State",
+      "Archive.AutoArchiveType",
+      "Archive.AutoArchiveInactiveThreshold",
+      "Archive.AutoArchiveTimeThresholdsPerProfile"
+    ],
+    "docPatterns": [
+      "By default, idle",
+      "Viewing or clicking",
+      "can't be disabled",
+      "View Archived Tabs",
+      "restore tabs",
+      "Archive Tabs box"
+    ],
+    "conclusion": "Archive 模块具有 runAutoArchive/autoArchiveItems/removeExpiredItems 生命周期动作；状态带 itemsToExclude，类型区分 todayTabs/littleArc，并有 per-profile thresholds。官方明确默认 12 小时、查看/点击重置计时、可从 Archive 恢复，Library 有 Archive 入口。",
+    "unknown": "never 和 twentySeconds 确实是枚举项，但当前官方说不能禁用，20 秒又被本地文案标为调试用途；不可把所有枚举成员都列为正常 UI 选项。当前设置、定时执行条件仍未知。"
+  },
+  {
+    "id": "08-air-traffic-control",
+    "types": [
+      "LinkRouting.LinkMatchingRule",
+      "LinkRouting.LinkSourceComponent",
+      "LinkRouting.LinkSourceComponent.ComponentType",
+      "LinkRouting.LinkSourceTextMatchingStyle",
+      "LinkRouting.LinkDestination",
+      "LinkRouting.LinkDestination.ProfileDestination",
+      "LinkRouting.StorableLinkRoutingState",
+      "LinkRouting.LinkRoutingClientDataStore"
+    ],
+    "docPatterns": [
+      "contains",
+      "Is equal to",
+      "default Space",
+      "Space that's been deleted",
+      "Peek"
+    ],
+    "conclusion": "从单独字符串提升为结构证据：Rule{id,sourceComponents,destination}；urlMatch；匹配方式 matches/contains；目标 space/littleArc；持久化 version/rules/defaultDestination；存储接口 readSync/saveAsync。官方说明有包含/精确匹配、默认空间，删除 Space 同时删除相关规则。",
+    "unknown": "规则顺序、大小写/URL 规范化、多个 sourceComponents 的 AND/OR、冲突优先级、所有来源覆盖范围没有获得执行路径；不能自行补成完整路由算法。"
+  },
+  {
+    "id": "09-split-view",
+    "types": [
+      "BaseModels.SidebarSplitViewData",
+      "BaseModels.SidebarSplitViewData.LayoutOrientation",
+      "BaseModels.SidebarItemData",
+      "BaseModels.SplitViewPaneMenuOperation",
+      "WindowContents.SplitViewState",
+      "WindowContents.SplitViewState.InteractionState"
+    ],
+    "docPatterns": [
+      "more than four tabs",
+      "Favorited Split Tabs",
+      "duplicate a split",
+      "Spaces, Folders, Split Views",
+      "Split View orientation"
+    ],
+    "conclusion": "分屏不是几个无关联窗口：SidebarItemData 包含 splitView；SidebarSplitViewData 持久化 itemWidthFactors/layoutOrientation/focusItemID/timeLastActiveAt，运行态声明 windowContentIDs/focusedContentID/isResizingPanes。真实 add/close/separate/maximize 入口存在。官方“patched ... more than four tabs”支持设计上限四个；Favored Split Tabs 与共享 Split 发布记录支持分屏作为侧栏复合项保存。",
+    "unknown": "没有找到并验证“>=4 拒绝”的机器码分支；分屏整体 Pin 操作与调整尺寸未运行。复合项模型支持固定的推论，不冒充已成功固定操作。"
+  },
+  {
+    "id": "10-little-arc",
+    "types": [
+      "LittleBrowser.LittleBrowser.State",
+      "LittleBrowser.LittleBrowser.Action",
+      "LittleBrowser.LittleBrowserEntryPoint",
+      "LittleBrowser.LittleBrowserMoveToStandardWindowDestination",
+      "LittleBrowser.LittleBrowserMoveToStandardWindowDestination.DestinationType",
+      "LittleBrowser.LittleBrowserSession"
+    ],
+    "docPatterns": [
+      "Little Arc Windows now auto-archive",
+      "same link within an external app",
+      "remember the profile",
+      "multiple Little Arc windows",
+      "above your full screen"
+    ],
+    "conclusion": "独立 LittleBrowserWindow 有真实 openInCurrentSpace: 实现；LittleBrowser.Action 明确 moveContentToStandardGlobalWindow；目标携带 spaceID 和 absolute/pinned/unpinned。入口枚举包含 externalLink/internalLink/globalHotkey，状态单独持有 profile/session。官方历史记录还说明多小窗、外部重复链接复用与按域名记忆 Profile。",
+    "unknown": "Little Arc 6 小时归档来自 2023 历史发布说明，不是本机当前默认值实测；性能“轻量”、层级和主工作区无干扰没有测量。"
+  },
+  {
+    "id": "11-command-bar",
+    "types": [
+      "CommandBar.CommandBar",
+      "CommandBar.CommandBarState",
+      "SearchClientManager.SearchClientManager",
+      "SearchClientManager.SearchContext",
+      "SearchClientManager.ChromiumCandidatesProvider",
+      "SearchClientManager.SidebarCandidatesProvider",
+      "SearchClientManager.TypeTravelCandidatesProvider",
+      "AnalyticsClient.AnalyticsEventProperties.CommandBarItemType"
+    ],
+    "docPatterns": [
+      "pages you've visited and searches",
+      "Copy URL as Markdown",
+      "Collapse Pinned",
+      "Add Right Split",
+      "Command Bar suggestions"
+    ],
+    "conclusion": "命令栏包含 query/searchOutput/pendingSelection/scopedSearchType，并接入多个候选提供器。CommandBarItemType 枚举确实包含 chromiumHistory/chromiumSearchHistory、focusSpace、moveToSpace、moveToFolder、menuItem、openPreferencePane 等，不再只凭主菜单推断支持动作。⌘L 与 ⌘T 是两个不同的原生入口；官方文档和发布记录验证 ⌘T 可执行固定、切换 Space、分屏与复制等命令。",
+    "unknown": "候选类型部分来自统计枚举；不代表所有分支在当前 UI 启用。排序公式、缓存失效、查询完整流程未反编译，也未测试私密数据是否进入远端搜索。"
+  }
+]

@@ -1,0 +1,106 @@
+{
+  "feature": {
+    "id": "09-split-view",
+    "title": "Split View（分屏）",
+    "menus": [
+      "194",
+      "228",
+      "629",
+      "1300"
+    ],
+    "offsets": [
+      "0x3d05170",
+      "0x3d051e0",
+      "0x3d05230",
+      "0x3d16c80",
+      "0x41283f0",
+      "0x413d200"
+    ],
+    "finding": "REA 确认新增、关闭当前分屏、最大化当前分屏、从分屏分离页面的动作连接。补充文本明确水平/垂直转换；“跳到第四个 Split View 页面”支持第四面板设计，另有超过最大面板数和调整大小事件标识。",
+    "limits": "第四面板说明不等于证明最多恰好四个；最大数值、拖动调整尺寸和把整个分屏固定成一个标签均未实测或追踪实现。"
+  },
+  "rea_evidence_id": "ev_79b3e880589785e95be53245ee4309dc10599f4c85a1b751c10a79e857ef261e",
+  "rea_document": "Contents/Resources/Base.lproj/MainMenu.nib",
+  "menu_items": [
+    {
+      "id": "194",
+      "title": "Add Split View",
+      "key": "=",
+      "mask": 393216,
+      "actions": [
+        "addSplitPanel:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "228",
+      "title": "Close this Split Pane",
+      "key": "-",
+      "mask": 393216,
+      "actions": [
+        "closeFocusedSplitViewPanel:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "629",
+      "title": "Expand Current Split",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "maximizeCurrentSplitViewPane:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1300",
+      "title": "Separate Page from Split View",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "separateTabFromSplitView:"
+      ],
+      "hidden": false
+    }
+  ],
+  "supplementary_static_text": [
+    {
+      "file_offset": 63983984,
+      "file_offset_hex": "0x3d05170",
+      "byte_length": 32,
+      "text": "Convert to Horizontal Split View"
+    },
+    {
+      "file_offset": 63984096,
+      "file_offset_hex": "0x3d051e0",
+      "byte_length": 30,
+      "text": "Convert to Vertical Split View"
+    },
+    {
+      "file_offset": 63984176,
+      "file_offset_hex": "0x3d05230",
+      "byte_length": 23,
+      "text": "Add Vertical Split View"
+    },
+    {
+      "file_offset": 64056448,
+      "file_offset_hex": "0x3d16c80",
+      "byte_length": 59,
+      "text": "Jumps to the fourth Split View page in your current window."
+    },
+    {
+      "file_offset": 68322288,
+      "file_offset_hex": "0x41283f0",
+      "byte_length": 29,
+      "text": "splitViewMaximumPanesExceeded"
+    },
+    {
+      "file_offset": 68407808,
+      "file_offset_hex": "0x413d200",
+      "byte_length": 41,
+      "text": "onDidEndWindowContentsSplitViewPaneResize"
+    }
+  ],
+  "binary_sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688",
+  "runtime_verified": false
+}

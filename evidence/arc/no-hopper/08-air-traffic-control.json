@@ -1,0 +1,298 @@
+{
+  "id": "08-air-traffic-control",
+  "types": [
+    "LinkRouting.LinkMatchingRule",
+    "LinkRouting.LinkSourceComponent",
+    "LinkRouting.LinkSourceComponent.ComponentType",
+    "LinkRouting.LinkSourceTextMatchingStyle",
+    "LinkRouting.LinkDestination",
+    "LinkRouting.LinkDestination.ProfileDestination",
+    "LinkRouting.StorableLinkRoutingState",
+    "LinkRouting.LinkRoutingClientDataStore"
+  ],
+  "docPatterns": [
+    "contains",
+    "Is equal to",
+    "default Space",
+    "Space that's been deleted",
+    "Peek"
+  ],
+  "conclusion": "从单独字符串提升为结构证据：Rule{id,sourceComponents,destination}；urlMatch；匹配方式 matches/contains；目标 space/littleArc；持久化 version/rules/defaultDestination；存储接口 readSync/saveAsync。官方说明有包含/精确匹配、默认空间，删除 Space 同时删除相关规则。",
+  "unknown": "规则顺序、大小写/URL 规范化、多个 sourceComponents 的 AND/OR、冲突优先级、所有来源覆盖范围没有获得执行路径；不能自行补成完整路由算法。",
+  "static_types": [
+    {
+      "name": "LinkRouting.LinkMatchingRule",
+      "kind": "struct",
+      "descriptor": "0x103c0a230",
+      "field_descriptor": "0x103d330b8",
+      "fields": [
+        {
+          "name": "id",
+          "flags": 2,
+          "record_address": "0x103d330c8",
+          "type_reference_address": "0x103ab44cc"
+        },
+        {
+          "name": "sourceComponents",
+          "flags": 2,
+          "record_address": "0x103d330d4",
+          "type_reference_address": "0x103ab499a"
+        },
+        {
+          "name": "destination",
+          "flags": 2,
+          "record_address": "0x103d330e0",
+          "type_reference_address": "0x103ab43ac"
+        }
+      ]
+    },
+    {
+      "name": "LinkRouting.LinkSourceComponent",
+      "kind": "struct",
+      "descriptor": "0x103c0a1c0",
+      "field_descriptor": "0x103d33018",
+      "fields": [
+        {
+          "name": "id",
+          "flags": 2,
+          "record_address": "0x103d33028",
+          "type_reference_address": "0x103ab4644"
+        },
+        {
+          "name": "componentType",
+          "flags": 2,
+          "record_address": "0x103d33034",
+          "type_reference_address": "0x103ab4a1e"
+        }
+      ]
+    },
+    {
+      "name": "LinkRouting.LinkSourceComponent.ComponentType",
+      "kind": "enum",
+      "descriptor": "0x103c0a1dc",
+      "field_descriptor": "0x103d33040",
+      "fields": [
+        {
+          "name": "urlMatch",
+          "flags": 0,
+          "record_address": "0x103d33050",
+          "type_reference_address": "0x103ab4a24"
+        }
+      ]
+    },
+    {
+      "name": "LinkRouting.LinkSourceTextMatchingStyle",
+      "kind": "enum",
+      "descriptor": "0x103c0a1a4",
+      "field_descriptor": "0x103d32ff0",
+      "fields": [
+        {
+          "name": "matches",
+          "flags": 0,
+          "record_address": "0x103d33000",
+          "type_reference_address": null
+        },
+        {
+          "name": "contains",
+          "flags": 0,
+          "record_address": "0x103d3300c",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "LinkRouting.LinkDestination",
+      "kind": "enum",
+      "descriptor": "0x103c0a1f8",
+      "field_descriptor": "0x103d3305c",
+      "fields": [
+        {
+          "name": "space",
+          "flags": 0,
+          "record_address": "0x103d3306c",
+          "type_reference_address": "0x103ab4a2e"
+        },
+        {
+          "name": "littleArc",
+          "flags": 0,
+          "record_address": "0x103d33078",
+          "type_reference_address": "0x103ab4a2e"
+        }
+      ]
+    },
+    {
+      "name": "LinkRouting.LinkDestination.ProfileDestination",
+      "kind": "enum",
+      "descriptor": "0x103c0a214",
+      "field_descriptor": "0x103d33084",
+      "fields": [
+        {
+          "name": "profile",
+          "flags": 0,
+          "record_address": "0x103d33094",
+          "type_reference_address": "0x103ab4a34"
+        },
+        {
+          "name": "space",
+          "flags": 0,
+          "record_address": "0x103d330a0",
+          "type_reference_address": "0x103ab4954"
+        },
+        {
+          "name": "mostRecent",
+          "flags": 0,
+          "record_address": "0x103d330ac",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "LinkRouting.StorableLinkRoutingState",
+      "kind": "struct",
+      "descriptor": "0x103c0a444",
+      "field_descriptor": "0x103d332b0",
+      "fields": [
+        {
+          "name": "version",
+          "flags": 2,
+          "record_address": "0x103d332c0",
+          "type_reference_address": "0x103ab4cac"
+        },
+        {
+          "name": "rules",
+          "flags": 2,
+          "record_address": "0x103d332cc",
+          "type_reference_address": "0x103ab475c"
+        },
+        {
+          "name": "defaultDestination",
+          "flags": 2,
+          "record_address": "0x103d332d8",
+          "type_reference_address": "0x103ab43ac"
+        }
+      ]
+    },
+    {
+      "name": "LinkRouting.LinkRoutingClientDataStore",
+      "kind": "struct",
+      "descriptor": "0x103c0a0d8",
+      "field_descriptor": "0x103d32e60",
+      "fields": [
+        {
+          "name": "readSync",
+          "flags": 2,
+          "record_address": "0x103d32e70",
+          "type_reference_address": "0x103ab43dc"
+        },
+        {
+          "name": "saveAsync",
+          "flags": 2,
+          "record_address": "0x103d32e7c",
+          "type_reference_address": "0x103ab43e6"
+        }
+      ]
+    }
+  ],
+  "method_bodies": [],
+  "official_excerpts": [
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228064149143-Spaces-Distinct-Browsing-Areas",
+      "title": "Spaces: Distinct Browsing Areas",
+      "section": "### How to Set Up a Route",
+      "source_text_line": 58,
+      "text": "* Select URL **contains** or **is equal to** a particular URL.",
+      "saved_file": "official-docs/19228064149143.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228064149143-Spaces-Distinct-Browsing-Areas",
+      "title": "Spaces: Distinct Browsing Areas",
+      "section": "### How to Set Up a Route",
+      "source_text_line": 60,
+      "text": "  + **Contains** will route links that contains your text entry, even it's not an exact match. Great options for \"*Contains*\" are website domains. For example, if you create a Route for URL's that contain \"spotify.com\", this Spotify link\\* will Route automatically to your Music Space. (\\*This is a favorite album from our teammate, Brian!)",
+      "saved_file": "official-docs/19228064149143.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## November 30, 2023 —",
+      "source_text_line": 69,
+      "text": "* Arc v1.19.1 contains an important security fix for a Chromium vulnerability. We strongly recommend updating to Arc v1.19.1 as soon as you can, as it is based on Chromium 119.0.6045.199, which contains this fix. Update and stay safe out there!",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## September 14, 2023 —",
+      "source_text_line": 206,
+      "text": "* Arc v1.8.0 contains an important security fix for a Chromium vulnerability. We strongly recommend updating to Arc v1.8.0 as soon as you can, as it is based on Chromium v116.0.5845.187, which contains this fix. Update and stay safe out there!",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## January 9, 2025 —",
+      "source_text_line": 589,
+      "text": "* This update contains a Chromium upgrade to 131.0.6778.265.",
+      "saved_file": "official-docs/20498293324823.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## December 19, 2024 —",
+      "source_text_line": 598,
+      "text": "* This update contains a Chromium upgrade to 131.0.6778.205.",
+      "saved_file": "official-docs/20498293324823.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## December 12, 2024 —",
+      "source_text_line": 606,
+      "text": "* This release contains a Chromium update to 131.0.6778.140 that includes security and stability fixes.",
+      "saved_file": "official-docs/20498293324823.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## December 5, 2024 —",
+      "source_text_line": 614,
+      "text": "* This update contains a Chromium upgrade to 131.0.6778.109.",
+      "saved_file": "official-docs/20498293324823.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228064149143-Spaces-Distinct-Browsing-Areas",
+      "title": "Spaces: Distinct Browsing Areas",
+      "section": "### How to Set Up a Route",
+      "source_text_line": 61,
+      "text": "  + **Is equal to** will only route links that exactly match your text entry. Make sure to include http://www, if that's how your link loads! This is a great option for very specific URLs. For example, you may use Google Docs across all Spaces, but if should always route to your Work Space, *is equal to* is the right choice.",
+      "saved_file": "official-docs/19228064149143.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228064149143-Spaces-Distinct-Browsing-Areas",
+      "title": "Spaces: Distinct Browsing Areas",
+      "section": "## Route Sites to Specific Spaces with Air Traffic Control",
+      "source_text_line": 44,
+      "text": "You can also set up a default Space for links so tabs are automatically opened in the Space of your choice, rather than in Little Arc.",
+      "saved_file": "official-docs/19228064149143.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228064149143-Spaces-Distinct-Browsing-Areas",
+      "title": "Spaces: Distinct Browsing Areas",
+      "section": "### How to Set Up a Route",
+      "source_text_line": 65,
+      "text": "If you have a Route set up on a Space that's been deleted, the Route will be deleted as well.",
+      "saved_file": "official-docs/19228064149143.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19231060187159-Pinned-Tabs-Tabs-you-want-to-stick-around",
+      "title": "Pinned Tabs: Tabs you want to stick around",
+      "section": "## What are Pinned Tabs?",
+      "source_text_line": 17,
+      "text": "* Pinned Tabs are like \"Apps\" in that they keep you contained within a specific site. If you pin the New York Times, for example, you can navigate anywhere on the New York Times website but clicking a link that would change the tab will open a Peek window, instead of replacing New York Times.",
+      "saved_file": "official-docs/19231060187159.md"
+    }
+  ],
+  "runtime_verified": false,
+  "rea_macho_evidence": "ev_780f75cfcf14debdafbfe9e1804e72b246ee98aec3b9d598bd724a307a89fd1f",
+  "note": "Reflection/method parsing and LLVM assembly are supplementary local evidence, not REA observations. Official excerpts describe product contracts/history, not local execution."
+}

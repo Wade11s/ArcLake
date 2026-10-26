@@ -1,0 +1,341 @@
+{
+  "id": "07-auto-archive",
+  "types": [
+    "Archive.ArchiveFeatureAction",
+    "Archive.ArchiveFeature.State",
+    "Archive.AutoArchiveType",
+    "Archive.AutoArchiveInactiveThreshold",
+    "Archive.AutoArchiveTimeThresholdsPerProfile"
+  ],
+  "docPatterns": [
+    "By default, idle",
+    "Viewing or clicking",
+    "can't be disabled",
+    "View Archived Tabs",
+    "restore tabs",
+    "Archive Tabs box"
+  ],
+  "conclusion": "Archive 模块具有 runAutoArchive/autoArchiveItems/removeExpiredItems 生命周期动作；状态带 itemsToExclude，类型区分 todayTabs/littleArc，并有 per-profile thresholds。官方明确默认 12 小时、查看/点击重置计时、可从 Archive 恢复，Library 有 Archive 入口。",
+  "unknown": "never 和 twentySeconds 确实是枚举项，但当前官方说不能禁用，20 秒又被本地文案标为调试用途；不可把所有枚举成员都列为正常 UI 选项。当前设置、定时执行条件仍未知。",
+  "static_types": [
+    {
+      "name": "Archive.ArchiveFeatureAction",
+      "kind": "enum",
+      "descriptor": "0x103beb8f4",
+      "field_descriptor": "0x103d185a0",
+      "fields": [
+        {
+          "name": "simulateAutoArchive",
+          "flags": 0,
+          "record_address": "0x103d185b0",
+          "type_reference_address": "0x103a5d948"
+        },
+        {
+          "name": "autoArchiveItems",
+          "flags": 0,
+          "record_address": "0x103d185bc",
+          "type_reference_address": "0x103a5d962"
+        },
+        {
+          "name": "didLaunch",
+          "flags": 0,
+          "record_address": "0x103d185c8",
+          "type_reference_address": null
+        },
+        {
+          "name": "runAutoArchive",
+          "flags": 0,
+          "record_address": "0x103d185d4",
+          "type_reference_address": null
+        },
+        {
+          "name": "removeExpiredItems",
+          "flags": 0,
+          "record_address": "0x103d185e0",
+          "type_reference_address": null
+        },
+        {
+          "name": "willTerminate",
+          "flags": 0,
+          "record_address": "0x103d185ec",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "Archive.ArchiveFeature.State",
+      "kind": "struct",
+      "descriptor": "0x103beb92c",
+      "field_descriptor": "0x103d18644",
+      "fields": [
+        {
+          "name": "autoArchiveStartTime",
+          "flags": 2,
+          "record_address": "0x103d18654",
+          "type_reference_address": "0x103a5d9f4"
+        },
+        {
+          "name": "itemsToExclude",
+          "flags": 0,
+          "record_address": "0x103d18660",
+          "type_reference_address": "0x103a5da4e"
+        },
+        {
+          "name": "sidebar",
+          "flags": 0,
+          "record_address": "0x103d1866c",
+          "type_reference_address": "0x103a5db48"
+        },
+        {
+          "name": "autoArchiveLittleArcWindowsEnabled",
+          "flags": 0,
+          "record_address": "0x103d18678",
+          "type_reference_address": "0x103a5da4a"
+        },
+        {
+          "name": "perProfileAutoArchivePrefAvailable",
+          "flags": 0,
+          "record_address": "0x103d18684",
+          "type_reference_address": "0x103a5da4a"
+        }
+      ]
+    },
+    {
+      "name": "Archive.AutoArchiveType",
+      "kind": "enum",
+      "descriptor": "0x103beb980",
+      "field_descriptor": "0x103d186b8",
+      "fields": [
+        {
+          "name": "todayTabs",
+          "flags": 0,
+          "record_address": "0x103d186c8",
+          "type_reference_address": null
+        },
+        {
+          "name": "littleArc",
+          "flags": 0,
+          "record_address": "0x103d186d4",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "Archive.AutoArchiveInactiveThreshold",
+      "kind": "enum",
+      "descriptor": "0x103beb99c",
+      "field_descriptor": "0x103d186e0",
+      "fields": [
+        {
+          "name": "twentySeconds",
+          "flags": 0,
+          "record_address": "0x103d186f0",
+          "type_reference_address": null
+        },
+        {
+          "name": "oneHour",
+          "flags": 0,
+          "record_address": "0x103d186fc",
+          "type_reference_address": null
+        },
+        {
+          "name": "sixHours",
+          "flags": 0,
+          "record_address": "0x103d18708",
+          "type_reference_address": null
+        },
+        {
+          "name": "twelveHours",
+          "flags": 0,
+          "record_address": "0x103d18714",
+          "type_reference_address": null
+        },
+        {
+          "name": "twentyFourHours",
+          "flags": 0,
+          "record_address": "0x103d18720",
+          "type_reference_address": null
+        },
+        {
+          "name": "sevenDays",
+          "flags": 0,
+          "record_address": "0x103d1872c",
+          "type_reference_address": null
+        },
+        {
+          "name": "thirtyDays",
+          "flags": 0,
+          "record_address": "0x103d18738",
+          "type_reference_address": null
+        },
+        {
+          "name": "never",
+          "flags": 0,
+          "record_address": "0x103d18744",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "Archive.AutoArchiveTimeThresholdsPerProfile",
+      "kind": "struct",
+      "descriptor": "0x103beb9d4",
+      "field_descriptor": "0x103d18760",
+      "fields": [
+        {
+          "name": "thresholds",
+          "flags": 0,
+          "record_address": "0x103d18770",
+          "type_reference_address": "0x103a5dca8"
+        }
+      ]
+    }
+  ],
+  "method_bodies": [
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "showArchive:",
+      "implementation": "0x10031ffe8",
+      "implementation_file_offset": 3276776,
+      "method_record_address": "0x1034ae2bc",
+      "selector_pointer": "0x1039a6867",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031fff0",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--showArchive.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031ffe8",
+        "--stop-address=0x10031fff0",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "clearExplore:",
+      "implementation": "0x100320444",
+      "implementation_file_offset": 3277892,
+      "method_record_address": "0x1034ae2ec",
+      "selector_pointer": "0x1039844d3",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x100320524",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--clearExplore.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x100320444",
+        "--stop-address=0x100320524",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "toggleLibrary:",
+      "implementation": "0x1003208ac",
+      "implementation_file_offset": 3279020,
+      "method_record_address": "0x1034ae340",
+      "selector_pointer": "0x1039aa0ef",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x1003208b4",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--toggleLibrary.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x1003208ac",
+        "--stop-address=0x1003208b4",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "reopenLastTab:",
+      "implementation": "0x10031cf00",
+      "implementation_file_offset": 3264256,
+      "method_record_address": "0x1034ae3f4",
+      "selector_pointer": "0x10399bba1",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031cf08",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--reopenLastTab.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031cf00",
+        "--stop-address=0x10031cf08",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    }
+  ],
+  "official_excerpts": [
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228855311127-Auto-Archive-Clean-as-you-go",
+      "title": "Auto Archive: Clean as you go",
+      "section": "## Adjust Auto Archive Timing",
+      "source_text_line": 21,
+      "text": "By default, idle Unpinned Tabs archive every 12 hours. Viewing or clicking on a tab will always reset the timer! You can select a different Archive timing for each Profile you have, if you like. By default, all Profiles will share the same timing as your \"Default\" Profile.",
+      "saved_file": "official-docs/19228855311127.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228855311127-Auto-Archive-Clean-as-you-go",
+      "title": "Auto Archive: Clean as you go",
+      "section": "## Can Auto Archive be disabled?",
+      "source_text_line": 45,
+      "text": "Auto Archive can't be disabled.",
+      "saved_file": "official-docs/19228855311127.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228855311127-Auto-Archive-Clean-as-you-go",
+      "title": "Auto Archive: Clean as you go",
+      "section": "## View & Restore Archived Tabs",
+      "source_text_line": 7,
+      "text": "**View Archived Tabs:** hit Command-T (macOS) or Control-T (Windows) and type \"View Archive.\"",
+      "saved_file": "official-docs/19228855311127.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228855311127-Auto-Archive-Clean-as-you-go",
+      "title": "Auto Archive: Clean as you go",
+      "section": "## Restore Archived Tabs",
+      "source_text_line": 13,
+      "text": "You can restore tabs by heading to the Archive (Command-T / View Archive) and hitting the Restore icon next to any archived tab.",
+      "saved_file": "official-docs/19228855311127.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228855311127-Auto-Archive-Clean-as-you-go",
+      "title": "Auto Archive: Clean as you go",
+      "section": "## Restore Archived Tabs",
+      "source_text_line": 17,
+      "text": "You can restore tabs by heading to the Archive (Control-T / View Archive) and clicking on any archived tab.",
+      "saved_file": "official-docs/19228855311127.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228855311127-Auto-Archive-Clean-as-you-go",
+      "title": "Auto Archive: Clean as you go",
+      "section": "## Clear the Archive",
+      "source_text_line": 37,
+      "text": "To remove all archived tabs at once, just right-click the Archive Tabs box in the Library and select \"Clear Archive.\" You can also do this from the Command Bar (Command-T) by typing \"clear archive\" and hitting enter.",
+      "saved_file": "official-docs/19228855311127.md"
+    }
+  ],
+  "runtime_verified": false,
+  "rea_macho_evidence": "ev_780f75cfcf14debdafbfe9e1804e72b246ee98aec3b9d598bd724a307a89fd1f",
+  "note": "Reflection/method parsing and LLVM assembly are supplementary local evidence, not REA observations. Official excerpts describe product contracts/history, not local execution."
+}

@@ -1,0 +1,81 @@
+{
+  "feature": {
+    "id": "06-folders",
+    "title": "Folders（文件夹）",
+    "menus": [
+      "959",
+      "134",
+      "164"
+    ],
+    "offsets": [
+      "0x3d05cd0",
+      "0x3d57160",
+      "0x3d139d0",
+      "0x3d31790"
+    ],
+    "finding": "REA 确认 New Folder… → newList:，及全部展开/折叠；补充文本明确“Share a folder via context menu”和固定区插入文件夹。",
+    "limits": "拖拽行为没有实测；分享文本不证明当前服务端仍可用，也没有生成或公开分享链接。"
+  },
+  "rea_evidence_id": "ev_79b3e880589785e95be53245ee4309dc10599f4c85a1b751c10a79e857ef261e",
+  "rea_document": "Contents/Resources/Base.lproj/MainMenu.nib",
+  "menu_items": [
+    {
+      "id": "959",
+      "title": "New Folder…",
+      "key": "N",
+      "mask": 1048576,
+      "actions": [
+        "newList:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "134",
+      "title": "Collapse All Folders",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "collapseAllFolders:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "164",
+      "title": "Expand All Folders",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "expandAllFolders:"
+      ],
+      "hidden": true
+    }
+  ],
+  "supplementary_static_text": [
+    {
+      "file_offset": 63986896,
+      "file_offset_hex": "0x3d05cd0",
+      "byte_length": 34,
+      "text": "Action to pin this tab to a folder"
+    },
+    {
+      "file_offset": 64319840,
+      "file_offset_hex": "0x3d57160",
+      "byte_length": 31,
+      "text": "Share a folder via context menu"
+    },
+    {
+      "file_offset": 64043472,
+      "file_offset_hex": "0x3d139d0",
+      "byte_length": 112,
+      "text": "Your Display Name is publicly visible when you share items like your Membership Card, Boosts, Folders or Spaces."
+    },
+    {
+      "file_offset": 64165776,
+      "file_offset_hex": "0x3d31790",
+      "byte_length": 60,
+      "text": "Assertion failure: Failed to insert folder in pinned section"
+    }
+  ],
+  "binary_sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688",
+  "runtime_verified": false
+}

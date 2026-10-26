@@ -1,0 +1,4 @@
+{
+  "operation": "current_document",
+  "error": "Error: MCP request timed out after 60000ms"
+}

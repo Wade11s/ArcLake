@@ -1,0 +1,929 @@
+{
+  "id": "02-spaces",
+  "types": [
+    "BaseModels.SpaceModel",
+    "BaseModels.SpaceModel.ContainerType",
+    "BaseModels.SpaceModel.CustomInfo",
+    "Arc.WindowState"
+  ],
+  "docPatterns": [
+    "Each Space has its own",
+    "Control-Space number",
+    "Click on the Space",
+    "applies to all of your Spaces"
+  ],
+  "conclusion": "SpaceModel 直接包含 id/title/containerIDs/customInfo/profile；容器枚举分 pinned/unpinned，customInfo 包含 iconType/windowTheme。官方说明确认底部图标、滑动和数字快捷键；macOS 为 Control+数字。深浅色模式是全局的，不等于每个 Space 独立的颜色主题。",
+  "unknown": "主题与快捷键属于静态结构/官方规范；未操作用户的现有 Spaces。",
+  "static_types": [
+    {
+      "name": "BaseModels.SpaceModel",
+      "kind": "struct",
+      "descriptor": "0x103bcab30",
+      "field_descriptor": "0x103cf3ed8",
+      "fields": [
+        {
+          "name": "id",
+          "flags": 2,
+          "record_address": "0x103cf3ee8",
+          "type_reference_address": "0x1039f9450"
+        },
+        {
+          "name": "title",
+          "flags": 2,
+          "record_address": "0x103cf3ef4",
+          "type_reference_address": "0x1039f9950"
+        },
+        {
+          "name": "containerIDs",
+          "flags": 2,
+          "record_address": "0x103cf3f00",
+          "type_reference_address": "0x1039fd674"
+        },
+        {
+          "name": "customInfo",
+          "flags": 2,
+          "record_address": "0x103cf3f0c",
+          "type_reference_address": "0x1039fd6ec"
+        },
+        {
+          "name": "profile",
+          "flags": 2,
+          "record_address": "0x103cf3f18",
+          "type_reference_address": "0x1039fa8d4"
+        }
+      ]
+    },
+    {
+      "name": "BaseModels.SpaceModel.ContainerType",
+      "kind": "enum",
+      "descriptor": "0x103bcab4c",
+      "field_descriptor": "0x103cf3f24",
+      "fields": [
+        {
+          "name": "unpinned",
+          "flags": 0,
+          "record_address": "0x103cf3f34",
+          "type_reference_address": "0x1039fd6f8"
+        },
+        {
+          "name": "pinned",
+          "flags": 0,
+          "record_address": "0x103cf3f40",
+          "type_reference_address": null
+        }
+      ]
+    },
+    {
+      "name": "BaseModels.SpaceModel.CustomInfo",
+      "kind": "struct",
+      "descriptor": "0x103bcab84",
+      "field_descriptor": "0x103cf3f74",
+      "fields": [
+        {
+          "name": "iconType",
+          "flags": 2,
+          "record_address": "0x103cf3f84",
+          "type_reference_address": "0x1039fd71c"
+        },
+        {
+          "name": "windowTheme",
+          "flags": 2,
+          "record_address": "0x103cf3f90",
+          "type_reference_address": "0x1039f8fea"
+        }
+      ]
+    },
+    {
+      "name": "Arc.WindowState",
+      "kind": "struct",
+      "descriptor": "0x103ba2844",
+      "field_descriptor": "0x103cd2178",
+      "fields": [
+        {
+          "name": "id",
+          "flags": 2,
+          "record_address": "0x103cd2188",
+          "type_reference_address": "0x1039bc7a8"
+        },
+        {
+          "name": "appearancePhase",
+          "flags": 2,
+          "record_address": "0x103cd2194",
+          "type_reference_address": "0x1039c3a3c"
+        },
+        {
+          "name": "initialAppearanceActions",
+          "flags": 2,
+          "record_address": "0x103cd21a0",
+          "type_reference_address": "0x1039c3a42"
+        },
+        {
+          "name": "initialAnimation",
+          "flags": 2,
+          "record_address": "0x103cd21ac",
+          "type_reference_address": "0x1039c2a42"
+        },
+        {
+          "name": "isKey",
+          "flags": 2,
+          "record_address": "0x103cd21b8",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "isMain",
+          "flags": 2,
+          "record_address": "0x103cd21c4",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "focusedSpaceID",
+          "flags": 2,
+          "record_address": "0x103cd21d0",
+          "type_reference_address": "0x1039d6e68"
+        },
+        {
+          "name": "layoutPresentation",
+          "flags": 2,
+          "record_address": "0x103cd21dc",
+          "type_reference_address": "0x1039c3a4c"
+        },
+        {
+          "name": "sidebarWidth",
+          "flags": 2,
+          "record_address": "0x103cd21e8",
+          "type_reference_address": "0x1039b217c"
+        },
+        {
+          "name": "localHomeState",
+          "flags": 2,
+          "record_address": "0x103cd21f4",
+          "type_reference_address": "0x1039c3a52"
+        },
+        {
+          "name": "windowContentsState",
+          "flags": 2,
+          "record_address": "0x103cd2200",
+          "type_reference_address": "0x1039d6910"
+        },
+        {
+          "name": "highlightedItemID",
+          "flags": 2,
+          "record_address": "0x103cd220c",
+          "type_reference_address": "0x1039b07e8"
+        },
+        {
+          "name": "renameHintItemID",
+          "flags": 2,
+          "record_address": "0x103cd2218",
+          "type_reference_address": "0x1039b07e8"
+        },
+        {
+          "name": "sidebarMode",
+          "flags": 2,
+          "record_address": "0x103cd2224",
+          "type_reference_address": "0x1039ba740"
+        },
+        {
+          "name": "persistedLiveFoldersState",
+          "flags": 0,
+          "record_address": "0x103cd2230",
+          "type_reference_address": "0x1039bc52a"
+        },
+        {
+          "name": "sidebarItemDragState",
+          "flags": 0,
+          "record_address": "0x103cd223c",
+          "type_reference_address": "0x1039c182e"
+        },
+        {
+          "name": "expandedItems",
+          "flags": 2,
+          "record_address": "0x103cd2248",
+          "type_reference_address": "0x1039c3a5a"
+        },
+        {
+          "name": "spacesWithCollapsedPinnedSections",
+          "flags": 2,
+          "record_address": "0x103cd2254",
+          "type_reference_address": "0x1039b81fe"
+        },
+        {
+          "name": "showSpaceHeaderOnSingleUnnamedSpaces",
+          "flags": 2,
+          "record_address": "0x103cd2260",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "referrerPool",
+          "flags": 2,
+          "record_address": "0x103cd226c",
+          "type_reference_address": "0x1039b7a6a"
+        },
+        {
+          "name": "multiSelectedItems",
+          "flags": 2,
+          "record_address": "0x103cd2278",
+          "type_reference_address": "0x1039b517c"
+        },
+        {
+          "name": "editingItem",
+          "flags": 2,
+          "record_address": "0x103cd2284",
+          "type_reference_address": "0x1039b07e8"
+        },
+        {
+          "name": "currentlyEditedHeaderSpaceID",
+          "flags": 2,
+          "record_address": "0x103cd2290",
+          "type_reference_address": "0x1039bc508"
+        },
+        {
+          "name": "previouslySelectedItem",
+          "flags": 2,
+          "record_address": "0x103cd229c",
+          "type_reference_address": "0x1039b07e8"
+        },
+        {
+          "name": "sidebarItemUserAttentionRequest",
+          "flags": 2,
+          "record_address": "0x103cd22a8",
+          "type_reference_address": "0x1039c3a70"
+        },
+        {
+          "name": "itemLastActiveDates",
+          "flags": 2,
+          "record_address": "0x103cd22b4",
+          "type_reference_address": "0x1039c3a78"
+        },
+        {
+          "name": "lastActiveTabsPerSpace",
+          "flags": 2,
+          "record_address": "0x103cd22c0",
+          "type_reference_address": "0x1039c3a8e"
+        },
+        {
+          "name": "itemCreatedDates",
+          "flags": 2,
+          "record_address": "0x103cd22cc",
+          "type_reference_address": "0x1039c3a78"
+        },
+        {
+          "name": "sidebarHoverRegionActive",
+          "flags": 2,
+          "record_address": "0x103cd22d8",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "sidebarItemPreviewHoveredState",
+          "flags": 2,
+          "record_address": "0x103cd22e4",
+          "type_reference_address": "0x1039b3a6e"
+        },
+        {
+          "name": "previewHovered",
+          "flags": 2,
+          "record_address": "0x103cd22f0",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "fullscreen",
+          "flags": 2,
+          "record_address": "0x103cd22fc",
+          "type_reference_address": "0x1039ba746"
+        },
+        {
+          "name": "fullscreenRequest",
+          "flags": 2,
+          "record_address": "0x103cd2308",
+          "type_reference_address": "0x1039c3aa8"
+        },
+        {
+          "name": "commandBarIntegrationPresentationInfo",
+          "flags": 2,
+          "record_address": "0x103cd2314",
+          "type_reference_address": "0x1039bc972"
+        },
+        {
+          "name": "isDismissingCommandBarViaNewTabSelection",
+          "flags": 2,
+          "record_address": "0x103cd2320",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "spaceCreationState",
+          "flags": 2,
+          "record_address": "0x103cd232c",
+          "type_reference_address": "0x1039c3622"
+        },
+        {
+          "name": "spaceStyleEditorPresentation",
+          "flags": 2,
+          "record_address": "0x103cd2338",
+          "type_reference_address": "0x1039bf93c"
+        },
+        {
+          "name": "sidebarHoverInfo",
+          "flags": 2,
+          "record_address": "0x103cd2344",
+          "type_reference_address": "0x1039b01b0"
+        },
+        {
+          "name": "sidebarScrollToItemRequest",
+          "flags": 2,
+          "record_address": "0x103cd2350",
+          "type_reference_address": "0x1039c34f6"
+        },
+        {
+          "name": "closingState",
+          "flags": 2,
+          "record_address": "0x103cd235c",
+          "type_reference_address": "0x1039c3ab0"
+        },
+        {
+          "name": "closedProfiles",
+          "flags": 2,
+          "record_address": "0x103cd2368",
+          "type_reference_address": "0x1039c3ab6"
+        },
+        {
+          "name": "isPulsingNewTabButton",
+          "flags": 2,
+          "record_address": "0x103cd2374",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "sidebarWrapper",
+          "flags": 2,
+          "record_address": "0x103cd2380",
+          "type_reference_address": "0x1039c3ac0"
+        },
+        {
+          "name": "appSidebarContext",
+          "flags": 0,
+          "record_address": "0x103cd238c",
+          "type_reference_address": "0x1039b2224"
+        },
+        {
+          "name": "featureFlags",
+          "flags": 0,
+          "record_address": "0x103cd2398",
+          "type_reference_address": "0x1039b2196"
+        },
+        {
+          "name": "authSession",
+          "flags": 0,
+          "record_address": "0x103cd23a4",
+          "type_reference_address": "0x1039bc470"
+        },
+        {
+          "name": "deselectedItemsState",
+          "flags": 2,
+          "record_address": "0x103cd23b0",
+          "type_reference_address": "0x1039c3ac6"
+        },
+        {
+          "name": "mousedownSelectionRevertItem",
+          "flags": 2,
+          "record_address": "0x103cd23bc",
+          "type_reference_address": "0x1039b07e8"
+        },
+        {
+          "name": "currentWebDialog",
+          "flags": 2,
+          "record_address": "0x103cd23c8",
+          "type_reference_address": "0x1039c3acc"
+        },
+        {
+          "name": "browserExtensionPopup",
+          "flags": 2,
+          "record_address": "0x103cd23d4",
+          "type_reference_address": "0x1039affca"
+        },
+        {
+          "name": "sidePanel",
+          "flags": 2,
+          "record_address": "0x103cd23e0",
+          "type_reference_address": "0x1039c3ad4"
+        },
+        {
+          "name": "webContentsLifecycleHistory",
+          "flags": 2,
+          "record_address": "0x103cd23ec",
+          "type_reference_address": "0x1039b8332"
+        },
+        {
+          "name": "restorableSplitViewLayout",
+          "flags": 2,
+          "record_address": "0x103cd23f8",
+          "type_reference_address": "0x1039d6750"
+        },
+        {
+          "name": "style",
+          "flags": 2,
+          "record_address": "0x103cd2404",
+          "type_reference_address": "0x1039c3adc"
+        },
+        {
+          "name": "backForwardListState",
+          "flags": 2,
+          "record_address": "0x103cd2410",
+          "type_reference_address": "0x1039b847c"
+        },
+        {
+          "name": "toasts",
+          "flags": 2,
+          "record_address": "0x103cd241c",
+          "type_reference_address": "0x1039c3ae2"
+        },
+        {
+          "name": "queuedHotkey",
+          "flags": 2,
+          "record_address": "0x103cd2428",
+          "type_reference_address": "0x1039bfe4c"
+        },
+        {
+          "name": "captureState",
+          "flags": 2,
+          "record_address": "0x103cd2434",
+          "type_reference_address": "0x1039c2294"
+        },
+        {
+          "name": "restorableSessionIDs",
+          "flags": 2,
+          "record_address": "0x103cd2440",
+          "type_reference_address": "0x1039c3aec"
+        },
+        {
+          "name": "webContentExternalProtocolLaunchPrompt",
+          "flags": 2,
+          "record_address": "0x103cd244c",
+          "type_reference_address": "0x1039afda8"
+        },
+        {
+          "name": "topAppsEmptyStateDismissedForProfiles",
+          "flags": 2,
+          "record_address": "0x103cd2458",
+          "type_reference_address": "0x1039c3ab6"
+        },
+        {
+          "name": "topAppsSubtitleDisabledHosts",
+          "flags": 2,
+          "record_address": "0x103cd2464",
+          "type_reference_address": "0x1039c3b02"
+        },
+        {
+          "name": "topAppsBadgingDisabledHosts",
+          "flags": 2,
+          "record_address": "0x103cd2470",
+          "type_reference_address": "0x1039c3b02"
+        },
+        {
+          "name": "stayOnTop",
+          "flags": 2,
+          "record_address": "0x103cd247c",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "dragToCaptureDisabled",
+          "flags": 2,
+          "record_address": "0x103cd2488",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "webContentBehaviorConfiguration",
+          "flags": 2,
+          "record_address": "0x103cd2494",
+          "type_reference_address": "0x1039bc4f4"
+        },
+        {
+          "name": "browserExtensions",
+          "flags": 2,
+          "record_address": "0x103cd24a0",
+          "type_reference_address": "0x1039c3b0c"
+        },
+        {
+          "name": "toolbarActions",
+          "flags": 2,
+          "record_address": "0x103cd24ac",
+          "type_reference_address": "0x1039c3b2c"
+        },
+        {
+          "name": "activeWindowArcMenuType",
+          "flags": 2,
+          "record_address": "0x103cd24b8",
+          "type_reference_address": "0x1039b8252"
+        },
+        {
+          "name": "modalItemSwitcherPresentation",
+          "flags": 2,
+          "record_address": "0x103cd24c4",
+          "type_reference_address": "0x1039d6dac"
+        },
+        {
+          "name": "findInPageQuery",
+          "flags": 2,
+          "record_address": "0x103cd24d0",
+          "type_reference_address": "0x1039b204c"
+        },
+        {
+          "name": "softwareUpdateState",
+          "flags": 0,
+          "record_address": "0x103cd24dc",
+          "type_reference_address": "0x1039bc554"
+        },
+        {
+          "name": "sidebarBannerState",
+          "flags": 2,
+          "record_address": "0x103cd24e8",
+          "type_reference_address": "0x1039bc492"
+        },
+        {
+          "name": "keyBindingsState",
+          "flags": 2,
+          "record_address": "0x103cd24f4",
+          "type_reference_address": "0x1039b2232"
+        },
+        {
+          "name": "pictureInPictureState",
+          "flags": 0,
+          "record_address": "0x103cd2500",
+          "type_reference_address": "0x1039bc544"
+        },
+        {
+          "name": "currentThemeEditorPresetPage",
+          "flags": 2,
+          "record_address": "0x103cd250c",
+          "type_reference_address": "0x1039ae866"
+        },
+        {
+          "name": "allowThemeToCSSSharing",
+          "flags": 2,
+          "record_address": "0x103cd2518",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "shouldShowEaselExportPanel",
+          "flags": 2,
+          "record_address": "0x103cd2524",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "lastRefreshedTime",
+          "flags": 2,
+          "record_address": "0x103cd2530",
+          "type_reference_address": "0x1039b2248"
+        },
+        {
+          "name": "developerModeState",
+          "flags": 2,
+          "record_address": "0x103cd253c",
+          "type_reference_address": "0x1039bc566"
+        },
+        {
+          "name": "liveCalendarsState",
+          "flags": 0,
+          "record_address": "0x103cd2548",
+          "type_reference_address": "0x1039bc530"
+        },
+        {
+          "name": "topBarDisplayedPreference",
+          "flags": 2,
+          "record_address": "0x103cd2554",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "boostsDialogState",
+          "flags": 2,
+          "record_address": "0x103cd2560",
+          "type_reference_address": "0x1039bc7e0"
+        },
+        {
+          "name": "highlightedSwitchToSuggestion",
+          "flags": 2,
+          "record_address": "0x103cd256c",
+          "type_reference_address": "0x1039b07e8"
+        },
+        {
+          "name": "aiRenameTabsFeature",
+          "flags": 2,
+          "record_address": "0x103cd2578",
+          "type_reference_address": "0x1039c3b4e"
+        },
+        {
+          "name": "keyboardShortcutsEducationState",
+          "flags": 2,
+          "record_address": "0x103cd2584",
+          "type_reference_address": "0x1039b8014"
+        },
+        {
+          "name": "newDefaultBrowserPromptType",
+          "flags": 2,
+          "record_address": "0x103cd2590",
+          "type_reference_address": "0x1039bc56c"
+        },
+        {
+          "name": "isReadyToDisplayDebugModeEnabled",
+          "flags": 2,
+          "record_address": "0x103cd259c",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "shareQuoteLinkEnabledPreference",
+          "flags": 2,
+          "record_address": "0x103cd25a8",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "tabReorderingHapticsDisabled",
+          "flags": 2,
+          "record_address": "0x103cd25b4",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "toolbarShowFullURLsEnabledPreference",
+          "flags": 2,
+          "record_address": "0x103cd25c0",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "isPreviewingGestureHiddenSidebar",
+          "flags": 2,
+          "record_address": "0x103cd25cc",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "dividerSquiggleActiveSpaceIDs",
+          "flags": 2,
+          "record_address": "0x103cd25d8",
+          "type_reference_address": "0x1039bc518"
+        },
+        {
+          "name": "iconPickerState",
+          "flags": 2,
+          "record_address": "0x103cd25e4",
+          "type_reference_address": "0x1039c35a2"
+        },
+        {
+          "name": "liveFolderPopoverState",
+          "flags": 2,
+          "record_address": "0x103cd25f0",
+          "type_reference_address": "0x1039b816e"
+        },
+        {
+          "name": "liveCalendarPopoverState",
+          "flags": 2,
+          "record_address": "0x103cd25fc",
+          "type_reference_address": "0x1039c3b54"
+        },
+        {
+          "name": "appTrayKeyboardShortcutsShown",
+          "flags": 2,
+          "record_address": "0x103cd2608",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "isRestoringSession",
+          "flags": 2,
+          "record_address": "0x103cd2614",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "ignoredWebContents",
+          "flags": 2,
+          "record_address": "0x103cd2620",
+          "type_reference_address": "0x1039c3b5c"
+        },
+        {
+          "name": "linearTabSwitcherState",
+          "flags": 2,
+          "record_address": "0x103cd262c",
+          "type_reference_address": "0x1039c3b66"
+        },
+        {
+          "name": "showOnboardingEmptyStateWindow",
+          "flags": 2,
+          "record_address": "0x103cd2638",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "pushOneTriggeredWebContents",
+          "flags": 2,
+          "record_address": "0x103cd2644",
+          "type_reference_address": "0x1039c3b6e"
+        },
+        {
+          "name": "pushTwoTriggeredWebContents",
+          "flags": 2,
+          "record_address": "0x103cd2650",
+          "type_reference_address": "0x1039c3b6e"
+        },
+        {
+          "name": "areBoostsEnabled",
+          "flags": 2,
+          "record_address": "0x103cd265c",
+          "type_reference_address": "0x1039ca2a0"
+        }
+      ]
+    }
+  ],
+  "method_bodies": [
+    {
+      "class": "_TtC3Arc13BrowserWindow",
+      "selector": "nextSpace:",
+      "implementation": "0x10014c4e0",
+      "implementation_file_offset": 1361120,
+      "method_record_address": "0x1034adc90",
+      "selector_pointer": "0x103996c66",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 6414,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10014c4e8",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc13BrowserWindow--nextSpace.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10014c4e0",
+        "--stop-address=0x10014c4e8",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc13BrowserWindow",
+      "selector": "previousSpace:",
+      "implementation": "0x10014c4e8",
+      "implementation_file_offset": 1361128,
+      "method_record_address": "0x1034adc9c",
+      "selector_pointer": "0x103999821",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 6414,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10014c4f0",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc13BrowserWindow--previousSpace.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10014c4e8",
+        "--stop-address=0x10014c4f0",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "toggleSpaceManager:",
+      "implementation": "0x10031d398",
+      "implementation_file_offset": 3265432,
+      "method_record_address": "0x1034ae01c",
+      "selector_pointer": "0x1039aa198",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031d3a0",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--toggleSpaceManager.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031d398",
+        "--stop-address=0x10031d3a0",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "newSpace:",
+      "implementation": "0x10031f9d4",
+      "implementation_file_offset": 3275220,
+      "method_record_address": "0x1034ae28c",
+      "selector_pointer": "0x103996969",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031f9dc",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--newSpace.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031f9d4",
+        "--stop-address=0x10031f9dc",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "renameFocusedSpace:",
+      "implementation": "0x10031fb18",
+      "implementation_file_offset": 3275544,
+      "method_record_address": "0x1034ae298",
+      "selector_pointer": "0x10399bafb",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031fb24",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--renameFocusedSpace.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031fb18",
+        "--stop-address=0x10031fb24",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "editSpaceTheme:",
+      "implementation": "0x10031fc6c",
+      "implementation_file_offset": 3275884,
+      "method_record_address": "0x1034ae2a4",
+      "selector_pointer": "0x103975af5",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031fc78",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--editSpaceTheme.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031fc6c",
+        "--stop-address=0x10031fc78",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "resetVisiblePinnedTabs:",
+      "implementation": "0x1003207a8",
+      "implementation_file_offset": 3278760,
+      "method_record_address": "0x1034ae31c",
+      "selector_pointer": "0x10399c223",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x1003207b0",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--resetVisiblePinnedTabs.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x1003207a8",
+        "--stop-address=0x1003207b0",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    }
+  ],
+  "official_excerpts": [
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228064149143-Spaces-Distinct-Browsing-Areas",
+      "title": "Spaces: Distinct Browsing Areas",
+      "section": "",
+      "source_text_line": 3,
+      "text": "**Spaces** are distinct browsing areas in Arc, created to separate different contexts. Each Space has its own Pinned section, Unpinned section, Theme, and Icon.",
+      "saved_file": "official-docs/19228064149143.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228064149143-Spaces-Distinct-Browsing-Areas",
+      "title": "Spaces: Distinct Browsing Areas",
+      "section": "## How to Create and Switch Spaces",
+      "source_text_line": 15,
+      "text": "* **`Control-Space number (ex. 1, 2, etc)`**on macOS or **`Alt-Space number (ex. 1, 2, etc)`**on Windows",
+      "saved_file": "official-docs/19228064149143.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228064149143-Spaces-Distinct-Browsing-Areas",
+      "title": "Spaces: Distinct Browsing Areas",
+      "section": "## How to Create and Switch Spaces",
+      "source_text_line": 13,
+      "text": "* **Click on the Space’s icon** at the bottom of the Sidebar",
+      "saved_file": "official-docs/19228064149143.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/19228064149143-Spaces-Distinct-Browsing-Areas",
+      "title": "Spaces: Distinct Browsing Areas",
+      "section": "### How do I put Arc in Dark or Light Mode?",
+      "source_text_line": 73,
+      "text": "On **Arc for macOS** you can also change Arc's theme to Light, Dark, or Automatic (Arc’s theme will match your device’s theme) from the same Theme Picker. Simply select either the stars (automatic), sun (light), or moon (dark) at the top. Just remember - this applies to all of your Spaces, not just the one you’re currently in.",
+      "saved_file": "official-docs/19228064149143.md"
+    }
+  ],
+  "runtime_verified": false,
+  "rea_macho_evidence": "ev_780f75cfcf14debdafbfe9e1804e72b246ee98aec3b9d598bd724a307a89fd1f",
+  "note": "Reflection/method parsing and LLVM assembly are supplementary local evidence, not REA observations. Official excerpts describe product contracts/history, not local execution."
+}

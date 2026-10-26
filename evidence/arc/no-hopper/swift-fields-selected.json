@@ -1,0 +1,3582 @@
+[
+  {
+    "name": "Arc.BrowserWindow",
+    "kind": "class",
+    "descriptor": "0x103b9fe00",
+    "field_descriptor": "0x103cceec0",
+    "fields": [
+      {
+        "name": "store",
+        "flags": 0,
+        "record_address": "0x103cceed0",
+        "type_reference_address": "0x1039d65e8"
+      },
+      {
+        "name": "viewStore",
+        "flags": 0,
+        "record_address": "0x103cceedc",
+        "type_reference_address": "0x1039ba700"
+      },
+      {
+        "name": "windowButtons",
+        "flags": 2,
+        "record_address": "0x103cceee8",
+        "type_reference_address": "0x1039ba712"
+      },
+      {
+        "name": "subscriptions",
+        "flags": 2,
+        "record_address": "0x103cceef4",
+        "type_reference_address": "0x1039c2894"
+      },
+      {
+        "name": "responderManager",
+        "flags": 2,
+        "record_address": "0x103ccef00",
+        "type_reference_address": "0x1039ba724"
+      },
+      {
+        "name": "lifecycleEligibility",
+        "flags": 2,
+        "record_address": "0x103ccef0c",
+        "type_reference_address": "0x1039ba72c"
+      },
+      {
+        "name": "isBeingDragged",
+        "flags": 2,
+        "record_address": "0x103ccef18",
+        "type_reference_address": "0x1039ca2a0"
+      },
+      {
+        "name": "needsScreenConstraintsAdjustments",
+        "flags": 2,
+        "record_address": "0x103ccef24",
+        "type_reference_address": "0x1039ca2a0"
+      },
+      {
+        "name": "$__lazy_storage_$_animationController",
+        "flags": 2,
+        "record_address": "0x103ccef30",
+        "type_reference_address": "0x1039ba732"
+      },
+      {
+        "name": "disableConstrainFrameRect",
+        "flags": 2,
+        "record_address": "0x103ccef3c",
+        "type_reference_address": "0x1039ca2a0"
+      }
+    ]
+  },
+  {
+    "name": "Arc.SidebarItemUnreadBadgeView",
+    "kind": "class",
+    "descriptor": "0x103ba0cd8",
+    "field_descriptor": "0x103ccfedc",
+    "fields": [
+      {
+        "name": "$__lazy_storage_$_bottomImageView",
+        "flags": 2,
+        "record_address": "0x103ccfeec",
+        "type_reference_address": "0x1039afb88"
+      },
+      {
+        "name": "$__lazy_storage_$_topImageView",
+        "flags": 2,
+        "record_address": "0x103ccfef8",
+        "type_reference_address": "0x1039afb88"
+      },
+      {
+        "name": "$__lazy_storage_$_dotLayer",
+        "flags": 2,
+        "record_address": "0x103ccff04",
+        "type_reference_address": "0x1039b87fc"
+      },
+      {
+        "name": "unreadBadgeType",
+        "flags": 2,
+        "record_address": "0x103ccff10",
+        "type_reference_address": "0x1039bf6ae"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarItemContentGroup",
+    "kind": "struct",
+    "descriptor": "0x103ba2bac",
+    "field_descriptor": "0x103cd2fe8",
+    "fields": [
+      {
+        "name": "itemID",
+        "flags": 2,
+        "record_address": "0x103cd2ff8",
+        "type_reference_address": "0x1039bc748"
+      },
+      {
+        "name": "sourceWindowID",
+        "flags": 2,
+        "record_address": "0x103cd3004",
+        "type_reference_address": "0x1039bc7a8"
+      },
+      {
+        "name": "instances",
+        "flags": 2,
+        "record_address": "0x103cd3010",
+        "type_reference_address": "0x1039c4398"
+      }
+    ]
+  },
+  {
+    "name": "ADKModels.Profile",
+    "kind": "enum",
+    "descriptor": "0x103bb874c",
+    "field_descriptor": "0x103ce55d8",
+    "fields": [
+      {
+        "name": "custom",
+        "flags": 0,
+        "record_address": "0x103ce55e8",
+        "type_reference_address": "0x1039e7a1a"
+      },
+      {
+        "name": "initial",
+        "flags": 0,
+        "record_address": "0x103ce55f4",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "BaseAssets.ViewConstant.Space",
+    "kind": "enum",
+    "descriptor": "0x103bc75f0",
+    "field_descriptor": "0x103cef388",
+    "fields": []
+  },
+  {
+    "name": "BaseModels.SidebarItemContainer",
+    "kind": "struct",
+    "descriptor": "0x103bc9ac0",
+    "field_descriptor": "0x103cf2630",
+    "fields": [
+      {
+        "name": "containerType",
+        "flags": 2,
+        "record_address": "0x103cf2640",
+        "type_reference_address": "0x1039fc0d6"
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarItemContainer.ContainerType",
+    "kind": "enum",
+    "descriptor": "0x103bc9adc",
+    "field_descriptor": "0x103cf264c",
+    "fields": [
+      {
+        "name": "topApps",
+        "flags": 0,
+        "record_address": "0x103cf265c",
+        "type_reference_address": "0x1039fa8d4"
+      },
+      {
+        "name": "spaceItems",
+        "flags": 0,
+        "record_address": "0x103cf2668",
+        "type_reference_address": "0x1039f9450"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SpaceItemsCodingKeys",
+    "kind": "enum",
+    "descriptor": "0x103bc9b6c",
+    "field_descriptor": "0x103cf2674",
+    "fields": [
+      {
+        "name": "_0",
+        "flags": 0,
+        "record_address": "0x103cf2684",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.PrePILOT322ContainerType.SpaceItemsCodingKeys",
+    "kind": "enum",
+    "descriptor": "0x103bc9be4",
+    "field_descriptor": "0x103cf2718",
+    "fields": [
+      {
+        "name": "_0",
+        "flags": 0,
+        "record_address": "0x103cf2728",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarItemData",
+    "kind": "enum",
+    "descriptor": "0x103bc9c00",
+    "field_descriptor": "0x103cf276c",
+    "fields": [
+      {
+        "name": "tab",
+        "flags": 0,
+        "record_address": "0x103cf277c",
+        "type_reference_address": "0x1039fc2aa"
+      },
+      {
+        "name": "list",
+        "flags": 0,
+        "record_address": "0x103cf2788",
+        "type_reference_address": "0x1039fc2b0"
+      },
+      {
+        "name": "arcDocument",
+        "flags": 0,
+        "record_address": "0x103cf2794",
+        "type_reference_address": "0x1039fbf7a"
+      },
+      {
+        "name": "easel",
+        "flags": 0,
+        "record_address": "0x103cf27a0",
+        "type_reference_address": "0x1039fc010"
+      },
+      {
+        "name": "itemContainer",
+        "flags": 0,
+        "record_address": "0x103cf27ac",
+        "type_reference_address": "0x1039fc0d0"
+      },
+      {
+        "name": "welcomeToArc",
+        "flags": 0,
+        "record_address": "0x103cf27b8",
+        "type_reference_address": "0x1039fc2b6"
+      },
+      {
+        "name": "splitView",
+        "flags": 0,
+        "record_address": "0x103cf27c4",
+        "type_reference_address": "0x1039fc2bc"
+      },
+      {
+        "name": "sharedObject",
+        "flags": 0,
+        "record_address": "0x103cf27d0",
+        "type_reference_address": "0x1039fc2c2"
+      },
+      {
+        "name": "instantLinks",
+        "flags": 0,
+        "record_address": "0x103cf27dc",
+        "type_reference_address": "0x1039fc058"
+      },
+      {
+        "name": "tabGroup",
+        "flags": 0,
+        "record_address": "0x103cf27e8",
+        "type_reference_address": "0x1039fc2c8"
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarDataDecodingError",
+    "kind": "enum",
+    "descriptor": "0x103bc9c44",
+    "field_descriptor": "0x103cf2828",
+    "fields": [
+      {
+        "name": "deprecatedKeyDecoded",
+        "flags": 0,
+        "record_address": "0x103cf2838",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarContainerQuery",
+    "kind": "struct",
+    "descriptor": "0x103bca28c",
+    "field_descriptor": "0x103cf3080",
+    "fields": []
+  },
+  {
+    "name": "BaseModels.SidebarItemQuery",
+    "kind": "struct",
+    "descriptor": "0x103bca2a8",
+    "field_descriptor": "0x103cf3090",
+    "fields": [
+      {
+        "name": "itemID",
+        "flags": 0,
+        "record_address": "0x103cf30a0",
+        "type_reference_address": "0x1039fbe4c"
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarSpaceFoldersWithDepthQuery.SidebarItemWithDepth",
+    "kind": "struct",
+    "descriptor": "0x103bca338",
+    "field_descriptor": "0x103cf30f4",
+    "fields": [
+      {
+        "name": "id",
+        "flags": 0,
+        "record_address": "0x103cf3104",
+        "type_reference_address": "0x1039fbe4c"
+      },
+      {
+        "name": "sidebarItem",
+        "flags": 0,
+        "record_address": "0x103cf3110",
+        "type_reference_address": "0x1039fca3c"
+      },
+      {
+        "name": "depth",
+        "flags": 0,
+        "record_address": "0x103cf311c",
+        "type_reference_address": "0x1039f9090"
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarItemMutator",
+    "kind": "struct",
+    "descriptor": "0x103bca3c0",
+    "field_descriptor": "0x103cf3200",
+    "fields": [
+      {
+        "name": "callback",
+        "flags": 2,
+        "record_address": "0x103cf3210",
+        "type_reference_address": "0x1039fcdea"
+      },
+      {
+        "name": "description",
+        "flags": 2,
+        "record_address": "0x103cf321c",
+        "type_reference_address": "0x1039fa7bc"
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarContainer",
+    "kind": "struct",
+    "descriptor": "0x103bca630",
+    "field_descriptor": "0x103cf3530",
+    "fields": [
+      {
+        "name": "items",
+        "flags": 2,
+        "record_address": "0x103cf3540",
+        "type_reference_address": "0x1039fc94c"
+      },
+      {
+        "name": "spaces",
+        "flags": 2,
+        "record_address": "0x103cf354c",
+        "type_reference_address": "0x1039fca52"
+      },
+      {
+        "name": "topAppsContainerIDs",
+        "flags": 2,
+        "record_address": "0x103cf3558",
+        "type_reference_address": "0x1039fc96e"
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarContainerType",
+    "kind": "enum",
+    "descriptor": "0x103bca670",
+    "field_descriptor": "0x103cf35bc",
+    "fields": [
+      {
+        "name": "incognito",
+        "flags": 0,
+        "record_address": "0x103cf35cc",
+        "type_reference_address": "0x1039f9aa6"
+      },
+      {
+        "name": "littleBrowser",
+        "flags": 0,
+        "record_address": "0x103cf35d8",
+        "type_reference_address": "0x1039f9aa6"
+      },
+      {
+        "name": "standalone",
+        "flags": 0,
+        "record_address": "0x103cf35e4",
+        "type_reference_address": "0x1039f9aa6"
+      },
+      {
+        "name": "global",
+        "flags": 0,
+        "record_address": "0x103cf35f0",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarItem",
+    "kind": "struct",
+    "descriptor": "0x103bca8f0",
+    "field_descriptor": "0x103cf3b48",
+    "fields": [
+      {
+        "name": "id",
+        "flags": 2,
+        "record_address": "0x103cf3b58",
+        "type_reference_address": "0x1039fbe4c"
+      },
+      {
+        "name": "title",
+        "flags": 2,
+        "record_address": "0x103cf3b64",
+        "type_reference_address": "0x1039f9950"
+      },
+      {
+        "name": "childrenIds",
+        "flags": 2,
+        "record_address": "0x103cf3b70",
+        "type_reference_address": "0x1039f9640"
+      },
+      {
+        "name": "parentID",
+        "flags": 2,
+        "record_address": "0x103cf3b7c",
+        "type_reference_address": "0x1039fbebe"
+      },
+      {
+        "name": "data",
+        "flags": 2,
+        "record_address": "0x103cf3b88",
+        "type_reference_address": "0x1039fc2a4"
+      },
+      {
+        "name": "createdAt",
+        "flags": 2,
+        "record_address": "0x103cf3b94",
+        "type_reference_address": "0x1039fa824"
+      },
+      {
+        "name": "isUnread",
+        "flags": 2,
+        "record_address": "0x103cf3ba0",
+        "type_reference_address": "0x1039fa820"
+      },
+      {
+        "name": "originatingDevice",
+        "flags": 2,
+        "record_address": "0x103cf3bac",
+        "type_reference_address": "0x1039f9950"
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarItemContextType",
+    "kind": "enum",
+    "descriptor": "0x103bca93c",
+    "field_descriptor": "0x103cf3c28",
+    "fields": [
+      {
+        "name": "topApp",
+        "flags": 0,
+        "record_address": "0x103cf3c38",
+        "type_reference_address": null
+      },
+      {
+        "name": "pinned",
+        "flags": 0,
+        "record_address": "0x103cf3c44",
+        "type_reference_address": null
+      },
+      {
+        "name": "unpinned",
+        "flags": 0,
+        "record_address": "0x103cf3c50",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarItemDataType",
+    "kind": "enum",
+    "descriptor": "0x103bca958",
+    "field_descriptor": "0x103cf3c5c",
+    "fields": [
+      {
+        "name": "tab",
+        "flags": 0,
+        "record_address": "0x103cf3c6c",
+        "type_reference_address": null
+      },
+      {
+        "name": "list",
+        "flags": 0,
+        "record_address": "0x103cf3c78",
+        "type_reference_address": null
+      },
+      {
+        "name": "arcDocument",
+        "flags": 0,
+        "record_address": "0x103cf3c84",
+        "type_reference_address": null
+      },
+      {
+        "name": "easel",
+        "flags": 0,
+        "record_address": "0x103cf3c90",
+        "type_reference_address": null
+      },
+      {
+        "name": "itemContainer",
+        "flags": 0,
+        "record_address": "0x103cf3c9c",
+        "type_reference_address": null
+      },
+      {
+        "name": "welcomeToArc",
+        "flags": 0,
+        "record_address": "0x103cf3ca8",
+        "type_reference_address": null
+      },
+      {
+        "name": "splitView",
+        "flags": 0,
+        "record_address": "0x103cf3cb4",
+        "type_reference_address": null
+      },
+      {
+        "name": "sharedObject",
+        "flags": 0,
+        "record_address": "0x103cf3cc0",
+        "type_reference_address": null
+      },
+      {
+        "name": "instantLinks",
+        "flags": 0,
+        "record_address": "0x103cf3ccc",
+        "type_reference_address": null
+      },
+      {
+        "name": "tabGroup",
+        "flags": 0,
+        "record_address": "0x103cf3cd8",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarItemDictionaryCoding",
+    "kind": "struct",
+    "descriptor": "0x103bca974",
+    "field_descriptor": "0x103cf3ce4",
+    "fields": [
+      {
+        "name": "dictionary",
+        "flags": 2,
+        "record_address": "0x103cf3cf4",
+        "type_reference_address": "0x1039fc94c"
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SpaceModel",
+    "kind": "struct",
+    "descriptor": "0x103bcab30",
+    "field_descriptor": "0x103cf3ed8",
+    "fields": [
+      {
+        "name": "id",
+        "flags": 2,
+        "record_address": "0x103cf3ee8",
+        "type_reference_address": "0x1039f9450"
+      },
+      {
+        "name": "title",
+        "flags": 2,
+        "record_address": "0x103cf3ef4",
+        "type_reference_address": "0x1039f9950"
+      },
+      {
+        "name": "containerIDs",
+        "flags": 2,
+        "record_address": "0x103cf3f00",
+        "type_reference_address": "0x1039fd674"
+      },
+      {
+        "name": "customInfo",
+        "flags": 2,
+        "record_address": "0x103cf3f0c",
+        "type_reference_address": "0x1039fd6ec"
+      },
+      {
+        "name": "profile",
+        "flags": 2,
+        "record_address": "0x103cf3f18",
+        "type_reference_address": "0x1039fa8d4"
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SpaceModel.ContainerType",
+    "kind": "enum",
+    "descriptor": "0x103bcab4c",
+    "field_descriptor": "0x103cf3f24",
+    "fields": [
+      {
+        "name": "unpinned",
+        "flags": 0,
+        "record_address": "0x103cf3f34",
+        "type_reference_address": "0x1039fd6f8"
+      },
+      {
+        "name": "pinned",
+        "flags": 0,
+        "record_address": "0x103cf3f40",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SpaceModel.ContainerType.UnpinnedContainerType",
+    "kind": "enum",
+    "descriptor": "0x103bcab68",
+    "field_descriptor": "0x103cf3f4c",
+    "fields": [
+      {
+        "name": "desktop",
+        "flags": 0,
+        "record_address": "0x103cf3f5c",
+        "type_reference_address": "0x1039fd6fe"
+      },
+      {
+        "name": "shared",
+        "flags": 0,
+        "record_address": "0x103cf3f68",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SpaceModel.CustomInfo",
+    "kind": "struct",
+    "descriptor": "0x103bcab84",
+    "field_descriptor": "0x103cf3f74",
+    "fields": [
+      {
+        "name": "iconType",
+        "flags": 2,
+        "record_address": "0x103cf3f84",
+        "type_reference_address": "0x1039fd71c"
+      },
+      {
+        "name": "windowTheme",
+        "flags": 2,
+        "record_address": "0x103cf3f90",
+        "type_reference_address": "0x1039f8fea"
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SpaceModel.CodingKeys",
+    "kind": "enum",
+    "descriptor": "0x103bcabe8",
+    "field_descriptor": "0x103cf4050",
+    "fields": [
+      {
+        "name": "id",
+        "flags": 0,
+        "record_address": "0x103cf4060",
+        "type_reference_address": null
+      },
+      {
+        "name": "title",
+        "flags": 0,
+        "record_address": "0x103cf406c",
+        "type_reference_address": null
+      },
+      {
+        "name": "customInfo",
+        "flags": 0,
+        "record_address": "0x103cf4078",
+        "type_reference_address": null
+      },
+      {
+        "name": "profile",
+        "flags": 0,
+        "record_address": "0x103cf4084",
+        "type_reference_address": null
+      },
+      {
+        "name": "containerIDs",
+        "flags": 0,
+        "record_address": "0x103cf4090",
+        "type_reference_address": null
+      },
+      {
+        "name": "legacyContainerIDs",
+        "flags": 0,
+        "record_address": "0x103cf409c",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SplitViewPaneMenuOperation",
+    "kind": "enum",
+    "descriptor": "0x103bcae38",
+    "field_descriptor": "0x103cf42b0",
+    "fields": [
+      {
+        "name": "moveLeft",
+        "flags": 0,
+        "record_address": "0x103cf42c0",
+        "type_reference_address": null
+      },
+      {
+        "name": "moveRight",
+        "flags": 0,
+        "record_address": "0x103cf42cc",
+        "type_reference_address": null
+      },
+      {
+        "name": "addPaneLeft",
+        "flags": 0,
+        "record_address": "0x103cf42d8",
+        "type_reference_address": null
+      },
+      {
+        "name": "addPaneRight",
+        "flags": 0,
+        "record_address": "0x103cf42e4",
+        "type_reference_address": null
+      },
+      {
+        "name": "addPaneTop",
+        "flags": 0,
+        "record_address": "0x103cf42f0",
+        "type_reference_address": null
+      },
+      {
+        "name": "addPaneBottom",
+        "flags": 0,
+        "record_address": "0x103cf42fc",
+        "type_reference_address": null
+      },
+      {
+        "name": "separate",
+        "flags": 0,
+        "record_address": "0x103cf4308",
+        "type_reference_address": null
+      },
+      {
+        "name": "copyLink",
+        "flags": 0,
+        "record_address": "0x103cf4314",
+        "type_reference_address": null
+      },
+      {
+        "name": "flipLayoutOrientation",
+        "flags": 0,
+        "record_address": "0x103cf4320",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SplitViewPaneMenuOperationState",
+    "kind": "enum",
+    "descriptor": "0x103bcae54",
+    "field_descriptor": "0x103cf432c",
+    "fields": [
+      {
+        "name": "enabled",
+        "flags": 0,
+        "record_address": "0x103cf433c",
+        "type_reference_address": null
+      },
+      {
+        "name": "disabled",
+        "flags": 0,
+        "record_address": "0x103cf4348",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "BaseModels.SidebarItemBuilder",
+    "kind": "enum",
+    "descriptor": "0x103bcaec4",
+    "field_descriptor": "0x103cf43c0",
+    "fields": []
+  },
+  {
+    "name": "AnalyticsClient.AnalyticsEventProperties.CommandBarItemType",
+    "kind": "enum",
+    "descriptor": "0x103bd8df4",
+    "field_descriptor": "0x103d04db8",
+    "fields": [
+      {
+        "name": "chromium",
+        "flags": 0,
+        "record_address": "0x103d04dc8",
+        "type_reference_address": null
+      },
+      {
+        "name": "navigateWhatYouTyped",
+        "flags": 0,
+        "record_address": "0x103d04dd4",
+        "type_reference_address": null
+      },
+      {
+        "name": "searchWhatYouTyped",
+        "flags": 0,
+        "record_address": "0x103d04de0",
+        "type_reference_address": null
+      },
+      {
+        "name": "askGPTWhatYouTyped",
+        "flags": 0,
+        "record_address": "0x103d04dec",
+        "type_reference_address": null
+      },
+      {
+        "name": "tab",
+        "flags": 0,
+        "record_address": "0x103d04df8",
+        "type_reference_address": null
+      },
+      {
+        "name": "list",
+        "flags": 0,
+        "record_address": "0x103d04e04",
+        "type_reference_address": null
+      },
+      {
+        "name": "document",
+        "flags": 0,
+        "record_address": "0x103d04e10",
+        "type_reference_address": null
+      },
+      {
+        "name": "chromiumSearchWhatYouTyped",
+        "flags": 0,
+        "record_address": "0x103d04e1c",
+        "type_reference_address": null
+      },
+      {
+        "name": "chromiumSearchOtherEngine",
+        "flags": 0,
+        "record_address": "0x103d04e28",
+        "type_reference_address": null
+      },
+      {
+        "name": "chromiumNavigateWhatYouTyped",
+        "flags": 0,
+        "record_address": "0x103d04e34",
+        "type_reference_address": null
+      },
+      {
+        "name": "chromiumSearchSuggestion",
+        "flags": 0,
+        "record_address": "0x103d04e40",
+        "type_reference_address": null
+      },
+      {
+        "name": "chromiumSearchHistory",
+        "flags": 0,
+        "record_address": "0x103d04e4c",
+        "type_reference_address": null
+      },
+      {
+        "name": "chromiumNavigateSuggestion",
+        "flags": 0,
+        "record_address": "0x103d04e58",
+        "type_reference_address": null
+      },
+      {
+        "name": "chromiumHistory",
+        "flags": 0,
+        "record_address": "0x103d04e64",
+        "type_reference_address": null
+      },
+      {
+        "name": "chromiumSearchCalculatorAnswer",
+        "flags": 0,
+        "record_address": "0x103d04e70",
+        "type_reference_address": null
+      },
+      {
+        "name": "chromiumBookmark",
+        "flags": 0,
+        "record_address": "0x103d04e7c",
+        "type_reference_address": null
+      },
+      {
+        "name": "project",
+        "flags": 0,
+        "record_address": "0x103d04e88",
+        "type_reference_address": null
+      },
+      {
+        "name": "file",
+        "flags": 0,
+        "record_address": "0x103d04e94",
+        "type_reference_address": null
+      },
+      {
+        "name": "easel",
+        "flags": 0,
+        "record_address": "0x103d04ea0",
+        "type_reference_address": null
+      },
+      {
+        "name": "focusSpace",
+        "flags": 0,
+        "record_address": "0x103d04eac",
+        "type_reference_address": null
+      },
+      {
+        "name": "moveToSpace",
+        "flags": 0,
+        "record_address": "0x103d04eb8",
+        "type_reference_address": null
+      },
+      {
+        "name": "moveToTopApps",
+        "flags": 0,
+        "record_address": "0x103d04ec4",
+        "type_reference_address": null
+      },
+      {
+        "name": "removeFromTopApps",
+        "flags": 0,
+        "record_address": "0x103d04ed0",
+        "type_reference_address": null
+      },
+      {
+        "name": "moveToFolder",
+        "flags": 0,
+        "record_address": "0x103d04edc",
+        "type_reference_address": null
+      },
+      {
+        "name": "moveToNewFolder",
+        "flags": 0,
+        "record_address": "0x103d04ee8",
+        "type_reference_address": null
+      },
+      {
+        "name": "createNewFolder",
+        "flags": 0,
+        "record_address": "0x103d04ef4",
+        "type_reference_address": null
+      },
+      {
+        "name": "newVerticalSplitView",
+        "flags": 0,
+        "record_address": "0x103d04f00",
+        "type_reference_address": null
+      },
+      {
+        "name": "convertToHorizontalSplitView",
+        "flags": 0,
+        "record_address": "0x103d04f0c",
+        "type_reference_address": null
+      },
+      {
+        "name": "convertToVerticalSplitView",
+        "flags": 0,
+        "record_address": "0x103d04f18",
+        "type_reference_address": null
+      },
+      {
+        "name": "collapseAllFolders",
+        "flags": 0,
+        "record_address": "0x103d04f24",
+        "type_reference_address": null
+      },
+      {
+        "name": "expandAllFolders",
+        "flags": 0,
+        "record_address": "0x103d04f30",
+        "type_reference_address": null
+      },
+      {
+        "name": "undoAction",
+        "flags": 0,
+        "record_address": "0x103d04f3c",
+        "type_reference_address": null
+      },
+      {
+        "name": "redoAction",
+        "flags": 0,
+        "record_address": "0x103d04f48",
+        "type_reference_address": null
+      },
+      {
+        "name": "joinNextMeeting",
+        "flags": 0,
+        "record_address": "0x103d04f54",
+        "type_reference_address": null
+      },
+      {
+        "name": "toggleSidebar",
+        "flags": 0,
+        "record_address": "0x103d04f60",
+        "type_reference_address": null
+      },
+      {
+        "name": "renameCurrentTab",
+        "flags": 0,
+        "record_address": "0x103d04f6c",
+        "type_reference_address": null
+      },
+      {
+        "name": "duplicateCurrentTab",
+        "flags": 0,
+        "record_address": "0x103d04f78",
+        "type_reference_address": null
+      },
+      {
+        "name": "resetCurrentTab",
+        "flags": 0,
+        "record_address": "0x103d04f84",
+        "type_reference_address": null
+      },
+      {
+        "name": "replacePinnedTab",
+        "flags": 0,
+        "record_address": "0x103d04f90",
+        "type_reference_address": null
+      },
+      {
+        "name": "newV1Boost",
+        "flags": 0,
+        "record_address": "0x103d04f9c",
+        "type_reference_address": null
+      },
+      {
+        "name": "muteAllTabs",
+        "flags": 0,
+        "record_address": "0x103d04fa8",
+        "type_reference_address": null
+      },
+      {
+        "name": "unmuteAllTabs",
+        "flags": 0,
+        "record_address": "0x103d04fb4",
+        "type_reference_address": null
+      },
+      {
+        "name": "menuItem",
+        "flags": 0,
+        "record_address": "0x103d04fc0",
+        "type_reference_address": null
+      },
+      {
+        "name": "browserExtension",
+        "flags": 0,
+        "record_address": "0x103d04fcc",
+        "type_reference_address": null
+      },
+      {
+        "name": "newWebDocument",
+        "flags": 0,
+        "record_address": "0x103d04fd8",
+        "type_reference_address": null
+      },
+      {
+        "name": "topDomain",
+        "flags": 0,
+        "record_address": "0x103d04fe4",
+        "type_reference_address": null
+      },
+      {
+        "name": "openPreferencePane",
+        "flags": 0,
+        "record_address": "0x103d04ff0",
+        "type_reference_address": null
+      },
+      {
+        "name": "openFolder",
+        "flags": 0,
+        "record_address": "0x103d04ffc",
+        "type_reference_address": null
+      },
+      {
+        "name": "openPasswordManager",
+        "flags": 0,
+        "record_address": "0x103d05008",
+        "type_reference_address": null
+      },
+      {
+        "name": "openSearchSettings",
+        "flags": 0,
+        "record_address": "0x103d05014",
+        "type_reference_address": null
+      },
+      {
+        "name": "openAirTrafficControl",
+        "flags": 0,
+        "record_address": "0x103d05020",
+        "type_reference_address": null
+      },
+      {
+        "name": "newArcNote",
+        "flags": 0,
+        "record_address": "0x103d0502c",
+        "type_reference_address": null
+      },
+      {
+        "name": "addTopSplit",
+        "flags": 0,
+        "record_address": "0x103d05038",
+        "type_reference_address": null
+      },
+      {
+        "name": "addBottomSplit",
+        "flags": 0,
+        "record_address": "0x103d05044",
+        "type_reference_address": null
+      },
+      {
+        "name": "addLeftSplit",
+        "flags": 0,
+        "record_address": "0x103d05050",
+        "type_reference_address": null
+      },
+      {
+        "name": "addRightSplit",
+        "flags": 0,
+        "record_address": "0x103d0505c",
+        "type_reference_address": null
+      },
+      {
+        "name": "instantLinks",
+        "flags": 0,
+        "record_address": "0x103d05068",
+        "type_reference_address": null
+      },
+      {
+        "name": "browseForMe",
+        "flags": 0,
+        "record_address": "0x103d05074",
+        "type_reference_address": null
+      },
+      {
+        "name": "sendCurrentTabToDia",
+        "flags": 0,
+        "record_address": "0x103d05080",
+        "type_reference_address": null
+      },
+      {
+        "name": "askAssistant",
+        "flags": 0,
+        "record_address": "0x103d0508c",
+        "type_reference_address": null
+      },
+      {
+        "name": "assistantHistory",
+        "flags": 0,
+        "record_address": "0x103d05098",
+        "type_reference_address": null
+      },
+      {
+        "name": "extensionOmnibox",
+        "flags": 0,
+        "record_address": "0x103d050a4",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "AnalyticsClient.AnalyticsEventProperties.CommandBarItemSource",
+    "kind": "enum",
+    "descriptor": "0x103bd8e10",
+    "field_descriptor": "0x103d050b0",
+    "fields": [
+      {
+        "name": "sidebar",
+        "flags": 0,
+        "record_address": "0x103d050c0",
+        "type_reference_address": null
+      },
+      {
+        "name": "chromium",
+        "flags": 0,
+        "record_address": "0x103d050cc",
+        "type_reference_address": null
+      },
+      {
+        "name": "searchOrNavigateWhatYouTyped",
+        "flags": 0,
+        "record_address": "0x103d050d8",
+        "type_reference_address": null
+      },
+      {
+        "name": "documents",
+        "flags": 0,
+        "record_address": "0x103d050e4",
+        "type_reference_address": null
+      },
+      {
+        "name": "easels",
+        "flags": 0,
+        "record_address": "0x103d050f0",
+        "type_reference_address": null
+      },
+      {
+        "name": "typeTravel",
+        "flags": 0,
+        "record_address": "0x103d050fc",
+        "type_reference_address": null
+      },
+      {
+        "name": "topDomains",
+        "flags": 0,
+        "record_address": "0x103d05108",
+        "type_reference_address": null
+      },
+      {
+        "name": "askGPT",
+        "flags": 0,
+        "record_address": "0x103d05114",
+        "type_reference_address": null
+      },
+      {
+        "name": "instantLinks",
+        "flags": 0,
+        "record_address": "0x103d05120",
+        "type_reference_address": null
+      },
+      {
+        "name": "recentAssistantQueries",
+        "flags": 0,
+        "record_address": "0x103d0512c",
+        "type_reference_address": null
+      },
+      {
+        "name": "assistantSuggestions",
+        "flags": 0,
+        "record_address": "0x103d05138",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "AnalyticsClient.AnalyticsEventProperties.LinkRoutingRuleChangeType",
+    "kind": "enum",
+    "descriptor": "0x103bd99c4",
+    "field_descriptor": "0x103d07884",
+    "fields": [
+      {
+        "name": "added",
+        "flags": 0,
+        "record_address": "0x103d07894",
+        "type_reference_address": null
+      },
+      {
+        "name": "removed",
+        "flags": 0,
+        "record_address": "0x103d078a0",
+        "type_reference_address": null
+      },
+      {
+        "name": "changed",
+        "flags": 0,
+        "record_address": "0x103d078ac",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.AppSidebarReducerState",
+    "kind": "struct",
+    "descriptor": "0x103beafc0",
+    "field_descriptor": "0x103d17e5c",
+    "fields": [
+      {
+        "name": "containers",
+        "flags": 2,
+        "record_address": "0x103d17e6c",
+        "type_reference_address": "0x103a5c85e"
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreMutationContextWork",
+    "kind": "struct",
+    "descriptor": "0x103beb000",
+    "field_descriptor": "0x103d17e94",
+    "fields": [
+      {
+        "name": "work",
+        "flags": 0,
+        "record_address": "0x103d17ea4",
+        "type_reference_address": "0x103a5ca88"
+      },
+      {
+        "name": "shouldAssertOnFailure",
+        "flags": 0,
+        "record_address": "0x103d17eb0",
+        "type_reference_address": "0x103a5caa2"
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreMutationContext",
+    "kind": "struct",
+    "descriptor": "0x103beb01c",
+    "field_descriptor": "0x103d17ebc",
+    "fields": []
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreMutationContext.SpaceCreationOptions",
+    "kind": "struct",
+    "descriptor": "0x103beb038",
+    "field_descriptor": "0x103d17ecc",
+    "fields": [
+      {
+        "name": "id",
+        "flags": 2,
+        "record_address": "0x103d17edc",
+        "type_reference_address": "0x103a5c94c"
+      },
+      {
+        "name": "title",
+        "flags": 2,
+        "record_address": "0x103d17ee8",
+        "type_reference_address": "0x103a5caac"
+      },
+      {
+        "name": "containerTypes",
+        "flags": 2,
+        "record_address": "0x103d17ef4",
+        "type_reference_address": "0x103a5cab2"
+      },
+      {
+        "name": "customInfo",
+        "flags": 2,
+        "record_address": "0x103d17f00",
+        "type_reference_address": "0x103a5cac0"
+      },
+      {
+        "name": "profile",
+        "flags": 2,
+        "record_address": "0x103d17f0c",
+        "type_reference_address": "0x103a5cac6"
+      },
+      {
+        "name": "machineID",
+        "flags": 2,
+        "record_address": "0x103d17f18",
+        "type_reference_address": "0x103a5cacc"
+      },
+      {
+        "name": "insertionIndex",
+        "flags": 2,
+        "record_address": "0x103d17f24",
+        "type_reference_address": "0x103a5ca7e"
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreStub",
+    "kind": "class",
+    "descriptor": "0x103beb054",
+    "field_descriptor": "0x103d17f30",
+    "fields": []
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreFailing",
+    "kind": "class",
+    "descriptor": "0x103beb0e0",
+    "field_descriptor": "0x103d17f40",
+    "fields": []
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreTransactionSourceIdentifier",
+    "kind": "struct",
+    "descriptor": "0x103beb184",
+    "field_descriptor": "0x103d17f60",
+    "fields": [
+      {
+        "name": "rawValue",
+        "flags": 0,
+        "record_address": "0x103d17f70",
+        "type_reference_address": "0x103a5cacc"
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreChangeSet",
+    "kind": "struct",
+    "descriptor": "0x103beb1a0",
+    "field_descriptor": "0x103d17f7c",
+    "fields": [
+      {
+        "name": "sourceIdentifier",
+        "flags": 0,
+        "record_address": "0x103d17f8c",
+        "type_reference_address": "0x103a5cc36"
+      },
+      {
+        "name": "mutations",
+        "flags": 0,
+        "record_address": "0x103d17f98",
+        "type_reference_address": "0x103a5cc3e"
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreUpdate",
+    "kind": "enum",
+    "descriptor": "0x103beb1bc",
+    "field_descriptor": "0x103d17fa4",
+    "fields": [
+      {
+        "name": "initial",
+        "flags": 0,
+        "record_address": "0x103d17fb4",
+        "type_reference_address": "0x103a5cc48"
+      },
+      {
+        "name": "changed",
+        "flags": 0,
+        "record_address": "0x103d17fc0",
+        "type_reference_address": "0x103a5cc50"
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreDependencyKey",
+    "kind": "struct",
+    "descriptor": "0x103beb1f8",
+    "field_descriptor": "0x103d17fcc",
+    "fields": []
+  },
+  {
+    "name": "SidebarDataStore.SidebarContainerWrapper",
+    "kind": "struct",
+    "descriptor": "0x103beb214",
+    "field_descriptor": "0x103d17fdc",
+    "fields": [
+      {
+        "name": "container",
+        "flags": 2,
+        "record_address": "0x103d17fec",
+        "type_reference_address": "0x103a5cc70"
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreImpl",
+    "kind": "class",
+    "descriptor": "0x103beb230",
+    "field_descriptor": "0x103d17ff8",
+    "fields": [
+      {
+        "name": "model",
+        "flags": 2,
+        "record_address": "0x103d18008",
+        "type_reference_address": "0x103a5cc8e"
+      },
+      {
+        "name": "openTransaction",
+        "flags": 2,
+        "record_address": "0x103d18014",
+        "type_reference_address": "0x103a5cc94"
+      },
+      {
+        "name": "updatePassthrough",
+        "flags": 0,
+        "record_address": "0x103d18020",
+        "type_reference_address": "0x103a5cc76"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarDataStoreTransaction",
+    "kind": "class",
+    "descriptor": "0x103beb274",
+    "field_descriptor": "0x103d1802c",
+    "fields": [
+      {
+        "name": "initialState",
+        "flags": 0,
+        "record_address": "0x103d1803c",
+        "type_reference_address": "0x103a5cc8e"
+      },
+      {
+        "name": "currentState",
+        "flags": 2,
+        "record_address": "0x103d18048",
+        "type_reference_address": "0x103a5cc8e"
+      },
+      {
+        "name": "mutations",
+        "flags": 2,
+        "record_address": "0x103d18054",
+        "type_reference_address": "0x103a5cc3e"
+      },
+      {
+        "name": "didDirectlyMutateContainer",
+        "flags": 2,
+        "record_address": "0x103d18060",
+        "type_reference_address": "0x103a5caa2"
+      },
+      {
+        "name": "didAddOrRemoveContainers",
+        "flags": 2,
+        "record_address": "0x103d1806c",
+        "type_reference_address": "0x103a5caa2"
+      },
+      {
+        "name": "sourceIdentifier",
+        "flags": 0,
+        "record_address": "0x103d18078",
+        "type_reference_address": "0x103a5cc36"
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreMutationError",
+    "kind": "enum",
+    "descriptor": "0x103beb338",
+    "field_descriptor": "0x103d18084",
+    "fields": [
+      {
+        "name": "missingContainer",
+        "flags": 0,
+        "record_address": "0x103d18094",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreModel",
+    "kind": "struct",
+    "descriptor": "0x103beb354",
+    "field_descriptor": "0x103d180a0",
+    "fields": [
+      {
+        "name": "containers",
+        "flags": 2,
+        "record_address": "0x103d180b0",
+        "type_reference_address": "0x103a5c85e"
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreContainerQuery",
+    "kind": "struct",
+    "descriptor": "0x103beb3bc",
+    "field_descriptor": "0x103d180cc",
+    "fields": [
+      {
+        "name": "query",
+        "flags": 0,
+        "record_address": "0x103d180dc",
+        "type_reference_address": "0x103a5cc48"
+      },
+      {
+        "name": "containerType",
+        "flags": 0,
+        "record_address": "0x103d180e8",
+        "type_reference_address": "0x103a5cd90"
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreLiveQuery",
+    "kind": "class",
+    "descriptor": "0x103beb3f8",
+    "field_descriptor": "0x103d180f4",
+    "fields": [
+      {
+        "name": "query",
+        "flags": 0,
+        "record_address": "0x103d18104",
+        "type_reference_address": "0x103a5cc48"
+      },
+      {
+        "name": "model",
+        "flags": 0,
+        "record_address": "0x103d18110",
+        "type_reference_address": "0x103a5cd9c"
+      }
+    ]
+  },
+  {
+    "name": "SidebarDataStore.SidebarDataStoreInlineQuery",
+    "kind": "struct",
+    "descriptor": "0x103beb464",
+    "field_descriptor": "0x103d1811c",
+    "fields": [
+      {
+        "name": "query",
+        "flags": 0,
+        "record_address": "0x103d1812c",
+        "type_reference_address": "0x103a5cda4"
+      }
+    ]
+  },
+  {
+    "name": "Archive.AutoArchiveInactiveThreshold",
+    "kind": "enum",
+    "descriptor": "0x103beb99c",
+    "field_descriptor": "0x103d186e0",
+    "fields": [
+      {
+        "name": "twentySeconds",
+        "flags": 0,
+        "record_address": "0x103d186f0",
+        "type_reference_address": null
+      },
+      {
+        "name": "oneHour",
+        "flags": 0,
+        "record_address": "0x103d186fc",
+        "type_reference_address": null
+      },
+      {
+        "name": "sixHours",
+        "flags": 0,
+        "record_address": "0x103d18708",
+        "type_reference_address": null
+      },
+      {
+        "name": "twelveHours",
+        "flags": 0,
+        "record_address": "0x103d18714",
+        "type_reference_address": null
+      },
+      {
+        "name": "twentyFourHours",
+        "flags": 0,
+        "record_address": "0x103d18720",
+        "type_reference_address": null
+      },
+      {
+        "name": "sevenDays",
+        "flags": 0,
+        "record_address": "0x103d1872c",
+        "type_reference_address": null
+      },
+      {
+        "name": "thirtyDays",
+        "flags": 0,
+        "record_address": "0x103d18738",
+        "type_reference_address": null
+      },
+      {
+        "name": "never",
+        "flags": 0,
+        "record_address": "0x103d18744",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "Archive.AutoArchiveTimeThresholdsPerProfile",
+    "kind": "struct",
+    "descriptor": "0x103beb9d4",
+    "field_descriptor": "0x103d18760",
+    "fields": [
+      {
+        "name": "thresholds",
+        "flags": 0,
+        "record_address": "0x103d18770",
+        "type_reference_address": "0x103a5dca8"
+      }
+    ]
+  },
+  {
+    "name": "ImportFeature.BookmarksSelection.State.Profile",
+    "kind": "struct",
+    "descriptor": "0x103bee0d8",
+    "field_descriptor": "0x103d1afd8",
+    "fields": [
+      {
+        "name": "sourceProfile",
+        "flags": 2,
+        "record_address": "0x103d1afe8",
+        "type_reference_address": "0x103a6794c"
+      },
+      {
+        "name": "bookmarks",
+        "flags": 2,
+        "record_address": "0x103d1aff4",
+        "type_reference_address": "0x103a67a50"
+      }
+    ]
+  },
+  {
+    "name": "ImportFeature.BookmarksSelection.Action.ProfileAction",
+    "kind": "enum",
+    "descriptor": "0x103bee110",
+    "field_descriptor": "0x103d1b034",
+    "fields": [
+      {
+        "name": "onBookmarkSelected",
+        "flags": 0,
+        "record_address": "0x103d1b044",
+        "type_reference_address": "0x103a676ac"
+      },
+      {
+        "name": "onFolderExpanded",
+        "flags": 0,
+        "record_address": "0x103d1b050",
+        "type_reference_address": "0x103a676ac"
+      }
+    ]
+  },
+  {
+    "name": "SidebarSyncCloudKit.SidebarItemWithFaviconData",
+    "kind": "struct",
+    "descriptor": "0x103bf0ca0",
+    "field_descriptor": "0x103d1d77c",
+    "fields": [
+      {
+        "name": "item",
+        "flags": 0,
+        "record_address": "0x103d1d78c",
+        "type_reference_address": "0x103a70798"
+      },
+      {
+        "name": "faviconData",
+        "flags": 0,
+        "record_address": "0x103d1d798",
+        "type_reference_address": "0x103a7079e"
+      }
+    ]
+  },
+  {
+    "name": "SidebarSyncCloudKit.SidebarItemDecoder",
+    "kind": "struct",
+    "descriptor": "0x103bf0e28",
+    "field_descriptor": "0x103d1d8d0",
+    "fields": [
+      {
+        "name": "decodeRecordToSidebarItem",
+        "flags": 2,
+        "record_address": "0x103d1d8e0",
+        "type_reference_address": "0x103a70a5a"
+      },
+      {
+        "name": "decodeRecordFaviconPNGData",
+        "flags": 2,
+        "record_address": "0x103d1d8ec",
+        "type_reference_address": "0x103a70a74"
+      },
+      {
+        "name": "encodeSidebarItemFaviconPNGData",
+        "flags": 2,
+        "record_address": "0x103d1d8f8",
+        "type_reference_address": "0x103a70a8a"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarItemJSON",
+    "kind": "struct",
+    "descriptor": "0x103bf0e4c",
+    "field_descriptor": "0x103d1d904",
+    "fields": [
+      {
+        "name": "data",
+        "flags": 0,
+        "record_address": "0x103d1d914",
+        "type_reference_address": "0x103a70ab2"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarItemJSON.CodingKeys",
+    "kind": "enum",
+    "descriptor": "0x103bf0e68",
+    "field_descriptor": "0x103d1d93c",
+    "fields": [
+      {
+        "name": "data",
+        "flags": 0,
+        "record_address": "0x103d1d94c",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarItemJSON.DataJSON",
+    "kind": "struct",
+    "descriptor": "0x103bf0e84",
+    "field_descriptor": "0x103d1d920",
+    "fields": [
+      {
+        "name": "tab",
+        "flags": 0,
+        "record_address": "0x103d1d930",
+        "type_reference_address": "0x103a70ac6"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarItemJSON.DataJSON.CodingKeys",
+    "kind": "enum",
+    "descriptor": "0x103bf0ea0",
+    "field_descriptor": "0x103d1d974",
+    "fields": [
+      {
+        "name": "tab",
+        "flags": 0,
+        "record_address": "0x103d1d984",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarItemJSON.DataJSON.TabJSON",
+    "kind": "struct",
+    "descriptor": "0x103bf0ebc",
+    "field_descriptor": "0x103d1d958",
+    "fields": [
+      {
+        "name": "savedFaviconPNGData",
+        "flags": 0,
+        "record_address": "0x103d1d968",
+        "type_reference_address": "0x103a7079e"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarItemJSON.DataJSON.TabJSON.CodingKeys",
+    "kind": "enum",
+    "descriptor": "0x103bf0ed8",
+    "field_descriptor": "0x103d1d990",
+    "fields": [
+      {
+        "name": "savedFaviconPNGData",
+        "flags": 0,
+        "record_address": "0x103d1d9a0",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "AuthFeature.SplitView",
+    "kind": "struct",
+    "descriptor": "0x103bf3180",
+    "field_descriptor": "0x103d20230",
+    "fields": [
+      {
+        "name": "alignment",
+        "flags": 0,
+        "record_address": "0x103d20240",
+        "type_reference_address": "0x103a845e4"
+      },
+      {
+        "name": "leftContent",
+        "flags": 0,
+        "record_address": "0x103d2024c",
+        "type_reference_address": "0x103a7752c"
+      },
+      {
+        "name": "rightContent",
+        "flags": 0,
+        "record_address": "0x103d20258",
+        "type_reference_address": "0x103a7716a"
+      }
+    ]
+  },
+  {
+    "name": "SharableObjectsFeature.SidebarItemView",
+    "kind": "struct",
+    "descriptor": "0x103c0986c",
+    "field_descriptor": "0x103d32644",
+    "fields": [
+      {
+        "name": "sidebarItem",
+        "flags": 0,
+        "record_address": "0x103d32654",
+        "type_reference_address": "0x103aad696"
+      },
+      {
+        "name": "allItems",
+        "flags": 0,
+        "record_address": "0x103d32660",
+        "type_reference_address": "0x103aadd14"
+      },
+      {
+        "name": "colorPalette",
+        "flags": 0,
+        "record_address": "0x103d3266c",
+        "type_reference_address": "0x103aadb38"
+      },
+      {
+        "name": "onClickTab",
+        "flags": 0,
+        "record_address": "0x103d32678",
+        "type_reference_address": "0x103aadd28"
+      },
+      {
+        "name": "onClickSplitView",
+        "flags": 0,
+        "record_address": "0x103d32684",
+        "type_reference_address": "0x103aadd30"
+      },
+      {
+        "name": "loadedFavicons",
+        "flags": 0,
+        "record_address": "0x103d32690",
+        "type_reference_address": "0x103aad554"
+      },
+      {
+        "name": "_expandedTabs",
+        "flags": 2,
+        "record_address": "0x103d3269c",
+        "type_reference_address": "0x103aadd38"
+      },
+      {
+        "name": "_colorScheme",
+        "flags": 2,
+        "record_address": "0x103d326a8",
+        "type_reference_address": "0x103aadb46"
+      }
+    ]
+  },
+  {
+    "name": "SharableObjectsFeature.SidebarItemView.ChildItemState",
+    "kind": "struct",
+    "descriptor": "0x103c0990c",
+    "field_descriptor": "0x103d32800",
+    "fields": [
+      {
+        "name": "itemID",
+        "flags": 0,
+        "record_address": "0x103d32810",
+        "type_reference_address": "0x103aad818"
+      },
+      {
+        "name": "iconType",
+        "flags": 0,
+        "record_address": "0x103d3281c",
+        "type_reference_address": "0x103aaf826"
+      },
+      {
+        "name": "title",
+        "flags": 0,
+        "record_address": "0x103d32828",
+        "type_reference_address": "0x103aad626"
+      }
+    ]
+  },
+  {
+    "name": "LinkRouting.LinkRoutingClient",
+    "kind": "struct",
+    "descriptor": "0x103c0a064",
+    "field_descriptor": "0x103d32da0",
+    "fields": [
+      {
+        "name": "currentState",
+        "flags": 2,
+        "record_address": "0x103d32db0",
+        "type_reference_address": "0x103ab436c"
+      },
+      {
+        "name": "stateStream",
+        "flags": 2,
+        "record_address": "0x103d32dbc",
+        "type_reference_address": "0x103ab4374"
+      },
+      {
+        "name": "wasStateRestored",
+        "flags": 2,
+        "record_address": "0x103d32dc8",
+        "type_reference_address": "0x103ab4382"
+      },
+      {
+        "name": "addRule",
+        "flags": 2,
+        "record_address": "0x103d32dd4",
+        "type_reference_address": "0x103ab4388"
+      },
+      {
+        "name": "updateDefaultDestination",
+        "flags": 2,
+        "record_address": "0x103d32de0",
+        "type_reference_address": "0x103ab4390"
+      },
+      {
+        "name": "updateState",
+        "flags": 2,
+        "record_address": "0x103d32dec",
+        "type_reference_address": "0x103ab4398"
+      }
+    ]
+  },
+  {
+    "name": "LinkRouting.LinkRoutingClient.State",
+    "kind": "struct",
+    "descriptor": "0x103c0a080",
+    "field_descriptor": "0x103d32df8",
+    "fields": [
+      {
+        "name": "rules",
+        "flags": 2,
+        "record_address": "0x103d32e08",
+        "type_reference_address": "0x103ab475c"
+      },
+      {
+        "name": "defaultDestination",
+        "flags": 2,
+        "record_address": "0x103d32e14",
+        "type_reference_address": "0x103ab43ac"
+      }
+    ]
+  },
+  {
+    "name": "LinkRouting.LinkRoutingClientImpl",
+    "kind": "class",
+    "descriptor": "0x103c0a09c",
+    "field_descriptor": "0x103d32e20",
+    "fields": [
+      {
+        "name": "dataStore",
+        "flags": 0,
+        "record_address": "0x103d32e30",
+        "type_reference_address": "0x103ab43b8"
+      },
+      {
+        "name": "stateSubject",
+        "flags": 0,
+        "record_address": "0x103d32e3c",
+        "type_reference_address": "0x103ab43be"
+      },
+      {
+        "name": "persistenceSubscription",
+        "flags": 2,
+        "record_address": "0x103d32e48",
+        "type_reference_address": "0x103ab43d0"
+      },
+      {
+        "name": "stateWasRestored",
+        "flags": 2,
+        "record_address": "0x103d32e54",
+        "type_reference_address": "0x103ab43d8"
+      }
+    ]
+  },
+  {
+    "name": "LinkRouting.LinkRoutingClientDataStore",
+    "kind": "struct",
+    "descriptor": "0x103c0a0d8",
+    "field_descriptor": "0x103d32e60",
+    "fields": [
+      {
+        "name": "readSync",
+        "flags": 2,
+        "record_address": "0x103d32e70",
+        "type_reference_address": "0x103ab43dc"
+      },
+      {
+        "name": "saveAsync",
+        "flags": 2,
+        "record_address": "0x103d32e7c",
+        "type_reference_address": "0x103ab43e6"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.ProfileSettingSection",
+    "kind": "struct",
+    "descriptor": "0x103c0e3c4",
+    "field_descriptor": "0x103d3692c",
+    "fields": [
+      {
+        "name": "_isEnabled",
+        "flags": 2,
+        "record_address": "0x103d3693c",
+        "type_reference_address": "0x103add346"
+      },
+      {
+        "name": "title",
+        "flags": 0,
+        "record_address": "0x103d36948",
+        "type_reference_address": "0x103ab6c6a"
+      },
+      {
+        "name": "content",
+        "flags": 0,
+        "record_address": "0x103d36954",
+        "type_reference_address": "0x103ab6b1e"
+      },
+      {
+        "name": "infoTooltip",
+        "flags": 2,
+        "record_address": "0x103d36960",
+        "type_reference_address": "0x103ab6dcc"
+      },
+      {
+        "name": "infoAction",
+        "flags": 2,
+        "record_address": "0x103d3696c",
+        "type_reference_address": "0x103ae1eee"
+      }
+    ]
+  },
+  {
+    "name": "WindowContents.ContentToolbarInteractionTracker.HoverInteraction.SplitViewAction",
+    "kind": "enum",
+    "descriptor": "0x103c102f0",
+    "field_descriptor": "0x103d3842c",
+    "fields": [
+      {
+        "name": "separate",
+        "flags": 0,
+        "record_address": "0x103d3843c",
+        "type_reference_address": null
+      },
+      {
+        "name": "close",
+        "flags": 0,
+        "record_address": "0x103d38448",
+        "type_reference_address": null
+      },
+      {
+        "name": "addHorizontal",
+        "flags": 0,
+        "record_address": "0x103d38454",
+        "type_reference_address": null
+      },
+      {
+        "name": "addVertical",
+        "flags": 0,
+        "record_address": "0x103d38460",
+        "type_reference_address": null
+      },
+      {
+        "name": "move",
+        "flags": 0,
+        "record_address": "0x103d3846c",
+        "type_reference_address": null
+      },
+      {
+        "name": "copyLink",
+        "flags": 0,
+        "record_address": "0x103d38478",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "WindowContents.SplitViewState",
+    "kind": "struct",
+    "descriptor": "0x103c104f8",
+    "field_descriptor": "0x103d385ec",
+    "fields": [
+      {
+        "name": "windowContentIDs",
+        "flags": 2,
+        "record_address": "0x103d385fc",
+        "type_reference_address": "0x103afc376"
+      },
+      {
+        "name": "layoutOrientation",
+        "flags": 2,
+        "record_address": "0x103d38608",
+        "type_reference_address": "0x103afc38c"
+      },
+      {
+        "name": "interactionState",
+        "flags": 2,
+        "record_address": "0x103d38614",
+        "type_reference_address": "0x103afc3a0"
+      },
+      {
+        "name": "focusedContentID",
+        "flags": 2,
+        "record_address": "0x103d38620",
+        "type_reference_address": "0x103afc0c0"
+      }
+    ]
+  },
+  {
+    "name": "WindowContents.SplitViewState.LayoutOrientation",
+    "kind": "enum",
+    "descriptor": "0x103c10514",
+    "field_descriptor": "0x103d3862c",
+    "fields": [
+      {
+        "name": "horizontal",
+        "flags": 0,
+        "record_address": "0x103d3863c",
+        "type_reference_address": null
+      },
+      {
+        "name": "vertical",
+        "flags": 0,
+        "record_address": "0x103d38648",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "WindowContents.SplitViewState.InteractionState",
+    "kind": "struct",
+    "descriptor": "0x103c10530",
+    "field_descriptor": "0x103d38654",
+    "fields": [
+      {
+        "name": "activePaneEditStyles",
+        "flags": 2,
+        "record_address": "0x103d38664",
+        "type_reference_address": "0x103afc3a6"
+      },
+      {
+        "name": "proposedWindowContentDropTarget",
+        "flags": 2,
+        "record_address": "0x103d38670",
+        "type_reference_address": "0x103afc3b0"
+      },
+      {
+        "name": "isResizingPanes",
+        "flags": 2,
+        "record_address": "0x103d3867c",
+        "type_reference_address": "0x103afc0d4"
+      }
+    ]
+  },
+  {
+    "name": "WindowContents.SplitViewState.InteractionState.InteractivePaneEditStyle",
+    "kind": "enum",
+    "descriptor": "0x103c1054c",
+    "field_descriptor": "0x103d38688",
+    "fields": [
+      {
+        "name": "dragAndDrop",
+        "flags": 0,
+        "record_address": "0x103d38698",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "WindowContents.WindowContents.State.SplitViewState_Legacy",
+    "kind": "struct",
+    "descriptor": "0x103c10a90",
+    "field_descriptor": "0x103d391e0",
+    "fields": [
+      {
+        "name": "windowContentIDs",
+        "flags": 2,
+        "record_address": "0x103d391f0",
+        "type_reference_address": "0x103afc376"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarItemCodingKeys",
+    "kind": "enum",
+    "descriptor": "0x103c10bf0",
+    "field_descriptor": "0x103d39250",
+    "fields": [
+      {
+        "name": "_0",
+        "flags": 0,
+        "record_address": "0x103d39260",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "SidebarItemUI.TabTitleSourceInfo",
+    "kind": "class",
+    "descriptor": "0x103c117a0",
+    "field_descriptor": "0x103d39eec",
+    "fields": [
+      {
+        "name": "customTitle",
+        "flags": 0,
+        "record_address": "0x103d39efc",
+        "type_reference_address": "0x103b02ad4"
+      },
+      {
+        "name": "webContentTitle",
+        "flags": 0,
+        "record_address": "0x103d39f08",
+        "type_reference_address": "0x103b02ad4"
+      },
+      {
+        "name": "webContentURL",
+        "flags": 0,
+        "record_address": "0x103d39f14",
+        "type_reference_address": "0x103b02a88"
+      },
+      {
+        "name": "savedTitle",
+        "flags": 0,
+        "record_address": "0x103d39f20",
+        "type_reference_address": "0x103b02ad4"
+      },
+      {
+        "name": "savedURL",
+        "flags": 0,
+        "record_address": "0x103d39f2c",
+        "type_reference_address": "0x103b02a88"
+      },
+      {
+        "name": "tidyTabTitles",
+        "flags": 0,
+        "record_address": "0x103d39f38",
+        "type_reference_address": "0x103b02ada"
+      }
+    ]
+  },
+  {
+    "name": "SidebarItemUI.DragReceivedEvent",
+    "kind": "enum",
+    "descriptor": "0x103c117e8",
+    "field_descriptor": "0x103d39f44",
+    "fields": [
+      {
+        "name": "dragEnter",
+        "flags": 0,
+        "record_address": "0x103d39f54",
+        "type_reference_address": "0x103b02b02"
+      },
+      {
+        "name": "dragOver",
+        "flags": 0,
+        "record_address": "0x103d39f60",
+        "type_reference_address": "0x103b02b02"
+      },
+      {
+        "name": "dragExit",
+        "flags": 0,
+        "record_address": "0x103d39f6c",
+        "type_reference_address": "0x103b02b02"
+      }
+    ]
+  },
+  {
+    "name": "SidebarItemUI.TabSplitViewPosition",
+    "kind": "enum",
+    "descriptor": "0x103c11804",
+    "field_descriptor": "0x103d39f78",
+    "fields": [
+      {
+        "name": "left",
+        "flags": 0,
+        "record_address": "0x103d39f88",
+        "type_reference_address": null
+      },
+      {
+        "name": "right",
+        "flags": 0,
+        "record_address": "0x103d39f94",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "SidebarItemUI.TablistItemDragReceivedEvent",
+    "kind": "struct",
+    "descriptor": "0x103c11820",
+    "field_descriptor": "0x103d39fa0",
+    "fields": [
+      {
+        "name": "item",
+        "flags": 0,
+        "record_address": "0x103d39fb0",
+        "type_reference_address": "0x103b02b16"
+      },
+      {
+        "name": "event",
+        "flags": 0,
+        "record_address": "0x103d39fbc",
+        "type_reference_address": "0x103b02afc"
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBar",
+    "kind": "struct",
+    "descriptor": "0x103c11ffc",
+    "field_descriptor": "0x103d3ad8c",
+    "fields": [
+      {
+        "name": "_analyticsClient",
+        "flags": 2,
+        "record_address": "0x103d3ad9c",
+        "type_reference_address": "0x103b03b9e"
+      },
+      {
+        "name": "_adkClient",
+        "flags": 2,
+        "record_address": "0x103d3ada8",
+        "type_reference_address": "0x103b03bac"
+      },
+      {
+        "name": "_searchClient",
+        "flags": 2,
+        "record_address": "0x103d3adb4",
+        "type_reference_address": "0x103b03a32"
+      },
+      {
+        "name": "_commandBarInteractionPerformanceTracker",
+        "flags": 2,
+        "record_address": "0x103d3adc0",
+        "type_reference_address": "0x103b03bba"
+      },
+      {
+        "name": "_aseConfigurationClient",
+        "flags": 2,
+        "record_address": "0x103d3adcc",
+        "type_reference_address": "0x103b03a08"
+      },
+      {
+        "name": "delegatePassthrough",
+        "flags": 0,
+        "record_address": "0x103d3add8",
+        "type_reference_address": "0x103b035f2"
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBarSearchSuggestionsPrivacy",
+    "kind": "struct",
+    "descriptor": "0x103c123f4",
+    "field_descriptor": "0x103d3b408",
+    "fields": [
+      {
+        "name": "_userDefaultsClient",
+        "flags": 2,
+        "record_address": "0x103d3b418",
+        "type_reference_address": "0x103b049f4"
+      },
+      {
+        "name": "_workspaceClient",
+        "flags": 2,
+        "record_address": "0x103d3b424",
+        "type_reference_address": "0x103b04416"
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBarSearchSuggestionsPrivacy.Action",
+    "kind": "enum",
+    "descriptor": "0x103c12410",
+    "field_descriptor": "0x103d3b430",
+    "fields": [
+      {
+        "name": "onClickManageSettings",
+        "flags": 0,
+        "record_address": "0x103d3b440",
+        "type_reference_address": null
+      },
+      {
+        "name": "onClickDismiss",
+        "flags": 0,
+        "record_address": "0x103d3b44c",
+        "type_reference_address": null
+      },
+      {
+        "name": "onClickPrivacyPolicy",
+        "flags": 0,
+        "record_address": "0x103d3b458",
+        "type_reference_address": null
+      },
+      {
+        "name": "delegate",
+        "flags": 0,
+        "record_address": "0x103d3b464",
+        "type_reference_address": "0x103b04424"
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBarSearchSuggestionsPrivacy.Action.Delegate",
+    "kind": "enum",
+    "descriptor": "0x103c1242c",
+    "field_descriptor": "0x103d3b470",
+    "fields": [
+      {
+        "name": "onDidRequestManageSettings",
+        "flags": 0,
+        "record_address": "0x103d3b480",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBarState",
+    "kind": "struct",
+    "descriptor": "0x103c12464",
+    "field_descriptor": "0x103d3b4a8",
+    "fields": [
+      {
+        "name": "inputs",
+        "flags": 2,
+        "record_address": "0x103d3b4b8",
+        "type_reference_address": "0x103b036e6"
+      },
+      {
+        "name": "destinationType",
+        "flags": 2,
+        "record_address": "0x103d3b4c4",
+        "type_reference_address": "0x103b02e5e"
+      },
+      {
+        "name": "displayInfo",
+        "flags": 0,
+        "record_address": "0x103d3b4d0",
+        "type_reference_address": "0x103b02f7e"
+      },
+      {
+        "name": "query",
+        "flags": 2,
+        "record_address": "0x103d3b4dc",
+        "type_reference_address": "0x103b048e4"
+      },
+      {
+        "name": "searchOutput",
+        "flags": 2,
+        "record_address": "0x103d3b4e8",
+        "type_reference_address": "0x103b04432"
+      },
+      {
+        "name": "pendingSelection",
+        "flags": 2,
+        "record_address": "0x103d3b4f4",
+        "type_reference_address": "0x103b0443a"
+      },
+      {
+        "name": "instanceID",
+        "flags": 0,
+        "record_address": "0x103d3b500",
+        "type_reference_address": "0x103b02f72"
+      },
+      {
+        "name": "windowID",
+        "flags": 0,
+        "record_address": "0x103d3b50c",
+        "type_reference_address": "0x103b03162"
+      },
+      {
+        "name": "isFirstSearchOfVisibleLifecycle",
+        "flags": 2,
+        "record_address": "0x103d3b518",
+        "type_reference_address": "0x103b02f68"
+      },
+      {
+        "name": "scopedSearchType",
+        "flags": 2,
+        "record_address": "0x103d3b524",
+        "type_reference_address": "0x103b02f94"
+      },
+      {
+        "name": "scopedSearchColor",
+        "flags": 2,
+        "record_address": "0x103d3b530",
+        "type_reference_address": "0x103b036ce"
+      },
+      {
+        "name": "postScopedSearchRestoration",
+        "flags": 2,
+        "record_address": "0x103d3b53c",
+        "type_reference_address": "0x103b04442"
+      },
+      {
+        "name": "activeSearchEngines",
+        "flags": 2,
+        "record_address": "0x103d3b548",
+        "type_reference_address": "0x103b036d6"
+      },
+      {
+        "name": "siteSearchSpaceTriggerEnabled",
+        "flags": 2,
+        "record_address": "0x103d3b554",
+        "type_reference_address": "0x103b02f68"
+      },
+      {
+        "name": "pendingWindowContent",
+        "flags": 2,
+        "record_address": "0x103d3b560",
+        "type_reference_address": "0x103b02f84"
+      },
+      {
+        "name": "entryPoint",
+        "flags": 0,
+        "record_address": "0x103d3b56c",
+        "type_reference_address": "0x103b02f78"
+      },
+      {
+        "name": "currentHighlightedResultIndex",
+        "flags": 2,
+        "record_address": "0x103d3b578",
+        "type_reference_address": "0x103b03156"
+      },
+      {
+        "name": "shouldDisplayCloseAccessory",
+        "flags": 0,
+        "record_address": "0x103d3b584",
+        "type_reference_address": "0x103b02f68"
+      },
+      {
+        "name": "searchSuggestionPrivacyState",
+        "flags": 2,
+        "record_address": "0x103d3b590",
+        "type_reference_address": "0x103b03970"
+      },
+      {
+        "name": "featureFlags",
+        "flags": 2,
+        "record_address": "0x103d3b59c",
+        "type_reference_address": "0x103b03580"
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBarState.CommandBarWindowContentInfo",
+    "kind": "struct",
+    "descriptor": "0x103c1248c",
+    "field_descriptor": "0x103d3b5a8",
+    "fields": [
+      {
+        "name": "url",
+        "flags": 2,
+        "record_address": "0x103d3b5b8",
+        "type_reference_address": "0x103b02d70"
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBarState.ScopedSearchColor",
+    "kind": "struct",
+    "descriptor": "0x103c124b4",
+    "field_descriptor": "0x103d3b5c4",
+    "fields": [
+      {
+        "name": "color",
+        "flags": 0,
+        "record_address": "0x103d3b5d4",
+        "type_reference_address": "0x103b031e8"
+      },
+      {
+        "name": "isFromAutoActivatedList",
+        "flags": 0,
+        "record_address": "0x103d3b5e0",
+        "type_reference_address": "0x103b02f68"
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBarState.PostScopedSearchRestoration",
+    "kind": "struct",
+    "descriptor": "0x103c124d0",
+    "field_descriptor": "0x103d3b5ec",
+    "fields": [
+      {
+        "name": "queryBeforeEnteringScopedSearch",
+        "flags": 2,
+        "record_address": "0x103d3b5fc",
+        "type_reference_address": "0x103b02e1c"
+      },
+      {
+        "name": "postScopedSearchQuery",
+        "flags": 2,
+        "record_address": "0x103d3b608",
+        "type_reference_address": "0x103b0311a"
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBarState.PostScopedSearchRestoration.PostScopedSearchQuery",
+    "kind": "struct",
+    "descriptor": "0x103c124ec",
+    "field_descriptor": "0x103d3b614",
+    "fields": [
+      {
+        "name": "query",
+        "flags": 2,
+        "record_address": "0x103d3b624",
+        "type_reference_address": "0x103b048e4"
+      },
+      {
+        "name": "editPolicy",
+        "flags": 2,
+        "record_address": "0x103d3b630",
+        "type_reference_address": "0x103b0315c"
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBarState.PendingWindowContent",
+    "kind": "struct",
+    "descriptor": "0x103c12508",
+    "field_descriptor": "0x103d3b63c",
+    "fields": [
+      {
+        "name": "contentID",
+        "flags": 0,
+        "record_address": "0x103d3b64c",
+        "type_reference_address": "0x103b03c84"
+      },
+      {
+        "name": "previousFocusedWindowContent",
+        "flags": 0,
+        "record_address": "0x103d3b658",
+        "type_reference_address": "0x103b03c84"
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBarState.PendingSelection",
+    "kind": "struct",
+    "descriptor": "0x103c12524",
+    "field_descriptor": "0x103d3b664",
+    "fields": [
+      {
+        "name": "flags",
+        "flags": 0,
+        "record_address": "0x103d3b674",
+        "type_reference_address": "0x103b02fcc"
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBarState.SearchSuggestionPrivacyState",
+    "kind": "struct",
+    "descriptor": "0x103c12540",
+    "field_descriptor": "0x103d3b680",
+    "fields": [
+      {
+        "name": "bannerIsVisible",
+        "flags": 2,
+        "record_address": "0x103d3b690",
+        "type_reference_address": "0x103b02f68"
+      },
+      {
+        "name": "bannerHasBeenExplicitlyDismissed",
+        "flags": 2,
+        "record_address": "0x103d3b69c",
+        "type_reference_address": "0x103b02f68"
+      }
+    ]
+  },
+  {
+    "name": "CommandBar.CommandBarContainer",
+    "kind": "class",
+    "descriptor": "0x103c127b0",
+    "field_descriptor": "0x103d3b9e0",
+    "fields": [
+      {
+        "name": "viewStore",
+        "flags": 2,
+        "record_address": "0x103d3b9f0",
+        "type_reference_address": "0x103b032e6"
+      },
+      {
+        "name": "windowID",
+        "flags": 0,
+        "record_address": "0x103d3b9fc",
+        "type_reference_address": "0x103b03162"
+      },
+      {
+        "name": "subscriptions",
+        "flags": 2,
+        "record_address": "0x103d3ba08",
+        "type_reference_address": "0x103b03680"
+      },
+      {
+        "name": "$__lazy_storage_$_commandBarView",
+        "flags": 2,
+        "record_address": "0x103d3ba14",
+        "type_reference_address": "0x103b04a36"
+      },
+      {
+        "name": "stackViewBottomConstraint",
+        "flags": 2,
+        "record_address": "0x103d3ba20",
+        "type_reference_address": "0x103b04a3e"
+      },
+      {
+        "name": "heightConstraint",
+        "flags": 2,
+        "record_address": "0x103d3ba2c",
+        "type_reference_address": "0x103b04a3e"
+      },
+      {
+        "name": "$__lazy_storage_$_stackView",
+        "flags": 2,
+        "record_address": "0x103d3ba38",
+        "type_reference_address": "0x103b04a58"
+      },
+      {
+        "name": "$__lazy_storage_$_spacerView",
+        "flags": 2,
+        "record_address": "0x103d3ba44",
+        "type_reference_address": "0x103b04a6c"
+      },
+      {
+        "name": "responderRegistration",
+        "flags": 2,
+        "record_address": "0x103d3ba50",
+        "type_reference_address": "0x103b04a7a"
+      },
+      {
+        "name": "onDidResignFirstResponder",
+        "flags": 0,
+        "record_address": "0x103d3ba5c",
+        "type_reference_address": "0x103b037fa"
+      },
+      {
+        "name": "_commandBarInteractionPerformanceTracker",
+        "flags": 2,
+        "record_address": "0x103d3ba68",
+        "type_reference_address": "0x103b03bba"
+      },
+      {
+        "name": "splashViewHostingController",
+        "flags": 2,
+        "record_address": "0x103d3ba74",
+        "type_reference_address": "0x103b04a8a"
+      }
+    ]
+  },
+  {
+    "name": "SidebarFeature.SidebarItemAndLocation",
+    "kind": "struct",
+    "descriptor": "0x103c15cb8",
+    "field_descriptor": "0x103d3f7a8",
+    "fields": [
+      {
+        "name": "item",
+        "flags": 2,
+        "record_address": "0x103d3f7b8",
+        "type_reference_address": "0x103b14f38"
+      },
+      {
+        "name": "location",
+        "flags": 2,
+        "record_address": "0x103d3f7c4",
+        "type_reference_address": "0x103b14f3e"
+      }
+    ]
+  },
+  {
+    "name": "SidebarFeature.SidebarItemUserAttentionRequest",
+    "kind": "struct",
+    "descriptor": "0x103c15d08",
+    "field_descriptor": "0x103d3f804",
+    "fields": [
+      {
+        "name": "itemID",
+        "flags": 0,
+        "record_address": "0x103d3f814",
+        "type_reference_address": "0x103b14f50"
+      },
+      {
+        "name": "animated",
+        "flags": 0,
+        "record_address": "0x103d3f820",
+        "type_reference_address": "0x103b14f6a"
+      }
+    ]
+  },
+  {
+    "name": "Previews.PreviewsDataClientStorableData_Legacy.ProfileState",
+    "kind": "struct",
+    "descriptor": "0x103c1a22c",
+    "field_descriptor": "0x103d45864",
+    "fields": [
+      {
+        "name": "id",
+        "flags": 2,
+        "record_address": "0x103d45874",
+        "type_reference_address": "0x103b284de"
+      },
+      {
+        "name": "persistedPreviewsState",
+        "flags": 2,
+        "record_address": "0x103d45880",
+        "type_reference_address": "0x103b289aa"
+      }
+    ]
+  },
+  {
+    "name": "Previews.PreviewsDataClientStorableData_Legacy.ProfileState.PreviewsState",
+    "kind": "struct",
+    "descriptor": "0x103c1a26c",
+    "field_descriptor": "0x103d458b4",
+    "fields": [
+      {
+        "name": "previews",
+        "flags": 2,
+        "record_address": "0x103d458c4",
+        "type_reference_address": "0x103b289ea"
+      }
+    ]
+  },
+  {
+    "name": "SharedWindowFeature.SidebarItemDragAction",
+    "kind": "enum",
+    "descriptor": "0x103c22ac0",
+    "field_descriptor": "0x103d4e260",
+    "fields": [
+      {
+        "name": "dragSessionBegan",
+        "flags": 0,
+        "record_address": "0x103d4e270",
+        "type_reference_address": "0x103b5a9a2"
+      },
+      {
+        "name": "dragSessionCompleted",
+        "flags": 0,
+        "record_address": "0x103d4e27c",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "SharedWindowFeature.SidebarItemHoveredState",
+    "kind": "struct",
+    "descriptor": "0x103c22af8",
+    "field_descriptor": "0x103d4e2e0",
+    "fields": [
+      {
+        "name": "metadata",
+        "flags": 2,
+        "record_address": "0x103d4e2f0",
+        "type_reference_address": "0x103b5aa0e"
+      },
+      {
+        "name": "itemType",
+        "flags": 2,
+        "record_address": "0x103d4e2fc",
+        "type_reference_address": "0x103b5aa14"
+      },
+      {
+        "name": "previewType",
+        "flags": 2,
+        "record_address": "0x103d4e308",
+        "type_reference_address": "0x103b5aa1a"
+      }
+    ]
+  },
+  {
+    "name": "SharedWindowFeature.SidebarItemHoveredState.ItemType",
+    "kind": "enum",
+    "descriptor": "0x103c22b14",
+    "field_descriptor": "0x103d4e314",
+    "fields": [
+      {
+        "name": "lastItemHovered",
+        "flags": 0,
+        "record_address": "0x103d4e324",
+        "type_reference_address": null
+      },
+      {
+        "name": "currentItemHovered",
+        "flags": 0,
+        "record_address": "0x103d4e330",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "SharedWindowFeature.SidebarItemExpansionState",
+    "kind": "enum",
+    "descriptor": "0x103c22b54",
+    "field_descriptor": "0x103d4e394",
+    "fields": [
+      {
+        "name": "peeked",
+        "flags": 0,
+        "record_address": "0x103d4e3a4",
+        "type_reference_address": "0x103b5aa76"
+      },
+      {
+        "name": "expanded",
+        "flags": 0,
+        "record_address": "0x103d4e3b0",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "SharedWindowFeature.SidebarSpaceState.SpaceContainerType",
+    "kind": "enum",
+    "descriptor": "0x103c22d18",
+    "field_descriptor": "0x103d4e8c4",
+    "fields": [
+      {
+        "name": "home",
+        "flags": 0,
+        "record_address": "0x103d4e8d4",
+        "type_reference_address": null
+      },
+      {
+        "name": "sidebar",
+        "flags": 0,
+        "record_address": "0x103d4e8e0",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "<indirect-context>.SidebarContextMenuItemAction.SpaceAction",
+    "kind": "enum",
+    "descriptor": "0x103c23598",
+    "field_descriptor": "0x103d4fc10",
+    "fields": [
+      {
+        "name": "onWantsToChangeSpaceName",
+        "flags": 0,
+        "record_address": "0x103d4fc20",
+        "type_reference_address": "0x103b5d3a8"
+      },
+      {
+        "name": "onWantsToShareSpace",
+        "flags": 0,
+        "record_address": "0x103d4fc2c",
+        "type_reference_address": "0x103b5d3a8"
+      },
+      {
+        "name": "onWantsToChangeSpaceIcon",
+        "flags": 0,
+        "record_address": "0x103d4fc38",
+        "type_reference_address": "0x103b5b976"
+      },
+      {
+        "name": "toggleAutomaticLiveFolder",
+        "flags": 0,
+        "record_address": "0x103d4fc44",
+        "type_reference_address": "0x103b5b98c"
+      }
+    ]
+  },
+  {
+    "name": "<indirect-context>.SidebarContextMenuItemAction.SplitView",
+    "kind": "enum",
+    "descriptor": "0x103c2364c",
+    "field_descriptor": "0x103d4fde4",
+    "fields": [
+      {
+        "name": "childItem",
+        "flags": 0,
+        "record_address": "0x103d4fdf4",
+        "type_reference_address": "0x103b5b9de"
+      },
+      {
+        "name": "separateAllItems",
+        "flags": 0,
+        "record_address": "0x103d4fe00",
+        "type_reference_address": null
+      },
+      {
+        "name": "addPanel",
+        "flags": 0,
+        "record_address": "0x103d4fe0c",
+        "type_reference_address": null
+      },
+      {
+        "name": "flipLayoutOrientation",
+        "flags": 0,
+        "record_address": "0x103d4fe18",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "<indirect-context>.SpaceAction",
+    "kind": "enum",
+    "descriptor": "0x103c236d8",
+    "field_descriptor": "0x103d4fef4",
+    "fields": [
+      {
+        "name": "showRenameDialog",
+        "flags": 0,
+        "record_address": "0x103d4ff04",
+        "type_reference_address": "0x103b5d3a8"
+      },
+      {
+        "name": "focusSpace",
+        "flags": 0,
+        "record_address": "0x103d4ff10",
+        "type_reference_address": "0x103b5d3a8"
+      },
+      {
+        "name": "newSpaceFromFolder",
+        "flags": 0,
+        "record_address": "0x103d4ff1c",
+        "type_reference_address": "0x103b5a7e4"
+      },
+      {
+        "name": "turnSpaceIntoFolder",
+        "flags": 0,
+        "record_address": "0x103d4ff28",
+        "type_reference_address": "0x103b5ba84"
+      },
+      {
+        "name": "undoTurnSpaceIntoFolder",
+        "flags": 0,
+        "record_address": "0x103d4ff34",
+        "type_reference_address": "0x103b5bad4"
+      },
+      {
+        "name": "undoDeleteSpace",
+        "flags": 0,
+        "record_address": "0x103d4ff40",
+        "type_reference_address": "0x103b5bae6"
+      },
+      {
+        "name": "presentStyleEditor",
+        "flags": 0,
+        "record_address": "0x103d4ff4c",
+        "type_reference_address": "0x103b5bb34"
+      },
+      {
+        "name": "didTapCreateProfile",
+        "flags": 0,
+        "record_address": "0x103d4ff58",
+        "type_reference_address": "0x103b5bb68"
+      },
+      {
+        "name": "updateIcon",
+        "flags": 0,
+        "record_address": "0x103d4ff64",
+        "type_reference_address": "0x103b5bb7c"
+      },
+      {
+        "name": "updateTitle",
+        "flags": 0,
+        "record_address": "0x103d4ff70",
+        "type_reference_address": "0x103b5bba0"
+      },
+      {
+        "name": "acceptSpaceDrop",
+        "flags": 0,
+        "record_address": "0x103d4ff7c",
+        "type_reference_address": "0x103b5bbc2"
+      },
+      {
+        "name": "delegate",
+        "flags": 0,
+        "record_address": "0x103d4ff88",
+        "type_reference_address": "0x103b5bbf6"
+      },
+      {
+        "name": "didTriggerCreateSpaceGesture",
+        "flags": 0,
+        "record_address": "0x103d4ff94",
+        "type_reference_address": null
+      },
+      {
+        "name": "didTapCreateSpaceButton",
+        "flags": 0,
+        "record_address": "0x103d4ffa0",
+        "type_reference_address": null
+      },
+      {
+        "name": "focusNextSpace",
+        "flags": 0,
+        "record_address": "0x103d4ffac",
+        "type_reference_address": null
+      },
+      {
+        "name": "focusPreviousSpace",
+        "flags": 0,
+        "record_address": "0x103d4ffb8",
+        "type_reference_address": null
+      },
+      {
+        "name": "iconPickerWillClose",
+        "flags": 0,
+        "record_address": "0x103d4ffc4",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "<indirect-context>.SpaceAction.DelegateAction",
+    "kind": "enum",
+    "descriptor": "0x103c236f4",
+    "field_descriptor": "0x103d4ffd0",
+    "fields": [
+      {
+        "name": "didFocusSpace",
+        "flags": 0,
+        "record_address": "0x103d4ffe0",
+        "type_reference_address": "0x103b5bbfc"
+      }
+    ]
+  },
+  {
+    "name": "<indirect-context>.SplitViewAction",
+    "kind": "enum",
+    "descriptor": "0x103c23764",
+    "field_descriptor": "0x103d500e8",
+    "fields": [
+      {
+        "name": "addPanel",
+        "flags": 0,
+        "record_address": "0x103d500f8",
+        "type_reference_address": "0x103b5bc60"
+      },
+      {
+        "name": "movePanel",
+        "flags": 0,
+        "record_address": "0x103d50104",
+        "type_reference_address": "0x103b5bc80"
+      },
+      {
+        "name": "onDropSidebarItem",
+        "flags": 0,
+        "record_address": "0x103d50110",
+        "type_reference_address": "0x103b5bc90"
+      },
+      {
+        "name": "onDropURL",
+        "flags": 0,
+        "record_address": "0x103d5011c",
+        "type_reference_address": "0x103b5a7fe"
+      },
+      {
+        "name": "onDidEndWindowContentsSplitViewPaneResize",
+        "flags": 0,
+        "record_address": "0x103d50128",
+        "type_reference_address": "0x103b5bce4"
+      },
+      {
+        "name": "onDidUpdateSplitViewProposedDropTarget",
+        "flags": 0,
+        "record_address": "0x103d50134",
+        "type_reference_address": "0x103b5bcea"
+      },
+      {
+        "name": "onPaneCreated",
+        "flags": 0,
+        "record_address": "0x103d50140",
+        "type_reference_address": "0x103b5bcf2"
+      },
+      {
+        "name": "containerDelegate",
+        "flags": 0,
+        "record_address": "0x103d5014c",
+        "type_reference_address": "0x103b5bcf8"
+      },
+      {
+        "name": "panelAction",
+        "flags": 0,
+        "record_address": "0x103d50158",
+        "type_reference_address": "0x103b5b5cc"
+      },
+      {
+        "name": "onDidBeginSplitViewInteractivePaneEditingWith",
+        "flags": 0,
+        "record_address": "0x103d50164",
+        "type_reference_address": "0x103b5bcfe"
+      },
+      {
+        "name": "onDidEndSplitViewInteractivePaneEditingWith",
+        "flags": 0,
+        "record_address": "0x103d50170",
+        "type_reference_address": "0x103b5bcfe"
+      },
+      {
+        "name": "onDidBeginWindowContentsSplitViewPaneResize",
+        "flags": 0,
+        "record_address": "0x103d5017c",
+        "type_reference_address": null
+      },
+      {
+        "name": "onDidRestoreSplitViewState",
+        "flags": 0,
+        "record_address": "0x103d50188",
+        "type_reference_address": null
+      },
+      {
+        "name": "onPaneClosed",
+        "flags": 0,
+        "record_address": "0x103d50194",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "<indirect-context>.SplitViewAction.SplitViewContainerDelegateAction",
+    "kind": "enum",
+    "descriptor": "0x103c2378c",
+    "field_descriptor": "0x103d501a0",
+    "fields": [
+      {
+        "name": "onDidAddItemsToContainer",
+        "flags": 0,
+        "record_address": "0x103d501b0",
+        "type_reference_address": "0x103b5bd04"
+      },
+      {
+        "name": "onDidMoveItemsWithinContainer",
+        "flags": 0,
+        "record_address": "0x103d501bc",
+        "type_reference_address": "0x103b5bd04"
+      },
+      {
+        "name": "onDidRemoveItemsFromContainers",
+        "flags": 0,
+        "record_address": "0x103d501c8",
+        "type_reference_address": "0x103b5b4fe"
+      },
+      {
+        "name": "onDidAdjustLayoutOrientation",
+        "flags": 0,
+        "record_address": "0x103d501d4",
+        "type_reference_address": "0x103b5bd04"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarItemUserAttentionRequestCancellation",
+    "kind": "struct",
+    "descriptor": "0x103c23e9c",
+    "field_descriptor": "0x103d5142c",
+    "fields": [
+      {
+        "name": "itemID",
+        "flags": 0,
+        "record_address": "0x103d5143c",
+        "type_reference_address": "0x103b5a7e4"
+      }
+    ]
+  },
+  {
+    "name": "SharedWindowFeature.SidebarItemTitleUpdateOptions",
+    "kind": "struct",
+    "descriptor": "0x103c24234",
+    "field_descriptor": "0x103d518a0",
+    "fields": [
+      {
+        "name": "rawValue",
+        "flags": 0,
+        "record_address": "0x103d518b0",
+        "type_reference_address": "0x103b5b0b4"
+      }
+    ]
+  },
+  {
+    "name": "SharedWindowFeature.SidebarItemDragTargetWindow",
+    "kind": "enum",
+    "descriptor": "0x103c24b70",
+    "field_descriptor": "0x103d51acc",
+    "fields": [
+      {
+        "name": "window",
+        "flags": 0,
+        "record_address": "0x103d51adc",
+        "type_reference_address": "0x103b5a768"
+      },
+      {
+        "name": "placeholder",
+        "flags": 0,
+        "record_address": "0x103d51ae8",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "SidebarUI.SidebarCellConstants.SplitViewItem",
+    "kind": "enum",
+    "descriptor": "0x103c25070",
+    "field_descriptor": "0x103d52068",
+    "fields": []
+  },
+  {
+    "name": "SidebarUI.SidebarCellConstants.SplitViewItem.Container",
+    "kind": "enum",
+    "descriptor": "0x103c2508c",
+    "field_descriptor": "0x103d52078",
+    "fields": []
+  },
+  {
+    "name": "SidebarUI.SidebarCellConstants.SplitViewItem.ChildItem",
+    "kind": "enum",
+    "descriptor": "0x103c250a8",
+    "field_descriptor": "0x103d52088",
+    "fields": []
+  },
+  {
+    "name": "SearchClientManager.SidebarCandidatesProvider",
+    "kind": "class",
+    "descriptor": "0x103c27604",
+    "field_descriptor": "0x103d541bc",
+    "fields": [
+      {
+        "name": "cachedTabs",
+        "flags": 2,
+        "record_address": "0x103d541cc",
+        "type_reference_address": "0x103b65558"
+      },
+      {
+        "name": "cachedVisibleItemIDs",
+        "flags": 2,
+        "record_address": "0x103d541d8",
+        "type_reference_address": "0x103b6556e"
+      },
+      {
+        "name": "previousQuery",
+        "flags": 2,
+        "record_address": "0x103d541e4",
+        "type_reference_address": "0x103b64dc8"
+      },
+      {
+        "name": "tabsForPreviousQuery",
+        "flags": 2,
+        "record_address": "0x103d541f0",
+        "type_reference_address": "0x103b65558"
+      },
+      {
+        "name": "cachedTabTitles",
+        "flags": 2,
+        "record_address": "0x103d541fc",
+        "type_reference_address": "0x103b65582"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarCandidateType",
+    "kind": "enum",
+    "descriptor": "0x103c276e8",
+    "field_descriptor": "0x103d54208",
+    "fields": [
+      {
+        "name": "perWindow",
+        "flags": 0,
+        "record_address": "0x103d54218",
+        "type_reference_address": "0x103b65100"
+      },
+      {
+        "name": "global",
+        "flags": 0,
+        "record_address": "0x103d54224",
+        "type_reference_address": null
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.Profile",
+    "kind": "struct",
+    "descriptor": "0x103c282ac",
+    "field_descriptor": "0x103d55158",
+    "fields": [
+      {
+        "name": "name",
+        "flags": 0,
+        "record_address": "0x103d55168",
+        "type_reference_address": "0x103b66ed2"
+      },
+      {
+        "name": "long_name",
+        "flags": 0,
+        "record_address": "0x103d55174",
+        "type_reference_address": "0x103b66ed2"
+      },
+      {
+        "name": "url",
+        "flags": 0,
+        "record_address": "0x103d55180",
+        "type_reference_address": "0x103b66e2c"
+      },
+      {
+        "name": "img",
+        "flags": 0,
+        "record_address": "0x103d5518c",
+        "type_reference_address": "0x103b66e2c"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarItemAndProfileInfo",
+    "kind": "struct",
+    "descriptor": "0x103c2f870",
+    "field_descriptor": "0x103d5cf80",
+    "fields": [
+      {
+        "name": "itemID",
+        "flags": 0,
+        "record_address": "0x103d5cf90",
+        "type_reference_address": "0x103b8373c"
+      },
+      {
+        "name": "profile",
+        "flags": 0,
+        "record_address": "0x103d5cf9c",
+        "type_reference_address": "0x103b83b18"
+      }
+    ]
+  },
+  {
+    "name": "<context-kind-2>.SidebarDataStoreIntegration",
+    "kind": "struct",
+    "descriptor": "0x103c2fe6c",
+    "field_descriptor": "0x103d5d07c",
+    "fields": [
+      {
+        "name": "base",
+        "flags": 0,
+        "record_address": "0x103d5d08c",
+        "type_reference_address": "0x103b836b0"
+      },
+      {
+        "name": "_sidebarDataStore",
+        "flags": 2,
+        "record_address": "0x103d5d098",
+        "type_reference_address": "0x103b83710"
+      }
+    ]
+  },
+  {
+    "name": "LiveDataClient.SlackUnreadMessagesResult.Profile",
+    "kind": "struct",
+    "descriptor": "0x103c32388",
+    "field_descriptor": "0x103d5f820",
+    "fields": [
+      {
+        "name": "displayName",
+        "flags": 0,
+        "record_address": "0x103d5f830",
+        "type_reference_address": "0x103b8bb34"
+      },
+      {
+        "name": "avatarHash",
+        "flags": 0,
+        "record_address": "0x103d5f83c",
+        "type_reference_address": "0x103b8bb34"
+      },
+      {
+        "name": "imageOriginal",
+        "flags": 0,
+        "record_address": "0x103d5f848",
+        "type_reference_address": "0x103b8bb34"
+      },
+      {
+        "name": "email",
+        "flags": 0,
+        "record_address": "0x103d5f854",
+        "type_reference_address": "0x103b8bb34"
+      },
+      {
+        "name": "pronouns",
+        "flags": 0,
+        "record_address": "0x103d5f860",
+        "type_reference_address": "0x103b8bb34"
+      }
+    ]
+  }
+]

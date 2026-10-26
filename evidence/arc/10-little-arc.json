@@ -1,0 +1,77 @@
+{
+  "feature": {
+    "id": "10-little-arc",
+    "title": "Little Arc（小窗口）",
+    "menus": [
+      "463",
+      "1495"
+    ],
+    "offsets": [
+      "0x3d13170",
+      "0x3c558f0",
+      "0x3c55910",
+      "0x3d167e0",
+      "0x3d232b0"
+    ],
+    "finding": "REA 确认 New Little Arc Window → newLittleBrowserWindow:（⌘⌥N）；Open Little Arc or Peek in… → openInCurrentSpace:（⌘O）。补充设置文本明确其他应用链接在 Little Arc 打开，并有关闭全部 Little Arc 窗口操作描述。",
+    "limits": "浮动层级、轻量性能和不打扰主窗口没有运行证据。没有将 Peek 和 Little Arc 混为同一实现。"
+  },
+  "rea_evidence_id": "ev_79b3e880589785e95be53245ee4309dc10599f4c85a1b751c10a79e857ef261e",
+  "rea_document": "Contents/Resources/Base.lproj/MainMenu.nib",
+  "menu_items": [
+    {
+      "id": "463",
+      "title": "New Little Arc Window",
+      "key": "n",
+      "mask": 1572864,
+      "actions": [
+        "newLittleBrowserWindow:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1495",
+      "title": "Open Little Arc or Peek in…",
+      "key": "o",
+      "mask": 1048576,
+      "actions": [
+        "openInCurrentSpace:"
+      ],
+      "hidden": false
+    }
+  ],
+  "supplementary_static_text": [
+    {
+      "file_offset": 64041328,
+      "file_offset_hex": "0x3d13170",
+      "byte_length": 40,
+      "text": "Links from other apps open in Little Arc"
+    },
+    {
+      "file_offset": 63265008,
+      "file_offset_hex": "0x3c558f0",
+      "byte_length": 24,
+      "text": "Close Little Arc Windows"
+    },
+    {
+      "file_offset": 63265040,
+      "file_offset_hex": "0x3c55910",
+      "byte_length": 34,
+      "text": "Closes all open Little Arc windows"
+    },
+    {
+      "file_offset": 64055264,
+      "file_offset_hex": "0x3d167e0",
+      "byte_length": 42,
+      "text": "Presents the Little Arc “Open In” Menu"
+    },
+    {
+      "file_offset": 64107184,
+      "file_offset_hex": "0x3d232b0",
+      "byte_length": 79,
+      "text": "Title for button in Little Arc toolbar that reveals more 'Open In' destinations"
+    }
+  ],
+  "binary_sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688",
+  "runtime_verified": false
+}

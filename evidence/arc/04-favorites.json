@@ -1,0 +1,53 @@
+{
+  "feature": {
+    "id": "04-favorites",
+    "title": "Favorites（收藏）",
+    "menus": [],
+    "offsets": [
+      "0x3d02e30",
+      "0x3d02dc0",
+      "0x3d15730",
+      "0x3cd8830",
+      "0x3d57340"
+    ],
+    "finding": "补充文本明确 Favorites 位于顶部，且更换 Profile 会看到不同 Favorites；存在移动 Favorite(s) 到其他 Profile 的菜单描述。",
+    "limits": "Profile 关联有明确文本支持；“同 Profile 的所有 Spaces 都共享相同 Favorites”尚缺直接共享状态证据。图标尺寸、区域位置没有截图。该项没有独立 REA 行为证据。"
+  },
+  "rea_evidence_id": null,
+  "rea_document": "Contents/Resources/Base.lproj/MainMenu.nib",
+  "menu_items": [],
+  "supplementary_static_text": [
+    {
+      "file_offset": 63974960,
+      "file_offset_hex": "0x3d02e30",
+      "byte_length": 21,
+      "text": "Drag to add Favorites"
+    },
+    {
+      "file_offset": 63974848,
+      "file_offset_hex": "0x3d02dc0",
+      "byte_length": 50,
+      "text": "Favorites keep your most used sites and apps close"
+    },
+    {
+      "file_offset": 64050992,
+      "file_offset_hex": "0x3d15730",
+      "byte_length": 40,
+      "text": "starting with your Favorites at the top."
+    },
+    {
+      "file_offset": 63801392,
+      "file_offset_hex": "0x3cd8830",
+      "byte_length": 152,
+      "text": "Each Profile has different browser data, so you might get logged out of some websites, see different Favorites up top, or need to re-install extensions."
+    },
+    {
+      "file_offset": 64320320,
+      "file_offset_hex": "0x3d57340",
+      "byte_length": 54,
+      "text": "Submenu to chose which profile to move Favorite(s) to."
+    }
+  ],
+  "binary_sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688",
+  "runtime_verified": false
+}

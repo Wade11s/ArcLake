@@ -1,0 +1,1227 @@
+{
+  "id": "01-sidebar",
+  "types": [
+    "Arc.WindowState",
+    "BaseModels.SidebarContainer",
+    "SharedWindowFeature.SidebarSpaceState"
+  ],
+  "docPatterns": [
+    "Full URL in Toolbar",
+    "Show Toolbar",
+    "Sidebar now responds"
+  ],
+  "conclusion": "侧边栏隐藏入口已有实际代码，不再仅是菜单文本。WindowState 同时声明 sidebarMode/sidebarWidth 和 topBarDisplayedPreference/toolbarShowFullURLsEnabledPreference，说明侧边栏与可选顶部工具栏并存；“全部控件只能在左侧”需要修正。",
+  "unknown": "没有当前 UI 截图，不能报告控件的像素位置或用户当前隐藏状态。",
+  "static_types": [
+    {
+      "name": "Arc.WindowState",
+      "kind": "struct",
+      "descriptor": "0x103ba2844",
+      "field_descriptor": "0x103cd2178",
+      "fields": [
+        {
+          "name": "id",
+          "flags": 2,
+          "record_address": "0x103cd2188",
+          "type_reference_address": "0x1039bc7a8"
+        },
+        {
+          "name": "appearancePhase",
+          "flags": 2,
+          "record_address": "0x103cd2194",
+          "type_reference_address": "0x1039c3a3c"
+        },
+        {
+          "name": "initialAppearanceActions",
+          "flags": 2,
+          "record_address": "0x103cd21a0",
+          "type_reference_address": "0x1039c3a42"
+        },
+        {
+          "name": "initialAnimation",
+          "flags": 2,
+          "record_address": "0x103cd21ac",
+          "type_reference_address": "0x1039c2a42"
+        },
+        {
+          "name": "isKey",
+          "flags": 2,
+          "record_address": "0x103cd21b8",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "isMain",
+          "flags": 2,
+          "record_address": "0x103cd21c4",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "focusedSpaceID",
+          "flags": 2,
+          "record_address": "0x103cd21d0",
+          "type_reference_address": "0x1039d6e68"
+        },
+        {
+          "name": "layoutPresentation",
+          "flags": 2,
+          "record_address": "0x103cd21dc",
+          "type_reference_address": "0x1039c3a4c"
+        },
+        {
+          "name": "sidebarWidth",
+          "flags": 2,
+          "record_address": "0x103cd21e8",
+          "type_reference_address": "0x1039b217c"
+        },
+        {
+          "name": "localHomeState",
+          "flags": 2,
+          "record_address": "0x103cd21f4",
+          "type_reference_address": "0x1039c3a52"
+        },
+        {
+          "name": "windowContentsState",
+          "flags": 2,
+          "record_address": "0x103cd2200",
+          "type_reference_address": "0x1039d6910"
+        },
+        {
+          "name": "highlightedItemID",
+          "flags": 2,
+          "record_address": "0x103cd220c",
+          "type_reference_address": "0x1039b07e8"
+        },
+        {
+          "name": "renameHintItemID",
+          "flags": 2,
+          "record_address": "0x103cd2218",
+          "type_reference_address": "0x1039b07e8"
+        },
+        {
+          "name": "sidebarMode",
+          "flags": 2,
+          "record_address": "0x103cd2224",
+          "type_reference_address": "0x1039ba740"
+        },
+        {
+          "name": "persistedLiveFoldersState",
+          "flags": 0,
+          "record_address": "0x103cd2230",
+          "type_reference_address": "0x1039bc52a"
+        },
+        {
+          "name": "sidebarItemDragState",
+          "flags": 0,
+          "record_address": "0x103cd223c",
+          "type_reference_address": "0x1039c182e"
+        },
+        {
+          "name": "expandedItems",
+          "flags": 2,
+          "record_address": "0x103cd2248",
+          "type_reference_address": "0x1039c3a5a"
+        },
+        {
+          "name": "spacesWithCollapsedPinnedSections",
+          "flags": 2,
+          "record_address": "0x103cd2254",
+          "type_reference_address": "0x1039b81fe"
+        },
+        {
+          "name": "showSpaceHeaderOnSingleUnnamedSpaces",
+          "flags": 2,
+          "record_address": "0x103cd2260",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "referrerPool",
+          "flags": 2,
+          "record_address": "0x103cd226c",
+          "type_reference_address": "0x1039b7a6a"
+        },
+        {
+          "name": "multiSelectedItems",
+          "flags": 2,
+          "record_address": "0x103cd2278",
+          "type_reference_address": "0x1039b517c"
+        },
+        {
+          "name": "editingItem",
+          "flags": 2,
+          "record_address": "0x103cd2284",
+          "type_reference_address": "0x1039b07e8"
+        },
+        {
+          "name": "currentlyEditedHeaderSpaceID",
+          "flags": 2,
+          "record_address": "0x103cd2290",
+          "type_reference_address": "0x1039bc508"
+        },
+        {
+          "name": "previouslySelectedItem",
+          "flags": 2,
+          "record_address": "0x103cd229c",
+          "type_reference_address": "0x1039b07e8"
+        },
+        {
+          "name": "sidebarItemUserAttentionRequest",
+          "flags": 2,
+          "record_address": "0x103cd22a8",
+          "type_reference_address": "0x1039c3a70"
+        },
+        {
+          "name": "itemLastActiveDates",
+          "flags": 2,
+          "record_address": "0x103cd22b4",
+          "type_reference_address": "0x1039c3a78"
+        },
+        {
+          "name": "lastActiveTabsPerSpace",
+          "flags": 2,
+          "record_address": "0x103cd22c0",
+          "type_reference_address": "0x1039c3a8e"
+        },
+        {
+          "name": "itemCreatedDates",
+          "flags": 2,
+          "record_address": "0x103cd22cc",
+          "type_reference_address": "0x1039c3a78"
+        },
+        {
+          "name": "sidebarHoverRegionActive",
+          "flags": 2,
+          "record_address": "0x103cd22d8",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "sidebarItemPreviewHoveredState",
+          "flags": 2,
+          "record_address": "0x103cd22e4",
+          "type_reference_address": "0x1039b3a6e"
+        },
+        {
+          "name": "previewHovered",
+          "flags": 2,
+          "record_address": "0x103cd22f0",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "fullscreen",
+          "flags": 2,
+          "record_address": "0x103cd22fc",
+          "type_reference_address": "0x1039ba746"
+        },
+        {
+          "name": "fullscreenRequest",
+          "flags": 2,
+          "record_address": "0x103cd2308",
+          "type_reference_address": "0x1039c3aa8"
+        },
+        {
+          "name": "commandBarIntegrationPresentationInfo",
+          "flags": 2,
+          "record_address": "0x103cd2314",
+          "type_reference_address": "0x1039bc972"
+        },
+        {
+          "name": "isDismissingCommandBarViaNewTabSelection",
+          "flags": 2,
+          "record_address": "0x103cd2320",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "spaceCreationState",
+          "flags": 2,
+          "record_address": "0x103cd232c",
+          "type_reference_address": "0x1039c3622"
+        },
+        {
+          "name": "spaceStyleEditorPresentation",
+          "flags": 2,
+          "record_address": "0x103cd2338",
+          "type_reference_address": "0x1039bf93c"
+        },
+        {
+          "name": "sidebarHoverInfo",
+          "flags": 2,
+          "record_address": "0x103cd2344",
+          "type_reference_address": "0x1039b01b0"
+        },
+        {
+          "name": "sidebarScrollToItemRequest",
+          "flags": 2,
+          "record_address": "0x103cd2350",
+          "type_reference_address": "0x1039c34f6"
+        },
+        {
+          "name": "closingState",
+          "flags": 2,
+          "record_address": "0x103cd235c",
+          "type_reference_address": "0x1039c3ab0"
+        },
+        {
+          "name": "closedProfiles",
+          "flags": 2,
+          "record_address": "0x103cd2368",
+          "type_reference_address": "0x1039c3ab6"
+        },
+        {
+          "name": "isPulsingNewTabButton",
+          "flags": 2,
+          "record_address": "0x103cd2374",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "sidebarWrapper",
+          "flags": 2,
+          "record_address": "0x103cd2380",
+          "type_reference_address": "0x1039c3ac0"
+        },
+        {
+          "name": "appSidebarContext",
+          "flags": 0,
+          "record_address": "0x103cd238c",
+          "type_reference_address": "0x1039b2224"
+        },
+        {
+          "name": "featureFlags",
+          "flags": 0,
+          "record_address": "0x103cd2398",
+          "type_reference_address": "0x1039b2196"
+        },
+        {
+          "name": "authSession",
+          "flags": 0,
+          "record_address": "0x103cd23a4",
+          "type_reference_address": "0x1039bc470"
+        },
+        {
+          "name": "deselectedItemsState",
+          "flags": 2,
+          "record_address": "0x103cd23b0",
+          "type_reference_address": "0x1039c3ac6"
+        },
+        {
+          "name": "mousedownSelectionRevertItem",
+          "flags": 2,
+          "record_address": "0x103cd23bc",
+          "type_reference_address": "0x1039b07e8"
+        },
+        {
+          "name": "currentWebDialog",
+          "flags": 2,
+          "record_address": "0x103cd23c8",
+          "type_reference_address": "0x1039c3acc"
+        },
+        {
+          "name": "browserExtensionPopup",
+          "flags": 2,
+          "record_address": "0x103cd23d4",
+          "type_reference_address": "0x1039affca"
+        },
+        {
+          "name": "sidePanel",
+          "flags": 2,
+          "record_address": "0x103cd23e0",
+          "type_reference_address": "0x1039c3ad4"
+        },
+        {
+          "name": "webContentsLifecycleHistory",
+          "flags": 2,
+          "record_address": "0x103cd23ec",
+          "type_reference_address": "0x1039b8332"
+        },
+        {
+          "name": "restorableSplitViewLayout",
+          "flags": 2,
+          "record_address": "0x103cd23f8",
+          "type_reference_address": "0x1039d6750"
+        },
+        {
+          "name": "style",
+          "flags": 2,
+          "record_address": "0x103cd2404",
+          "type_reference_address": "0x1039c3adc"
+        },
+        {
+          "name": "backForwardListState",
+          "flags": 2,
+          "record_address": "0x103cd2410",
+          "type_reference_address": "0x1039b847c"
+        },
+        {
+          "name": "toasts",
+          "flags": 2,
+          "record_address": "0x103cd241c",
+          "type_reference_address": "0x1039c3ae2"
+        },
+        {
+          "name": "queuedHotkey",
+          "flags": 2,
+          "record_address": "0x103cd2428",
+          "type_reference_address": "0x1039bfe4c"
+        },
+        {
+          "name": "captureState",
+          "flags": 2,
+          "record_address": "0x103cd2434",
+          "type_reference_address": "0x1039c2294"
+        },
+        {
+          "name": "restorableSessionIDs",
+          "flags": 2,
+          "record_address": "0x103cd2440",
+          "type_reference_address": "0x1039c3aec"
+        },
+        {
+          "name": "webContentExternalProtocolLaunchPrompt",
+          "flags": 2,
+          "record_address": "0x103cd244c",
+          "type_reference_address": "0x1039afda8"
+        },
+        {
+          "name": "topAppsEmptyStateDismissedForProfiles",
+          "flags": 2,
+          "record_address": "0x103cd2458",
+          "type_reference_address": "0x1039c3ab6"
+        },
+        {
+          "name": "topAppsSubtitleDisabledHosts",
+          "flags": 2,
+          "record_address": "0x103cd2464",
+          "type_reference_address": "0x1039c3b02"
+        },
+        {
+          "name": "topAppsBadgingDisabledHosts",
+          "flags": 2,
+          "record_address": "0x103cd2470",
+          "type_reference_address": "0x1039c3b02"
+        },
+        {
+          "name": "stayOnTop",
+          "flags": 2,
+          "record_address": "0x103cd247c",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "dragToCaptureDisabled",
+          "flags": 2,
+          "record_address": "0x103cd2488",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "webContentBehaviorConfiguration",
+          "flags": 2,
+          "record_address": "0x103cd2494",
+          "type_reference_address": "0x1039bc4f4"
+        },
+        {
+          "name": "browserExtensions",
+          "flags": 2,
+          "record_address": "0x103cd24a0",
+          "type_reference_address": "0x1039c3b0c"
+        },
+        {
+          "name": "toolbarActions",
+          "flags": 2,
+          "record_address": "0x103cd24ac",
+          "type_reference_address": "0x1039c3b2c"
+        },
+        {
+          "name": "activeWindowArcMenuType",
+          "flags": 2,
+          "record_address": "0x103cd24b8",
+          "type_reference_address": "0x1039b8252"
+        },
+        {
+          "name": "modalItemSwitcherPresentation",
+          "flags": 2,
+          "record_address": "0x103cd24c4",
+          "type_reference_address": "0x1039d6dac"
+        },
+        {
+          "name": "findInPageQuery",
+          "flags": 2,
+          "record_address": "0x103cd24d0",
+          "type_reference_address": "0x1039b204c"
+        },
+        {
+          "name": "softwareUpdateState",
+          "flags": 0,
+          "record_address": "0x103cd24dc",
+          "type_reference_address": "0x1039bc554"
+        },
+        {
+          "name": "sidebarBannerState",
+          "flags": 2,
+          "record_address": "0x103cd24e8",
+          "type_reference_address": "0x1039bc492"
+        },
+        {
+          "name": "keyBindingsState",
+          "flags": 2,
+          "record_address": "0x103cd24f4",
+          "type_reference_address": "0x1039b2232"
+        },
+        {
+          "name": "pictureInPictureState",
+          "flags": 0,
+          "record_address": "0x103cd2500",
+          "type_reference_address": "0x1039bc544"
+        },
+        {
+          "name": "currentThemeEditorPresetPage",
+          "flags": 2,
+          "record_address": "0x103cd250c",
+          "type_reference_address": "0x1039ae866"
+        },
+        {
+          "name": "allowThemeToCSSSharing",
+          "flags": 2,
+          "record_address": "0x103cd2518",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "shouldShowEaselExportPanel",
+          "flags": 2,
+          "record_address": "0x103cd2524",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "lastRefreshedTime",
+          "flags": 2,
+          "record_address": "0x103cd2530",
+          "type_reference_address": "0x1039b2248"
+        },
+        {
+          "name": "developerModeState",
+          "flags": 2,
+          "record_address": "0x103cd253c",
+          "type_reference_address": "0x1039bc566"
+        },
+        {
+          "name": "liveCalendarsState",
+          "flags": 0,
+          "record_address": "0x103cd2548",
+          "type_reference_address": "0x1039bc530"
+        },
+        {
+          "name": "topBarDisplayedPreference",
+          "flags": 2,
+          "record_address": "0x103cd2554",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "boostsDialogState",
+          "flags": 2,
+          "record_address": "0x103cd2560",
+          "type_reference_address": "0x1039bc7e0"
+        },
+        {
+          "name": "highlightedSwitchToSuggestion",
+          "flags": 2,
+          "record_address": "0x103cd256c",
+          "type_reference_address": "0x1039b07e8"
+        },
+        {
+          "name": "aiRenameTabsFeature",
+          "flags": 2,
+          "record_address": "0x103cd2578",
+          "type_reference_address": "0x1039c3b4e"
+        },
+        {
+          "name": "keyboardShortcutsEducationState",
+          "flags": 2,
+          "record_address": "0x103cd2584",
+          "type_reference_address": "0x1039b8014"
+        },
+        {
+          "name": "newDefaultBrowserPromptType",
+          "flags": 2,
+          "record_address": "0x103cd2590",
+          "type_reference_address": "0x1039bc56c"
+        },
+        {
+          "name": "isReadyToDisplayDebugModeEnabled",
+          "flags": 2,
+          "record_address": "0x103cd259c",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "shareQuoteLinkEnabledPreference",
+          "flags": 2,
+          "record_address": "0x103cd25a8",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "tabReorderingHapticsDisabled",
+          "flags": 2,
+          "record_address": "0x103cd25b4",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "toolbarShowFullURLsEnabledPreference",
+          "flags": 2,
+          "record_address": "0x103cd25c0",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "isPreviewingGestureHiddenSidebar",
+          "flags": 2,
+          "record_address": "0x103cd25cc",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "dividerSquiggleActiveSpaceIDs",
+          "flags": 2,
+          "record_address": "0x103cd25d8",
+          "type_reference_address": "0x1039bc518"
+        },
+        {
+          "name": "iconPickerState",
+          "flags": 2,
+          "record_address": "0x103cd25e4",
+          "type_reference_address": "0x1039c35a2"
+        },
+        {
+          "name": "liveFolderPopoverState",
+          "flags": 2,
+          "record_address": "0x103cd25f0",
+          "type_reference_address": "0x1039b816e"
+        },
+        {
+          "name": "liveCalendarPopoverState",
+          "flags": 2,
+          "record_address": "0x103cd25fc",
+          "type_reference_address": "0x1039c3b54"
+        },
+        {
+          "name": "appTrayKeyboardShortcutsShown",
+          "flags": 2,
+          "record_address": "0x103cd2608",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "isRestoringSession",
+          "flags": 2,
+          "record_address": "0x103cd2614",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "ignoredWebContents",
+          "flags": 2,
+          "record_address": "0x103cd2620",
+          "type_reference_address": "0x1039c3b5c"
+        },
+        {
+          "name": "linearTabSwitcherState",
+          "flags": 2,
+          "record_address": "0x103cd262c",
+          "type_reference_address": "0x1039c3b66"
+        },
+        {
+          "name": "showOnboardingEmptyStateWindow",
+          "flags": 2,
+          "record_address": "0x103cd2638",
+          "type_reference_address": "0x1039ca2a0"
+        },
+        {
+          "name": "pushOneTriggeredWebContents",
+          "flags": 2,
+          "record_address": "0x103cd2644",
+          "type_reference_address": "0x1039c3b6e"
+        },
+        {
+          "name": "pushTwoTriggeredWebContents",
+          "flags": 2,
+          "record_address": "0x103cd2650",
+          "type_reference_address": "0x1039c3b6e"
+        },
+        {
+          "name": "areBoostsEnabled",
+          "flags": 2,
+          "record_address": "0x103cd265c",
+          "type_reference_address": "0x1039ca2a0"
+        }
+      ]
+    },
+    {
+      "name": "BaseModels.SidebarContainer",
+      "kind": "struct",
+      "descriptor": "0x103bca630",
+      "field_descriptor": "0x103cf3530",
+      "fields": [
+        {
+          "name": "items",
+          "flags": 2,
+          "record_address": "0x103cf3540",
+          "type_reference_address": "0x1039fc94c"
+        },
+        {
+          "name": "spaces",
+          "flags": 2,
+          "record_address": "0x103cf354c",
+          "type_reference_address": "0x1039fca52"
+        },
+        {
+          "name": "topAppsContainerIDs",
+          "flags": 2,
+          "record_address": "0x103cf3558",
+          "type_reference_address": "0x1039fc96e"
+        }
+      ]
+    },
+    {
+      "name": "SharedWindowFeature.SidebarSpaceState",
+      "kind": "struct",
+      "descriptor": "0x103c22cd4",
+      "field_descriptor": "0x103d4e5a4",
+      "fields": [
+        {
+          "name": "windowID",
+          "flags": 0,
+          "record_address": "0x103d4e5b4",
+          "type_reference_address": "0x103b5a768"
+        },
+        {
+          "name": "windowLayoutPresentation",
+          "flags": 0,
+          "record_address": "0x103d4e5c0",
+          "type_reference_address": "0x103b5ac8c"
+        },
+        {
+          "name": "spaceID",
+          "flags": 0,
+          "record_address": "0x103d4e5cc",
+          "type_reference_address": "0x103b5d3a8"
+        },
+        {
+          "name": "unpinnedContainerID",
+          "flags": 0,
+          "record_address": "0x103d4e5d8",
+          "type_reference_address": "0x103b59d20"
+        },
+        {
+          "name": "selectedItemInfo",
+          "flags": 0,
+          "record_address": "0x103d4e5e4",
+          "type_reference_address": "0x103b5ac92"
+        },
+        {
+          "name": "windowContentsState",
+          "flags": 0,
+          "record_address": "0x103d4e5f0",
+          "type_reference_address": "0x103b59ef4"
+        },
+        {
+          "name": "presentedItemIDs",
+          "flags": 0,
+          "record_address": "0x103d4e5fc",
+          "type_reference_address": "0x103b59d00"
+        },
+        {
+          "name": "highlightedItemID",
+          "flags": 0,
+          "record_address": "0x103d4e608",
+          "type_reference_address": "0x103b59d20"
+        },
+        {
+          "name": "renameHintItemID",
+          "flags": 0,
+          "record_address": "0x103d4e614",
+          "type_reference_address": "0x103b59d20"
+        },
+        {
+          "name": "sidebarMode",
+          "flags": 0,
+          "record_address": "0x103d4e620",
+          "type_reference_address": "0x103b59eee"
+        },
+        {
+          "name": "sidebarPresentation",
+          "flags": 0,
+          "record_address": "0x103d4e62c",
+          "type_reference_address": "0x103b5ac9a"
+        },
+        {
+          "name": "expandedItems",
+          "flags": 0,
+          "record_address": "0x103d4e638",
+          "type_reference_address": "0x103b59ea6"
+        },
+        {
+          "name": "editingItem",
+          "flags": 0,
+          "record_address": "0x103d4e644",
+          "type_reference_address": "0x103b59d20"
+        },
+        {
+          "name": "sidebar",
+          "flags": 0,
+          "record_address": "0x103d4e650",
+          "type_reference_address": "0x103b5ac1e"
+        },
+        {
+          "name": "sidebarContext",
+          "flags": 0,
+          "record_address": "0x103d4e65c",
+          "type_reference_address": "0x103b5aca0"
+        },
+        {
+          "name": "sidebarHoverInfo",
+          "flags": 0,
+          "record_address": "0x103d4e668",
+          "type_reference_address": "0x103b5a9fc"
+        },
+        {
+          "name": "sidebarScrollToItemRequest",
+          "flags": 0,
+          "record_address": "0x103d4e674",
+          "type_reference_address": "0x103b5ab9e"
+        },
+        {
+          "name": "webContentsLifecycleHistory",
+          "flags": 0,
+          "record_address": "0x103d4e680",
+          "type_reference_address": "0x103b5aca6"
+        },
+        {
+          "name": "multiSelectedItems",
+          "flags": 0,
+          "record_address": "0x103d4e68c",
+          "type_reference_address": "0x103b5aa76"
+        },
+        {
+          "name": "sidebarItemDragState",
+          "flags": 0,
+          "record_address": "0x103d4e698",
+          "type_reference_address": "0x103b5a82a"
+        },
+        {
+          "name": "displayHeaderView",
+          "flags": 0,
+          "record_address": "0x103d4e6a4",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "tidyTabTitles",
+          "flags": 0,
+          "record_address": "0x103d4e6b0",
+          "type_reference_address": "0x103b5acba"
+        },
+        {
+          "name": "sidebarWidth",
+          "flags": 0,
+          "record_address": "0x103d4e6bc",
+          "type_reference_address": "0x103b59b46"
+        },
+        {
+          "name": "spaceStyleEditor",
+          "flags": 0,
+          "record_address": "0x103d4e6c8",
+          "type_reference_address": "0x103b5a46e"
+        },
+        {
+          "name": "themeContext",
+          "flags": 0,
+          "record_address": "0x103d4e6d4",
+          "type_reference_address": "0x103b5acc6"
+        },
+        {
+          "name": "isCommandBarNewTabPlaceholderActive",
+          "flags": 0,
+          "record_address": "0x103d4e6e0",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "isPulsingNewTabButton",
+          "flags": 0,
+          "record_address": "0x103d4e6ec",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "shouldDim",
+          "flags": 0,
+          "record_address": "0x103d4e6f8",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "context",
+          "flags": 0,
+          "record_address": "0x103d4e704",
+          "type_reference_address": "0x103b5abf0"
+        },
+        {
+          "name": "profile",
+          "flags": 0,
+          "record_address": "0x103d4e710",
+          "type_reference_address": "0x103b5ab3c"
+        },
+        {
+          "name": "hasTopApps",
+          "flags": 0,
+          "record_address": "0x103d4e71c",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "sidebarItemUserAttentionRequest",
+          "flags": 0,
+          "record_address": "0x103d4e728",
+          "type_reference_address": "0x103b5accc"
+        },
+        {
+          "name": "shouldShowProfileIndicators",
+          "flags": 0,
+          "record_address": "0x103d4e734",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "developerModeState",
+          "flags": 0,
+          "record_address": "0x103d4e740",
+          "type_reference_address": "0x103b5acd4"
+        },
+        {
+          "name": "keyBindingsState",
+          "flags": 0,
+          "record_address": "0x103d4e74c",
+          "type_reference_address": "0x103b5acda"
+        },
+        {
+          "name": "aiRenameTabsFeature",
+          "flags": 0,
+          "record_address": "0x103d4e758",
+          "type_reference_address": "0x103b5ace0"
+        },
+        {
+          "name": "tabReorderingHapticsDisabled",
+          "flags": 0,
+          "record_address": "0x103d4e764",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "sidebarItemForPreviewHovered",
+          "flags": 0,
+          "record_address": "0x103d4e770",
+          "type_reference_address": "0x103b59d20"
+        },
+        {
+          "name": "tabSuspensionStateIndicatorsEnabled",
+          "flags": 0,
+          "record_address": "0x103d4e77c",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "colorCodedSyncedSidebarItemsEnabled",
+          "flags": 0,
+          "record_address": "0x103d4e788",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "optionClickSplitTabCloseButtonToUnsplitEnabled",
+          "flags": 0,
+          "record_address": "0x103d4e794",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "collapsePinnedSectionEnabled",
+          "flags": 0,
+          "record_address": "0x103d4e7a0",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "dragToCombineTabsIntoSplitEnabled",
+          "flags": 0,
+          "record_address": "0x103d4e7ac",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "sidebarDragToSplitPreviewUIEnabled",
+          "flags": 0,
+          "record_address": "0x103d4e7b8",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "pinnedSectionExpansionState",
+          "flags": 0,
+          "record_address": "0x103d4e7c4",
+          "type_reference_address": "0x103b5ace6"
+        },
+        {
+          "name": "peekedPinnedSidebarItemID",
+          "flags": 0,
+          "record_address": "0x103d4e7d0",
+          "type_reference_address": "0x103b59d20"
+        },
+        {
+          "name": "showSpaceHeaderOnSingleUnnamedSpaces",
+          "flags": 0,
+          "record_address": "0x103d4e7dc",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "currentUserID",
+          "flags": 0,
+          "record_address": "0x103d4e7e8",
+          "type_reference_address": "0x103b5acec"
+        },
+        {
+          "name": "newSplitSeparationMechanismsEnabled",
+          "flags": 0,
+          "record_address": "0x103d4e7f4",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "autoOrgTabsEnabled",
+          "flags": 0,
+          "record_address": "0x103d4e800",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "canAutoOrganizeTodayTabs",
+          "flags": 0,
+          "record_address": "0x103d4e80c",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "isDividerSquiggleActive",
+          "flags": 0,
+          "record_address": "0x103d4e818",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "isEditingSpaceHeader",
+          "flags": 0,
+          "record_address": "0x103d4e824",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "isEditingSpaceIcon",
+          "flags": 0,
+          "record_address": "0x103d4e830",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "iconPickerState",
+          "flags": 0,
+          "record_address": "0x103d4e83c",
+          "type_reference_address": "0x103b5acfc"
+        },
+        {
+          "name": "liveFolderPopoverState",
+          "flags": 0,
+          "record_address": "0x103d4e848",
+          "type_reference_address": "0x103b5a536"
+        },
+        {
+          "name": "featureFlags",
+          "flags": 0,
+          "record_address": "0x103d4e854",
+          "type_reference_address": "0x103b5ad04"
+        },
+        {
+          "name": "liveItemsData",
+          "flags": 0,
+          "record_address": "0x103d4e860",
+          "type_reference_address": "0x103b5ad0a"
+        },
+        {
+          "name": "liveCalendarEvent",
+          "flags": 0,
+          "record_address": "0x103d4e86c",
+          "type_reference_address": "0x103b5aba6"
+        },
+        {
+          "name": "gitHubLiveFoldersEnabled",
+          "flags": 0,
+          "record_address": "0x103d4e878",
+          "type_reference_address": "0x103b5ccd4"
+        },
+        {
+          "name": "slackLiveFolderEnabled",
+          "flags": 0,
+          "record_address": "0x103d4e884",
+          "type_reference_address": "0x103b5ccd4"
+        }
+      ]
+    }
+  ],
+  "method_bodies": [
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "toggleArcSidebar:",
+      "implementation": "0x10031dedc",
+      "implementation_file_offset": 3268316,
+      "method_record_address": "0x1034ae130",
+      "selector_pointer": "0x1039aa024",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031dee4",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--toggleArcSidebar.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031dedc",
+        "--stop-address=0x10031dee4",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "toggleArcToolbar:",
+      "implementation": "0x10031deec",
+      "implementation_file_offset": 3268332,
+      "method_record_address": "0x1034ae13c",
+      "selector_pointer": "0x1039aa036",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031def4",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--toggleArcToolbar.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031deec",
+        "--stop-address=0x10031def4",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "navigateTabBack:",
+      "implementation": "0x10031f22c",
+      "implementation_file_offset": 3273260,
+      "method_record_address": "0x1034ae22c",
+      "selector_pointer": "0x103995d14",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031f248",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--navigateTabBack.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031f22c",
+        "--stop-address=0x10031f248",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "navigateTabForward:",
+      "implementation": "0x10031f794",
+      "implementation_file_offset": 3274644,
+      "method_record_address": "0x1034ae244",
+      "selector_pointer": "0x103995d3b",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x10031f7b0",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--navigateTabForward.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x10031f794",
+        "--stop-address=0x10031f7b0",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    },
+    {
+      "class": "_TtC3Arc20MainWindowController",
+      "selector": "revealCurrentTabInSidebar:",
+      "implementation": "0x100320814",
+      "implementation_file_offset": 3278868,
+      "method_record_address": "0x1034ae334",
+      "selector_pointer": "0x10399c71b",
+      "type_encoding": "v24@0:8@16",
+      "metadata_line": 20704,
+      "flags": "0x8000000c",
+      "status": "disassembled",
+      "end_exclusive": "0x1003208a4",
+      "truncated": false,
+      "assembly_file": "assembly/_TtC3Arc20MainWindowController--revealCurrentTabInSidebar.asm",
+      "command": [
+        "xcrun",
+        "llvm-objdump",
+        "--disassemble",
+        "--start-address=0x100320814",
+        "--stop-address=0x1003208a4",
+        "/tmp/arclake-arc-arm64.macho"
+      ]
+    }
+  ],
+  "official_excerpts": [
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## December 7, 2023 —",
+      "source_text_line": 24,
+      "text": "* You can now opt in to show the Full URL in Toolbar. Start by turning on Toolbar in View > Show Toolbar. Then right-click on Toolbar to \"Show Full URL\".",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## September 28, 2023 —",
+      "source_text_line": 171,
+      "text": "* The Arc Toolbar (View > Show Toolbar) will now show translation prompts on sites not in your primary language.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## August 17, 2023 —",
+      "source_text_line": 270,
+      "text": "* We've improved our Toolbar color logic (View > Show Toolbar).",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498377604887-Arc-for-macOS-2023-Release-Notes",
+      "title": "Arc for macOS - 2023 Release Notes",
+      "section": "## July 21, 2023 —",
+      "source_text_line": 318,
+      "text": "* You can opt into viewing a full URL Bar and pinned Extensions at all times by enabling the Toolbar! Head to View > Show Toolbar to turn on.",
+      "saved_file": "official-docs/20498377604887.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## Apr 18, 2024 —",
+      "source_text_line": 900,
+      "text": "* The Toolbar now renders in Peeked tabs! To toggle on the setting, hit Command T and type \"Show Toolbar.\"",
+      "saved_file": "official-docs/20498293324823.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## Mar 28, 2024 —",
+      "source_text_line": 918,
+      "text": "* For Arc Toolbar users, we've added a subtle divider separating the toolbar from your web content. You can turn on the Arc Toolbar by going to View > Show Toolbar. You can turn it off by going to View > Hide Toolbar.",
+      "saved_file": "official-docs/20498293324823.md"
+    },
+    {
+      "source": "https://resources.arc.net/hc/en-us/articles/20498293324823-Arc-for-macOS-2024-2026-Release-Notes",
+      "title": "Arc for macOS - 2024 - 2026 Release Notes",
+      "section": "## January 25, 2024 —",
+      "source_text_line": 1028,
+      "text": "* The Sidebar now responds to clicks even when the Command Bar (Cmd + T) is open. You can interact with it without having to dismiss the Command Bar first.",
+      "saved_file": "official-docs/20498293324823.md"
+    }
+  ],
+  "runtime_verified": false,
+  "rea_macho_evidence": "ev_780f75cfcf14debdafbfe9e1804e72b246ee98aec3b9d598bd724a307a89fd1f",
+  "note": "Reflection/method parsing and LLVM assembly are supplementary local evidence, not REA observations. Official excerpts describe product contracts/history, not local execution."
+}

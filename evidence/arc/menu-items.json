@@ -1,0 +1,2081 @@
+{
+  "evidence_id": "ev_79b3e880589785e95be53245ee4309dc10599f4c85a1b751c10a79e857ef261e",
+  "items": [
+    {
+      "id": "8",
+      "title": "Boost Gallery",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "openBoostGallery:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "33",
+      "title": "Show/Hide Sidebar",
+      "key": "s",
+      "mask": 1048576,
+      "actions": [
+        "toggleArcSidebar:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "52",
+      "title": "New ChatGPT Message…",
+      "key": "g",
+      "mask": 1572864,
+      "actions": [
+        "gptMessage:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "61",
+      "title": "Go Forward",
+      "key": "]",
+      "mask": 1048576,
+      "actions": [
+        "navigateTabForward:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "75",
+      "title": "Cancel Trace",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "cancelTrace:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "84",
+      "title": "Change Profile",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "changeProfileForCurrentSpace:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "93",
+      "title": "Zoom Out",
+      "key": "-",
+      "mask": 1048576,
+      "actions": [
+        "zoomOut:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "103",
+      "title": "Visit Help Center",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "visitHelpCenter:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "115",
+      "title": "About Arc",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "orderFrontStandardAboutPanel:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "124",
+      "title": "Redo",
+      "key": "Z",
+      "mask": 1048576,
+      "actions": [
+        "redo:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "134",
+      "title": "Collapse All Folders",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "collapseAllFolders:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "142",
+      "title": "Rename Current Item",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "rename:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "150",
+      "title": "View Downloads",
+      "key": "J",
+      "mask": 1048576,
+      "actions": [
+        "toggleDownloads:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "164",
+      "title": "Expand All Folders",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "expandAllFolders:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "172",
+      "title": "Cycle Tab Backward",
+      "key": "",
+      "mask": 1310720,
+      "actions": [
+        "cycleTabBackward:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "181",
+      "title": "Pin/Unpin Tab",
+      "key": "d",
+      "mask": 1048576,
+      "actions": [
+        "toggleSelectedItemsPinned:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "194",
+      "title": "Add Split View",
+      "key": "=",
+      "mask": 393216,
+      "actions": [
+        "addSplitPanel:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "207",
+      "title": "Tab Switcher (backward)",
+      "key": "\u0019",
+      "mask": 393216,
+      "actions": [
+        "cycleToPreviousRecentTab:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "219",
+      "title": "Peek Email…",
+      "key": "E",
+      "mask": 1048576,
+      "actions": [
+        "peekEmail:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "228",
+      "title": "Close this Split Pane",
+      "key": "-",
+      "mask": 393216,
+      "actions": [
+        "closeFocusedSplitViewPanel:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "240",
+      "title": "Open Command Bar",
+      "key": "l",
+      "mask": 1048576,
+      "actions": [
+        "toggleOpenOmnibox:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "249",
+      "title": "Set as Default Browser",
+      "key": "",
+      "mask": 1048576,
+      "actions": [
+        "setAsDefaultBrowser:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "263",
+      "title": "Capture…",
+      "key": "2",
+      "mask": 1179648,
+      "actions": [
+        "capturePage:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "276",
+      "title": "Record Trace",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "recordTrace:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "285",
+      "title": "Developer Tools",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "toggleDevTools:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "294",
+      "title": "Show Spelling and Grammar",
+      "key": ":",
+      "mask": 1048576,
+      "actions": [
+        "showGuessPanel:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "305",
+      "title": "Dark",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "setDarkAppearance:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "321",
+      "title": "Essential Keyboard Shortcuts",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "keyboardShortcutsEDU:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "334",
+      "title": "Reset all tabs in this Space",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "resetVisiblePinnedTabs:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "344",
+      "title": "Show All",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "unhideAllApplications:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "353",
+      "title": "Privacy Policy",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "showPrivacyPolicy:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "361",
+      "title": "Go Back",
+      "key": "",
+      "mask": 1048576,
+      "actions": [
+        "navigateTabBackArrow:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "369",
+      "title": "Share Arc",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "382",
+      "title": "Open Task Manager",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "openTaskManager:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "393",
+      "title": "New Profile",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "newProfile:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "402",
+      "title": "Copy URL as Markdown",
+      "key": "C",
+      "mask": 1572864,
+      "actions": [
+        "copyCurrentURLAsMarkdown:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "416",
+      "title": "Edit Boost",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "editBoost:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "428",
+      "title": "Enter/Exit Full Screen",
+      "key": "f",
+      "mask": 1310720,
+      "actions": [
+        "toggleFullScreen:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "442",
+      "title": "Rename Space",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "renameFocusedSpace:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "451",
+      "title": "View Library",
+      "key": "L",
+      "mask": 1048576,
+      "actions": [
+        "toggleLibrary:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "463",
+      "title": "New Little Arc Window",
+      "key": "n",
+      "mask": 1572864,
+      "actions": [
+        "newLittleBrowserWindow:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "477",
+      "title": "Hide Arc",
+      "key": "h",
+      "mask": 1048576,
+      "actions": [
+        "hide:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "487",
+      "title": "Find Previous",
+      "key": "G",
+      "mask": 1048576,
+      "actions": [
+        "arc_performFindPanelAction:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "498",
+      "title": "Clear Unpinned Tabs",
+      "key": "K",
+      "mask": 1048576,
+      "actions": [
+        "clearExplore:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "512",
+      "title": "Stop Loading",
+      "key": ".",
+      "mask": 1048576,
+      "actions": [
+        "stopLoadingCurrentTab:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "521",
+      "title": "Network Inspector",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "networkInspector:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "533",
+      "title": "Select All",
+      "key": "a",
+      "mask": 1048576,
+      "actions": [
+        "selectAll:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "543",
+      "title": "Jump to Selection",
+      "key": "j",
+      "mask": 1048576,
+      "actions": [
+        "arc_performFindPanelAction:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "554",
+      "title": "Manage Spaces…",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "toggleSpaceManager:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "566",
+      "title": "Duplicate",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "duplicate:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "574",
+      "title": "Close Window",
+      "key": "W",
+      "mask": 1048576,
+      "actions": [
+        "closeWindow:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "585",
+      "title": "Copy Arc Info",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "copyArcInfo:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "594",
+      "title": "Reveal Arc Data",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "revealArcData:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "602",
+      "title": "Share…",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "share:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "617",
+      "title": "Expand Pinned Section",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "expandPinnedSection:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "629",
+      "title": "Expand Current Split",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "maximizeCurrentSplitViewPane:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "640",
+      "title": "Automatic",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "setAutomaticAppearance:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "655",
+      "title": "View Source",
+      "key": "u",
+      "mask": 1572864,
+      "actions": [
+        "viewSource:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "668",
+      "title": "View Media",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "viewScreenshotsAndCaptures:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "678",
+      "title": "New Window",
+      "key": "n",
+      "mask": 1048576,
+      "actions": [
+        "newWindow:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "690",
+      "title": "New Note",
+      "key": "N",
+      "mask": 262144,
+      "actions": [
+        "newNote:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "704",
+      "title": "Refresh the Page",
+      "key": "r",
+      "mask": 1048576,
+      "actions": [
+        "reloadPage:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "717",
+      "title": "Restore Last Closed Tab",
+      "key": "T",
+      "mask": 1048576,
+      "actions": [
+        "reopenLastTab:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "731",
+      "title": "Hide Other Windows",
+      "key": "h",
+      "mask": 1572864,
+      "actions": [
+        "hideOtherApplications:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "740",
+      "title": "Paste and Match Style",
+      "key": "V",
+      "mask": 1048576,
+      "actions": [
+        "pasteAsPlainText:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "752",
+      "title": "Reveal Tab in Sidebar",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "revealCurrentTabInSidebar:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "764",
+      "title": "Zoom to Actual Size",
+      "key": "0",
+      "mask": 1048576,
+      "actions": [
+        "resetZoom:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "778",
+      "title": "Reveal Current Tab",
+      "key": " ",
+      "mask": 262144,
+      "actions": [
+        "focusSidebar:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "787",
+      "title": "Getting Started",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "showWelcomeToArc:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "799",
+      "title": "Find…",
+      "key": "f",
+      "mask": 1048576,
+      "actions": [
+        "arc_performFindPanelAction:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "808",
+      "title": "Next Space",
+      "key": "",
+      "mask": 1572864,
+      "actions": [
+        "nextSpace:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "822",
+      "title": "Find and Replace",
+      "key": "f",
+      "mask": 1572864,
+      "actions": [
+        "arc_performFindPanelAction:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "830",
+      "title": "New Tab…",
+      "key": "t",
+      "mask": 1048576,
+      "actions": [
+        "newWindowForTab:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "840",
+      "title": "Collapse Pinned Section",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "collapsePinnedSection:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "852",
+      "title": "Previous Tab",
+      "key": "",
+      "mask": 1572864,
+      "actions": [
+        "previousTab:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "862",
+      "title": "View Boosts",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "viewBoosts:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "871",
+      "title": "Cycle Tab Forward",
+      "key": "",
+      "mask": 1310720,
+      "actions": [
+        "cycleTabForward:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "879",
+      "title": "New Boost",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "newBoost:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "890",
+      "title": "Copy URL",
+      "key": "C",
+      "mask": 1048576,
+      "actions": [
+        "copyCurrentURL:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "901",
+      "title": "Print",
+      "key": "p",
+      "mask": 1048576,
+      "actions": [
+        "printPage:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "914",
+      "title": "Capture in Portrait Mode",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "capturePrettyScreenshot:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "926",
+      "title": "Use Selection to Find",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "arc_performFindPanelAction:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "935",
+      "title": "View Archive",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "showArchive:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "946",
+      "title": "Go Back",
+      "key": "[",
+      "mask": 1048576,
+      "actions": [
+        "navigateTabBack:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "959",
+      "title": "New Folder…",
+      "key": "N",
+      "mask": 1048576,
+      "actions": [
+        "newList:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "968",
+      "title": "Archive Tab",
+      "key": "w",
+      "mask": 1048576,
+      "actions": [
+        "closeCurrentItem:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "978",
+      "title": "Manage Extensions…",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "navigateToChromeExtensionsPage:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "988",
+      "title": "Quit Arc",
+      "key": "q",
+      "mask": 1048576,
+      "actions": [
+        "userQuitApp:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "999",
+      "title": "Minimize Window",
+      "key": "m",
+      "mask": 1048576,
+      "actions": [
+        "performMiniaturize:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1009",
+      "title": "Preferences…",
+      "key": ",",
+      "mask": 1048576,
+      "actions": [
+        "showPreferences:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1018",
+      "title": "Tab Switcher (forward)",
+      "key": "\t",
+      "mask": 262144,
+      "actions": [
+        "cycleToNextRecentTab:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "1029",
+      "title": "New Incognito Window",
+      "key": "N",
+      "mask": 1048576,
+      "actions": [
+        "newIncognitoWindow:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1039",
+      "title": "Force Refresh the Page",
+      "key": "R",
+      "mask": 1048576,
+      "actions": [
+        "forceReloadPage:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1051",
+      "title": "Zoom In",
+      "key": "+",
+      "mask": 1048576,
+      "actions": [
+        "zoomIn:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1061",
+      "title": "Export Arc Notes",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "exportArcNotes:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1074",
+      "title": "Paste",
+      "key": "v",
+      "mask": 1048576,
+      "actions": [
+        "paste:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1083",
+      "title": "Clear Cache and Refresh",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "clearCacheAndRefresh:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1095",
+      "title": "Show/Hide Toolbar",
+      "key": "D",
+      "mask": 1048576,
+      "actions": [
+        "toggleArcToolbar:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "1108",
+      "title": "Previous Space",
+      "key": "",
+      "mask": 1572864,
+      "actions": [
+        "previousSpace:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1121",
+      "title": "Light",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "setLightAppearance:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1136",
+      "title": "Join Meeting",
+      "key": "j",
+      "mask": 1310720,
+      "actions": [
+        "joinLiveMeeting:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "1144",
+      "title": "View History",
+      "key": "y",
+      "mask": 1048576,
+      "actions": [
+        "showAllHistory:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1157",
+      "title": "Send to Dia",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "sendCurrentTabToDia:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1171",
+      "title": "Clear Archive",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "clearArchive:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1182",
+      "title": "New Legacy Boost (Advanced)",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "newLegacyBoost:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "1195",
+      "title": "New Space…",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "newSpace:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1207",
+      "title": "Save Page As",
+      "key": "S",
+      "mask": 1048576,
+      "actions": [
+        "save:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1220",
+      "title": "New Note (in Split)",
+      "key": "n",
+      "mask": 786432,
+      "actions": [
+        "newNoteInSplitView:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "1232",
+      "title": "Add Extension…",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "navigateToChromeWebStore:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1242",
+      "title": "Capture Full Page",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "captureFullPage:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1254",
+      "title": "Find Next",
+      "key": "g",
+      "mask": 1048576,
+      "actions": [
+        "arc_performFindPanelAction:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1263",
+      "title": "New Easel",
+      "key": "E",
+      "mask": 262144,
+      "actions": [
+        "newEasel:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1276",
+      "title": "Toggle Developer Mode",
+      "key": "d",
+      "mask": 262144,
+      "actions": [
+        "toggleDeveloperMode:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1288",
+      "title": "Contact the Team",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "contactTheTeam:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1300",
+      "title": "Separate Page from Split View",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "separateTabFromSplitView:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1312",
+      "title": "JavaScript Console",
+      "key": "j",
+      "mask": 1572864,
+      "actions": [
+        "javaScriptConsole:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1324",
+      "title": "Exit",
+      "key": "\u001b",
+      "mask": null,
+      "actions": [
+        "exit:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1337",
+      "title": "Check for Updates…",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "checkForUpdates:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1348",
+      "title": "Reset Tab to Original URL",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "resetTab:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "1359",
+      "title": "Release Notes",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "onSelectResource_releaseNotes:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1371",
+      "title": "Cast",
+      "key": "",
+      "mask": 1048576,
+      "actions": [
+        "cast:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1380",
+      "title": "Inspect Elements",
+      "key": "c",
+      "mask": 1572864,
+      "actions": [
+        "inspectElements:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1393",
+      "title": "Cut",
+      "key": "x",
+      "mask": 1048576,
+      "actions": [
+        "cut:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1402",
+      "title": "Next Tab",
+      "key": "",
+      "mask": 1572864,
+      "actions": [
+        "nextTab:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1412",
+      "title": "Copy URL as Quote",
+      "key": "C",
+      "mask": 1310720,
+      "actions": [
+        "copyCurrentURLAsQuote:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1424",
+      "title": "Edit Theme…",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "editSpaceTheme:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1436",
+      "title": "Clear Cookies and Refresh",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "clearCookiesAndRefresh:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1447",
+      "title": "Go Forward",
+      "key": "",
+      "mask": 1048576,
+      "actions": [
+        "navigateTabForwardArrow:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "1454",
+      "title": "Import from Another Browser…",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1465",
+      "title": "Copy",
+      "key": "c",
+      "mask": 1048576,
+      "actions": [
+        "copyAction:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1473",
+      "title": "Developer Tools",
+      "key": "i",
+      "mask": 1572864,
+      "actions": [
+        "toggleDevTools:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1485",
+      "title": "Blank Window",
+      "key": "n",
+      "mask": 1310720,
+      "actions": [
+        "blankWindow:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1495",
+      "title": "Open Little Arc or Peek in…",
+      "key": "o",
+      "mask": 1048576,
+      "actions": [
+        "openInCurrentSpace:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1504",
+      "title": "Restore Data",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "presentRestoreDataFlow:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1516",
+      "title": "View Easels & Notes",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "viewEaselsAndNotes:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1538",
+      "title": "Archive",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1546",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1576",
+      "title": "Extensions",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1592",
+      "title": "Help",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1600",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1601",
+      "title": "Troubleshooting",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1609",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1623",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1674",
+      "title": "Spaces",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1682",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1685",
+      "title": "Tabs",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1693",
+      "title": "New Tab…",
+      "key": "t",
+      "mask": 1048576,
+      "actions": [
+        "newWindowForTab:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1696",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1697",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1700",
+      "title": "Item 1",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1704",
+      "title": "Item 2",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1708",
+      "title": "Item 3",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1718",
+      "title": "Window",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1726",
+      "title": "Zoom",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "performZoom:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1730",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1731",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "1732",
+      "title": "Bring All to Front",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "arrangeInFront:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1753",
+      "title": "Sign Out",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "signOut:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1769",
+      "title": "Correct Spelling Automatically",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "toggleAutomaticSpellingCorrection:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1789",
+      "title": "Smart Copy/Paste",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "toggleSmartInsertDelete:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1797",
+      "title": "Underline",
+      "key": "u",
+      "mask": 1048576,
+      "actions": [
+        "underline:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1815",
+      "title": "Text Replacement",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "toggleAutomaticTextReplacement:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1839",
+      "title": "Bold",
+      "key": "b",
+      "mask": 1048576,
+      "actions": [
+        "addFontTrait:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1867",
+      "title": "Stop Speaking",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "stopSpeaking:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1881",
+      "title": "Zoom Out",
+      "key": "-",
+      "mask": 1179648,
+      "actions": [
+        "zoomOut:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "1885",
+      "title": "Delete",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "delete:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1910",
+      "title": "Capitalize",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "capitalizeWord:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1947",
+      "title": "Start Speaking",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "startSpeaking:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1974",
+      "title": "Smart Links",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "toggleAutomaticLinkDetection:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1980",
+      "title": "Make Lower Case",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "lowercaseWord:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1992",
+      "title": "Undo",
+      "key": "z",
+      "mask": 1048576,
+      "actions": [
+        "undo:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "2017",
+      "title": "Smart Quotes",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "toggleAutomaticQuoteSubstitution:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "2023",
+      "title": "Check Document Now",
+      "key": ";",
+      "mask": 1048576,
+      "actions": [
+        "checkSpelling:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "2038",
+      "title": "Allow JavaScript from Apple Events",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "allowJavascriptFromAppleEvents:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "2044",
+      "title": "Check Grammar With Spelling",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "toggleGrammarChecking:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "2070",
+      "title": "Zoom In",
+      "key": "=",
+      "mask": 1048576,
+      "actions": [
+        "zoomIn:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "2083",
+      "title": "Zoom In",
+      "key": "=",
+      "mask": 1048576,
+      "actions": [
+        "zoomIn:"
+      ],
+      "hidden": true
+    },
+    {
+      "id": "2087",
+      "title": "Check Spelling While Typing",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "toggleContinuousSpellChecking:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "2093",
+      "title": "Smart Dashes",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "toggleAutomaticDashSubstitution:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "2109",
+      "title": "Data Detectors",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "toggleAutomaticDataDetection:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "2127",
+      "title": "Make Upper Case",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "uppercaseWord:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "2139",
+      "title": "Italic",
+      "key": "i",
+      "mask": 1048576,
+      "actions": [
+        "addFontTrait:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "2151",
+      "title": "Show Substitutions",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "orderFrontSubstitutionsPanel:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "2166",
+      "title": "Arc",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2174",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2175",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2176",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2177",
+      "title": "Services",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2186",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2187",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2188",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2190",
+      "title": "File",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2198",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2199",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2200",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2201",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2202",
+      "title": "Edit",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2210",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2211",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2212",
+      "title": "Find",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2220",
+      "title": "Spelling and Grammar",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2229",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2230",
+      "title": "Substitutions",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2238",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2239",
+      "title": "Transformations",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2247",
+      "title": "Speech",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2255",
+      "title": "Format",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2263",
+      "title": "Font",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2272",
+      "title": "View",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2280",
+      "title": "Appearance",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2286",
+      "title": "Websites, Easels, and Notes will use:",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2290",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2291",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2292",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2293",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2294",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2295",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2296",
+      "title": "Developer",
+      "key": "",
+      "mask": 1048576,
+      "actions": [],
+      "hidden": false
+    },
+    {
+      "id": "2304",
+      "title": "",
+      "key": "",
+      "mask": null,
+      "actions": [],
+      "hidden": false
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "feature": {
+    "id": "02-spaces",
+    "title": "Spaces（空间）",
+    "menus": [
+      "1195",
+      "554",
+      "442",
+      "1424",
+      "808",
+      "1108",
+      "334"
+    ],
+    "offsets": [
+      "0x3c653a0",
+      "0x3cd8790",
+      "0x3d16e40",
+      "0x3d169b0",
+      "0x3d15660"
+    ],
+    "finding": "REA 确认新建、管理、重命名空间与 editSpaceTheme:、前后切换入口；补充文本将文件夹和固定标签操作限定在当前 Space。主菜单下一/上一空间绑定 ⌘⌥右/左方向键。",
+    "limits": "底部切换控件、Ctrl+数字的实际默认映射和各 Space 的持久化独立性未运行验证。数字空间快捷键只发现描述文本。"
+  },
+  "rea_evidence_id": "ev_79b3e880589785e95be53245ee4309dc10599f4c85a1b751c10a79e857ef261e",
+  "rea_document": "Contents/Resources/Base.lproj/MainMenu.nib",
+  "menu_items": [
+    {
+      "id": "1195",
+      "title": "New Space…",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "newSpace:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "554",
+      "title": "Manage Spaces…",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "toggleSpaceManager:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "442",
+      "title": "Rename Space",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "renameFocusedSpace:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1424",
+      "title": "Edit Theme…",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "editSpaceTheme:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "808",
+      "title": "Next Space",
+      "key": "",
+      "mask": 1572864,
+      "actions": [
+        "nextSpace:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "1108",
+      "title": "Previous Space",
+      "key": "",
+      "mask": 1572864,
+      "actions": [
+        "previousSpace:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "334",
+      "title": "Reset all tabs in this Space",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "resetVisiblePinnedTabs:"
+      ],
+      "hidden": false
+    }
+  ],
+  "supplementary_static_text": [
+    {
+      "file_offset": 63329184,
+      "file_offset_hex": "0x3c653a0",
+      "byte_length": 16,
+      "text": "Edit Space theme"
+    },
+    {
+      "file_offset": 63801232,
+      "file_offset_hex": "0x3cd8790",
+      "byte_length": 37,
+      "text": "Which Spaces should use this Profile?"
+    },
+    {
+      "file_offset": 64056896,
+      "file_offset_hex": "0x3d16e40",
+      "byte_length": 41,
+      "text": "Expand all folders in your current space."
+    },
+    {
+      "file_offset": 64055728,
+      "file_offset_hex": "0x3d169b0",
+      "byte_length": 49,
+      "text": "Resets all your pinned tabs in the current Space."
+    },
+    {
+      "file_offset": 64050784,
+      "file_offset_hex": "0x3d15660",
+      "byte_length": 104,
+      "text": "Description for Space-switching shortcut. The argument is an ordinal, e.g. “1st” in “1st Space”."
+    }
+  ],
+  "binary_sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688",
+  "runtime_verified": false
+}

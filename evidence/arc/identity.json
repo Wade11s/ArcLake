@@ -1,0 +1,205 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"evidence_id\":\"ev_45c8d31c76938850c3dfd16c8d8db08b78321bbcf3e96b79204a00aac5253682\",\"subject\":{\"name\":\"Arc\",\"digest\":{\"sha256\":\"b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688\"},\"local_path\":\"/Applications/Arc.app/Contents/MacOS/Arc\",\"format\":\"mach-o-universal\",\"architecture\":\"arm64\"},\"provider\":{\"id\":\"native-macos\",\"name\":\"macOS native inspection utilities\",\"version\":null},\"analysis_profile\":null,\"predicate_type\":\"rea.analysis\",\"operation\":\"inspect_plist\",\"parameters\":{},\"raw_result\":null,\"normalized_result\":{\"format\":\"xml\",\"value\":{\"ATSApplicationFontsPath\":\"Fonts\",\"BCNYBuildDate\":\"19 Feb 2026, 06:07\",\"BCNYCommitInfo\":\"Release-75383-9692e35b0b50ad077bbf8841efcc2f3cda3c13f1\",\"BCNYReleaseType\":\"Release\",\"BuildMachineOSBuild\":\"25B78\",\"CFBundleDevelopmentRegion\":\"en\",\"CFBundleDocumentTypes\":[{\"CFBundleTypeName\":\"PDF document\",\"CFBundleTypeRole\":\"Viewer\",\"LSItemContentTypes\":[\"com.adobe.pdf\"]},{\"CFBundleTypeName\":\"HTML document\",\"CFBundleTypeRole\":\"Viewer\",\"LSItemContentTypes\":[\"public.html\"]},{\"CFBundleTypeName\":\"XHTML document\",\"CFBundleTypeRole\":\"Viewer\",\"LSItemContentTypes\":[\"public.xhtml\"]}],\"CFBundleExecutable\":\"Arc\",\"CFBundleIconFile\":\"AppIcon\",\"CFBundleIconName\":\"AppIcon\",\"CFBundleIdentifier\":\"company.thebrowser.Browser\",\"CFBundleInfoDictionaryVersion\":\"6.0\",\"CFBundleName\":\"Arc\",\"CFBundlePackageType\":\"APPL\",\"CFBundleShortVersionString\":\"1.135.0\",\"CFBundleSupportedPlatforms\":[\"MacOSX\"],\"CFBundleURLTypes\":[{\"CFBundleURLName\":\"Email Address URL\",\"CFBundleURLSchemes\":[\"mailto\"]},{\"CFBundleURLName\":\"HTTPS URL\",\"CFBundleURLSchemes\":[\"https\"]},{\"CFBundleURLName\":\"HTTP URL\",\"CFBundleURLSchemes\":[\"http\"]},{\"CFBundleTypeRole\":\"Editor\",\"CFBundleURLName\":\"Arc Browser\",\"CFBundleURLSchemes\":[\"arcBrowser\"]}],\"CFBundleVersion\":\"75383\",\"DTCompiler\":\"com.apple.compilers.llvm.clang.1_0\",\"DTPlatformBuild\":\"25B74\",\"DTPlatformName\":\"macosx\",\"DTPlatformVersion\":\"26.1\",\"DTSDKBuild\":\"25B74\",\"DTSDKName\":\"macosx26.1\",\"DTXcode\":\"2611\",\"DTXcodeBuild\":\"17B100\",\"GPUEjectPolicy\":\"wait\",\"LSApplicationCategoryType\":\"public.app-category.productivity\",\"LSEnvironment\":{\"MallocNanoZone\":\"0\"},\"LSFileQuarantineEnabled\":true,\"LSMinimumSystemVersion\":\"13.0.0\",\"NSAppTransportSecurity\":{\"NSAllowsArbitraryLoads\":true},\"NSAppleScriptEnabled\":true,\"NSBluetoothAlwaysUsageDescription\":\"Websites may use your bluetooth for features on their site.\",\"NSCameraUsageDescription\":\"Websites may use your camera for features on their site.\",\"NSDesktopFolderUsageDescription\":\"Access to \\\"Desktop\\\" is required to make files accessible from Arc.\",\"NSDockTilePlugIn\":\"DockTilePlugIn.plugin\",\"NSDownloadsFolderUsageDescription\":\"Access to \\\"Downloads\\\" is required for downloading files from the web and to make files accessible from Arc.\",\"NSHumanReadableCopyright\":\"Copyright © 2026 The Browser Company. All rights reserved.\",\"NSLocationAlwaysAndWhenInUseUsageDescription\":\"Websites may use your location for features on their site.\",\"NSLocationAlwaysUsageDescription\":\"Websites may use your location for features on their site.\",\"NSLocationUsageDescription\":\"Websites may use your location for features on their site.\",\"NSLocationWhenInUseUsageDescription\":\"Websites may use your location for features on their site.\",\"NSMainNibFile\":\"MainMenu\",\"NSMicrophoneUsageDescription\":\"Websites may use your microphone for features on their site.\",\"NSPrincipalClass\":\"Arc.BrowserApp\",\"NSSupportsAutomaticGraphicsSwitching\":true,\"NSSupportsAutomaticTermination\":false,\"NSSupportsSuddenTermination\":false,\"NSUserActivityTypes\":[\"NSUserActivityTypeBrowsingWeb\"],\"OSAScriptingDefinition\":\"Arc.sdef\",\"SUAutomaticallyUpdate\":true,\"SUEnableAutomaticChecks\":true,\"SUFeedURL\":\"https://releases.arc.net/updates.xml\",\"SUPublicEDKey\":\"PuVxvsbwitqWEvMPriVhNzmiMiVp2AqD8psqG/qcS98=\",\"SUScheduledCheckInterval\":28800},\"bundle\":{\"identifier\":\"company.thebrowser.Browser\",\"executable\":\"Arc\",\"name\":\"Arc\",\"version\":\"75383\",\"short_version\":\"1.135.0\"},\"source_path\":\"/Applications/Arc.app/Contents/Info.plist\",\"provenance\":[{\"tool\":\"file\",\"command\":[\"/usr/bin/file\",\"-b\",\"$PLIST\"],\"tool_version\":null,\"version_reason\":\"Tool exposes no uniform stable version flag; executable SHA-256 is a prelaunch file sample and does not prove atomic OS image binding.\",\"executable_sha256\":\"8014815e1028410f48966f1880f99c842a5678cf2fcaa010e8d7e9e498f651d0\",\"exit\":{\"code\":0,\"signal\":null},\"stdout_bytes\":48,\"stderr_bytes\":0},{\"tool\":\"plutil\",\"command\":[\"/usr/bin/plutil\",\"-lint\",\"--\",\"$PLIST\"],\"tool_version\":null,\"version_reason\":\"Tool exposes no uniform stable version flag; executable SHA-256 is a prelaunch file sample and does not prove atomic OS image binding.\",\"executable_sha256\":\"5ec63ed0506b7676b30fe69d00ae48c689daf1badc1e786a18166b01b615e8ac\",\"exit\":{\"code\":0,\"signal\":null},\"stdout_bytes\":46,\"stderr_bytes\":0}],\"limitations\":[]},\"confidence\":\"observed\",\"authority\":\"shipped-artifact\",\"environment\":null,\"limitations\":[],\"relationship_coverage\":null,\"locations\":[{\"kind\":\"artifact-path\",\"path\":\"/Applications/Arc.app/Contents/Info.plist\"}],\"evidence_links\":[]}"
+    }
+  ],
+  "structuredContent": {
+    "evidence_id": "ev_45c8d31c76938850c3dfd16c8d8db08b78321bbcf3e96b79204a00aac5253682",
+    "subject": {
+      "name": "Arc",
+      "digest": {
+        "sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688"
+      },
+      "local_path": "/Applications/Arc.app/Contents/MacOS/Arc",
+      "format": "mach-o-universal",
+      "architecture": "arm64"
+    },
+    "provider": {
+      "id": "native-macos",
+      "name": "macOS native inspection utilities",
+      "version": null
+    },
+    "analysis_profile": null,
+    "predicate_type": "rea.analysis",
+    "operation": "inspect_plist",
+    "parameters": {},
+    "raw_result": null,
+    "normalized_result": {
+      "format": "xml",
+      "value": {
+        "ATSApplicationFontsPath": "Fonts",
+        "BCNYBuildDate": "19 Feb 2026, 06:07",
+        "BCNYCommitInfo": "Release-75383-9692e35b0b50ad077bbf8841efcc2f3cda3c13f1",
+        "BCNYReleaseType": "Release",
+        "BuildMachineOSBuild": "25B78",
+        "CFBundleDevelopmentRegion": "en",
+        "CFBundleDocumentTypes": [
+          {
+            "CFBundleTypeName": "PDF document",
+            "CFBundleTypeRole": "Viewer",
+            "LSItemContentTypes": [
+              "com.adobe.pdf"
+            ]
+          },
+          {
+            "CFBundleTypeName": "HTML document",
+            "CFBundleTypeRole": "Viewer",
+            "LSItemContentTypes": [
+              "public.html"
+            ]
+          },
+          {
+            "CFBundleTypeName": "XHTML document",
+            "CFBundleTypeRole": "Viewer",
+            "LSItemContentTypes": [
+              "public.xhtml"
+            ]
+          }
+        ],
+        "CFBundleExecutable": "Arc",
+        "CFBundleIconFile": "AppIcon",
+        "CFBundleIconName": "AppIcon",
+        "CFBundleIdentifier": "company.thebrowser.Browser",
+        "CFBundleInfoDictionaryVersion": "6.0",
+        "CFBundleName": "Arc",
+        "CFBundlePackageType": "APPL",
+        "CFBundleShortVersionString": "1.135.0",
+        "CFBundleSupportedPlatforms": [
+          "MacOSX"
+        ],
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLName": "Email Address URL",
+            "CFBundleURLSchemes": [
+              "mailto"
+            ]
+          },
+          {
+            "CFBundleURLName": "HTTPS URL",
+            "CFBundleURLSchemes": [
+              "https"
+            ]
+          },
+          {
+            "CFBundleURLName": "HTTP URL",
+            "CFBundleURLSchemes": [
+              "http"
+            ]
+          },
+          {
+            "CFBundleTypeRole": "Editor",
+            "CFBundleURLName": "Arc Browser",
+            "CFBundleURLSchemes": [
+              "arcBrowser"
+            ]
+          }
+        ],
+        "CFBundleVersion": "75383",
+        "DTCompiler": "com.apple.compilers.llvm.clang.1_0",
+        "DTPlatformBuild": "25B74",
+        "DTPlatformName": "macosx",
+        "DTPlatformVersion": "26.1",
+        "DTSDKBuild": "25B74",
+        "DTSDKName": "macosx26.1",
+        "DTXcode": "2611",
+        "DTXcodeBuild": "17B100",
+        "GPUEjectPolicy": "wait",
+        "LSApplicationCategoryType": "public.app-category.productivity",
+        "LSEnvironment": {
+          "MallocNanoZone": "0"
+        },
+        "LSFileQuarantineEnabled": true,
+        "LSMinimumSystemVersion": "13.0.0",
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true
+        },
+        "NSAppleScriptEnabled": true,
+        "NSBluetoothAlwaysUsageDescription": "Websites may use your bluetooth for features on their site.",
+        "NSCameraUsageDescription": "Websites may use your camera for features on their site.",
+        "NSDesktopFolderUsageDescription": "Access to \"Desktop\" is required to make files accessible from Arc.",
+        "NSDockTilePlugIn": "DockTilePlugIn.plugin",
+        "NSDownloadsFolderUsageDescription": "Access to \"Downloads\" is required for downloading files from the web and to make files accessible from Arc.",
+        "NSHumanReadableCopyright": "Copyright © 2026 The Browser Company. All rights reserved.",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Websites may use your location for features on their site.",
+        "NSLocationAlwaysUsageDescription": "Websites may use your location for features on their site.",
+        "NSLocationUsageDescription": "Websites may use your location for features on their site.",
+        "NSLocationWhenInUseUsageDescription": "Websites may use your location for features on their site.",
+        "NSMainNibFile": "MainMenu",
+        "NSMicrophoneUsageDescription": "Websites may use your microphone for features on their site.",
+        "NSPrincipalClass": "Arc.BrowserApp",
+        "NSSupportsAutomaticGraphicsSwitching": true,
+        "NSSupportsAutomaticTermination": false,
+        "NSSupportsSuddenTermination": false,
+        "NSUserActivityTypes": [
+          "NSUserActivityTypeBrowsingWeb"
+        ],
+        "OSAScriptingDefinition": "Arc.sdef",
+        "SUAutomaticallyUpdate": true,
+        "SUEnableAutomaticChecks": true,
+        "SUFeedURL": "https://releases.arc.net/updates.xml",
+        "SUPublicEDKey": "PuVxvsbwitqWEvMPriVhNzmiMiVp2AqD8psqG/qcS98=",
+        "SUScheduledCheckInterval": 28800
+      },
+      "bundle": {
+        "identifier": "company.thebrowser.Browser",
+        "executable": "Arc",
+        "name": "Arc",
+        "version": "75383",
+        "short_version": "1.135.0"
+      },
+      "source_path": "/Applications/Arc.app/Contents/Info.plist",
+      "provenance": [
+        {
+          "tool": "file",
+          "command": [
+            "/usr/bin/file",
+            "-b",
+            "$PLIST"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable SHA-256 is a prelaunch file sample and does not prove atomic OS image binding.",
+          "executable_sha256": "8014815e1028410f48966f1880f99c842a5678cf2fcaa010e8d7e9e498f651d0",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 48,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "plutil",
+          "command": [
+            "/usr/bin/plutil",
+            "-lint",
+            "--",
+            "$PLIST"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable SHA-256 is a prelaunch file sample and does not prove atomic OS image binding.",
+          "executable_sha256": "5ec63ed0506b7676b30fe69d00ae48c689daf1badc1e786a18166b01b615e8ac",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 46,
+          "stderr_bytes": 0
+        }
+      ],
+      "limitations": []
+    },
+    "confidence": "observed",
+    "authority": "shipped-artifact",
+    "environment": null,
+    "limitations": [],
+    "relationship_coverage": null,
+    "locations": [
+      {
+        "kind": "artifact-path",
+        "path": "/Applications/Arc.app/Contents/Info.plist"
+      }
+    ],
+    "evidence_links": []
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "feature": {
+    "id": "03-profiles",
+    "title": "Profiles（配置文件）",
+    "menus": [
+      "84",
+      "393"
+    ],
+    "offsets": [
+      "0x3d13ec0",
+      "0x3cd84f0",
+      "0x3cd8660",
+      "0x3cd8790"
+    ],
+    "finding": "REA 的 Change Profile 明确连到 changeProfileForCurrentSpace:。应用内说明明确列出 history、logins、cookies、extensions，并说一个 Profile 可供一个或多个 Spaces 使用。",
+    "limits": "这是发行包中明确的产品语义，不是 Cookie/历史数据库隔离的实测；未创建账号或读取个人 Profile 数据。不同 Space 若使用同一 Profile，不能据此声称隔离。"
+  },
+  "rea_evidence_id": "ev_79b3e880589785e95be53245ee4309dc10599f4c85a1b751c10a79e857ef261e",
+  "rea_document": "Contents/Resources/Base.lproj/MainMenu.nib",
+  "menu_items": [
+    {
+      "id": "84",
+      "title": "Change Profile",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "changeProfileForCurrentSpace:"
+      ],
+      "hidden": false
+    },
+    {
+      "id": "393",
+      "title": "New Profile",
+      "key": "",
+      "mask": null,
+      "actions": [
+        "newProfile:"
+      ],
+      "hidden": false
+    }
+  ],
+  "supplementary_static_text": [
+    {
+      "file_offset": 64044736,
+      "file_offset_hex": "0x3d13ec0",
+      "byte_length": 154,
+      "text": "Profiles help keep your data separate across Spaces — like history, logins, cookies, and extensions. You can use any Profile across one or more Spaces. "
+    },
+    {
+      "file_offset": 63800560,
+      "file_offset_hex": "0x3cd84f0",
+      "byte_length": 215,
+      "text": "Profiles make your Spaces truly separate — with their own history, saved passwords, extensions, and other browsing data. No more flipping between work and personal accounts!\n\nWhat do you want to call this Profile?"
+    },
+    {
+      "file_offset": 63800928,
+      "file_offset_hex": "0x3cd8660",
+      "byte_length": 234,
+      "text": "These Spaces will start fresh in your brand new Profile — so you’ll have to log back in to websites, re-save your passwords, add extensions, etc. You can always switch back to your previous Profile though if you forgot something!"
+    },
+    {
+      "file_offset": 63801232,
+      "file_offset_hex": "0x3cd8790",
+      "byte_length": 37,
+      "text": "Which Spaces should use this Profile?"
+    }
+  ],
+  "binary_sha256": "b192994372b8d0ef7beb465c3cad0f2d02a227c6988238e037d8e026536db688",
+  "runtime_verified": false
+}
