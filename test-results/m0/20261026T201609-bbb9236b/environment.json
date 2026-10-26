@@ -1,0 +1,13 @@
+{
+  "macOS": "27.0.1",
+  "architecture": "arm64",
+  "bundleID": "dev.arclake.M0Probe",
+  "binarySHA256": "09b124f3636826041b7e5f016c3085bbdffb2cb8fef173bf64b727c1ce3700e0",
+  "adHocSigned": true,
+  "sandboxEntitlements": [
+    "app-sandbox",
+    "network.client"
+  ],
+  "minimumDeploymentTarget": "14.0",
+  "mode": "test"
+}

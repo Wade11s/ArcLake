@@ -1,0 +1,128 @@
+{
+  "bundleID": "dev.arclake.M0Probe",
+  "checks": [
+    {
+      "detail": "A1/A2 share a named persistent store; B1 uses a different named store",
+      "id": "store-identity",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"indexedDB\": nil, \"local\": nil, \"httpOnly\": nil, \"cookie\": nil]",
+      "id": "fresh-A",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"indexedDB\": nil, \"local\": nil, \"httpOnly\": nil, \"cookie\": nil]",
+      "id": "fresh-B",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected 20261026T200817-2cd232c7-A-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"indexedDB\": Optional(\"20261026T200817-2cd232c7-A-one\"), \"local\": Optional(\"20261026T200817-2cd232c7-A-one\"), \"httpOnly\": Optional(\"20261026T200817-2cd232c7-A-one\"), \"cookie\": Optional(\"20261026T200817-2cd232c7-A-one\")]",
+      "id": "T01-shared-A1-A2",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"indexedDB\": nil, \"local\": nil, \"httpOnly\": nil, \"cookie\": nil]",
+      "id": "T01-no-leak-A-to-B",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected 20261026T200817-2cd232c7-B-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"indexedDB\": Optional(\"20261026T200817-2cd232c7-B-one\"), \"local\": Optional(\"20261026T200817-2cd232c7-B-one\"), \"httpOnly\": Optional(\"20261026T200817-2cd232c7-B-one\"), \"cookie\": Optional(\"20261026T200817-2cd232c7-B-one\")]",
+      "id": "T01-write-B",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected 20261026T200817-2cd232c7-A-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"indexedDB\": Optional(\"20261026T200817-2cd232c7-A-one\"), \"local\": Optional(\"20261026T200817-2cd232c7-A-one\"), \"httpOnly\": Optional(\"20261026T200817-2cd232c7-A-one\"), \"cookie\": Optional(\"20261026T200817-2cd232c7-A-one\")]",
+      "id": "T01-no-leak-B-to-A",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"indexedDB\": nil, \"local\": nil, \"httpOnly\": nil, \"cookie\": nil]",
+      "id": "origin2-fresh-A",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"indexedDB\": nil, \"local\": nil, \"httpOnly\": nil, \"cookie\": nil]",
+      "id": "origin2-fresh-B",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected 20261026T200817-2cd232c7-A-two in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"indexedDB\": Optional(\"20261026T200817-2cd232c7-A-two\"), \"local\": Optional(\"20261026T200817-2cd232c7-A-two\"), \"httpOnly\": Optional(\"20261026T200817-2cd232c7-A-two\"), \"cookie\": Optional(\"20261026T200817-2cd232c7-A-two\")]",
+      "id": "origin2-A",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected 20261026T200817-2cd232c7-B-two in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"indexedDB\": Optional(\"20261026T200817-2cd232c7-B-two\"), \"local\": Optional(\"20261026T200817-2cd232c7-B-two\"), \"httpOnly\": Optional(\"20261026T200817-2cd232c7-B-two\"), \"cookie\": Optional(\"20261026T200817-2cd232c7-B-two\")]",
+      "id": "origin2-B",
+      "status": "pass"
+    },
+    {
+      "detail": "50 sidebar + 50 theme toggles preserve WebView identity, document instance, load count, draft and JS memory",
+      "id": "T03-100-UI-updates",
+      "status": "pass"
+    },
+    {
+      "detail": "ownerIsLittle=true; oldReleased=true; windowIsLittle=true; identityStable=true; superview=Optional(<ArcLakeM0.BrowserHostView: 0x762c0be080>)",
+      "id": "T04-single-owner",
+      "status": "pass"
+    },
+    {
+      "detail": "Handoff preserves document instance, memory=42, unsent form, scroll and DOM focus; before={\"documentInstance\":\"ebc4f1ec-78eb-433a-a75f-7ad0627ba09f\",\"loads\":1,\"memoryCounter\":42,\"draft\":\"unsubmitted-m0-draft\",\"scrollY\":0,\"focused\":\"draft\"}, after={\"documentInstance\":\"ebc4f1ec-78eb-433a-a75f-7ad0627ba09f\",\"loads\":1,\"memoryCounter\":42,\"draft\":\"unsubmitted-m0-draft\",\"scrollY\":0,\"focused\":\"draft\"}",
+      "id": "T04-page-state",
+      "status": "pass"
+    },
+    {
+      "detail": "Return to main preserves page state and closes Little Window; after={\"documentInstance\":\"ebc4f1ec-78eb-433a-a75f-7ad0627ba09f\",\"loads\":1,\"memoryCounter\":42,\"draft\":\"unsubmitted-m0-draft\",\"scrollY\":0,\"focused\":\"draft\"}",
+      "id": "T04-roundtrip",
+      "status": "pass"
+    },
+    {
+      "detail": "Ownership guard rejects cross-profile move before creating a window",
+      "id": "T05-reject-cross-profile-move",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected 20261026T200817-2cd232c7-B-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T200817-2cd232c7-B-one\"), \"local\": Optional(\"20261026T200817-2cd232c7-B-one\"), \"httpOnly\": Optional(\"20261026T200817-2cd232c7-B-one\"), \"indexedDB\": Optional(\"20261026T200817-2cd232c7-B-one\")]",
+      "id": "T05-copy-uses-target-store",
+      "status": "pass"
+    },
+    {
+      "detail": "Explicit URL copy uses new Tab identity and cannot copy the source form/JS state",
+      "id": "T05-copy-link-only",
+      "status": "pass"
+    },
+    {
+      "detail": "Real WKWebView follows local HTTP 302",
+      "id": "fixture-redirect",
+      "status": "pass"
+    },
+    {
+      "detail": "Local POST echo works through WKWebView fetch (not a native form-navigation test)",
+      "id": "fixture-post-fetch",
+      "status": "pass"
+    },
+    {
+      "detail": "Fixture links exist and HTTP contract is tested; native popup/download delegate handling is deferred",
+      "id": "fixture-popup-download",
+      "status": "pending"
+    },
+    {
+      "detail": "Error Domain=WKWebSiteDataStore Code=1 \"Data store is in use (by network process)\" UserInfo={NSLocalizedDescription=Data store is in use (by network process)}",
+      "id": "phase-error",
+      "status": "fail"
+    }
+  ],
+  "facts": {
+    "littleFirstResponder": "Optional(<WKWebView: 0x762b1fc500>)",
+    "originA": "http://127.0.0.1:57430",
+    "originB": "http://127.0.0.1:57431",
+    "profileAStore": "B2DFE56F-0D75-4C2F-BD43-39300CAA0544",
+    "profileBStore": "BD0BF6F9-55FC-417B-AF45-A62513EA2DC3",
+    "representableUpdates": "100",
+    "webViewIdentity": "ObjectIdentifier(0x000000762b1fc500)",
+    "windowMode": "non-activating hidden integration-test windows; no real keyboard events"
+  },
+  "os": "Version 27.0.1 (Build 26A434)",
+  "phase": "seed",
+  "exitCode": 1
+}

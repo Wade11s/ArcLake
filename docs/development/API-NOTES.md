@@ -56,10 +56,14 @@ xcrun swiftc -typecheck -swift-version 6 \
 
 本次工具链：Xcode 27.0（27A266a），Apple Swift 6.4。并不因此承诺使用任何 macOS 27 专属 API；发布仍以 macOS 14 最低运行环境测试为门槛。
 
-## 5. 待运行核实
+## 5. M0 运行验证与剩余项
 
-- 具名 store 在实际部署/签名/Sandbox 下的持久隔离，尤其重启与删除失败恢复。
-- WKWebView 跨 NSView/窗口 reparent 后的焦点、表单、JS 内存和滚动保持。
+已有独立 Sandbox/ad-hoc 应用的真实运行记录，见 [M0 实测报告](M0-RESULTS.md)。上文 API-PROBE 仍只是编译探针，不能与新建的运行应用混为一谈。
+
+- 当前系统上，具名 store 的 Cookie/HttpOnly Cookie/localStorage/IndexedDB 隔离、正常退出与强退后的保持已通过；macOS 14 和发行签名环境仍待测。
+- WKWebView reparent 的实例、表单、JS 内存、DOM 焦点已通过；可见窗口非零滚动、真实键盘/输入法仍待测。
+- 删除测试发现冷调用崩溃、网络进程短暂占用和即时同UUID复用的Cookie残留；当前探针初始化WebKit、显式清空网站数据、有界重试后通过，不能省略失败恢复设计。
+- 清空数据 API：[removeData(ofTypes:modifiedSince:)](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/removedata%28oftypes%3Amodifiedsince%3Acompletionhandler%3A%29)，使用 `WKWebsiteDataStore.allWebsiteDataTypes()` 和 `.distantPast`。
 - 导航/下载/文件选择/权限的 delegate 行为及 WebKit 进程终止回调。
 - WebKit 的网站兼容、媒体/DRM、WebAuthn/通行密钥、系统认证等不因静态 API 可用而得到保证。
 - 系统 HTTP(S) 默认浏览器注册与实际 URL 事件；不以不必要的辅助功能权限作为普通应用运行前提。

@@ -1,0 +1,87 @@
+{
+  "bundleID": "dev.arclake.M0Probe",
+  "checks": [
+    {
+      "detail": "A1/A2 share a named persistent store; B1 uses a different named store",
+      "id": "store-identity",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"local\": nil, \"cookie\": nil, \"indexedDB\": nil, \"httpOnly\": nil]",
+      "id": "fresh-A",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"local\": nil, \"cookie\": nil, \"indexedDB\": nil, \"httpOnly\": nil]",
+      "id": "fresh-B",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected 20261026T200451-0fcdfcd8-A-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"local\": Optional(\"20261026T200451-0fcdfcd8-A-one\"), \"cookie\": Optional(\"20261026T200451-0fcdfcd8-A-one\"), \"indexedDB\": Optional(\"20261026T200451-0fcdfcd8-A-one\"), \"httpOnly\": Optional(\"20261026T200451-0fcdfcd8-A-one\")]",
+      "id": "T01-shared-A1-A2",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"local\": nil, \"cookie\": nil, \"indexedDB\": nil, \"httpOnly\": nil]",
+      "id": "T01-no-leak-A-to-B",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected 20261026T200451-0fcdfcd8-B-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"local\": Optional(\"20261026T200451-0fcdfcd8-B-one\"), \"cookie\": Optional(\"20261026T200451-0fcdfcd8-B-one\"), \"indexedDB\": Optional(\"20261026T200451-0fcdfcd8-B-one\"), \"httpOnly\": Optional(\"20261026T200451-0fcdfcd8-B-one\")]",
+      "id": "T01-write-B",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected 20261026T200451-0fcdfcd8-A-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"local\": Optional(\"20261026T200451-0fcdfcd8-A-one\"), \"cookie\": Optional(\"20261026T200451-0fcdfcd8-A-one\"), \"indexedDB\": Optional(\"20261026T200451-0fcdfcd8-A-one\"), \"httpOnly\": Optional(\"20261026T200451-0fcdfcd8-A-one\")]",
+      "id": "T01-no-leak-B-to-A",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": nil, \"indexedDB\": nil, \"httpOnly\": nil, \"local\": nil]",
+      "id": "origin2-fresh-A",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": nil, \"indexedDB\": nil, \"httpOnly\": nil, \"local\": nil]",
+      "id": "origin2-fresh-B",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected 20261026T200451-0fcdfcd8-A-two in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T200451-0fcdfcd8-A-two\"), \"indexedDB\": Optional(\"20261026T200451-0fcdfcd8-A-two\"), \"httpOnly\": Optional(\"20261026T200451-0fcdfcd8-A-two\"), \"local\": Optional(\"20261026T200451-0fcdfcd8-A-two\")]",
+      "id": "origin2-A",
+      "status": "pass"
+    },
+    {
+      "detail": "Expected 20261026T200451-0fcdfcd8-B-two in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T200451-0fcdfcd8-B-two\"), \"indexedDB\": Optional(\"20261026T200451-0fcdfcd8-B-two\"), \"httpOnly\": Optional(\"20261026T200451-0fcdfcd8-B-two\"), \"local\": Optional(\"20261026T200451-0fcdfcd8-B-two\")]",
+      "id": "origin2-B",
+      "status": "pass"
+    },
+    {
+      "detail": "50 sidebar + 50 theme toggles preserve WebView identity, document instance, load count, draft and JS memory",
+      "id": "T03-100-UI-updates",
+      "status": "pass"
+    },
+    {
+      "detail": "ownerIsLittle=false; oldReleased=true; windowIsLittle=false; identityStable=true; superview=nil",
+      "id": "T04-single-owner",
+      "status": "fail"
+    },
+    {
+      "detail": "T04-single-owner: ownerIsLittle=false; oldReleased=true; windowIsLittle=false; identityStable=true; superview=nil",
+      "id": "phase-error",
+      "status": "fail"
+    }
+  ],
+  "facts": {
+    "originA": "http://127.0.0.1:56961",
+    "originB": "http://127.0.0.1:56962",
+    "profileAStore": "2358B95C-CAF6-4C73-A772-80A705EB6130",
+    "profileBStore": "63051F3A-7907-425A-99F7-DE26254AFAF3",
+    "representableUpdates": "100",
+    "webViewIdentity": "ObjectIdentifier(0x00000077d2d44500)",
+    "windowMode": "non-activating hidden integration-test windows; no real keyboard events"
+  },
+  "os": "Version 27.0.1 (Build 26A434)",
+  "phase": "seed",
+  "exitCode": 1
+}

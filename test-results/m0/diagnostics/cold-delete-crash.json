@@ -1,0 +1,39 @@
+{
+  "note": "Redacted extract from the owned M0 application's crash report; unrelated process/device identifiers omitted.",
+  "application": "ArcLakeM0",
+  "bundleID": "dev.arclake.M0Probe",
+  "os": {
+    "train": "macOS 27.0.1",
+    "build": "26A434",
+    "releaseType": "User"
+  },
+  "exception": {
+    "codes": "0x0000000000000001, 0x0000000000000048",
+    "rawCodes": [
+      1,
+      72
+    ],
+    "type": "EXC_BAD_ACCESS",
+    "signal": "SIGSEGV",
+    "subtype": "KERN_INVALID_ADDRESS at 0x0000000000000048"
+  },
+  "termination": {
+    "signal": "Segmentation fault: 11",
+    "code": 11
+  },
+  "faultingQueue": "com.apple.WebKit.WebsiteDataStoreIO",
+  "frames": [
+    "os_unfair_lock_lock",
+    "WTF::RunLoop::dispatch(WTF::Function<void ()>&&)",
+    "WTF::Detail::CallableWrapper<WebKit::WebsiteDataStore::removeDataStoreWithIdentifierImpl(WTF::UUID const&, WTF::CompletionHandler<void (WTF::String const&)>&&)::$_0, void>::call()",
+    "void WTF::dispatchWorkItem<WTF::(anonymous namespace)::DispatchWorkItem>(void*)",
+    "_dispatch_client_callout",
+    "_dispatch_lane_serial_drain",
+    "_dispatch_lane_invoke",
+    "_dispatch_root_queue_drain_deferred_wlh",
+    "_dispatch_workloop_worker_thread",
+    "_pthread_wqthread",
+    "start_wqthread"
+  ],
+  "observedWorkaround": "Instantiate and release a nonpersistent WKWebView before cold-start store cleanup. This is an observed current-system workaround, not an Apple API guarantee."
+}

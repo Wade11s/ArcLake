@@ -110,7 +110,7 @@ command + immutable state + current clock/protection snapshot
 
 ### 5.1 配置创建
 
-`Profile.websiteStoreID -> WKWebsiteDataStore(forIdentifier:)`，并在初始化 WKWebView 前设置到 WKWebViewConfiguration.websiteDataStore。[V 已核实 API，行为仍需真机验证]
+`Profile.websiteStoreID -> WKWebsiteDataStore(forIdentifier:)`，并在初始化 WKWebView 前设置到 WKWebViewConfiguration.websiteDataStore。[V API 已核实；当前系统的 M0 隔离/重启子集已实测，macOS 14 仍待验证，见 M0-RESULTS.md]
 
 - Default Profile 也使用具名 store，不用 `.default()` 与其他 Profile 混杂。
 - store UUID 非零、只生成一次，并在首次创建任何网页前写库。store 初始化不接受来自网页或导入文件的 UUID。
@@ -132,7 +132,7 @@ Ready/Loading -> ProcessTerminated -> Failed
 
 NSViewRepresentable 的 `makeNSView` 只建宿主；update 时按 TabID/hostID attach，不再次 load。dismantle 只解除该宿主的挂载与观察，不等于删除逻辑 Tab；逻辑存活由注册表持有。
 
-- 一张网页只挂载一个 NSView 层级。Split/小窗移交先 detach 旧 host，再 attach 新 host，并迁移焦点。
+- 一张网页只挂载一个 NSView 层级。Split/小窗移交先更新逻辑 owner，再 detach 旧 host、attach 新 host，并迁移焦点。mount 必须检查归属令牌：M0 实测中 SwiftUI 的迟到 update 曾从新窗抢回网页，不能只依赖 dismantle 顺序。
 - 改变侧栏、主题、Space、窗口尺寸，除非真的需要创建新的 session，不生成新 WKWebView。
 - 初始惰性恢复：只加载选中单 Tab/最多四个面板；其余仅恢复元数据。
 - 初始后台 session 软预算为 8 个，超预算按最近使用释放可安全释放的后台页；可见页面、下载、权限交互不能为了预算被驱逐。受保护页超预算时提示，不做错误的硬上限承诺。
@@ -143,7 +143,7 @@ NSViewRepresentable 的 `makeNSView` 只建宿主；update 时按 TabID/hostID a
 
 1. 确认没有 Space/Little Window 引用；允许尚有独立 Favorites，但需确认一并删除。事务把 Profile 标成 deleting，保存 storeUUID 的 PendingOperation，禁止新建网页引用。
 2. 取消该 Profile 的查询/导航/下载，清理注册表与所有 WKWebView 引用；等待 delegate/token 持有关系释放。
-3. 调用 `WKWebsiteDataStore.remove(forIdentifier:)`；不能仅清 SQLite，不能删除系统 WebKit 目录。
+3. 在禁止新网页引用的删除状态内，显式清空该store的 `allWebsiteDataTypes()`（since `.distantPast`），再调用 `WKWebsiteDataStore.remove(forIdentifier:)`；不能仅清 SQLite，不能删除系统 WebKit 目录。M0 当前系统观察到网络进程短暂占用，需有界重试；只删除namespace后立即复用UUID曾残留Cookie，因此新Profile不得复用已删UUID。冷启动删除还需验证WebKit初始化条件，详见 M0-RESULTS.md。
 4. 成功后事务删除 Favorites/归档/历史和 Profile，完成 operation；失败保留待重试条目与错误，不隐匿数据残留。
 5. 崩溃后从 PendingOperation 恢复删除流程。删除操作幂等；“已不存在”的具体返回要按当前 API 行为验证，不预设错误码。
 

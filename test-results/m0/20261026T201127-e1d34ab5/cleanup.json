@@ -1,0 +1,33 @@
+{
+  "bundleID": "dev.arclake.M0Probe",
+  "checks": [
+    {
+      "detail": "Public store removal succeeded with no live probe WebViews",
+      "id": "delete-6011B87B-46C6-4A4A-8A76-75D0E2947AC0",
+      "status": "pass"
+    },
+    {
+      "detail": "Public store removal succeeded with no live probe WebViews",
+      "id": "delete-E837C14C-6C56-4D55-9821-F958DB3BB4B8",
+      "status": "pass"
+    },
+    {
+      "detail": "Public store removal succeeded with no live probe WebViews",
+      "id": "delete-254BF0F7-5FA5-41AB-B76D-ACE6FADB8068",
+      "status": "pass"
+    }
+  ],
+  "facts": {
+    "deleteAttempts-254BF0F7-5FA5-41AB-B76D-ACE6FADB8068": "1",
+    "deleteAttempts-6011B87B-46C6-4A4A-8A76-75D0E2947AC0": "1",
+    "deleteAttempts-E837C14C-6C56-4D55-9821-F958DB3BB4B8": "1",
+    "originA": "http://127.0.0.1:57959",
+    "originB": "http://127.0.0.1:57960",
+    "profileAStore": "6011B87B-46C6-4A4A-8A76-75D0E2947AC0",
+    "profileBStore": "E837C14C-6C56-4D55-9821-F958DB3BB4B8",
+    "windowMode": "non-activating hidden integration-test windows; no real keyboard events"
+  },
+  "os": "Version 27.0.1 (Build 26A434)",
+  "phase": "cleanup",
+  "exitCode": 0
+}

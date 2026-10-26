@@ -1,0 +1,25 @@
+{
+  "bundleID": "dev.arclake.M0Probe",
+  "checks": [
+    {
+      "detail": "Expected 20261026T201609-bbb9236b-B-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"httpOnly\": Optional(\"20261026T201609-bbb9236b-A-one\"), \"local\": Optional(\"20261026T201609-bbb9236b-A-one\"), \"indexedDB\": Optional(\"20261026T201609-bbb9236b-A-one\"), \"cookie\": Optional(\"20261026T201609-bbb9236b-A-one\")]",
+      "id": "negative-control-isolation",
+      "status": "fail"
+    },
+    {
+      "detail": "negative-control-isolation: Expected 20261026T201609-bbb9236b-B-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"httpOnly\": Optional(\"20261026T201609-bbb9236b-A-one\"), \"local\": Optional(\"20261026T201609-bbb9236b-A-one\"), \"indexedDB\": Optional(\"20261026T201609-bbb9236b-A-one\"), \"cookie\": Optional(\"20261026T201609-bbb9236b-A-one\")]",
+      "id": "phase-error",
+      "status": "fail"
+    }
+  ],
+  "facts": {
+    "originA": "http://127.0.0.1:58984",
+    "originB": "http://127.0.0.1:58985",
+    "profileAStore": "449B9099-23DF-4D87-B81C-6FC0AAD856A1",
+    "profileBStore": "A7C4109F-4B0F-4A23-830D-A1C9527FC427",
+    "windowMode": "non-activating hidden integration-test windows; no real keyboard events"
+  },
+  "os": "Version 27.0.1 (Build 26A434)",
+  "phase": "negative",
+  "exitCode": 1
+}

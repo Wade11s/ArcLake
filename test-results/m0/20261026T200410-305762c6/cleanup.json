@@ -1,0 +1,6 @@
+{
+  "phase": "cleanup",
+  "checks": [],
+  "error": "No structured report",
+  "exitCode": -11
+}

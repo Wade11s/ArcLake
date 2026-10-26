@@ -1,0 +1,113 @@
+{
+  "automatedSubsetPassed": false,
+  "m0Gate": "pending",
+  "gateReason": "Real keyboard/IME, actual WebKit process crash, forced quit and macOS 14 runtime still unverified.",
+  "phases": {
+    "seed": {
+      "bundleID": "dev.arclake.M0Probe",
+      "checks": [
+        {
+          "detail": "A1/A2 share a named persistent store; B1 uses a different named store",
+          "id": "store-identity",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": nil, \"indexedDB\": nil, \"httpOnly\": nil, \"local\": nil]",
+          "id": "fresh-A",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": nil, \"indexedDB\": nil, \"httpOnly\": nil, \"local\": nil]",
+          "id": "fresh-B",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T200410-305762c6-A-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T200410-305762c6-A-one\"), \"indexedDB\": Optional(\"20261026T200410-305762c6-A-one\"), \"httpOnly\": Optional(\"20261026T200410-305762c6-A-one\"), \"local\": Optional(\"20261026T200410-305762c6-A-one\")]",
+          "id": "T01-shared-A1-A2",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": nil, \"indexedDB\": nil, \"httpOnly\": nil, \"local\": nil]",
+          "id": "T01-no-leak-A-to-B",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T200410-305762c6-B-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T200410-305762c6-B-one\"), \"indexedDB\": Optional(\"20261026T200410-305762c6-B-one\"), \"httpOnly\": Optional(\"20261026T200410-305762c6-B-one\"), \"local\": Optional(\"20261026T200410-305762c6-B-one\")]",
+          "id": "T01-write-B",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T200410-305762c6-A-one in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"cookie\": Optional(\"20261026T200410-305762c6-A-one\"), \"indexedDB\": Optional(\"20261026T200410-305762c6-A-one\"), \"httpOnly\": Optional(\"20261026T200410-305762c6-A-one\"), \"local\": Optional(\"20261026T200410-305762c6-A-one\")]",
+          "id": "T01-no-leak-B-to-A",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"local\": nil, \"cookie\": nil, \"indexedDB\": nil, \"httpOnly\": nil]",
+          "id": "origin2-fresh-A",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected empty in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"local\": nil, \"cookie\": nil, \"indexedDB\": nil, \"httpOnly\": nil]",
+          "id": "origin2-fresh-B",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T200410-305762c6-A-two in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"local\": Optional(\"20261026T200410-305762c6-A-two\"), \"cookie\": Optional(\"20261026T200410-305762c6-A-two\"), \"indexedDB\": Optional(\"20261026T200410-305762c6-A-two\"), \"httpOnly\": Optional(\"20261026T200410-305762c6-A-two\")]",
+          "id": "origin2-A",
+          "status": "pass"
+        },
+        {
+          "detail": "Expected 20261026T200410-305762c6-B-two in localStorage, IndexedDB, JS Cookie and server-visible HttpOnly Cookie; got [\"local\": Optional(\"20261026T200410-305762c6-B-two\"), \"cookie\": Optional(\"20261026T200410-305762c6-B-two\"), \"indexedDB\": Optional(\"20261026T200410-305762c6-B-two\"), \"httpOnly\": Optional(\"20261026T200410-305762c6-B-two\")]",
+          "id": "origin2-B",
+          "status": "pass"
+        },
+        {
+          "detail": "50 sidebar + 50 theme toggles preserve WebView identity, document instance, load count, draft and JS memory",
+          "id": "T03-100-UI-updates",
+          "status": "pass"
+        },
+        {
+          "detail": "Same WebView moves from the SwiftUI host to the Little Window; old host releases ownership",
+          "id": "T04-single-owner",
+          "status": "fail"
+        },
+        {
+          "detail": "T04-single-owner: Same WebView moves from the SwiftUI host to the Little Window; old host releases ownership",
+          "id": "phase-error",
+          "status": "fail"
+        }
+      ],
+      "facts": {
+        "originA": "http://127.0.0.1:56885",
+        "originB": "http://127.0.0.1:56886",
+        "profileAStore": "4D902D4C-8228-467F-BF41-C7C85A48C80A",
+        "profileBStore": "BAAD5BFD-8AEF-42C3-9FAA-9009FAE32FA9",
+        "representableUpdates": "100",
+        "webViewIdentity": "ObjectIdentifier(0x0000007c655c0500)",
+        "windowMode": "non-activating hidden integration-test windows; no real keyboard events"
+      },
+      "os": "Version 27.0.1 (Build 26A434)",
+      "phase": "seed",
+      "exitCode": 1
+    },
+    "cleanup": {
+      "phase": "cleanup",
+      "checks": [],
+      "error": "No structured report",
+      "exitCode": -11
+    }
+  },
+  "environment": {
+    "macOS": "27.0.1",
+    "architecture": "arm64",
+    "bundleID": "dev.arclake.M0Probe",
+    "binarySHA256": "cf0e992b05ef0763fcee2d542897e4a1b85cecddb86c264fad799c6904871d78",
+    "adHocSigned": true,
+    "sandboxEntitlements": [
+      "app-sandbox",
+      "network.client"
+    ],
+    "minimumDeploymentTarget": "14.0",
+    "mode": "test"
+  }
+}
