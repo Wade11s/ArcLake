@@ -297,8 +297,9 @@ public enum WorkspaceValidator {
   private static func validateFavorites(_ state: WorkspaceState) throws {
     for root in state.roots where root.kind == .profileFavorites {
       let children = state.children(of: .root(root.id))
-      guard children.count <= 1, children.allSatisfy({ $0.kind == .tab }) else {
-        throw WorkspaceValidationError(.i08, "Favorites root may contain at most one Tab")
+      guard children.allSatisfy({ $0.kind == .tab }) else {
+        throw WorkspaceValidationError(
+          .i08, "Favorites root may only contain single-Tab items")
       }
     }
   }

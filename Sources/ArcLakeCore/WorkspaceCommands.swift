@@ -6,6 +6,11 @@ public enum RenameTarget: Equatable, Sendable {
   case item(ItemID)
 }
 
+public enum SpaceMoveDirection: Equatable, Sendable {
+  case up
+  case down
+}
+
 public enum WorkspaceCommand: Equatable, Sendable {
   case createProfile(
     ProfileID, favoritesRootID: RootID, name: String,
@@ -21,6 +26,10 @@ public enum WorkspaceCommand: Equatable, Sendable {
   case createFolder(
     ItemID, spaceID: SpaceID, parent: SidebarParent,
     name: String, orderKey: Int64)
+  case updateSpace(
+    SpaceID, name: String?, icon: String?, theme: SpaceTheme?,
+    sortOrder: Int64?)
+  case moveSpace(SpaceID, direction: SpaceMoveDirection)
   case moveItem(ItemID, destination: SidebarParent, orderKey: Int64)
   case pinItem(ItemID, spaceID: SpaceID, at: Date)
   case unpinItem(ItemID, at: Date)
@@ -31,8 +40,22 @@ public enum WorkspaceCommand: Equatable, Sendable {
   case selectItem(WindowID, ItemID, at: Date)
   case activateItem(ItemID, windowID: WindowID, at: Date)
   case navigateTab(TabID, url: URL, title: String?, at: Date)
+  case recordNavigation(
+    TabID, historyID: HistoryID, url: URL, title: String?, at: Date)
+  case closeTab(TabID, at: Date)
   case releasePinnedTab(TabID)
   case resetPinnedItem(ItemID, at: Date)
+  case copyLink(
+    ItemID, targetProfileID: ProfileID, targetSpaceID: SpaceID,
+    newItemID: ItemID, newTabID: TabID, at: Date)
+  case changeSpaceProfile(SpaceID, targetProfileID: ProfileID, at: Date)
+  case requestProfileDeletion(
+    ProfileID, operationID: PendingOperationID, at: Date)
+  case retryProfileDeletion(
+    ProfileID, operationID: PendingOperationID, at: Date)
+  case markProfileDeletionFailed(
+    ProfileID, operationID: PendingOperationID, error: String, at: Date)
+  case completeProfileDeletion(ProfileID, operationID: PendingOperationID)
 }
 
 public enum WorkspaceEffect: Equatable, Sendable {
@@ -41,6 +64,9 @@ public enum WorkspaceEffect: Equatable, Sendable {
   case showEmptySpace(SpaceID)
   case spaceChanged(SpaceID)
   case itemActivated(ItemID)
+  case beginProfileDeletion(
+    ProfileID, storeID: UUID, operationID: PendingOperationID)
+  case profileDeleted(ProfileID)
 }
 
 public struct WorkspaceDecision: Equatable, Sendable {
@@ -73,10 +99,15 @@ public enum WorkspaceCommandError: Error, Equatable, Sendable,
   case cannotMoveIntoDescendant
   case folderDestinationRestricted
   case splitPaneMoveUnsupported
-  case favoritesOccupied
   case itemNotInExpectedRegion
   case folderUnpinUnsupported
   case lastSpaceRequired
+  case cannotDeleteLastProfile
+  case profileInUse
+  case pendingOperationMissing
+  case itemHasNoWebURL
+  case sameProfile
+  case splitPaneCloseUnsupported
 
   public var description: String {
     switch self {
@@ -97,10 +128,15 @@ public enum WorkspaceCommandError: Error, Equatable, Sendable,
     case .cannotMoveIntoDescendant: "An item cannot move into its descendant"
     case .folderDestinationRestricted: "Folders may only live under Pinned"
     case .splitPaneMoveUnsupported: "Split pane restructuring is not part of M1"
-    case .favoritesOccupied: "Favorites already contains its single M1 tab"
     case .itemNotInExpectedRegion: "Item is not in the expected region"
     case .folderUnpinUnsupported: "A Folder cannot be moved directly to Today"
     case .lastSpaceRequired: "The last Space cannot be removed"
+    case .cannotDeleteLastProfile: "The last active Profile cannot be deleted"
+    case .profileInUse: "Profile still owns a Space or Little Window"
+    case .pendingOperationMissing: "Profile deletion operation is missing"
+    case .itemHasNoWebURL: "Item has no HTTP(S) URL to copy"
+    case .sameProfile: "Target Profile is already assigned"
+    case .splitPaneCloseUnsupported: "Closing one Split pane is not part of M2"
     }
   }
 }
@@ -141,6 +177,14 @@ public enum Workspace {
         &next, itemID: itemID, spaceID: spaceID,
         parent: parent, name: name, orderKey: orderKey)
 
+    case .updateSpace(let spaceID, let name, let icon, let theme, let sortOrder):
+      try updateSpace(
+        &next, spaceID: spaceID, name: name, icon: icon,
+        theme: theme, sortOrder: sortOrder)
+
+    case .moveSpace(let spaceID, let direction):
+      try moveSpace(&next, spaceID: spaceID, direction: direction)
+
     case .moveItem(let itemID, let destination, let orderKey):
       try moveItem(&next, itemID: itemID, destination: destination, orderKey: orderKey)
 
@@ -173,13 +217,53 @@ public enum Workspace {
         windowID: windowID, at: date)
 
     case .navigateTab(let tabID, let url, let title, let date):
-      try navigateTab(&next, tabID: tabID, url: url, title: title, at: date)
+      effects = try navigateTab(
+        &next, tabID: tabID, url: url, title: title, at: date)
+
+    case .recordNavigation(let tabID, let historyID, let url, let title, let date):
+      try recordNavigation(
+        &next, tabID: tabID, historyID: historyID,
+        url: url, title: title, at: date)
+
+    case .closeTab(let tabID, let date):
+      effects = try closeTab(&next, tabID: tabID, at: date)
 
     case .releasePinnedTab(let tabID):
       effects = try releasePinnedTab(&next, tabID: tabID)
 
     case .resetPinnedItem(let itemID, let date):
       effects = try resetPinnedItem(&next, itemID: itemID, at: date)
+
+    case .copyLink(
+      let itemID, let targetProfileID, let targetSpaceID,
+      let newItemID, let newTabID, let date):
+      effects = try copyLink(
+        &next, itemID: itemID, targetProfileID: targetProfileID,
+        targetSpaceID: targetSpaceID, newItemID: newItemID,
+        newTabID: newTabID, at: date)
+
+    case .changeSpaceProfile(let spaceID, let targetProfileID, let date):
+      effects = try changeSpaceProfile(
+        &next, spaceID: spaceID, targetProfileID: targetProfileID,
+        at: date)
+
+    case .requestProfileDeletion(let profileID, let operationID, let date):
+      effects = try requestProfileDeletion(
+        &next, profileID: profileID, operationID: operationID, at: date)
+
+    case .retryProfileDeletion(let profileID, let operationID, let date):
+      effects = try retryProfileDeletion(
+        &next, profileID: profileID, operationID: operationID, at: date)
+
+    case .markProfileDeletionFailed(
+      let profileID, let operationID, let error, let date):
+      try markProfileDeletionFailed(
+        &next, profileID: profileID, operationID: operationID,
+        error: error, at: date)
+
+    case .completeProfileDeletion(let profileID, let operationID):
+      try completeProfileDeletion(
+        &next, profileID: profileID, operationID: operationID)
     }
 
     next.revision = state.revision + 1
@@ -297,6 +381,63 @@ public enum Workspace {
       SidebarItem(
         id: itemID, parent: parent, orderKey: orderKey,
         kind: .folder, customTitle: name))
+  }
+
+  private static func updateSpace(
+    _ state: inout WorkspaceState,
+    spaceID: SpaceID,
+    name: String?,
+    icon: String?,
+    theme: SpaceTheme?,
+    sortOrder: Int64?
+  ) throws {
+    guard let index = state.spaces.firstIndex(where: { $0.id == spaceID }) else {
+      throw WorkspaceCommandError.unknownSpace(spaceID)
+    }
+    try requireActiveProfile(state.spaces[index].profileID, in: state)
+    if let name {
+      try validateName(name)
+      state.spaces[index].name = name
+    }
+    if let icon, !icon.isEmpty {
+      state.spaces[index].icon = icon
+    }
+    if let theme {
+      state.spaces[index].theme = theme
+    }
+    if let sortOrder {
+      state.spaces[index].sortOrder = sortOrder
+    }
+  }
+
+  private static func moveSpace(
+    _ state: inout WorkspaceState,
+    spaceID: SpaceID,
+    direction: SpaceMoveDirection
+  ) throws {
+    guard let space = state.space(spaceID) else {
+      throw WorkspaceCommandError.unknownSpace(spaceID)
+    }
+    var spaces = state.spaces
+      .filter { $0.profileID == space.profileID }
+      .sorted {
+        if $0.sortOrder != $1.sortOrder { return $0.sortOrder < $1.sortOrder }
+        return $0.id < $1.id
+      }
+    guard let index = spaces.firstIndex(where: { $0.id == spaceID }) else {
+      throw WorkspaceCommandError.unknownSpace(spaceID)
+    }
+    let targetIndex = direction == .up ? index - 1 : index + 1
+    guard spaces.indices.contains(targetIndex) else {
+      throw WorkspaceCommandError.invalidDestination
+    }
+    spaces.swapAt(index, targetIndex)
+    let orderedIDs = spaces.map(\.id)
+    for order in orderedIDs.indices {
+      if let stateIndex = state.spaces.firstIndex(where: { $0.id == orderedIDs[order] }) {
+        state.spaces[stateIndex].sortOrder = Int64(order)
+      }
+    }
   }
 
   private static func moveItem(
@@ -426,9 +567,6 @@ public enum Workspace {
     guard let favoritesRoot = state.favoritesRoot(for: profile.id) else {
       throw WorkspaceCommandError.invalidDestination
     }
-    if !state.children(of: .root(favoritesRoot.id)).isEmpty {
-      throw WorkspaceCommandError.favoritesOccupied
-    }
     let order = (state.children(of: .root(favoritesRoot.id)).map(\.orderKey).max() ?? -1) + 1
     try moveItem(
       &state, itemID: itemID,
@@ -527,6 +665,7 @@ public enum Workspace {
     var effects: [WorkspaceEffect] = [.spaceChanged(spaceID)]
     if let selected {
       effects.append(.itemActivated(selected))
+      effects.append(contentsOf: loadEffects(for: selected, state: state))
     } else {
       effects.append(.showEmptySpace(spaceID))
     }
@@ -564,30 +703,37 @@ public enum Workspace {
     at date: Date
   ) throws -> [WorkspaceEffect] {
     try selectItem(&state, windowID: windowID, itemID: itemID, at: date)
-    let tabIDs = tabIDs(in: itemID, state: state)
     var effects: [WorkspaceEffect] = [.itemActivated(itemID)]
-    if tabIDs.isEmpty {
+    let loads = loadEffects(for: itemID, state: state)
+    if loads.isEmpty {
       if let space = state.space(containing: itemID) {
         effects.append(.showEmptySpace(space.id))
       }
       return effects
     }
-    for tabID in tabIDs {
-      guard let tab = state.tab(tabID),
-        let url = state.region(of: itemID) == .pinned
-          ? (tab.savedURL ?? tab.currentURL)
-          : (tab.currentURL ?? tab.savedURL)
-      else { continue }
-      effects.append(.loadTab(tabID, url))
-    }
+    effects.append(contentsOf: loads)
     return effects
+  }
+
+  private static func loadEffects(
+    for itemID: ItemID,
+    state: WorkspaceState
+  ) -> [WorkspaceEffect] {
+    tabIDs(in: itemID, state: state).compactMap { tabID in
+      guard let tab = state.tab(tabID) else { return nil }
+      let url =
+        state.region(of: itemID) == .pinned
+        ? (tab.savedURL ?? tab.currentURL)
+        : (tab.currentURL ?? tab.savedURL)
+      return url.map { .loadTab(tabID, $0) }
+    }
   }
 
   private static func navigateTab(
     _ state: inout WorkspaceState,
     tabID: TabID, url: URL, title: String?,
     at date: Date
-  ) throws {
+  ) throws -> [WorkspaceEffect] {
     guard isSafeWebURL(url) else {
       throw WorkspaceCommandError.invalidURL
     }
@@ -597,6 +743,63 @@ public enum Workspace {
     state.tabs[index].currentURL = url
     if let title { state.tabs[index].pageTitle = title }
     state.tabs[index].lastActiveAt = date
+    return [.loadTab(tabID, url)]
+  }
+
+  private static func recordNavigation(
+    _ state: inout WorkspaceState,
+    tabID: TabID,
+    historyID: HistoryID,
+    url: URL,
+    title: String?,
+    at date: Date
+  ) throws {
+    guard isSafeWebURL(url) else {
+      throw WorkspaceCommandError.invalidURL
+    }
+    guard let index = state.tabs.firstIndex(where: { $0.id == tabID }) else {
+      throw WorkspaceCommandError.unknownTab(tabID)
+    }
+    state.tabs[index].currentURL = url
+    state.tabs[index].pageTitle = title ?? state.tabs[index].pageTitle
+    state.tabs[index].lastActiveAt = date
+    state.history.append(
+      HistoryVisit(
+        id: historyID,
+        profileID: state.tabs[index].profileID,
+        url: url,
+        title: title,
+        visitedAt: date))
+  }
+
+  private static func closeTab(
+    _ state: inout WorkspaceState,
+    tabID: TabID,
+    at date: Date
+  ) throws -> [WorkspaceEffect] {
+    guard let tab = state.tab(tabID) else {
+      throw WorkspaceCommandError.unknownTab(tabID)
+    }
+    guard case .sidebarItem(let itemID) = tab.owner,
+      let item = state.item(itemID)
+    else {
+      throw WorkspaceCommandError.itemNotInExpectedRegion
+    }
+    if case .item(let parentID) = item.parent,
+      state.item(parentID)?.kind == .split
+    {
+      throw WorkspaceCommandError.splitPaneCloseUnsupported
+    }
+    if state.region(of: itemID) == .pinned {
+      if let index = state.tabs.firstIndex(where: { $0.id == tabID }) {
+        state.tabs[index].currentURL = nil
+        state.tabs[index].lastActiveAt = date
+      }
+      return [.releaseTab(tabID)]
+    }
+    state.removeItemSubtree(itemID)
+    updateSelectionsAfterRemoval(&state, removedItemID: itemID)
+    return [.releaseTab(tabID)]
   }
 
   private static func releasePinnedTab(
@@ -639,6 +842,235 @@ public enum Workspace {
     return effects
   }
 
+  private static func copyLink(
+    _ state: inout WorkspaceState,
+    itemID: ItemID,
+    targetProfileID: ProfileID,
+    targetSpaceID: SpaceID,
+    newItemID: ItemID,
+    newTabID: TabID,
+    at date: Date
+  ) throws -> [WorkspaceEffect] {
+    guard let item = state.item(itemID), item.kind == .tab,
+      let sourceTabID = item.tabID,
+      let sourceTab = state.tab(sourceTabID),
+      let url = sourceTab.currentURL ?? sourceTab.savedURL,
+      isSafeWebURL(url)
+    else {
+      throw WorkspaceCommandError.itemHasNoWebURL
+    }
+    try requireActiveProfile(targetProfileID, in: state)
+    guard let targetSpace = state.space(targetSpaceID),
+      targetSpace.profileID == targetProfileID
+    else {
+      throw WorkspaceCommandError.invalidDestination
+    }
+    guard state.item(newItemID) == nil, state.tab(newTabID) == nil else {
+      throw WorkspaceCommandError.duplicateIdentifier("Copied Tab or item")
+    }
+    let destination = SidebarParent.root(targetSpace.todayRootID)
+    let orderKey = (state.children(of: destination).map(\.orderKey).max() ?? -1) + 1
+    insertOrder(&state, parent: destination, orderKey: orderKey)
+    state.items.append(
+      SidebarItem(
+        id: newItemID, parent: destination, orderKey: orderKey,
+        kind: .tab, tabID: newTabID,
+        customTitle: item.customTitle ?? sourceTab.pageTitle))
+    state.tabs.append(
+      Tab(
+        id: newTabID, profileID: targetProfileID,
+        currentURL: url, savedURL: nil,
+        pageTitle: item.customTitle ?? sourceTab.pageTitle,
+        lastActiveAt: date, createdAt: date,
+        owner: .sidebarItem(newItemID)))
+    return [.loadTab(newTabID, url)]
+  }
+
+  private static func changeSpaceProfile(
+    _ state: inout WorkspaceState,
+    spaceID: SpaceID,
+    targetProfileID: ProfileID,
+    at date: Date
+  ) throws -> [WorkspaceEffect] {
+    guard let spaceIndex = state.spaces.firstIndex(where: { $0.id == spaceID }) else {
+      throw WorkspaceCommandError.unknownSpace(spaceID)
+    }
+    let oldProfileID = state.spaces[spaceIndex].profileID
+    guard oldProfileID != targetProfileID else {
+      throw WorkspaceCommandError.sameProfile
+    }
+    try requireActiveProfile(targetProfileID, in: state)
+    let affectedTabIDs = Set(
+      [state.spaces[spaceIndex].pinnedRootID, state.spaces[spaceIndex].todayRootID]
+        .flatMap { tabIDs(in: $0, state: state) })
+
+    state.spaces[spaceIndex].profileID = targetProfileID
+    state.spaces[spaceIndex].selectedItemID = nil
+    for index in state.tabs.indices where affectedTabIDs.contains(state.tabs[index].id) {
+      state.tabs[index].profileID = targetProfileID
+      state.tabs[index].lastActiveAt = date
+    }
+    for index in state.windows.indices
+    where state.windows[index].selectedSpaceID == spaceID {
+      state.windows[index].selectedItemID = nil
+      state.windows[index].selectedPaneID = nil
+      state.windows[index].lastSelections.removeAll { $0.spaceID == spaceID }
+    }
+
+    return affectedTabIDs.sorted().map { .releaseTab($0) }
+      + [.spaceChanged(spaceID), .showEmptySpace(spaceID)]
+  }
+
+  private static func requestProfileDeletion(
+    _ state: inout WorkspaceState,
+    profileID: ProfileID,
+    operationID: PendingOperationID,
+    at date: Date
+  ) throws -> [WorkspaceEffect] {
+    guard let profileIndex = state.profiles.firstIndex(where: { $0.id == profileID }) else {
+      throw WorkspaceCommandError.unknownProfile(profileID)
+    }
+    guard state.profiles[profileIndex].lifecycle == .active else {
+      throw WorkspaceCommandError.profileDeleting(profileID)
+    }
+    let activeProfiles = state.profiles.filter { $0.lifecycle == .active }
+    guard activeProfiles.count > 1 else {
+      throw WorkspaceCommandError.cannotDeleteLastProfile
+    }
+    guard !state.spaces.contains(where: { $0.profileID == profileID }) else {
+      throw WorkspaceCommandError.profileInUse
+    }
+    guard
+      !state.tabs.contains(where: {
+        $0.profileID == profileID && isLittleWindowOwner($0.owner)
+      })
+    else {
+      throw WorkspaceCommandError.profileInUse
+    }
+    guard
+      !state.pendingOperations.contains(where: {
+        $0.kind == .profileDataDeletion && $0.targetID == profileID.rawValue
+      })
+    else {
+      throw WorkspaceCommandError.duplicateIdentifier("Pending Profile deletion")
+    }
+
+    guard let fallback = activeProfiles.first(where: { $0.id != profileID }) else {
+      throw WorkspaceCommandError.cannotDeleteLastProfile
+    }
+    state.profiles[profileIndex].lifecycle = .deleting
+    if state.settings.defaultProfileID == profileID {
+      state.settings.defaultProfileID = fallback.id
+    }
+    if case .littleWindow(let id) = state.settings.externalDefaultDestination,
+      id == profileID
+    {
+      state.settings.externalDefaultDestination = .littleWindow(fallback.id)
+    }
+    let storeID = state.profiles[profileIndex].websiteStoreID
+    state.pendingOperations.append(
+      PendingOperation(
+        id: operationID, kind: .profileDataDeletion,
+        targetID: profileID.rawValue, storeID: storeID,
+        phase: .pending, lastError: nil, attemptAt: date))
+    return [
+      .beginProfileDeletion(
+        profileID, storeID: storeID, operationID: operationID)
+    ]
+  }
+
+  private static func retryProfileDeletion(
+    _ state: inout WorkspaceState,
+    profileID: ProfileID,
+    operationID: PendingOperationID,
+    at date: Date
+  ) throws -> [WorkspaceEffect] {
+    guard let profile = state.profile(profileID), profile.lifecycle == .deleting else {
+      throw WorkspaceCommandError.unknownProfile(profileID)
+    }
+    guard
+      let operationIndex = state.pendingOperations.firstIndex(where: {
+        $0.id == operationID && $0.kind == .profileDataDeletion
+          && $0.targetID == profileID.rawValue
+      })
+    else {
+      throw WorkspaceCommandError.pendingOperationMissing
+    }
+    state.pendingOperations[operationIndex].phase = .pending
+    state.pendingOperations[operationIndex].lastError = nil
+    state.pendingOperations[operationIndex].attemptAt = date
+    return [
+      .beginProfileDeletion(
+        profileID, storeID: profile.websiteStoreID, operationID: operationID)
+    ]
+  }
+
+  private static func markProfileDeletionFailed(
+    _ state: inout WorkspaceState,
+    profileID: ProfileID,
+    operationID: PendingOperationID,
+    error: String,
+    at date: Date
+  ) throws {
+    guard state.profile(profileID)?.lifecycle == .deleting else {
+      throw WorkspaceCommandError.unknownProfile(profileID)
+    }
+    guard
+      let index = state.pendingOperations.firstIndex(where: {
+        $0.id == operationID && $0.targetID == profileID.rawValue
+      })
+    else {
+      throw WorkspaceCommandError.pendingOperationMissing
+    }
+    state.pendingOperations[index].phase = .retry
+    state.pendingOperations[index].lastError = error
+    state.pendingOperations[index].attemptAt = date
+  }
+
+  private static func completeProfileDeletion(
+    _ state: inout WorkspaceState,
+    profileID: ProfileID,
+    operationID: PendingOperationID
+  ) throws {
+    guard let profile = state.profile(profileID), profile.lifecycle == .deleting else {
+      throw WorkspaceCommandError.unknownProfile(profileID)
+    }
+    guard !state.spaces.contains(where: { $0.profileID == profileID }),
+      !state.tabs.contains(where: {
+        $0.profileID == profileID && isLittleWindowOwner($0.owner)
+      })
+    else {
+      throw WorkspaceCommandError.profileInUse
+    }
+    guard
+      state.pendingOperations.contains(where: {
+        $0.id == operationID && $0.targetID == profileID.rawValue
+      })
+    else {
+      throw WorkspaceCommandError.pendingOperationMissing
+    }
+
+    if let favorites = state.favoritesRoot(for: profileID) {
+      let roots = Array(state.children(of: .root(favorites.id)))
+      for root in roots {
+        state.removeItemSubtree(root.id)
+      }
+      state.roots.removeAll { $0.id == favorites.id }
+    }
+    let remainingTabs = Set(
+      state.items.compactMap(\.tabID))
+    state.tabs.removeAll {
+      $0.profileID == profileID && !remainingTabs.contains($0.id)
+    }
+    state.history.removeAll { $0.profileID == profileID }
+    state.archiveEntries.removeAll { $0.profileID == profileID }
+    state.routeRules.removeAll {
+      $0.destination == .littleWindow(profileID)
+    }
+    state.pendingOperations.removeAll { $0.id == operationID }
+    state.profiles.removeAll { $0.id == profileID }
+  }
+
   private static func validateDestination(
     _ parent: SidebarParent,
     space: Space,
@@ -657,10 +1089,8 @@ public enum Workspace {
         throw WorkspaceCommandError.folderDestinationRestricted
       }
       if root.kind == .profileFavorites {
-        guard kind == .tab,
-          state.children(of: parent).isEmpty
-        else {
-          throw WorkspaceCommandError.favoritesOccupied
+        guard kind == .tab else {
+          throw WorkspaceCommandError.invalidDestination
         }
       }
     case .item(let parentID):
@@ -729,6 +1159,20 @@ public enum Workspace {
         tabIDs(in: $0.id, state: state)
       }
     }
+  }
+
+  private static func tabIDs(
+    in rootID: RootID,
+    state: WorkspaceState
+  ) -> [TabID] {
+    state.children(of: .root(rootID)).flatMap {
+      tabIDs(in: $0.id, state: state)
+    }
+  }
+
+  private static func isLittleWindowOwner(_ owner: TabOwner) -> Bool {
+    if case .littleWindow = owner { return true }
+    return false
   }
 
   private static func profile(

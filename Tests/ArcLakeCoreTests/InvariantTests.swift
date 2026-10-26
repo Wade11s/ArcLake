@@ -84,15 +84,25 @@ struct InvariantTests {
     expectInvariant(.i07, state)
   }
 
-  @Test("I08 rejects multiple Favorites")
-  func i08RejectsMultipleFavorites() throws {
+  @Test("I08 rejects composite Favorites roots")
+  func i08RejectsCompositeFavoritesRoots() throws {
     var state = try stateWithTab()
     state = try CoreFixtures.addTab(
       state, tabID: CoreFixtures.tabA2, itemID: CoreFixtures.itemA2, order: 1)
-    for index in state.items.indices {
-      state.items[index].parent = .root(CoreFixtures.favoritesA)
-      state.items[index].orderKey = Int64(index)
+    let splitID = ItemID()
+    state.items.append(
+      SidebarItem(
+        id: splitID, parent: .root(CoreFixtures.favoritesA),
+        orderKey: 0, kind: .split))
+    for (index, itemID) in [CoreFixtures.itemA1, CoreFixtures.itemA2].enumerated() {
+      let position = try #require(state.items.firstIndex { $0.id == itemID })
+      state.items[position].parent = .item(splitID)
+      state.items[position].orderKey = Int64(index)
     }
+    state.splitConfigurations.append(
+      SplitConfiguration(
+        itemID: splitID, orientation: .horizontal,
+        weights: [0.5, 0.5], focusedChildItemID: CoreFixtures.itemA1))
     expectInvariant(.i08, state)
   }
 

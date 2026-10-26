@@ -5,7 +5,7 @@ public enum ProfileLifecycle: String, Codable, Sendable {
   case deleting
 }
 
-public struct Profile: Codable, Equatable, Sendable {
+public struct Profile: Codable, Equatable, Sendable, Identifiable {
   public var id: ProfileID
   public var name: String
   public var websiteStoreID: UUID
@@ -41,7 +41,7 @@ public struct SpaceTheme: Codable, Equatable, Sendable {
   }
 }
 
-public struct Space: Codable, Equatable, Sendable {
+public struct Space: Codable, Equatable, Sendable, Identifiable {
   public var id: SpaceID
   public var profileID: ProfileID
   public var name: String
@@ -150,7 +150,7 @@ public enum SidebarItemKind: String, Codable, Sendable {
   case split
 }
 
-public struct SidebarItem: Codable, Equatable, Sendable {
+public struct SidebarItem: Codable, Equatable, Sendable, Identifiable {
   public var id: ItemID
   public var parent: SidebarParent
   public var orderKey: Int64

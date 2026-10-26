@@ -1,10 +1,11 @@
 # ArcLake
 
-仅面向 macOS 的 Arc 风格浏览器独立实现。当前已完成 **M0 浏览器能力验证** 与 **M1 Workspace 基础**；交付仍是开发基线，不是可日用浏览器。
+仅面向 macOS 的 Arc 风格浏览器独立实现。当前已完成 **M0 浏览器能力验证、M1 Workspace 基础与 M2 Foundation Demo**；这是可运行的开发版本，但还不是完整 Arc 替代品。
 
 - [开发文档与复现方案](docs/development/README.md)
 - [M0 运行结果、问题与剩余门槛](docs/development/M0-RESULTS.md)
 - [M1 领域模型、SQLite 与启动恢复结果](docs/development/M1-RESULTS.md)
+- [M2 真实浏览、Sidebar 与命令栏结果](docs/development/M2-RESULTS.md)
 - [Arc 原始分析证据](evidence/arc/no-hopper/README.md)
 
 ## 运行验证
@@ -28,6 +29,12 @@ python3 scripts/run_m1.py
 
 # 只运行 Workspace SQLite 骨架
 swift run ArcLakeM1
+
+# M2 Foundation Demo（真实 WKWebView + Sidebar + 命令栏）
+swift run ArcLakeM2
+
+# M2 完整门禁、WebKit 集成测试和两次 UI 烟测
+python3 scripts/run_m2.py
 ```
 
 应用位于 `build/ArcLakeM0.app`，请通过上述脚本启动，因为测试端口和 store UUID 由脚本提供；直接双击缺少参数时会退出。自动化模式会短暂显示并激活自己的测试窗口，以验证真实滚动、AppKit 键盘输入和窗口移交。强退测试只杀死脚本创建的测试 App；内容进程测试只对经 `ps` 校验为 `WebKit.WebContent` 的本轮 PID 发送 `SIGKILL`。
@@ -43,7 +50,9 @@ swift run ArcLakeM1
 - `Sources/ArcLakeCore/`：强类型领域模型、I01–I12、Workspace 命令、BrowserEvent、AppController。
 - `Sources/ArcLakePersistence/`：系统 SQLite schema v1、迁移、事务与历史查询。
 - `Sources/ArcLakeM1/`：Loading/Ready/Recovery 三态 SwiftUI 启动骨架。
-- `Tests/`：M0 回归、M1 Core 与 Persistence 测试。
+- `Sources/ArcLakeBrowsing/`：产品 WKWebView、Profile store、导航事件与运行注册表。
+- `Sources/ArcLakeM2/`：Foundation Demo Sidebar、命令栏、Space/Profile 管理和浏览器界面。
+- `Tests/`：M0 回归、Core、Persistence 与真实 WebKit 集成测试。
 - `Fixtures/M0/`、`scripts/m0_fixture.py`：两个仅 loopback 的测试 origin。
 - `Packaging/`：独立 bundle ID、App Sandbox 与 network.client 权限；临时 ad-hoc 签名，未公证。
 - `test-results/m0/`：逐轮环境、稳定 UUID 清单、JSON 结果和日志。`latest.json` 指向最近一轮。
@@ -60,4 +69,4 @@ bash scripts/build_m0.sh
 python3 scripts/cleanup_m0.py test-results/m0/<run>/run-config.json
 ```
 
-macOS 27 最低系统基线上的 M0 与 M1 Gate 均已通过。M1 不加载真实网页，也不是完整 11 项功能；下一阶段为 M2 Foundation Demo。
+macOS 27 最低系统基线上的 M0、M1、M2 Gate 均已通过。M2 不包含自动归档、Library、正式 Split/Little Window、完整下载和链接路由；下一阶段为 M3。

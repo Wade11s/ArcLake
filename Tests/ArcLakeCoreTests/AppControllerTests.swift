@@ -3,7 +3,8 @@ import Testing
 
 @testable import ArcLakeCore
 
-actor RecordingEffectHandler: AppEffectHandler {
+@MainActor
+final class RecordingEffectHandler: AppEffectHandler {
   private let store: any WorkspaceStore
   private(set) var effects: [AppEffect] = []
   private(set) var revisions: [Int64] = []
@@ -48,7 +49,7 @@ struct AppControllerTests {
     #expect(
       persisted?.profiles.first?.websiteStoreID
         == CoreFixtures.bootstrapIds().websiteStoreID)
-    let recorded = await recorder.snapshot()
+    let recorded = recorder.snapshot()
     #expect(recorded.effects == [.workspaceReady(createdNew: true)])
     #expect(recorded.revisions == [1])
   }
@@ -86,7 +87,7 @@ struct AppControllerTests {
     }
     #expect(!summary.createdNewWorkspace)
     #expect(summary.restorationPlan?.tabIDs == [CoreFixtures.tabA1])
-    let recorded = await recorder.snapshot()
+    let recorded = recorder.snapshot()
     #expect(recorded.effects.first == .workspaceReady(createdNew: false))
     #expect(recorded.effects.count == 2)
     guard case .loadTab(let identity, let url) = recorded.effects[1] else {
@@ -115,7 +116,7 @@ struct AppControllerTests {
     }
     #expect(summary.repairs.count == 1)
     #expect(controller.workspace?.revision == 2)
-    let recorded = await recorder.snapshot()
+    let recorded = recorder.snapshot()
     #expect(recorded.revisions.first == 2)
   }
 
@@ -151,7 +152,7 @@ struct AppControllerTests {
       store: store, bootstrapIDs: CoreFixtures.bootstrapIds(),
       effectHandler: recorder)
     await controller.start()
-    let beforeEffects = await recorder.snapshot().effects
+    let beforeEffects = recorder.snapshot().effects
     let revision = controller.workspace?.revision
 
     await store.setCommitFailure(.diskFull)
@@ -169,7 +170,7 @@ struct AppControllerTests {
     }
     #expect(controller.workspace?.revision == revision)
     #expect(controller.workspace?.spaces.count == 1)
-    let afterEffects = await recorder.snapshot().effects
+    let afterEffects = recorder.snapshot().effects
     let storedRevision = await store.storedState()?.revision
     #expect(afterEffects == beforeEffects)
     #expect(storedRevision == revision)

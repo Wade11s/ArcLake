@@ -70,7 +70,7 @@ Routing + Archive policies -> Workspace 内部纯函数
 
 - 每个活动 Tab 恰好有一个 owner：单标签 SidebarItem，或 Little Window；Split 的面板也是单标签 SidebarItem，parent 是 Split。
 - Root 自带类型和 owner；不能靠数组位置猜是 Favorites 还是 Today。
-- Folder 只能在固定根下；Split 只有 2–4 个 Tab 子项；Favorite 根只有单 Tab；同一子树 profileID 一致。
+- Folder 只能在固定根下；Split 只有 2–4 个 Tab 子项；Favorite 根只含独立的单 Tab 子项（可多个）；同一子树 profileID 一致。
 - SidebarItem 采用一个 parent 字段与 orderKey，不同时维护容易分歧的可变 parentID/childrenIds 双份真相；children 从索引派生。
 - SidebarItem.kind=tab 时恰好一个 Tab 引用；folder/split 本身不是网页；移除组必须正确处理所有叶 Tab。
 - Pinned/Today 身份由根容器继承；不再为同一 Tab 设置独立 isPinned/isFavorite 布尔值，以免出现矛盾组合。
@@ -79,7 +79,7 @@ Routing + Archive policies -> Workspace 内部纯函数
 
 ### 3.2 必须守住的不变量
 
-I01 有效 Profile/Space 至少各一个；I02 Space.profileID 有效；I03 全部树无环、parent 唯一；I04 子树 Profile 一致；I05 Tab owner 唯一；I06 Split 2–4 叶、正比例总和为 1；I07 可见选择指向有效项；I08 Favorite 根仅单 Tab；I09 Archive 不含可执行脚本/系统凭据；I10 history/search 始终显式 Profile 过滤；I11 active 与 archive 的 ownership 不重复；I12 WebView 唯一宿主且 store 与 Tab/Profile 一致。
+I01 有效 Profile/Space 至少各一个；I02 Space.profileID 有效；I03 全部树无环、parent 唯一；I04 子树 Profile 一致；I05 Tab owner 唯一；I06 Split 2–4 叶、正比例总和为 1；I07 可见选择指向有效项；I08 Favorite 根只含单个 Tab 条目、不得嵌套 Folder/Split；I09 Archive 不含可执行脚本/系统凭据；I10 history/search 始终显式 Profile 过滤；I11 active 与 archive 的 ownership 不重复；I12 WebView 唯一宿主且 store 与 Tab/Profile 一致。
 
 每个 command 在提交前验证这些条件；失败返回可展示的 typed error，而不是 assertion 后继续运行。
 
@@ -199,11 +199,14 @@ Archive policy 输入：当前时间、Profile 阈值、Today 叶 lastActiveAt�
 Package.swift                     # Swift tools 6.4、macOS 27、Swift 6
 Sources/ArcLakeCore/              # IDs、值模型、I01–I12、commands、AppController、Store Interface
 Sources/ArcLakePersistence/       # SQLiteConnection、schema v1、migration、SQLiteWorkspaceStore
+Sources/ArcLakeBrowsing/          # 产品 WKWebView、Profile store、导航 delegate、运行注册表
 Sources/ArcLakeM1/                # Loading/Ready/Recovery SwiftUI 启动壳
+Sources/ArcLakeM2/                # Foundation Demo：Sidebar、命令栏、Space/Profile、真实浏览
 Sources/ArcLakeM0/ + M0Core/      # 浏览器能力探针回归资产
 Tests/ArcLakeCoreTests/           # Swift Testing：领域、命令、恢复、generation、随机树属性
 Tests/ArcLakePersistenceTests/    # Swift Testing：SQLite、WAL、revision、迁移、故障注入
+Tests/ArcLakeBrowsingTests/       # Swift Testing + 真实 WKWebView/loopback fixture
 Tests/M0CoreTests/                # XCTest 遗留 M0 配置回归
 ```
 
-M1 已按上述纵向切片实现。SQLite schema v1 的权威定义在 `SQLiteMigrations.swift`，Workspace 状态的权威值在 `WorkspaceState.swift`；UI 不应绕过 `AppController`/`Workspace.decide` 直接修改这些值。未来引入 Xcode app/UI test target 时继续复用同一 Core/Persistence Interface，不复制第二套树规则。
+M1/M2 已按上述纵向切片实现。SQLite schema v1 的权威定义在 `SQLiteMigrations.swift`，Workspace 状态的权威值在 `WorkspaceState.swift`；Sidebar 和命令栏只调用 `AppController`/`Workspace.decide`，不复制移动、固定、收藏或 Profile 规则。

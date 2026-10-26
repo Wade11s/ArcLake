@@ -1,6 +1,6 @@
 # ArcLake macOS 开发文档与复现方案
 
-状态：**v1.1：M0 与 M1 Gate 均已通过；进入 M2 Foundation Demo。**
+状态：**v1.2：M0、M1、M2 Gate 均已通过；进入 M3 Archive/Library。**
 
 目标：用 SwiftUI + AppKit + WebKit 独立实现 Arc 的基础组织方式与浏览交互，而非复制 Arc 内核、品牌或全部历史功能。分析对象仅 macOS；不开展 Windows 复现。
 
@@ -13,7 +13,8 @@
 5. [技术核实 API-NOTES.md](API-NOTES.md)：Apple 文档、当前 SDK 核实结果与限制。
 6. [M0 实测报告](M0-RESULTS.md)：通过项目、真实失败与修复、待验证门槛；[运行原型](../../README.md)。
 7. [M1 实施结果](M1-RESULTS.md)：领域模型、I01–I12、SQLite schema v1、迁移与启动恢复。
-8. [领域词汇](../../GLOSSARY.md)；[平台/内核决策](../adr/0001-macos-webkit-shell.md)。
+8. [M2 实施结果](M2-RESULTS.md)：真实浏览、Sidebar、Space/Profile、拖拽与命令栏。
+9. [领域词汇](../../GLOSSARY.md)；[平台/内核决策](../adr/0001-macos-webkit-shell.md)。
 
 ## 证据与规格的关系
 
@@ -43,8 +44,8 @@
 - **基础功能版（M0–M5）**：11 项均有明确实现范围；分屏、小窗口、命令栏、路由、归档可操作。
 - **候选发布版（M6）**：崩溃恢复、权限、下载、隔离回归、可访问性和分发检查通过。
 
-主动简化：文件夹分享先做本地 URL 清单导出/导入，不提供公网分享链接；Favorites 首版只容纳单标签；不实现 Chrome 扩展、Peek、云同步、AI 功能。完整范围表见 SPEC。
+主动简化：文件夹分享先做本地 URL 清单导出/导入，不提供公网分享链接；Favorites 首版只容纳独立的单 Tab 条目、不能嵌套 Folder/Split，但可以有多个；不实现 Chrome 扩展、Peek、云同步、AI 功能。完整范围表见 SPEC。
 
 ## 建议马上做的工作
 
-M0 已通过浏览器能力验证，M1 已完成强类型领域模型、I01–I12、SQLite schema v1、迁移/backup、Workspace 命令、AppController 提交效果循环和冷启动恢复。下一阶段为 M2：真实 Sidebar、导航、Space 编辑、Profile/Favorites/Pinned/Folder 操作与可重启恢复的 Foundation Demo。详见 [M0 报告](M0-RESULTS.md) 与 [M1 报告](M1-RESULTS.md)。
+M0 已通过浏览器能力验证，M1 完成了领域/持久化/命令骨架，M2 已完成真实 WebKit 浏览、Sidebar、Space/Profile 管理、Favorites/Pinned/Folder、拖拽、跨 Profile 复制和统一命令栏。下一阶段为 M3：Auto Archive、Library、Profile-scoped History 和完整命令搜索。详见 [M2 报告](M2-RESULTS.md)。

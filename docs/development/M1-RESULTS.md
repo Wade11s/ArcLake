@@ -9,7 +9,7 @@
 ## 1. 已交付
 
 - `ArcLakeCore`：强类型 UUID、Profile/Space/Root/SidebarItem/Tab/Split/Window/Archive/History/Route/Pending 值模型。
-- I01–I12 验证器，包括树环、Profile 一致性、Tab 唯一 owner、Split 比例、选择指针、Favorites 上限、不安全归档 URL、History Profile 过滤、active/archive 冲突和 WebView 唯一宿主/store 校验。
+- I01–I12 验证器，包括树环、Profile 一致性、Tab 唯一 owner、Split 比例、选择指针、Favorites 仅含单 Tab 子项、不安全归档 URL、History Profile 过滤、active/archive 冲突和 WebView 唯一宿主/store 校验。
 - Workspace 纯值命令：创建 Profile/Space/Tab/Folder、移动、Pin/Unpin、Favorite/Unfavorite、重命名、Space 切换、选择/激活、导航、固定 Tab 释放与 savedURL 重置。
 - SQLite schema v1：profiles、spaces、roots、items、tabs、split_configurations、window_sessions、archive_entries、history_visits、route_rules、application_settings、pending_operations、processed_open_requests、meta。
 - SQLite 单写者 actor：WAL、foreign keys、FULL synchronous、单事务整快照提交、revision 校验、历史 Profile 作用域查询。

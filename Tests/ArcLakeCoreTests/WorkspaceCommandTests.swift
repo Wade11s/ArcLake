@@ -52,14 +52,19 @@ struct WorkspaceCommandTests {
       command: .favoriteItem(
         CoreFixtures.itemA1, currentSpaceID: CoreFixtures.spaceA1)
     ).state
+    let twoFavorites = try Workspace.decide(
+      state: favorited,
+      command: .favoriteItem(
+        CoreFixtures.itemA2, currentSpaceID: CoreFixtures.spaceA2)
+    ).state
     #expect(
-      favorited.item(CoreFixtures.itemA1)?.parent
+      twoFavorites.item(CoreFixtures.itemA1)?.parent
         == .root(CoreFixtures.favoritesA))
     #expect(
-      favorited.children(of: .root(CoreFixtures.favoritesA)).map(\.id)
-        == [CoreFixtures.itemA1])
+      twoFavorites.children(of: .root(CoreFixtures.favoritesA)).map(\.id)
+        == [CoreFixtures.itemA1, CoreFixtures.itemA2])
 
-    let withProfileB = try CoreFixtures.addProfileB(favorited)
+    let withProfileB = try CoreFixtures.addProfileB(twoFavorites)
     #expect(
       withProfileB.children(of: .root(CoreFixtures.favoritesB)).isEmpty,
       "A Profile must not see another Profile's Favorites")
@@ -67,11 +72,12 @@ struct WorkspaceCommandTests {
     let reordered = try Workspace.decide(
       state: withProfileB,
       command: .moveItem(
-        CoreFixtures.itemA1, destination: .root(CoreFixtures.favoritesA),
+        CoreFixtures.itemA2, destination: .root(CoreFixtures.favoritesA),
         orderKey: 0)
     ).state
     #expect(
-      reordered.children(of: .root(CoreFixtures.favoritesA)).count == 1)
+      reordered.children(of: .root(CoreFixtures.favoritesA)).map(\.id)
+        == [CoreFixtures.itemA2, CoreFixtures.itemA1])
 
     let unfavorited = try Workspace.decide(
       state: reordered,
@@ -82,6 +88,9 @@ struct WorkspaceCommandTests {
     #expect(
       unfavorited.item(CoreFixtures.itemA1)?.parent
         == .root(CoreFixtures.todayA2))
+    #expect(
+      unfavorited.children(of: .root(CoreFixtures.favoritesA)).map(\.id)
+        == [CoreFixtures.itemA2])
     #expect(
       Set(unfavorited.items.compactMap(\.tabID))
         == Set([CoreFixtures.tabA1, CoreFixtures.tabA2]))

@@ -1,6 +1,6 @@
 # 实施计划与复现路径
 
-各阶段以验收门槛推进，不以界面截图代替功能交付。M0、M1 均已在 macOS 27 上通过，当前进入 M2，见 [M0 报告](M0-RESULTS.md) 与 [M1 报告](M1-RESULTS.md)。平台假设见 [README](README.md)，功能契约见 [SPEC](SPEC.md)。
+各阶段以验收门槛推进，不以界面截图代替功能交付。M0、M1、M2 均已在 macOS 27 上通过，当前进入 M3，见 [M2 报告](M2-RESULTS.md)。平台假设见 [README](README.md)，功能契约见 [SPEC](SPEC.md)。
 
 ## M0 — 关键能力验证（先做，阻塞后续）
 
@@ -39,7 +39,7 @@
 
 依赖：M1。
 
-**下一阶段。** M1 的 Store/AppController Interface 作为唯一持久化与命令入口，不在 UI 中复制移动/固定/收藏规则。
+**状态：完成。** `ArcLakeBrowsing` 与 `ArcLakeM2` 已实现真实浏览、Sidebar、Space/Profile、Favorites/Pinned/Folder、拖拽、跨 Profile 复制和统一命令栏；T01–T12 中 M2 范围与 T21 基本路径通过。
 
 - Sidebar、地址输入、前进/后退/刷新、真实网页、⌘S/⌘L/⌘T/⌘W。
 - Space 编辑/排序/主题与 Control+数字切换。
@@ -54,6 +54,8 @@
 ## M3 — 归档、Library 和完整命令栏
 
 依赖：M2。
+
+**下一阶段。** 基于 M2 的 `AppController`/SQLite revision 事务增加 Archive clock、Snapshot/Restore 与 Profile-scoped Library。
 
 - Archive clock/protection policy、按 Profile 阈值、周期/启动/唤醒扫描。
 - 单项、Folder、Split 快照结构及恢复（Split UI 未上线也能测试纯模型）。

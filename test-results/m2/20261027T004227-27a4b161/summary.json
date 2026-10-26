@@ -1,0 +1,58 @@
+{
+  "m2Gate": "passed",
+  "m2GatePassed": true,
+  "testExitCode": 0,
+  "requiredTests": {
+    "T01 named product stores isolate cookie and localStorage": true,
+    "T03 stable coordinator reuses WebView without reloading": true,
+    "T05 explicit cross-Profile copy creates new identity and leaves source": true,
+    "T06 bootstrap commits Default workspace before ready effect": true,
+    "T07 Spaces have independent roots and switch restores selection": true,
+    "T08 Favorites are Profile scoped and unfavorite returns to current Space": true,
+    "T09 Pinned saved URL and custom title survive close and reset": true,
+    "T10 Folder moves are atomic and respect tree rules": true,
+    "T11 Space Profile change releases old identities and keeps A history": true,
+    "T12 Profile deletion failure is retryable and then removes all data": true,
+    "T21 URL submission respects new-tab and navigate-current modes": true,
+    "T21 descriptor and command bar share enabled command rules": true,
+    "Real WKWebView loads, navigates back and reports failure": true
+  },
+  "uiSmoke": {
+    "performed": true,
+    "firstLaunch": {
+      "exitCode": -15,
+      "browserReady": true,
+      "database": {
+        "schemaVersion": 1,
+        "profiles": 1,
+        "spaces": 1,
+        "tabs": 1,
+        "history": 1,
+        "revision": 4,
+        "journalMode": "wal"
+      }
+    },
+    "secondLaunch": {
+      "exitCode": -15,
+      "database": {
+        "schemaVersion": 1,
+        "profiles": 1,
+        "spaces": 1,
+        "tabs": 1,
+        "history": 1,
+        "revision": 4,
+        "journalMode": "wal"
+      }
+    },
+    "passed": true
+  },
+  "environment": {
+    "macOS": "27.0.1",
+    "architecture": "arm64",
+    "swiftVersion": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)",
+    "xcodeVersion": "Xcode 27.0",
+    "packageToolsVersion": "6.4",
+    "minimumDeploymentTarget": "27.0",
+    "binarySHA256": "ee4c5c9299e00a9b4dbc59ddf5122acf23abb93ff176bf4ddd8ca5c182924740"
+  }
+}
