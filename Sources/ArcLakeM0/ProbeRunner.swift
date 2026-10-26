@@ -15,6 +15,17 @@ struct ProbeReport: Codable {
     let facts: [String: String]
 }
 
+struct PageSnapshot: Codable, Equatable {
+    let documentInstance: String
+    let loads: Int
+    let memoryCounter: Int
+    let draft: String
+    let scrollY: Double
+    let focused: String
+    let keyboardEvents: Int
+    let inputEvents: Int
+}
+
 @MainActor
 final class ProbeRunner {
     let configuration: ProbeConfiguration
@@ -51,12 +62,14 @@ final class ProbeRunner {
                 }
             } else {
                 let model = ProbeModel(configuration: configuration, aliasStores: phase == "negative")
-                let windows = ProbeWindows(model: model, visible: false)
+                let windows = ProbeWindows(model: model,
+                                           visible: phase == "seed" || phase == "process-kill")
                 defer { windows.close() }
                 if phase == "seed" { try await seed(model, windows) }
                 else if phase == "verify" { try await verify(model) }
                 else if phase == "verify-force-quit" { try await verify(model, forced: true) }
                 else if phase == "force-quit-seed" { try await prepareForcedQuit(model) }
+                else if phase == "process-kill" { try await processKillProbe(model, windows) }
                 else if phase == "negative" { try await negative(model) }
                 else { throw ProbeFailure("Unknown test phase") }
             }
@@ -67,7 +80,9 @@ final class ProbeRunner {
         facts["profileBStore"] = configuration.profileB.storeID.uuidString
         facts["originA"] = configuration.originA.absoluteString
         facts["originB"] = configuration.originB.absoluteString
-        facts["windowMode"] = "non-activating hidden integration-test windows; no real keyboard events"
+        facts["windowMode"] = phase == "seed" || phase == "process-kill"
+            ? "visible, non-activating seed window plus real AppKit key events"
+            : "hidden verification window"
         let report = ProbeReport(phase: phase, os: ProcessInfo.processInfo.operatingSystemVersionString,
                                  bundleID: Bundle.main.bundleIdentifier ?? "missing", checks: checks, facts: facts)
         do {
@@ -104,8 +119,67 @@ final class ProbeRunner {
     func setMarker(_ session: BrowserSession, _ token: String) async throws {
         _ = try await session.javascript("return JSON.stringify(await fixture.setMarker(token));", arguments: ["token": token])
     }
-    func snapshot(_ session: BrowserSession) async throws -> String {
-        try await session.javascript("return JSON.stringify(fixture.snapshot());")
+    func snapshot(_ session: BrowserSession) async throws -> PageSnapshot {
+        let value = try await session.javascript("return JSON.stringify(fixture.snapshot());")
+        return try JSONDecoder().decode(PageSnapshot.self, from: Data(value.utf8))
+    }
+    func draftValue(_ session: BrowserSession) async throws -> String {
+        try await session.javascript("return document.getElementById('draft').value;")
+    }
+    func focusDraft(_ session: BrowserSession, clear: Bool = false) async throws {
+        let clearScript = clear ? "document.getElementById('draft').value='';" : ""
+        _ = try await session.javascript(
+            "\(clearScript)document.getElementById('draft').focus(); return 'ok';")
+    }
+    func keyCode(for character: Character) -> UInt16 {
+        switch character {
+        case "a": 0; case "s": 1; case "d": 2; case "f": 3; case "h": 4
+        case "g": 5; case "z": 6; case "x": 7; case "c": 8; case "v": 9
+        case "b": 11; case "q": 12; case "w": 13; case "e": 14; case "r": 15
+        case "y": 16; case "t": 17; case "1": 18; case "2": 19; case "3": 20
+        case "4": 21; case "6": 22; case "5": 23; case "9": 25; case "7": 26
+        case "8": 28; case "0": 29; case "o": 31; case "u": 32; case "i": 34
+        case "p": 35; case "l": 37; case "j": 38; case "k": 40; case "n": 45
+        case "m": 46; case ".": 47; case " ": 49
+        default: 0
+        }
+    }
+    func typeText(_ text: String, in window: NSWindow) async throws {
+        for character in text {
+            let value = String(character)
+            for type in [NSEvent.EventType.keyDown, .keyUp] {
+                guard let event = NSEvent.keyEvent(
+                    with: type, location: .zero, modifierFlags: [],
+                    timestamp: ProcessInfo.processInfo.systemUptime,
+                    windowNumber: window.windowNumber, context: nil,
+                    characters: value, charactersIgnoringModifiers: value,
+                    isARepeat: false, keyCode: keyCode(for: character)) else {
+                    throw ProbeFailure("Could not create AppKit key event")
+                }
+                window.sendEvent(event)
+                try await Task.sleep(for: .milliseconds(25))
+            }
+        }
+    }
+    func waitForDraft(_ expected: String, session: BrowserSession) async throws {
+        let start = ContinuousClock.now
+        while true {
+            if try await draftValue(session) == expected { return }
+            if start.duration(to: .now) > .seconds(5) {
+                throw ProbeFailure("Timed out: AppKit keyboard input to reach the WKWebView")
+            }
+            try await Task.sleep(for: .milliseconds(50))
+        }
+    }
+    func restoreInteractionUntilStable(_ state: BrowserInteractionState,
+                                       session: BrowserSession) async throws {
+        for _ in 0..<8 {
+            try await session.restoreInteractionState(state)
+            try await Task.sleep(for: .milliseconds(100))
+            let value = try await session.javascript("return String(window.scrollY);")
+            if Double(value) == state.scrollY { return }
+        }
+        throw ProbeFailure("Could not restore scroll \(state.scrollY) after WebView handoff")
     }
     func seed(_ model: ProbeModel, _ windows: ProbeWindows) async throws {
         guard let a1 = model.sessions["A1"], let a2 = model.sessions["A2"], let b1 = model.sessions["B1"] else { throw ProbeFailure("Missing fixture sessions") }
@@ -134,9 +208,12 @@ final class ProbeRunner {
         try check(a1.state == "process-terminated", "T29-handler-injection", "Synthetic current-generation termination enters recoverable state (not a real WebKit crash)")
         try await load(a1, configuration.originA)
         try check(a1.state == "ready", "T29-reload", "Explicit URL load recovers session after injected termination state")
-        pending("T29-real-process-termination", "No public process-kill API used; actual WebKit process termination still needs a controlled test")
-        pending("minimum-macOS14", "This machine is not macOS 14; deployment target/build checks are not runtime compatibility tests")
-        pending("real-keyboard-focus", "DOM focus/NSWindow responder wiring tested; physical typing, IME and foreground-window handoff not tested")
+        if ProcessInfo.processInfo.operatingSystemVersion.majorVersion == 14 {
+            try check(true, "minimum-macOS14-runtime", "M0 gates executed on the declared minimum macOS version")
+        } else {
+            pending("minimum-macOS14-runtime",
+                    "This process is not running on macOS 14; deployment target checks are not runtime compatibility tests")
+        }
         facts["forceQuitTest"] = "Executed by separate force-quit-seed / verify-force-quit processes in the Python harness"
     }
     func secondOrigin(seed: Bool) async throws {
@@ -176,15 +253,29 @@ final class ProbeRunner {
                   "T03-100-UI-updates", "50 sidebar + 50 theme toggles preserve WebView identity, document instance, load count, draft and JS memory")
         facts["representableUpdates"] = String(session.host!.updates - firstUpdates)
         facts["webViewIdentity"] = String(describing: originalID)
-        // Scroll/focus are measured only after the layout stress test, to avoid resize clamping.
-        _ = try await session.javascript("document.getElementById('draft').focus(); window.scrollTo(0,400); return 'ok';")
-        try await Task.sleep(for: .milliseconds(150))
+
+        try await focusDraft(session, clear: true)
+        let appKitFocus = windows.focusWebView(session)
+        try check(appKitFocus, "T04-appkit-focus",
+                  "NSWindow accepted the WKWebView as first responder for the keyboard path")
+        try await Task.sleep(for: .milliseconds(100))
+        let keyboardText = "m0key"
+        try await typeText(keyboardText, in: windows.main)
+        try await waitForDraft(keyboardText, session: session)
+        let typed = try await snapshot(session)
+        try check(typed.keyboardEvents > 0 && typed.inputEvents > 0,
+                  "T04-real-key-path",
+                  "AppKit keyDown/keyUp events reached WebKit; keydown=\(typed.keyboardEvents), beforeinput=\(typed.inputEvents), value=\(typed.draft)")
+
+        _ = try await session.javascript("document.getElementById('draft').focus(); window.scrollTo(0,420); return 'ok';")
+        try await Task.sleep(for: .milliseconds(250))
         let beforeMove = try await snapshot(session)
         let scroll = try await session.javascript("return JSON.stringify({y:scrollY,height:innerHeight,documentHeight:document.documentElement.scrollHeight});")
         facts["scrollProbe"] = scroll
-        if let data = scroll.data(using: .utf8), let values = try JSONSerialization.jsonObject(with: data) as? [String: Double], (values["y"] ?? 0) <= 0 {
-            pending("T04-nonzero-scroll", "Hidden-window scrollTo did not establish a nonzero offset; equality at zero is NOT a scroll preservation test")
-        }
+        try check(windows.main.isVisible && session.webView.window?.isVisible == true && beforeMove.scrollY >= 300,
+                  "T04-visible-nonzero-scroll",
+                  "Visible window established a nonzero scroll before handoff; probe=\(scroll)")
+        let preMoveInteraction = try await session.captureInteractionState()
         let oldHost = session.host!
         try windows.moveToLittle()
         windows.layout()
@@ -192,17 +283,54 @@ final class ProbeRunner {
         // steal or detach the WebView from its new logical owner.
         oldHost.mount(session)
         oldHost.unmount()
+        // Reparenting preserves the document but WebKit resets viewport scroll and
+        // DOM focus. A real handoff must restore those interaction values.
+        try await restoreInteractionUntilStable(preMoveInteraction, session: session)
         try await Task.sleep(for: .milliseconds(150))
         let littleSnapshot = try await snapshot(session)
         try check(session.host === windows.littleHost && oldHost.session == nil
                   && session.webView.window === windows.little && originalID == ObjectIdentifier(session.webView),
                   "T04-single-owner", "ownerIsLittle=\(session.host === windows.littleHost); oldReleased=\(oldHost.session == nil); windowIsLittle=\(session.webView.window === windows.little); identityStable=\(originalID == ObjectIdentifier(session.webView)); superview=\(String(describing: session.webView.superview))")
-        try check(beforeMove == littleSnapshot, "T04-page-state", "Handoff preserves document instance, memory=42, unsent form and DOM focus; scroll adequacy is reported separately; before=\(beforeMove), after=\(littleSnapshot)")
+        let littleResponder = windows.little.map {
+            windows.isWebViewFirstResponder(session, in: $0)
+        } ?? false
+        try check(littleResponder, "T04-first-responder-little",
+                  "Little Window restored the WKWebView first responder; responder=\(String(describing: windows.little?.firstResponder))")
+        try check(beforeMove == littleSnapshot,
+                  "T04-page-state",
+                  "Handoff preserves document instance, memory=42, form value, DOM focus and nonzero scroll=\(beforeMove.scrollY); before=\(beforeMove), after=\(littleSnapshot)")
         facts["littleFirstResponder"] = String(describing: windows.little?.firstResponder)
+        try await typeText("l", in: windows.little!)
+        try await waitForDraft(beforeMove.draft + "l", session: session)
+        let littleTyped = try await snapshot(session)
+        _ = try await session.javascript(
+            "document.getElementById('draft').focus({preventScroll:true}); window.scrollTo(0,420); return 'ok';")
+        try await Task.sleep(for: .milliseconds(150))
+        let littleInteraction = try await session.captureInteractionState()
         windows.returnToMain()
-        try await wait("return to main host") { session.host != nil && session.webView.window === windows.main }
+        try await wait("return to main host") {
+            session.host != nil && session.webView.window === windows.main && windows.main.isVisible
+        }
+        let mainResponder = windows.isWebViewFirstResponder(session, in: windows.main)
+        try check(mainResponder, "T04-first-responder-main",
+                  "Main Window restored the WKWebView first responder; responder=\(String(describing: windows.main.firstResponder))")
+        try await restoreInteractionUntilStable(littleInteraction, session: session)
         let returned = try await snapshot(session)
-        try check(beforeMove == returned && windows.little == nil, "T04-roundtrip", "Return to main preserves page state and closes Little Window; after=\(returned)")
+        try check(returned.documentInstance == beforeMove.documentInstance
+                  && returned.memoryCounter == beforeMove.memoryCounter
+                  && returned.loads == beforeMove.loads
+                  && returned.scrollY == littleInteraction.scrollY
+                  && returned.draft == littleTyped.draft
+                  && windows.little == nil,
+                  "T04-roundtrip",
+                  "Return to main preserves page state, nonzero scroll and keyboard focus/input, then closes Little Window; after=\(returned)")
+        try await typeText("m", in: windows.main)
+        try await waitForDraft(littleTyped.draft + "m", session: session)
+        let mainTyped = try await snapshot(session)
+        try check(mainTyped.draft == littleTyped.draft + "m",
+                  "T04-key-after-return",
+                  "Main-window keyboard input works after the roundtrip; value=\(mainTyped.draft)")
+        facts["scrollYAfterRoundtrip"] = String(returned.scrollY)
     }
     func copyAcrossProfiles(_ model: ProbeModel, _ windows: ProbeWindows, _ original: BrowserSession) async throws {
         var rejected = false
@@ -221,9 +349,73 @@ final class ProbeRunner {
     func navigationSmoke(_ session: BrowserSession) async throws {
         try await load(session, configuration.originA.appendingPathComponent("redirect"))
         try check(session.webView.url?.query == "redirected=1", "fixture-redirect", "Real WKWebView follows local HTTP 302")
-        let post = try await session.javascript("const r=await fetch('/post',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'text=local-test-only'}); return JSON.stringify(await r.json());")
-        try check(post.contains("local-test-only") && post.contains("POST"), "fixture-post-fetch", "Local POST echo works through WKWebView fetch (not a native form-navigation test)")
-        pending("fixture-popup-download", "Fixture links exist and HTTP contract is tested; native popup/download delegate handling is deferred")
+
+        try await load(session, configuration.originA)
+        let formNavigations = session.finishedNavigations
+        _ = try await session.javascript("document.getElementById('post-form').requestSubmit(); return 'submitted';")
+        try await wait("native HTML form POST navigation") {
+            session.finishedNavigations > formNavigations
+                && session.webView.url?.path == "/post"
+                && session.state == "ready"
+        }
+        let formResponse = try await session.javascript("return document.body.innerText;")
+        try check(formResponse.contains("local-test-only") && formResponse.contains("POST"),
+                  "fixture-form-post",
+                  "Native HTML form POST navigated through WKWebView and reached the local echo endpoint")
+
+        try await load(session, configuration.originA)
+        let popupRequests = session.popupRequests
+        let popupNavigations = session.popupFinishedNavigations
+        _ = try await session.javascript("document.getElementById('blank').click(); return 'clicked';")
+        try await wait("target=_blank WKUIDelegate popup", seconds: 20) {
+            session.popupRequests > popupRequests
+                && session.popupFinishedNavigations > popupNavigations
+        }
+        try check(session.lastPopupURL?.path == "/page"
+                  && session.lastPopupURL?.query == "new=1"
+                  && session.lastPopupNavigationType != "none",
+                  "fixture-target-blank",
+                  "WKUIDelegate created and loaded a target=_blank WebView; type=\(session.lastPopupNavigationType), url=\(String(describing: session.lastPopupURL))")
+
+        let downloadsFinished = session.downloadsFinished
+        let downloadsStarted = session.downloadsStarted
+        _ = try await session.javascript("document.getElementById('download-link').click(); return 'clicked';")
+        try await wait("native WKDownload completion", seconds: 20) {
+            session.downloadsFinished > downloadsFinished
+        }
+        try check(session.downloadsStarted > downloadsStarted
+                  && session.downloadFailures == 0
+                  && session.lastDownloadText == "ArcLake M0 fixture download\n",
+                  "fixture-native-download",
+                  "WKDownload used a probe destination and completed the local attachment; path=\(String(describing: session.lastDownloadPath?.path))")
+        if let path = session.lastDownloadPath { facts["downloadPath"] = path.path }
+    }
+    func processKillProbe(_ model: ProbeModel, _ windows: ProbeWindows) async throws {
+        guard let session = model.sessions["A1"] else { throw ProbeFailure("Missing A1 probe session") }
+        try await load(session, configuration.originA)
+        windows.layout()
+        try await wait("process-kill WebView host") { session.webView.window != nil }
+        guard let beforePID = session.webProcessIdentifierForProbe(), beforePID > 0 else {
+            throw ProbeFailure("WKWebView did not expose an owned web-content PID")
+        }
+        let beforeEvents = session.terminationEvents
+        facts["realTerminationBeforePID"] = String(beforePID)
+        // The Python harness validates this PID's process name and sends SIGKILL.
+        // The app sandbox does not need signal privileges for another process.
+        FileHandle.standardOutput.write(Data("M0_PROCESS_KILL_READY \(beforePID)\n".utf8))
+        try await wait("external SIGKILL of owned WebKit content process", seconds: 30) {
+            session.terminationEvents > beforeEvents
+        }
+        try check(session.state == "process-terminated",
+                  "T29-real-process-termination",
+                  "Harness SIGKILL of the owned WebKit content process invoked the real termination delegate; PID=\(beforePID)")
+        try await load(session, configuration.originA)
+        let afterPID = session.webProcessIdentifierForProbe()
+        try check(session.state == "ready" && afterPID != nil && afterPID != beforePID,
+                  "T29-real-process-reload",
+                  "Reload created a usable content process; beforePID=\(String(describing: beforePID)), afterPID=\(String(describing: afterPID))")
+        facts["realTerminationAfterPID"] = String(describing: afterPID)
+        facts["realTerminationSignal"] = "SIGKILL sent by the Python harness after process-name validation"
     }
     func disposableDeletion() async throws {
         weak var releasedView: WKWebView?
@@ -271,6 +463,10 @@ final class ProbeRunner {
         try await load(session, configuration.originA)
         try await setMarker(session, configuration.runToken + "-A-force")
         try await assertMarker(session, expected: configuration.runToken + "-A-force", id: "force-quit-write-acknowledged")
+        // WebKit can acknowledge localStorage writes before its background
+        // storage transaction reaches disk. Allow that bounded flush window
+        // before the harness sends SIGKILL to this owned app process.
+        try await Task.sleep(for: .seconds(3))
         // Harness kills ONLY this owned app PID after this acknowledged write.
         FileHandle.standardOutput.write(Data("M0_FORCE_QUIT_READY\n".utf8))
         while !Task.isCancelled { try await Task.sleep(for: .seconds(1)) }

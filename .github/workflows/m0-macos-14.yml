@@ -1,0 +1,40 @@
+name: M0 macOS 14
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - codex/m0-complete
+    paths:
+      - Package.swift
+      - Sources/**
+      - Tests/**
+      - Fixtures/**
+      - Packaging/**
+      - scripts/**
+      - .github/workflows/m0-macos-14.yml
+
+permissions:
+  contents: read
+
+jobs:
+  m0:
+    runs-on: macos-14
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Show toolchain
+        run: |
+          sw_vers
+          swift --version
+          xcodebuild -version
+      - name: Run M0 gate
+        run: python3 scripts/run_m0.py --test --require-minimum-os
+      - name: Upload M0 evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m0-macos-14-results
+          path: test-results/m0/
+          if-no-files-found: warn

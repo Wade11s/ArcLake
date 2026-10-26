@@ -19,7 +19,7 @@
 | T01 | P0 F03 | A1/A2 共用 Profile A，B1 用 B；同 origin 写不同 Cookie/localStorage/IndexedDB | A1/A2 相互可见 A 数据；B 保持 B；无应用侧 Cookie 复制 |
 | T02 | P0 F03 | 写入持久 Cookie/本地存储，正常退出重启；再模拟强制退出 | Profile store UUID 不变；持久数据仍按 Profile 隔离；强退只允许丢未提交的非结构更新 |
 | T03 | P0 F01 | 网页有 load counter、输入内容；切换 Sidebar/主题各 50 次 | WKWebView 身份不变，load counter 不增加，输入不丢 |
-| T04 | P0 F10 | 同 Profile 小窗表单/JS 计数器/滚动位置；移入主窗 | 单实例 detach/attach 后内容保持；小窗关闭，owner 恰好一个，焦点能输入 |
+| T04 | P0 F10 | 同 Profile 小窗表单/JS 计数器/非零滚动；AppKit 键盘输入后移入主窗再返回 | 单实例 detach/attach 后文档、表单、JS 内存和非零滚动保持；滚动/焦点可按需显式恢复；owner 恰好一个，键盘可输入 |
 | T05 | P0 F03 | 跨 Profile 普通拖拽，再显式“复制链接” | 拖拽拒绝且原树不变；显式复制生成新 ID/目标 store，只复制 URL/标题，原页保留 |
 | T06 | P0 F02 | 全新空数据库首次启动 | 恰好一个 Default Profile 与 Space，roots 完整，store UUID 已持久化后才加载网页 |
 | T07 | P0 F02 | 不同 Space 各有 Today/Pinned；切换图标与 Control+数字 | 区域独立、最近选择可恢复；Favorites 随 Profile 而非 Space 变化 |
@@ -44,7 +44,7 @@
 | T26 | P0 持久化 | 数据库磁盘满/只读、预期revision不匹配 | 显式错误，原树/网页保留；不发布未提交状态、不静默覆盖更新 |
 | T27 | P0 迁移 | 旧schema迁移；中断迁移；打开未来schema | 成功迁移可验证；失败可恢复一致性备份；未来schema只读拒绝，不初始化覆盖 |
 | T28 | P0 并发 | 后台归档候选形成后立即固定/切入该Tab，再应用旧候选 | 重新检查revision和保护集合，项不被错误归档 |
-| T29 | P0 生命周期 | Tab 删除/换Profile后产生旧代回调；模拟网页进程终止 | 旧事件不改新实例；终止显示失败与重载，不让整个应用崩溃 |
+| T29 | P0 生命周期 | Tab 删除/换Profile后产生旧代回调；对本轮 WebContent PID 发送真实 SIGKILL | 旧事件不改新实例；真实终止进入可恢复错误态，重载生成可用新进程，不崩溃 |
 | T30 | P1 资源 | 连续创建/关闭100次小窗，主窗口在4面板和单页切换 | registry/token/host计数回到合理基线；同WebView无双宿主；软预算不强杀受保护页 |
 | T31 | P0 F08 | 两规则同时匹配；切换顺序；精确含fragment/default port差异 | 按SPEC规范化与首命中执行；match preview和实际路径完全一致 |
 | T32 | P0 F08 | 外部URL、普通当前Tab链接、redirect、Archive恢复、显式Space打开 | 仅规定来源执行路由；redirect/恢复不递归路由；明确目标优先规则 |

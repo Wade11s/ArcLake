@@ -60,11 +60,12 @@ xcrun swiftc -typecheck -swift-version 6 \
 
 已有独立 Sandbox/ad-hoc 应用的真实运行记录，见 [M0 实测报告](M0-RESULTS.md)。上文 API-PROBE 仍只是编译探针，不能与新建的运行应用混为一谈。
 
-- 当前系统上，具名 store 的 Cookie/HttpOnly Cookie/localStorage/IndexedDB 隔离、正常退出与强退后的保持已通过；macOS 14 和发行签名环境仍待测。
-- WKWebView reparent 的实例、表单、JS 内存、DOM 焦点已通过；可见窗口非零滚动、真实键盘/输入法仍待测。
+- 当前系统上，具名 store 的 Cookie/HttpOnly Cookie/localStorage/IndexedDB 隔离、正常退出、强退保持、删除与负对照已通过；macOS 14 和发行签名环境仍待测。
+- WKWebView reparent 的实例、表单、JS 内存、可见窗口非零滚动、DOM 焦点和 AppKit 键盘路径已通过。Reparent 本身会重置滚动与 DOM 焦点，因此应用必须在目标 host 完成布局后显式恢复；中文输入法属于后续 T24，不是 M0 的明确门槛。
 - 删除测试发现冷调用崩溃、网络进程短暂占用和即时同UUID复用的Cookie残留；当前探针初始化WebKit、显式清空网站数据、有界重试后通过，不能省略失败恢复设计。
 - 清空数据 API：[removeData(ofTypes:modifiedSince:)](https://developer.apple.com/documentation/webkit/wkwebsitedatastore/removedata%28oftypes%3Amodifiedsince%3Acompletionhandler%3A%29)，使用 `WKWebsiteDataStore.allWebsiteDataTypes()` 和 `.distantPast`。
-- 导航/下载/文件选择/权限的 delegate 行为及 WebKit 进程终止回调。
+- 当前系统已验证原生 HTML form POST、`WKUIDelegate` target=_blank、`WKDownload` 附件写入及真实 WebContent `SIGKILL` 的终止/重载回调。文件选择、权限、取消/失败下载与更完整下载管理仍在后续阶段。
+- WebKit 进程终止无法由公开 API 主动制造；M0 测试编排器读取 WebView 的测试进程 PID，校验其命令名为 `WebKit.WebContent` 后发送 `SIGKILL`。该读取仅用于探针，不进入产品路径。
 - WebKit 的网站兼容、媒体/DRM、WebAuthn/通行密钥、系统认证等不因静态 API 可用而得到保证。
 - 系统 HTTP(S) 默认浏览器注册与实际 URL 事件；不以不必要的辅助功能权限作为普通应用运行前提。
 

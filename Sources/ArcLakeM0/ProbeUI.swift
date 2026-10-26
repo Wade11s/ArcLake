@@ -105,6 +105,19 @@ final class ProbeWindows {
         if visible { main.makeKeyAndOrderFront(nil) }
     }
 
+    @discardableResult
+    func focusWebView(_ session: BrowserSession) -> Bool {
+        main.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
+        return main.makeFirstResponder(session.webView)
+    }
+
+    func isWebViewFirstResponder(_ session: BrowserSession, in window: NSWindow) -> Bool {
+        if window.firstResponder === session.webView { return true }
+        guard let responder = window.firstResponder as? NSView else { return false }
+        return responder.isDescendant(of: session.webView)
+    }
+
     func moveToLittle(targetProfile: UUID? = nil) throws {
         guard little == nil, let session = model.selected else { throw ProbeFailure("Little Window already exists or no selection") }
         try session.identity.validateMove(to: targetProfile ?? session.identity.profileID)
@@ -120,8 +133,11 @@ final class ProbeWindows {
         model.littleSpace = model.selectedSpace
         host.mount(session)
         little = window; littleHost = host
-        window.makeFirstResponder(session.webView)
-        if visible { window.makeKeyAndOrderFront(nil) }
+        if visible {
+            window.makeKeyAndOrderFront(nil)
+            NSApp.activate(ignoringOtherApps: true)
+            window.makeFirstResponder(session.webView)
+        }
     }
     func returnToMain() {
         guard let space = model.littleSpace else { return }
@@ -130,6 +146,9 @@ final class ProbeWindows {
         model.selectedSpace = space; model.littleSpace = nil
         little?.close(); little = nil; littleHost = nil
         main.contentView?.layoutSubtreeIfNeeded()
+        if visible {
+            _ = focusWebView(model.sessions[space]!)
+        }
     }
     func layout() { main.contentView?.layoutSubtreeIfNeeded(); little?.contentView?.layoutSubtreeIfNeeded() }
     func close() {

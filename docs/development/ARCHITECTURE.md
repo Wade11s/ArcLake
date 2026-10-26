@@ -110,7 +110,7 @@ command + immutable state + current clock/protection snapshot
 
 ### 5.1 配置创建
 
-`Profile.websiteStoreID -> WKWebsiteDataStore(forIdentifier:)`，并在初始化 WKWebView 前设置到 WKWebViewConfiguration.websiteDataStore。[V API 已核实；当前系统的 M0 隔离/重启子集已实测，macOS 14 仍待验证，见 M0-RESULTS.md]
+`Profile.websiteStoreID -> WKWebsiteDataStore(forIdentifier:)`，并在初始化 WKWebView 前设置到 WKWebViewConfiguration.websiteDataStore。[V API 已核实；当前系统的 M0 隔离、重启、强退、删除和负对照均已实测，macOS 14 运行仍待 CI 确认，见 M0-RESULTS.md]
 
 - Default Profile 也使用具名 store，不用 `.default()` 与其他 Profile 混杂。
 - store UUID 非零、只生成一次，并在首次创建任何网页前写库。store 初始化不接受来自网页或导入文件的 UUID。
@@ -133,11 +133,12 @@ Ready/Loading -> ProcessTerminated -> Failed
 NSViewRepresentable 的 `makeNSView` 只建宿主；update 时按 TabID/hostID attach，不再次 load。dismantle 只解除该宿主的挂载与观察，不等于删除逻辑 Tab；逻辑存活由注册表持有。
 
 - 一张网页只挂载一个 NSView 层级。Split/小窗移交先更新逻辑 owner，再 detach 旧 host、attach 新 host，并迁移焦点。mount 必须检查归属令牌：M0 实测中 SwiftUI 的迟到 update 曾从新窗抢回网页，不能只依赖 dismantle 顺序。
+- Reparent 保留同一 `WKWebView`、JS 内存和表单值，但当前 M0 实测会重置视口滚动与 DOM 焦点。窗口移交必须捕获 `scrollY`/焦点元素，在目标 host 完成布局后显式恢复，并用可见窗口验证非零滚动；不能把“文档实例没变”误当作全部交互状态保持。
 - 改变侧栏、主题、Space、窗口尺寸，除非真的需要创建新的 session，不生成新 WKWebView。
 - 初始惰性恢复：只加载选中单 Tab/最多四个面板；其余仅恢复元数据。
 - 初始后台 session 软预算为 8 个，超预算按最近使用释放可安全释放的后台页；可见页面、下载、权限交互不能为了预算被驱逐。受保护页超预算时提示，不做错误的硬上限承诺。
 - 首版不自动卸载无法确定安全状态的复杂后台页；如 beforeunload 要求确认，保留并提示，不能强制丢表单。
-- WebKit 进程终止由事件转换成用户可见错误；手动重载只恢复 URL，不能承诺 JS 内存或表单恢复。
+- WebKit 进程终止由事件转换成用户可见错误；手动重载只恢复 URL，不能承诺 JS 内存或表单恢复。M0 已用测试编排器校验 PID 后向 WebContent 发送真实 `SIGKILL`，确认终止 delegate、可恢复错误态和新内容进程重载均成立。
 
 ### 5.3 Profile 删除状态机
 

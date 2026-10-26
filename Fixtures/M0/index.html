@@ -1,17 +1,21 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>ArcLake M0 local fixture</title>
-<style>body{font:16px system-ui;margin:24px;background:#f4f5f8;color:#16243b}input{font:inherit;width:80%;padding:12px}section{height:2400px;background:linear-gradient(#dde7ff,#f7e4cb)}a,button{margin:8px}</style></head>
+<style>body{font:16px system-ui;margin:24px;background:#f4f5f8;color:#16243b}input{font:inherit;width:80%;padding:12px;box-sizing:border-box}section{height:2400px;background:linear-gradient(#dde7ff,#f7e4cb)}a,button{margin:8px}</style></head>
 <body><h1>ArcLake M0 · local-only fixture</h1><p id="origin"></p>
-<p><label>Test marker <input id="marker" value="manual-A"></label><button id="save">Write marker</button><button id="read">Read storage</button></p><pre id="result">Only local test data is stored.</pre>
-<label>Unsubmitted draft <input id="draft" placeholder="Type here to check handoff"></label>
-<p><a href="/redirect">Redirect</a><a id="blank" href="/page?new=1" target="_blank">New window</a><a href="/download">Download fixture.txt</a></p>
-<form action="/post" method="post"><input name="text" value="local-test-only"><button>POST</button></form><section></section>
+<p><label>Test marker <input id="marker" value="manual-A" autocomplete="off"></label><button id="save">Write marker</button><button id="read">Read storage</button></p><pre id="result">Only local test data is stored.</pre>
+<label>Unsubmitted draft <input id="draft" placeholder="Type here to check handoff" autocomplete="off"></label>
+<p><a href="/redirect">Redirect</a><a id="blank" href="/page?new=1" target="_blank">New window</a><a id="download-link" href="/download">Download fixture.txt</a></p>
+<form id="post-form" action="/post" method="post" target="_self"><input name="text" value="local-test-only" autocomplete="off"><button id="post-submit">POST</button></form><section></section>
 <script>
 'use strict';
-document.getElementById('origin').textContent=location.origin;
+document.getElementById('origin').textContent=location.origin+location.search;
 window.memoryCounter=0;
 window.documentInstance=crypto.randomUUID();
+window.keyboardEvents=0;
+window.inputEvents=0;
 sessionStorage.setItem('loads',String(Number(sessionStorage.getItem('loads')||0)+1));
+document.addEventListener('keydown',()=>{window.keyboardEvents+=1;},true);
+document.addEventListener('beforeinput',()=>{window.inputEvents+=1;},true);
 const cookieName='m0_'+location.port;
 async function database(){return await new Promise((resolve,reject)=>{const r=indexedDB.open('ArcLakeM0',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}
 async function writeIDB(value){const db=await database();try{await new Promise((resolve,reject)=>{const t=db.transaction('kv','readwrite');t.objectStore('kv').put(value,'marker');t.oncomplete=resolve;t.onerror=()=>reject(t.error);t.onabort=()=>reject(t.error||new Error('transaction aborted'));});}finally{db.close();}}
@@ -19,7 +23,7 @@ async function readIDB(){const db=await database();try{return await new Promise(
 window.fixture={
  async setMarker(value){localStorage.setItem('marker',value);await writeIDB(value);const r=await fetch('/cookie?value='+encodeURIComponent(value),{cache:'no-store'});if(!r.ok)throw new Error('cookie write failed');return await this.readMarker();},
  async readMarker(){const response=await fetch('/echo-cookie',{cache:'no-store'});const server=await response.json();const entry=document.cookie.split('; ').find(x=>x.startsWith(cookieName+'='));return {local:localStorage.getItem('marker'),indexedDB:await readIDB(),cookie:entry?decodeURIComponent(entry.slice(cookieName.length+1)):null,httpOnly:server.httpOnly??null};},
- snapshot(){return {documentInstance:window.documentInstance,loads:Number(sessionStorage.getItem('loads')),memoryCounter:window.memoryCounter,draft:document.getElementById('draft').value,scrollY:window.scrollY,focused:document.activeElement?.id??''};}
+ snapshot(){return {documentInstance:window.documentInstance,loads:Number(sessionStorage.getItem('loads')),memoryCounter:window.memoryCounter,draft:document.getElementById('draft').value,scrollY:Math.round(window.scrollY),focused:document.activeElement?.id??'',keyboardEvents:window.keyboardEvents,inputEvents:window.inputEvents};}
 };
 document.getElementById('save').onclick=async()=>{try{document.getElementById('result').textContent=JSON.stringify(await fixture.setMarker(document.getElementById('marker').value),null,2);}catch(e){document.getElementById('result').textContent=String(e);}};
 document.getElementById('read').onclick=async()=>{document.getElementById('result').textContent=JSON.stringify(await fixture.readMarker(),null,2);};

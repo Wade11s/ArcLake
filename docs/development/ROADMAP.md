@@ -1,6 +1,6 @@
 # 实施计划与复现路径
 
-各阶段以验收门槛推进，不以界面截图代替功能交付。M0 原型及自动化子集已实施，完整门槛仍 pending，见 [M0 实测报告](M0-RESULTS.md)；M1–M6 尚未实施。平台假设见 [README](README.md)，功能契约见 [SPEC](SPEC.md)。
+各阶段以验收门槛推进，不以界面截图代替功能交付。M0 原型与当前主机可执行门槛已通过，尚缺 macOS 14 运行确认，见 [M0 实测报告](M0-RESULTS.md)；M1–M6 尚未实施。平台假设见 [README](README.md)，功能契约见 [SPEC](SPEC.md)。
 
 ## M0 — 关键能力验证（先做，阻塞后续）
 
@@ -15,9 +15,11 @@
 6. 试验同 Profile 主窗/小窗之间 detach/attach，观察 JS 内存计数器、滚动、表单和 first responder；确保没有双宿主。
 7. 试验 WebKit store 删除条件、进程终止响应，以及最低系统支持。
 
+当前实现另含：原生 HTML 表单 POST、`WKUIDelegate` target=_blank、`WKDownload` 本地附件、可见窗口真实滚动、AppKit keyDown/keyUp 路径，以及测试编排器校验 PID 后对 WebContent 发送真实 `SIGKILL`。
+
 **产物**：可运行能力演示、测试日志（脱敏）、已验证/失败 API 清单、更新后的架构决定。
 
-**门槛**：T01–T05、T29 的相关子项通过。若持久隔离失败，禁止以每次新建临时 store 或 WKProcessPool 替代后宣称 Profile 完成。若 reparent 不可靠，需正式改成“提示后 URL 重开”的小窗移交方案，并修改规格和验收，不隐瞒状态丢失。
+**门槛**：T01–T05、T29 的相关子项通过。若持久隔离失败，禁止以每次新建临时 store 或 WKProcessPool 替代后宣称 Profile 完成。若 reparent 不可靠，需正式改成“提示后 URL 重开”的小窗移交方案，并修改规格和验收，不隐瞒状态丢失。M0 Gate 必须在 macOS 14 执行 `python3 scripts/run_m0.py --test --require-minimum-os` 并通过；当前主机通过不能替代最低系统运行。
 
 ## M1 — 领域模型、持久化与命令骨架
 

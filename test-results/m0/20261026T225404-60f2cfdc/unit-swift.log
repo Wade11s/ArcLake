@@ -1,0 +1,26 @@
+Test Suite 'All tests' started at 2026-10-26 22:54:06.056.
+Test Suite 'M0CoreTests.xctest' started at 2026-10-26 22:54:06.057.
+Test Suite 'ProbeConfigurationTests' started at 2026-10-26 22:54:06.057.
+Test Case '-[M0CoreTests.ProbeConfigurationTests testExternalOrSameOriginsAreRejected]' started.
+Test Case '-[M0CoreTests.ProbeConfigurationTests testExternalOrSameOriginsAreRejected]' passed (0.001 seconds).
+Test Case '-[M0CoreTests.ProbeConfigurationTests testInvalidStoreIDsAreRejected]' started.
+Test Case '-[M0CoreTests.ProbeConfigurationTests testInvalidStoreIDsAreRejected]' passed (0.000 seconds).
+Test Case '-[M0CoreTests.ProbeConfigurationTests testOwnershipAndStaleEvents]' started.
+Test Case '-[M0CoreTests.ProbeConfigurationTests testOwnershipAndStaleEvents]' passed (0.000 seconds).
+Test Case '-[M0CoreTests.ProbeConfigurationTests testSpacesShareOnlyIntendedProfile]' started.
+Test Case '-[M0CoreTests.ProbeConfigurationTests testSpacesShareOnlyIntendedProfile]' passed (0.000 seconds).
+Test Case '-[M0CoreTests.ProbeConfigurationTests testStableCodableProfile]' started.
+Test Case '-[M0CoreTests.ProbeConfigurationTests testStableCodableProfile]' passed (0.000 seconds).
+Test Suite 'ProbeConfigurationTests' passed at 2026-10-26 22:54:06.059.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'M0CoreTests.xctest' passed at 2026-10-26 22:54:06.059.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'All tests' passed at 2026-10-26 22:54:06.059.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.003) seconds
+􀟈  Test run started.
+􀄵  Testing Library Version: 2084
+􀄵  Target Platform: arm64e-apple-macos14.0
+􁁛  Test run with 0 tests in 0 suites passed after 0.001 seconds.
+Building for debugging...
+[1 / 1]
+Build complete! (0.37 sec)

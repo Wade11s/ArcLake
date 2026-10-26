@@ -1,0 +1,11 @@
+{
+  "phase": "force-quit-seed",
+  "exitCode": -9,
+  "checks": [
+    {
+      "id": "owned-app-SIGKILL-after-acknowledged-write",
+      "status": "pass",
+      "detail": "Harness killed only its child app after all four storage markers were read back."
+    }
+  ]
+}
