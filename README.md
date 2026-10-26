@@ -1,12 +1,13 @@
 # ArcLake
 
-仅面向 macOS 的 Arc 风格浏览器独立实现。当前交付是 **M0 能力验证原型**，不是可日用浏览器；SQLite 工作区、正式组织模型和完整产品 UI 尚未实现。
+仅面向 macOS 的 Arc 风格浏览器独立实现。当前已完成 **M0 浏览器能力验证** 与 **M1 Workspace 基础**；交付仍是开发基线，不是可日用浏览器。
 
 - [开发文档与复现方案](docs/development/README.md)
 - [M0 运行结果、问题与剩余门槛](docs/development/M0-RESULTS.md)
+- [M1 领域模型、SQLite 与启动恢复结果](docs/development/M1-RESULTS.md)
 - [Arc 原始分析证据](evidence/arc/no-hopper/README.md)
 
-## 运行 M0
+## 运行验证
 
 需要 macOS 27.0 或更高、Xcode 27 / Swift 6.4 工具链和 Python 3；没有第三方包依赖。最低系统基线为 macOS 27.0，开发和 M0 验证环境为 arm64 macOS 27.0.1。
 
@@ -21,6 +22,12 @@ python3 scripts/run_m0.py --test --require-minimum-os
 
 # 可见的本地演示窗口（退出 App 后结束服务器并清理此次测试数据）
 python3 scripts/run_m0.py --demo
+
+# M1：构建、40 项测试、两次 SwiftUI 冷启动烟测
+python3 scripts/run_m1.py
+
+# 只运行 Workspace SQLite 骨架
+swift run ArcLakeM1
 ```
 
 应用位于 `build/ArcLakeM0.app`，请通过上述脚本启动，因为测试端口和 store UUID 由脚本提供；直接双击缺少参数时会退出。自动化模式会短暂显示并激活自己的测试窗口，以验证真实滚动、AppKit 键盘输入和窗口移交。强退测试只杀死脚本创建的测试 App；内容进程测试只对经 `ps` 校验为 `WebKit.WebContent` 的本轮 PID 发送 `SIGKILL`。
@@ -33,7 +40,10 @@ python3 scripts/run_m0.py --demo
 
 - `Sources/M0Core/`：测试配置、Profile/Space 与事件身份约束。
 - `Sources/ArcLakeM0/`：SwiftUI 壳、AppKit 窗口、稳定 WKWebView 运行实例、自动化探针。
-- `Tests/M0CoreTests/`：纯逻辑 XCTest。
+- `Sources/ArcLakeCore/`：强类型领域模型、I01–I12、Workspace 命令、BrowserEvent、AppController。
+- `Sources/ArcLakePersistence/`：系统 SQLite schema v1、迁移、事务与历史查询。
+- `Sources/ArcLakeM1/`：Loading/Ready/Recovery 三态 SwiftUI 启动骨架。
+- `Tests/`：M0 回归、M1 Core 与 Persistence 测试。
 - `Fixtures/M0/`、`scripts/m0_fixture.py`：两个仅 loopback 的测试 origin。
 - `Packaging/`：独立 bundle ID、App Sandbox 与 network.client 权限；临时 ad-hoc 签名，未公证。
 - `test-results/m0/`：逐轮环境、稳定 UUID 清单、JSON 结果和日志。`latest.json` 指向最近一轮。
@@ -50,4 +60,4 @@ bash scripts/build_m0.sh
 python3 scripts/cleanup_m0.py test-results/m0/<run>/run-config.json
 ```
 
-当前主机就是 macOS 27 最低系统基线，M0 Gate 已通过。M0 完成不等于 11 项浏览器功能完成；下一阶段进入 M1–M6，结果边界见 M0 报告。
+macOS 27 最低系统基线上的 M0 与 M1 Gate 均已通过。M1 不加载真实网页，也不是完整 11 项功能；下一阶段为 M2 Foundation Demo。

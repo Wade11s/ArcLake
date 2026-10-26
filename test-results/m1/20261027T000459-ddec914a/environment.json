@@ -1,0 +1,9 @@
+{
+  "macOS": "27.0.1",
+  "architecture": "arm64",
+  "swiftVersion": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)",
+  "xcodeVersion": "Xcode 27.0",
+  "packageToolsVersion": "6.4",
+  "minimumDeploymentTarget": "27.0",
+  "binarySHA256": "d4c149e62559e2f6d848fa08b72dd1b648e9b2f79d8e0535c43fbafbf714c575"
+}

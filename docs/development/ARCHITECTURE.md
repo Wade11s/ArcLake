@@ -193,17 +193,17 @@ Archive policy 输入：当前时间、Profile 阈值、Today 叶 lastActiveAt�
 - beforeunload、HTTP auth、摄像头/麦克风、文件上传、下载 API 的具体 delegate 在实施时按 API-NOTES 与 SDK 确认；不支持则明确降级，不把浏览器壳当完整 Safari。
 - 只记录命令类型、ID 和耗时；URL、搜索词、Cookie、正文不得进入默认日志。诊断导出需要预览与用户同意。
 
-## 10. 建议工程布局
+## 10. 当前工程布局
 
 ```text
-ArcLake.xcodeproj                  # 后续创建，macOS app + UI test targets
-ArcLake/App/                      # composition root、AppController、窗口启动
-ArcLake/UI/                       # SwiftUI Sidebar/CommandBar/Library/Settings
-ArcLake/Platform/                 # AppKit Windowing、WebKit Browsing adapter
-Packages/ArcLakeCore/             # 纯值模型、commands、policies、不变量
-Packages/ArcLakePersistence/      # SQLite actor、schema、migrations
-Tests/                           # core/storage/integration fixtures
-UITests/                         # sandboxed app UI workflows
+Package.swift                     # Swift tools 6.4、macOS 27、Swift 6
+Sources/ArcLakeCore/              # IDs、值模型、I01–I12、commands、AppController、Store Interface
+Sources/ArcLakePersistence/       # SQLiteConnection、schema v1、migration、SQLiteWorkspaceStore
+Sources/ArcLakeM1/                # Loading/Ready/Recovery SwiftUI 启动壳
+Sources/ArcLakeM0/ + M0Core/      # 浏览器能力探针回归资产
+Tests/ArcLakeCoreTests/           # Swift Testing：领域、命令、恢复、generation、随机树属性
+Tests/ArcLakePersistenceTests/    # Swift Testing：SQLite、WAL、revision、迁移、故障注入
+Tests/M0CoreTests/                # XCTest 遗留 M0 配置回归
 ```
 
-这是建议路径，文档任务没有创建空工程或宣称测试已运行。先做纵向可运行切片，再按复杂度拆模块；避免为了目录完整而预建大量空壳文件。
+M1 已按上述纵向切片实现。SQLite schema v1 的权威定义在 `SQLiteMigrations.swift`，Workspace 状态的权威值在 `WorkspaceState.swift`；UI 不应绕过 `AppController`/`Workspace.decide` 直接修改这些值。未来引入 Xcode app/UI test target 时继续复用同一 Core/Persistence Interface，不复制第二套树规则。

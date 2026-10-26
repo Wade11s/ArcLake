@@ -1,0 +1,54 @@
+{
+  "m1Gate": "passed",
+  "m1GatePassed": true,
+  "testExitCode": 0,
+  "requiredTests": {
+    "T06 bootstrap commits Default workspace before ready effect": true,
+    "T07 Spaces have independent roots and switch restores selection": true,
+    "T08 Favorites are Profile scoped and unfavorite returns to current Space": true,
+    "T09 Pinned saved URL and custom title survive close and reset": true,
+    "T10 Folder moves are atomic and respect tree rules": true,
+    "100 random legal tree moves preserve all invariants": true,
+    "Invalid tree move does not write or advance revision": true,
+    "T25 uncommitted transaction is invisible after reopen": true,
+    "T26 disk full rolls back all rows": true,
+    "T26 read-only database fails explicitly": true,
+    "T26 revision mismatch does not publish new state": true,
+    "T27 interrupted migration rolls back and preserves backup": true,
+    "T27 future schema is rejected without overwrite": true,
+    "T28 stale decision cannot overwrite committed revision": true
+  },
+  "uiSmoke": {
+    "performed": true,
+    "firstLaunch": {
+      "exitCode": -15,
+      "database": {
+        "schemaVersion": 1,
+        "profiles": 1,
+        "spaces": 1,
+        "revision": 1,
+        "journalMode": "wal"
+      }
+    },
+    "secondLaunch": {
+      "exitCode": -15,
+      "database": {
+        "schemaVersion": 1,
+        "profiles": 1,
+        "spaces": 1,
+        "revision": 1,
+        "journalMode": "wal"
+      }
+    },
+    "passed": true
+  },
+  "environment": {
+    "macOS": "27.0.1",
+    "architecture": "arm64",
+    "swiftVersion": "Apple Swift version 6.4 (swiftlang-6.4.0.34.1 clang-2100.3.34.1)",
+    "xcodeVersion": "Xcode 27.0",
+    "packageToolsVersion": "6.4",
+    "minimumDeploymentTarget": "27.0",
+    "binarySHA256": "d4c149e62559e2f6d848fa08b72dd1b648e9b2f79d8e0535c43fbafbf714c575"
+  }
+}

@@ -1,6 +1,6 @@
 # ArcLake macOS 开发文档与复现方案
 
-状态：**v1.0：macOS 27 最低系统基线上的 M0 Gate 已通过；进入 M1–M6 产品实现阶段。**
+状态：**v1.1：M0 与 M1 Gate 均已通过；进入 M2 Foundation Demo。**
 
 目标：用 SwiftUI + AppKit + WebKit 独立实现 Arc 的基础组织方式与浏览交互，而非复制 Arc 内核、品牌或全部历史功能。分析对象仅 macOS；不开展 Windows 复现。
 
@@ -12,7 +12,8 @@
 4. [验收方案 ACCEPTANCE.md](ACCEPTANCE.md)：可重复的场景与失败判定。
 5. [技术核实 API-NOTES.md](API-NOTES.md)：Apple 文档、当前 SDK 核实结果与限制。
 6. [M0 实测报告](M0-RESULTS.md)：通过项目、真实失败与修复、待验证门槛；[运行原型](../../README.md)。
-7. [领域词汇](../../GLOSSARY.md)；[平台/内核决策](../adr/0001-macos-webkit-shell.md)。
+7. [M1 实施结果](M1-RESULTS.md)：领域模型、I01–I12、SQLite schema v1、迁移与启动恢复。
+8. [领域词汇](../../GLOSSARY.md)；[平台/内核决策](../adr/0001-macos-webkit-shell.md)。
 
 ## 证据与规格的关系
 
@@ -46,4 +47,4 @@
 
 ## 建议马上做的工作
 
-M0 已在最低系统基线 macOS 27 上通过具名持久 Profile 隔离、正常/强退恢复、WebView 身份稳定、可见窗口非零滚动、AppKit 键盘路径、主窗/小窗往返移交、原生表单/弹窗/下载及真实 WebContent 进程终止验证。下一阶段从 M1 的领域模型、SQLite 持久化与命令骨架开始，详见 [M0 报告](M0-RESULTS.md)。不能以“界面长得像”代替基础浏览器能力。
+M0 已通过浏览器能力验证，M1 已完成强类型领域模型、I01–I12、SQLite schema v1、迁移/backup、Workspace 命令、AppController 提交效果循环和冷启动恢复。下一阶段为 M2：真实 Sidebar、导航、Space 编辑、Profile/Favorites/Pinned/Folder 操作与可重启恢复的 Foundation Demo。详见 [M0 报告](M0-RESULTS.md) 与 [M1 报告](M1-RESULTS.md)。

@@ -1,0 +1,124 @@
+Test Suite 'All tests' started at 2026-10-27 00:05:03.358.
+Test Suite 'M0CoreTests.xctest' started at 2026-10-27 00:05:03.359.
+Test Suite 'ProbeConfigurationTests' started at 2026-10-27 00:05:03.359.
+Test Case '-[M0CoreTests.ProbeConfigurationTests testExternalOrSameOriginsAreRejected]' started.
+Test Case '-[M0CoreTests.ProbeConfigurationTests testExternalOrSameOriginsAreRejected]' passed (0.001 seconds).
+Test Case '-[M0CoreTests.ProbeConfigurationTests testInvalidStoreIDsAreRejected]' started.
+Test Case '-[M0CoreTests.ProbeConfigurationTests testInvalidStoreIDsAreRejected]' passed (0.000 seconds).
+Test Case '-[M0CoreTests.ProbeConfigurationTests testOwnershipAndStaleEvents]' started.
+Test Case '-[M0CoreTests.ProbeConfigurationTests testOwnershipAndStaleEvents]' passed (0.000 seconds).
+Test Case '-[M0CoreTests.ProbeConfigurationTests testSpacesShareOnlyIntendedProfile]' started.
+Test Case '-[M0CoreTests.ProbeConfigurationTests testSpacesShareOnlyIntendedProfile]' passed (0.000 seconds).
+Test Case '-[M0CoreTests.ProbeConfigurationTests testStableCodableProfile]' started.
+Test Case '-[M0CoreTests.ProbeConfigurationTests testStableCodableProfile]' passed (0.000 seconds).
+Test Suite 'ProbeConfigurationTests' passed at 2026-10-27 00:05:03.361.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'M0CoreTests.xctest' passed at 2026-10-27 00:05:03.361.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+Test Suite 'All tests' passed at 2026-10-27 00:05:03.361.
+	 Executed 5 tests, with 0 failures (0 unexpected) in 0.001 (0.003) seconds
+Test Suite 'All tests' started at 2026-10-27 00:05:03.449.
+Test Suite 'All tests' passed at 2026-10-27 00:05:03.450.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+Test Suite 'All tests' started at 2026-10-27 00:05:03.538.
+Test Suite 'All tests' passed at 2026-10-27 00:05:03.539.
+	 Executed 0 tests, with 0 failures (0 unexpected) in 0.000 (0.001) seconds
+􀟈  Test run started.
+􀄵  Testing Library Version: 2084
+􀄵  Target Platform: arm64e-apple-macos14.0
+􁁛  Test run with 0 tests in 0 suites passed after 0.001 seconds.
+􀟈  Test run started.
+􀄵  Testing Library Version: 2084
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Suite "SQLite workspace smoke" started.
+􀟈  Suite "SQLite workspace" started.
+􀟈  Test "Fresh database creates schema and round-trips bootstrap" started.
+􀟈  Test "T27 interrupted migration rolls back and preserves backup" started.
+􀟈  Test "T26 read-only database fails explicitly" started.
+􀟈  Test "Invalid tree move does not write or advance revision" started.
+􀟈  Test "T27 future schema is rejected without overwrite" started.
+􀟈  Test "Schema v1 round-trips every workspace entity" started.
+􀟈  Test "T26 disk full rolls back all rows" started.
+􀟈  Test "T26 revision mismatch does not publish new state" started.
+􀟈  Test "T25 uncommitted transaction is invisible after reopen" started.
+􁁛  Test "Fresh database creates schema and round-trips bootstrap" passed after 0.024 seconds.
+􁁛  Test "T26 read-only database fails explicitly" passed after 0.024 seconds.
+􁁛  Suite "SQLite workspace smoke" passed after 0.024 seconds.
+􁁛  Test "T27 future schema is rejected without overwrite" passed after 0.024 seconds.
+􁁛  Test "T26 revision mismatch does not publish new state" passed after 0.024 seconds.
+􁁛  Test "Schema v1 round-trips every workspace entity" passed after 0.024 seconds.
+􁁛  Test "T25 uncommitted transaction is invisible after reopen" passed after 0.024 seconds.
+􁁛  Test "T26 disk full rolls back all rows" passed after 0.025 seconds.
+􁁛  Test "T27 interrupted migration rolls back and preserves backup" passed after 0.030 seconds.
+􁁛  Test "Invalid tree move does not write or advance revision" passed after 0.030 seconds.
+􁁛  Suite "SQLite workspace" passed after 0.030 seconds.
+􁁛  Test run with 9 tests in 2 suites passed after 0.030 seconds.
+􀟈  Test run started.
+􀄵  Testing Library Version: 2084
+􀄵  Target Platform: arm64e-apple-macos14.0
+􀟈  Suite "App controller" started.
+􀟈  Suite "Workspace commands" started.
+􀟈  Suite "Workspace invariants" started.
+􀟈  Suite "Random workspace properties" started.
+􀟈  Test "Commit failure does not publish state or effect" started.
+􀟈  Suite "Workspace bootstrap" started.
+􀟈  Test "Load failure shows recovery and retry can bootstrap" started.
+􀟈  Test "Cold start lazily restores only selected visible Tabs" started.
+􀟈  Test "T28 stale decision cannot overwrite committed revision" started.
+􀟈  Test "Startup repairs stale selection before publishing ready" started.
+􀟈  Test "T06 bootstrap commits Default workspace before ready effect" started.
+􀟈  Test "T07 Spaces have independent roots and switch restores selection" started.
+􀟈  Test "Browser events require current generation" started.
+􀟈  Test "T08 Favorites are Profile scoped and unfavorite returns to current Space" started.
+􀟈  Test "I07 rejects stale Space selection" started.
+􀟈  Test "I01 requires Profile and Space" started.
+􀟈  Test "T10 Folder moves are atomic and respect tree rules" started.
+􀟈  Test "T09 Pinned saved URL and custom title survive close and reset" started.
+􀟈  Test "I10 rejects History outside known Profile" started.
+􀟈  Test "I05 rejects multiple item owners for one Tab" started.
+􀟈  Test "I03 rejects parent cycle" started.
+􀟈  Test "I12 rejects store mismatch and duplicate host" started.
+􀟈  Test "I06 rejects malformed Split" started.
+􀟈  Test "I04 rejects Profile mismatch in tree" started.
+􀟈  Test "I08 rejects multiple Favorites" started.
+􀟈  Test "I02 rejects Space with missing Profile" started.
+􀟈  Test "I03 rejects mismatched root ownership" started.
+􀟈  Test "T06 fresh state has exactly one Default Profile and Space" started.
+􀟈  Test "100 random legal tree moves preserve all invariants" started.
+􀟈  Test "I09 rejects executable archive URL" started.
+􀟈  Test "I11 rejects archive and active ownership overlap" started.
+􁁛  Test "I01 requires Profile and Space" passed after 0.002 seconds.
+􁁛  Test "I07 rejects stale Space selection" passed after 0.002 seconds.
+􁁛  Test "I03 rejects parent cycle" passed after 0.002 seconds.
+􁁛  Test "I10 rejects History outside known Profile" passed after 0.002 seconds.
+􁁛  Test "I05 rejects multiple item owners for one Tab" passed after 0.002 seconds.
+􁁛  Test "I08 rejects multiple Favorites" passed after 0.002 seconds.
+􁁛  Test "I02 rejects Space with missing Profile" passed after 0.002 seconds.
+􁁛  Test "I04 rejects Profile mismatch in tree" passed after 0.002 seconds.
+􁁛  Test "I03 rejects mismatched root ownership" passed after 0.002 seconds.
+􁁛  Test "I06 rejects malformed Split" passed after 0.002 seconds.
+􁁛  Test "T06 fresh state has exactly one Default Profile and Space" passed after 0.002 seconds.
+􁁛  Test "I12 rejects store mismatch and duplicate host" passed after 0.002 seconds.
+􁁛  Test "I09 rejects executable archive URL" passed after 0.002 seconds.
+􁁛  Test "I11 rejects archive and active ownership overlap" passed after 0.003 seconds.
+􁁛  Suite "Workspace invariants" passed after 0.003 seconds.
+􁁛  Suite "Workspace bootstrap" passed after 0.003 seconds.
+􁁛  Test "T08 Favorites are Profile scoped and unfavorite returns to current Space" passed after 0.003 seconds.
+􁁛  Test "T07 Spaces have independent roots and switch restores selection" passed after 0.004 seconds.
+􁁛  Test "T09 Pinned saved URL and custom title survive close and reset" passed after 0.004 seconds.
+􁁛  Test "Browser events require current generation" passed after 0.004 seconds.
+􁁛  Test "Cold start lazily restores only selected visible Tabs" passed after 0.004 seconds.
+􁁛  Test "T28 stale decision cannot overwrite committed revision" passed after 0.004 seconds.
+􁁛  Test "Startup repairs stale selection before publishing ready" passed after 0.004 seconds.
+􁁛  Test "T06 bootstrap commits Default workspace before ready effect" passed after 0.005 seconds.
+􁁛  Test "Load failure shows recovery and retry can bootstrap" passed after 0.005 seconds.
+􁁛  Test "Commit failure does not publish state or effect" passed after 0.005 seconds.
+􁁛  Suite "App controller" passed after 0.005 seconds.
+􁁛  Test "T10 Folder moves are atomic and respect tree rules" passed after 0.005 seconds.
+􁁛  Suite "Workspace commands" passed after 0.005 seconds.
+􁁛  Test "100 random legal tree moves preserve all invariants" passed after 0.031 seconds.
+􁁛  Suite "Random workspace properties" passed after 0.031 seconds.
+􁁛  Test run with 26 tests in 5 suites passed after 0.031 seconds.
+Building for debugging...
+[Using on-disk description]
+Build complete! (0.34 sec)

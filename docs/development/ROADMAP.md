@@ -1,6 +1,6 @@
 # 实施计划与复现路径
 
-各阶段以验收门槛推进，不以界面截图代替功能交付。M0 已在最低系统基线 macOS 27 上通过，见 [M0 实测报告](M0-RESULTS.md)；当前分支继续实施 M1–M6。平台假设见 [README](README.md)，功能契约见 [SPEC](SPEC.md)。
+各阶段以验收门槛推进，不以界面截图代替功能交付。M0、M1 均已在 macOS 27 上通过，当前进入 M2，见 [M0 报告](M0-RESULTS.md) 与 [M1 报告](M1-RESULTS.md)。平台假设见 [README](README.md)，功能契约见 [SPEC](SPEC.md)。
 
 ## M0 — 关键能力验证（先做，阻塞后续）
 
@@ -25,6 +25,8 @@
 
 依赖：M0 隔离方向成立。
 
+**状态：完成。** `ArcLakeCore`、`ArcLakePersistence`、SQLite schema v1、I01–I12、Workspace 命令、AppController 和 `ArcLakeM1` 启动壳已实现；T06–T10、T25–T28 及 100 次随机合法树操作通过。
+
 - 实现强类型 ID、Root/Item/Tab/Space/Profile/Split 值模型及 I01–I12 校验。
 - 创建 SQLite schema v1、迁移工具、单写者事务、内存 adapter、revision。
 - 实现 Workspace 的 create/move/pin/unpin/rename/switchSpace 基本命令；所有操作先走领域逻辑再渲染。
@@ -36,6 +38,8 @@
 ## M2 — 可日用的组织核心（Foundation Demo）
 
 依赖：M1。
+
+**下一阶段。** M1 的 Store/AppController Interface 作为唯一持久化与命令入口，不在 UI 中复制移动/固定/收藏规则。
 
 - Sidebar、地址输入、前进/后退/刷新、真实网页、⌘S/⌘L/⌘T/⌘W。
 - Space 编辑/排序/主题与 Control+数字切换。
